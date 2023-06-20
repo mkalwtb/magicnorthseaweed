@@ -1,28 +1,9 @@
-from dataclasses import dataclass
-from typing import List
+from matplotlib import pyplot as plt
+from pathlib import Path
+from rijkswaterstaat import Boei, BoeiData
 
 time_48h48h = "-48,48"
 # Link: https://waterinfo.rws.nl/#!/kaart/wind/
-
-@dataclass
-class BoeiData:
-    name: str
-    col_past: str
-    col_future: str
-    parameter: str
-    locoation_slug: str
-    time_horizon: str
-    # url: str
-
-    @property
-    def url(self):
-        return f"https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter={self.parameter}&locationSlug={self.locoation_slug}&timehorizon={self.time_horizon}"
-
-@dataclass
-class Boei:
-    data: List[BoeiData]
-    locationSlug: str
-
 
 ijmuiden = Boei(data=
                 [BoeiData(name="Hs",
@@ -51,3 +32,11 @@ ijmuiden = Boei(data=
                 #          time_horizon=time_48h48h),
                 ],
                 locationSlug="IJmuiden-Buitenhaven(IJMH)")
+
+if __name__ == '__main__':
+    df = ijmuiden.download()
+    print(df)
+    # print(tabulate(df, headers=df.columns))
+    df.plot(subplots=True)
+    df.to_csv(r"example\test_data.csv")
+    plt.show()
