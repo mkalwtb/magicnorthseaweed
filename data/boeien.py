@@ -1,3 +1,4 @@
+import pandas as pd
 from matplotlib import pyplot as plt
 from pathlib import Path
 from rijkswaterstaat import Boei, BoeiData
@@ -25,6 +26,7 @@ ijmuiden = Boei(data=
                     BoeiData(name="wind-dir",
                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
                          locoation_slug="IJmuiden-Buitenhaven(IJMH)",
+                         col_past="Windrichting",
                          time_horizon=timing),
                     BoeiData(name="tide-height",
                          parameter="Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm",
@@ -43,4 +45,6 @@ if __name__ == '__main__':
     # print(tabulate(df, headers=df.columns))
     df.plot(subplots=True, grid=True)
     # df.to_csv(r"example\test_data.csv")
+    print(df)
+
     plt.show()

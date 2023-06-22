@@ -29,8 +29,8 @@ def _locate_waarde(old: pd.DataFrame, data_name: str, value_col: str) -> pd.Data
 @dataclass
 class BoeiData:
     """
-    Om de boei data op te zoeken:ga naar https://waterinfo.rws.nl/#!/details/publiek/waterhoogte/
-    1.
+    Om de boei data op te zoeken:
+    1. Ga naar https://waterinfo.rws.nl/#!/details/publiek/waterhoogte/
     2. Selecteer de boei & data die je wil
     3. click Export/Delen
     4. Right click op CSV
