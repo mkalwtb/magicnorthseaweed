@@ -3,6 +3,8 @@ import pandas as pd
 from typing import List
 import time
 import os
+import warnings
+from pathlib import Path
 
 import ssl
 from urllib import request, error
@@ -11,6 +13,7 @@ from urllib import request, error
 ssl._create_default_https_context = ssl._create_unverified_context
 date_time_str = "%Y%m%d-%H%M%S"
 timestr = time.strftime(date_time_str)
+SCRAPE_FOLDER = Path("temp_scrape_data")
 
 
 def _read_rijkswaterstaat_csv(file: str, skip_rows: int = 0) -> pd.DataFrame:
@@ -19,7 +22,7 @@ def _read_rijkswaterstaat_csv(file: str, skip_rows: int = 0) -> pd.DataFrame:
 
 def _locate_waarde(old: pd.DataFrame, data_name: str, value_col: str) -> pd.DataFrame:
     if not value_col in old.columns:
-        raise NotImplementedError("Column")
+        raise IOError(f"Column '{value_col}' is not found.")
     value = old[value_col].loc[old[value_col].notna()]
     both = pd.concat([value])
     new = pd.DataFrame(both)
@@ -41,38 +44,52 @@ class BoeiData:
     name: str
     parameter: str
     locoation_slug: str
-    time_horizon: str
     col_past: str = "Waarde"
-    col_future: str = "verwachting"
+    col_future: str = ""
 
-    @property
-    def url(self):
-        return f"https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter={self.parameter}&locationSlug={self.locoation_slug}&timehorizon={self.time_horizon}"
+    def url(self, time_horizon: str):
+        return f"https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter={self.parameter}&locationSlug={self.locoation_slug}&timehorizon={time_horizon}"
 
-    def _download_file(self, file_name):
-        try:
-            request.urlretrieve(self.url, file_name)
-        except error.HTTPError as e:
-            print(f"Could not read '{file_name}'")
-            print(self.url)
-            raise e
+    def _download_file(self, file_name: str, time_horizon: str):
+        request.urlretrieve(self.url(time_horizon), file_name)
 
-    def download(self) -> pd.DataFrame:
-        file_name = f"{self.name}_{timestr}.csv"
-        self._download_file(file_name)
+    def _download_raw(self, time_horizon: str) -> pd.DataFrame:
+        file_name = SCRAPE_FOLDER / f"{self.locoation_slug}_{self.name}_{timestr}.csv"
+        self._download_file(file_name, time_horizon)
         data_csv = _read_rijkswaterstaat_csv(file_name)
-        data_clean = _locate_waarde(data_csv, data_name=self.name, value_col=self.col_past)
         os.remove(file_name)
+        return data_csv
+
+    def _combine_past_future(self, data_csv: pd.DataFrame, past: bool, future) -> pd.DataFrame:
+        data_past = pd.DataFrame()
+        data_future = pd.DataFrame()
+        if past:
+            data_past = _locate_waarde(data_csv, data_name=self.name, value_col=self.col_past)
+        if future and self.col_future:
+            data_future = _locate_waarde(data_csv, data_name=self.name, value_col=self.col_future)
+        data_clean = pd.concat([data_past, data_future])
+
         return data_clean
+
+    def download(self, time_horizon: str, past: bool, future: bool = False) -> pd.DataFrame:
+        data_csv = self._download_raw(time_horizon=time_horizon)
+        data_clean = self._combine_past_future(data_csv, past=past, future=future)
+        return data_clean
+
 
 @dataclass
 class Boei:
     data: List[BoeiData]
     locationSlug: str
 
-    def download(self):
+    def download(self, time_horizon: str, past, future):
         results = pd.DataFrame()
         for boei_data in self.data:
-            result = boei_data.download()
-            results = pd.concat([results, result], axis=1)
+            try:
+                result = boei_data.download(time_horizon, past, future)
+                results = pd.concat([results, result], axis=1)
+            except error.HTTPError as e:
+                warnings.warn(f"Could receive '{boei_data.name}' for '{boei_data.locoation_slug}': {e}'")
+            except IOError as e:
+                warnings.warn(f"Could receive '{boei_data.name}' for '{boei_data.locoation_slug}': {e}'")
         return results

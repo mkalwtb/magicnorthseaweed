@@ -19,10 +19,7 @@ def append_data(existing, new, overwrite_existing=True):
 
 
 if __name__ == '__main__':
-    df_new = ijmuiden.download(time_28d, future=False, past=True)
-
-    # Append to existing data
-    df_all = pd.read_pickle(data_db)
-    df_all = append_data(df_all, df_new)
-    print(df_all)
-    df_all.to_pickle(data_db)
+    df_new = ijmuiden.download(time_48h48h, future=True, past=False)
+    print(df_new)
+    df_new.plot(subplots=True, grid=True)
+    plt.show()
