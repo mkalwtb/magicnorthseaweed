@@ -46,6 +46,7 @@ class BoeiData:
     locoation_slug: str
     col_past: str = "Waarde"
     col_future: str = ""
+    future_unavailable: bool = False  # if screaping future is not possible
 
     def url(self, time_horizon: str):
         return f"https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter={self.parameter}&locationSlug={self.locoation_slug}&timehorizon={time_horizon}"
@@ -71,8 +72,16 @@ class BoeiData:
 
         return data_clean
 
+    def _remove_future(self, time_horizon):
+        times = time_horizon.split(",")
+        if self.future_unavailable and float(times[1]) > 0:
+            time_horizon = f"{times[0]},0"
+            print(f"Updated to 'time_horizon={time_horizon}' because future times are unavailable")
+        return time_horizon
+
     def download(self, time_horizon: str, past: bool, future: bool = False) -> pd.DataFrame:
-        data_csv = self._download_raw(time_horizon=time_horizon)
+        time_horizon_available = self._remove_future(time_horizon)
+        data_csv = self._download_raw(time_horizon=time_horizon_available)
         data_clean = self._combine_past_future(data_csv, past=past, future=future)
         return data_clean
 

@@ -1,12 +1,12 @@
 import pandas as pd
 from matplotlib import pyplot as plt
-from boeien import ijmuiden
+from boeien import ijmuiden, K13
 
 data_db = "data_db.pkl"
 
-time_48h48h = "-48,48"
-time_48h0h = "-48,0"
-time_28d = "-672,0"
+last_future_2_days = "-48,48"
+last_2_days = "-48,0"
+last_month = "-672,0"
 
 
 def append_data(existing, new, overwrite_existing=True):
@@ -19,7 +19,15 @@ def append_data(existing, new, overwrite_existing=True):
 
 
 if __name__ == '__main__':
-    df_new = ijmuiden.download(time_48h48h, future=True, past=False)
+    boeien = [ijmuiden, K13]
+    for boei in boeien:
+        df_new = boei.download(last_future_2_days, future=False, past=True)
+        print(df_new)
+        df_new.plot(subplots=True, grid=True)
+        plt.suptitle(boei.locationSlug)
+
+    df_new = ijmuiden.download(last_future_2_days, future=True, past=False)
     print(df_new)
     df_new.plot(subplots=True, grid=True)
+    plt.suptitle(ijmuiden.locationSlug + " voorspelling")
     plt.show()
