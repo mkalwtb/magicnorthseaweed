@@ -15,6 +15,8 @@ def append_data(existing, new, overwrite_existing=True):
         existing = existing.drop(existing.index.intersection(new.index))
     else:
         new = new.drop(new.index.intersection(existing.index))
+    n_new_lines = len(existing.index.intersection(new.index))
+    print(f"Added {n_new_lines} lines of data.")
     df = pd.concat([existing, new], axis=0)
     return df
 

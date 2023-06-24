@@ -1,6 +1,6 @@
 import pandas as pd
 from matplotlib import pyplot as plt
-from boeien import ijmuiden, K13
+from boeien import ijmuiden, K13, boeien
 
 data_db = "data_db.pkl"
 
@@ -19,7 +19,6 @@ def append_data(existing, new, overwrite_existing=True):
 
 
 if __name__ == '__main__':
-    boeien = [ijmuiden, K13]
     for boei in boeien:
         df_new = boei.download(last_future_2_days, future=False, past=True)
         print(df_new)
