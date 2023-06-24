@@ -65,12 +65,5 @@ K13 = Boei(data=
                 ],
                 locationSlug="K13-Alpha(K13)")
 
-if __name__ == '__main__':
-    df = ijmuiden.download(time_48h48h)
-    print(df)
-    # print(tabulate(df, headers=df.columns))
-    df.plot(subplots=True, grid=True)
-    # df.to_csv(r"example\test_data.csv")
-    print(df)
+boeien = [ijmuiden, K13]
 
-    plt.show()

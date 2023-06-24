@@ -1,8 +1,9 @@
 import pandas as pd
+from pathlib import Path
 from matplotlib import pyplot as plt
-from boeien import ijmuiden
+from boeien import ijmuiden, K13, boeien
 
-data_db = "data_db.pkl"
+DATA_FOLDER = Path("boei-data")
 
 time_48h48h = "-48,48"
 time_48h0h = "-48,0"
@@ -18,11 +19,21 @@ def append_data(existing, new, overwrite_existing=True):
     return df
 
 
-if __name__ == '__main__':
-    df_new = ijmuiden.download(time_28d, future=False, past=True)
+def to_database(boei):
+    df_new = boei.download(time_28d, future=False, past=True)
 
     # Append to existing data
-    df_all = pd.read_pickle(data_db)
-    df_all = append_data(df_all, df_new)
-    print(df_all)
-    df_all.to_pickle(data_db)
+    db_name = DATA_FOLDER / (boei.locationSlug + ".pkl")
+    if db_name.is_file():
+        df_all = pd.read_pickle(db_name)
+        df_all = append_data(df_all, df_new)
+    else:
+        df_all = df_new
+    df_all.to_pickle(db_name)
+    return df_all
+
+
+if __name__ == '__main__':
+    for boei in boeien:
+        data = to_database(boei)
+        print(data)
