@@ -19,7 +19,7 @@ def append_data(existing, new, overwrite_existing=True):
     return df
 
 
-def to_database(boei):
+def download_to_database(boei):
     df_new = boei.download(time_28d, future=False, past=True)
 
     # Append to existing data
@@ -35,5 +35,5 @@ def to_database(boei):
 
 if __name__ == '__main__':
     for boei in boeien:
-        data = to_database(boei)
+        data = download_to_database(boei)
         print(data)

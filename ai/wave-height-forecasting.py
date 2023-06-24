@@ -14,11 +14,11 @@ ijmuiden = pd.read_pickle(r"..\data\boei-data\IJmuiden-Buitenhaven(IJMH).pkl")
 K13 = pd.read_pickle(r"..\data\boei-data\K13-Alpha(K13).pkl")
 print(K13)
 
-columns_in = ["wave-height", "wave-dir", "wave-period", "wind-speed"]
+columns_in = ["wave-height", "wave-period", "wind-speed"]
 columns_out = ["wave-height"]
 
 # Define the sequence length (number of time steps to consider)
-seq_length = 3 # 2*6*24
+seq_length = 2*6*24
 
 def create_sequences(input_data, output_data, seq_length):
     X = []
@@ -78,7 +78,7 @@ predictions = model.predict(X_test)
 predictions = scaler.inverse_transform(predictions)
 actual_values = scaler.inverse_transform(y_test)
 
-index = K13.loc[train_size:].index
+index = K13.iloc[train_size+seq_length:].index
 plt.figure(figsize=(10, 6))
 plt.plot(index, predictions[:, 0], label='Predicted')
 plt.plot(index, actual_values[:, 0], label='Actual')
