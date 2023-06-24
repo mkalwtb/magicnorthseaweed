@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-
 from matplotlib import pyplot as plt
 
 import pandas as pd
@@ -18,7 +15,7 @@ columns_in = ["wave-height", "wave-period", "wind-speed"]
 columns_out = ["wave-height"]
 
 # Define the sequence length (number of time steps to consider)
-seq_length = 2*6*24
+seq_length = 16*6
 
 def create_sequences(input_data, output_data, seq_length):
     X = []
@@ -33,6 +30,10 @@ ijmuiden = ijmuiden.drop('tide-height', axis=1)
 ijmuiden = ijmuiden.dropna(axis=0)
 K13 = K13.drop('tide-height', axis=1)
 K13 = K13.dropna(axis=0)
+
+# Rotate angles for 180 = betwe
+K13['wave-dir'] = K13['wave-dir'] - 140 + 180 % 360
+print(K13['wave-dir'])
 
 # Make data equivalent
 common_index = ijmuiden.index.intersection(K13.index)
@@ -49,7 +50,8 @@ scaled_input_data = scaler.fit_transform(input_data)
 scaled_output_data = scaler.fit_transform(output_data)
 
 # Split the data into training and testing sets
-train_size = int(0.8 * len(input_data))
+train_size = int(0.7 * len(input_data))
+train_index = K13.iloc[train_size+seq_length:].index
 train_input_data = scaled_input_data[:train_size]
 train_output_data = scaled_output_data[:train_size]
 test_input_data = scaled_input_data[train_size:]
@@ -78,10 +80,9 @@ predictions = model.predict(X_test)
 predictions = scaler.inverse_transform(predictions)
 actual_values = scaler.inverse_transform(y_test)
 
-index = K13.iloc[train_size+seq_length:].index
 plt.figure(figsize=(10, 6))
-plt.plot(index, predictions[:, 0], label='Predicted')
-plt.plot(index, actual_values[:, 0], label='Actual')
+plt.plot(train_index, predictions[:, 0], label='Predicted')
+plt.plot(train_index, actual_values[:, 0], label='Actual')
 plt.xlabel('Time')
 plt.ylabel('Wave Height')
 plt.legend()

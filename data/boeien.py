@@ -35,7 +35,9 @@ ijmuiden = Boei(data=
                           locoation_slug="IJgeul-Munitiestort-1(MUN1)",
                           future_unavailable=True)
                 ],
-                locationSlug="IJmuiden-Buitenhaven(IJMH)")
+                locationSlug="IJmuiden-Buitenhaven(IJMH)",
+                N=52.474773,
+                E=4.535204)
 
 K13 = Boei(data=
                 [
@@ -63,7 +65,9 @@ K13 = Boei(data=
                              locoation_slug="K13-Alpha(K13)",
                              future_unavailable=True)
                 ],
-                locationSlug="K13-Alpha(K13)")
+                locationSlug="K13-Alpha(K13)",
+                N=53.586792,
+                E=3.075473)
 
 boeien = [ijmuiden, K13]
 

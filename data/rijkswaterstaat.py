@@ -5,6 +5,7 @@ import time
 import os
 import warnings
 from pathlib import Path
+import math
 
 import ssl
 from urllib import request, error
@@ -90,6 +91,8 @@ class BoeiData:
 class Boei:
     data: List[BoeiData]
     locationSlug: str
+    N: float
+    E: float
 
     def download(self, time_horizon: str, past, future):
         results = pd.DataFrame()
@@ -102,3 +105,28 @@ class Boei:
             except IOError as e:
                 warnings.warn(f"Could receive '{boei_data.name}' for '{boei_data.locoation_slug}': {e}'")
         return results
+
+    def angle_to(self, other_buoy):
+        # Convert latitude and longitude to radians
+        lat1_rad = math.radians(self.E)
+        lon1_rad = math.radians(self.N)
+        lat2_rad = math.radians(other_buoy.E)
+        lon2_rad = math.radians(other_buoy.N)
+
+        # Calculate the differences between the longitudes and latitudes
+        delta_lon = lon2_rad - lon1_rad
+        delta_lat = lat2_rad - lat1_rad
+
+        # Calculate the angle using the Haversine formula
+        y = math.sin(delta_lon) * math.cos(lat2_rad)
+        x = math.cos(lat1_rad) * math.sin(lat2_rad) - math.sin(lat1_rad) * math.cos(lat2_rad) * math.cos(delta_lon)
+        angle_rad = math.atan2(y, x)
+
+        # Convert the angle to degrees
+        angle_deg = math.degrees(angle_rad)
+
+        # Normalize the angle between 0 and 360 degrees
+        angle_normalized = (angle_deg + 360) % 360
+
+        return angle_normalized
+
