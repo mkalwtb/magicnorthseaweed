@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from matplotlib import pyplot as plt
 import pandas as pd
 from typing import List
 import time
@@ -15,6 +16,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 date_time_str = "%Y%m%d-%H%M%S"
 timestr = time.strftime(date_time_str)
 SCRAPE_FOLDER = Path("temp_scrape_data")
+DATA_FOLDER = Path("boei-data")
 
 
 def _read_rijkswaterstaat_csv(file: str, skip_rows: int = 0) -> pd.DataFrame:
@@ -47,7 +49,7 @@ class BoeiData:
     locoation_slug: str
     col_past: str = "Waarde"
     col_future: str = ""
-    future_unavailable: bool = False  # if screaping future is not possible
+    future_unavailable: bool = False  # if scraping future is not possible
 
     def url(self, time_horizon: str):
         return f"https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter={self.parameter}&locationSlug={self.locoation_slug}&timehorizon={time_horizon}"
@@ -87,24 +89,59 @@ class BoeiData:
         return data_clean
 
 
-@dataclass
 class Boei:
-    data: List[BoeiData]
-    locationSlug: str
-    N: float
-    E: float
+    def __init__(self, parameters: List[BoeiData], location_slug: str, N: float, E: float):
+        self.parameters: List[BoeiData] = parameters
+        self.locationSlug: str = location_slug
+        self._db_file_ = DATA_FOLDER / (self.locationSlug + ".pkl")
+        self.data: pd.DataFrame = self._load_data()
+        self.N: float = N
+        self.E: float = E
 
-    def download(self, time_horizon: str, past, future):
+    def download(self, time_horizon: str, past, future) -> pd.DataFrame:
+        """Download new buoy data"""
         results = pd.DataFrame()
-        for boei_data in self.data:
+        for parameter in self.parameters:
             try:
-                result = boei_data.download(time_horizon, past, future)
+                result = parameter.download(time_horizon, past, future)
                 results = pd.concat([results, result], axis=1)
             except error.HTTPError as e:
-                warnings.warn(f"Could receive '{boei_data.name}' for '{boei_data.locoation_slug}': {e}'")
+                warnings.warn(f"Could receive '{parameter.name}' for '{parameter.locoation_slug}': {e}'")
             except IOError as e:
-                warnings.warn(f"Could receive '{boei_data.name}' for '{boei_data.locoation_slug}': {e}'")
+                warnings.warn(f"Could receive '{parameter.name}' for '{parameter.locoation_slug}': {e}'")
         return results
+
+    def _load_data(self):
+        """Load buoy data file"""
+        if self._db_file_.is_file():
+            return pd.read_pickle(self._db_file_)
+        return pd.DataFrame()
+
+    def save_data(self):
+        """Save the data to the buoys dataframe"""
+        self.data.to_pickle(self._db_file_)
+
+    def append_data(self, new: pd.DataFrame, overwrite_existing=True):
+        """Append a new buoy dataframe to the existing buoy data"""
+        if overwrite_existing:
+            existing = self.data.drop(self.data.index.intersection(new.index))
+        else:
+            existing = self.data
+            new = new.drop(new.index.intersection(self.data.index))
+        n_lines_overwritten = len(self.data.index.intersection(new.index))
+        print(f"Added {n_lines_overwritten} lines of data.")
+        self.data = pd.concat([existing, new], axis=0)
+
+    def scrape(self, time_str: str = "-48,48") -> pd.DataFrame:
+        """Download new data and save in the db"""
+        df_new = self.download(time_str, future=False, past=True)
+        self.append_data(df_new)
+        self.save_data()
+        return df_new
+
+    def plot(self):
+        self.data.plot(subplots=True, grid=True)
+        plt.suptitle(self.locationSlug)
 
     def angle_to(self, other_buoy):
         # Convert latitude and longitude to radians
@@ -129,4 +166,5 @@ class Boei:
         angle_normalized = (angle_deg + 360) % 360
 
         return angle_normalized
+
 

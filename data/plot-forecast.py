@@ -20,12 +20,10 @@ def append_data(existing, new, overwrite_existing=True):
 
 if __name__ == '__main__':
     for boei in boeien:
-        df_new = boei.download(last_future_2_days, future=False, past=True)
-        print(df_new)
-        df_new.plot(subplots=True, grid=True)
-        plt.suptitle(boei.locationSlug)
+        boei.plot()
 
     df_new = ijmuiden.download(last_future_2_days, future=True, past=False)
+
     print(df_new)
     df_new.plot(subplots=True, grid=True)
     plt.suptitle(ijmuiden.locationSlug + " voorspelling")

@@ -9,7 +9,7 @@ time_28d = "-672,0"
 timing = time_28d
 # Link: https://waterinfo.rws.nl/#!/kaart/wind/
 
-ijmuiden = Boei(data=
+ijmuiden = Boei(parameters=
                 [
                     BoeiData(name="wave-height",
                         parameter="Significante___20golfhoogte___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20cm",
@@ -35,11 +35,11 @@ ijmuiden = Boei(data=
                           locoation_slug="IJgeul-Munitiestort-1(MUN1)",
                           future_unavailable=True)
                 ],
-                locationSlug="IJmuiden-Buitenhaven(IJMH)",
+                location_slug="IJmuiden-Buitenhaven(IJMH)",
                 N=52.474773,
                 E=4.535204)
 
-K13 = Boei(data=
+K13 = Boei(parameters=
                 [
                     BoeiData(name="wave-height",
                         parameter="Significante___20golfhoogte___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20cm",
@@ -57,7 +57,7 @@ K13 = Boei(data=
                              locoation_slug="K13-Alpha(K13)",
                              future_unavailable=True)
                 ],
-                locationSlug="K13-Alpha(K13)",
+                location_slug="K13-Alpha(K13)",
                 N=53.586792,
                 E=3.075473)
 
