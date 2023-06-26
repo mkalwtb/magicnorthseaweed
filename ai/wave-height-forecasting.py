@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-
+from math import pi, cos
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -9,13 +9,12 @@ from tensorflow.keras.layers import LSTM, Dense
 
 ijmuiden = pd.read_pickle(r"..\data\boei-data\IJmuiden-Buitenhaven(IJMH).pkl")
 K13 = pd.read_pickle(r"..\data\boei-data\K13-Alpha(K13).pkl")
-print(K13)
 
-columns_in = ["wave-height", "wave-period", "wind-speed"]
+columns_in = ["wave-height", "wave-period", "wind-speed", "wave-dir"]
 columns_out = ["wave-height"]
 
 # Define the sequence length (number of time steps to consider)
-seq_length = 16*6
+seq_length = 2*24*6
 
 def create_sequences(input_data, output_data, seq_length):
     X = []
@@ -32,7 +31,8 @@ K13 = K13.drop('tide-height', axis=1)
 K13 = K13.dropna(axis=0)
 
 # Rotate angles for 180 = betwe
-K13['wave-dir'] = K13['wave-dir'] - 140 + 180 % 360
+K13['wave-dir'] = K13['wave-dir'] - 140 % 360
+K13['wave-dir'] = np.cos(K13['wave-dir'].values/360*2*pi)
 print(K13['wave-dir'])
 
 # Make data equivalent
