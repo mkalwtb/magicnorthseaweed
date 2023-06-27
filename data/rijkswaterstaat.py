@@ -128,8 +128,10 @@ class Boei:
         else:
             existing = self.data
             new = new.drop(new.index.intersection(self.data.index))
+        n_lines_scraped = len(new)
         n_lines_overwritten = len(self.data.index.intersection(new.index))
-        print(f"Added {n_lines_overwritten} lines of data.")
+        n_lines_new = n_lines_scraped - n_lines_overwritten
+        print(f"Added {n_lines_new} lines of data.")
         self.data = pd.concat([existing, new], axis=0)
 
     def scrape(self, time_str: str = "-48,48") -> pd.DataFrame:

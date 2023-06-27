@@ -5,7 +5,7 @@ from rijkswaterstaat import Boei, BoeiData
 
 """
 Om de boei data op te zoeken:
-1. Ga naar https://waterinfo.rws.nl/#!/details/publiek/waterhoogte/
+1. Ga naar https://waterinfo.rws.nl
 2. Selecteer de boei & data die je wil
 3. click Export/Delen
 4. Right click op CSV
@@ -26,7 +26,7 @@ ijmuiden = Boei(parameters=
                         locoation_slug="IJgeul(IJGL)",
                         col_future="Verwachting"),
                     BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                          parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
+                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
                           locoation_slug="IJgeul-stroommeetpaal(SPY)"),
                     BoeiData(name="wind-speed",
                           parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
@@ -56,7 +56,7 @@ K13 = Boei(parameters=
                         locoation_slug="K13-Alpha(K13)",
                         col_future="Verwachting"),
                     BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                          parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
+                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
                           locoation_slug="K13-Alpha(K13)"),
                     BoeiData(name="wind-speed",
                           parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",

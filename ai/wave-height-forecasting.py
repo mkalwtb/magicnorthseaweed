@@ -14,7 +14,7 @@ columns_in = ["wave-height", "wave-period", "wind-speed", "wave-dir"]
 columns_out = ["wave-height"]
 
 # Define the sequence length (number of time steps to consider)
-seq_length = 2*24*6
+seq_length = 1*24*6
 
 def create_sequences(input_data, output_data, seq_length):
     X = []
