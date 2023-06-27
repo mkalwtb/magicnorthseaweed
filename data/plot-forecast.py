@@ -24,7 +24,6 @@ if __name__ == '__main__':
 
     df_new = ijmuiden.download(last_future_2_days, future=True, past=False)
 
-    print(df_new)
     df_new.plot(subplots=True, grid=True)
     plt.suptitle(ijmuiden.locationSlug + " voorspelling")
     plt.show()
