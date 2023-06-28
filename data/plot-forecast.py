@@ -9,15 +9,6 @@ last_2_days = "-48,0"
 last_month = "-672,0"
 
 
-def append_data(existing, new, overwrite_existing=True):
-    if overwrite_existing:
-        existing = existing.drop(existing.index.intersection(new.index))
-    else:
-        new = new.drop(new.index.intersection(existing.index))
-    df = pd.concat([existing, new], axis=0)
-    return df
-
-
 if __name__ == '__main__':
     for boei in boeien:
         boei.plot()
@@ -25,5 +16,5 @@ if __name__ == '__main__':
     df_new = ijmuiden.download(last_future_2_days, future=True, past=False)
 
     df_new.plot(subplots=True, grid=True)
-    plt.suptitle(ijmuiden.locationSlug + " voorspelling")
+    plt.suptitle(ijmuiden.location_slug + " voorspelling")
     plt.show()

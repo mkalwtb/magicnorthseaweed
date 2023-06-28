@@ -92,8 +92,8 @@ class BoeiData:
 class Boei:
     def __init__(self, parameters: List[BoeiData], location_slug: str, N: float, E: float):
         self.parameters: List[BoeiData] = parameters
-        self.locationSlug: str = location_slug
-        self._db_file_ = DATA_FOLDER / (self.locationSlug + ".pkl")
+        self.location_slug: str = location_slug
+        self._db_file_ = DATA_FOLDER / (self.location_slug + ".pkl")
         self.data: pd.DataFrame = self._load_data()
         self.N: float = N
         self.E: float = E
@@ -131,19 +131,20 @@ class Boei:
         n_lines_scraped = len(new)
         n_lines_overwritten = len(self.data.index.intersection(new.index))
         n_lines_new = n_lines_scraped - n_lines_overwritten
-        print(f"Added {n_lines_new} lines of data.")
         self.data = pd.concat([existing, new], axis=0)
+        return n_lines_new
 
     def scrape(self, time_str: str = "-48,48") -> pd.DataFrame:
         """Download new data and save in the db"""
         df_new = self.download(time_str, future=False, past=True)
-        self.append_data(df_new)
+        new_lines = self.append_data(df_new)
         self.save_data()
+        print(f"Added {new_lines} new lines to {self.location_slug}).")
         return df_new
 
     def plot(self):
         self.data.plot(subplots=True, grid=True)
-        plt.suptitle(self.locationSlug)
+        plt.suptitle(self.location_slug)
 
     def angle_to(self, other_buoy):
         # Convert latitude and longitude to radians
