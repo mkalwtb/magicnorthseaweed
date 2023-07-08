@@ -1,7 +1,8 @@
 import pandas as pd
 from pathlib import Path
 
-file = r"surf-feedback-raw/Surf-feedback-08-07-2023v3.csv"
+file_raw = Path(r"surf-feedback-raw/Surf-feedback-08-07-2023v3.csv")
+file_pkl = file_raw.with_suffix(".pkl")
 
 column_names = {
     "clean": "Hoe was de surf? Alleen invullen bij een nat pak (: [Clean]",
@@ -43,6 +44,6 @@ def load(file_name):
 
 
 if __name__ == '__main__':
-    data = load(file)
+    data = load(file_raw)
     print(data)
-    data.to_pickle(file.with_suffix(".pkl"))
+    data.to_pickle(file_pkl)
