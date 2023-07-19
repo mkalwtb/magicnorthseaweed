@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from copy import deepcopy
+from datetime import datetime
 
 from dataclasses import dataclass
 import boeien, surffeedback
@@ -35,11 +36,14 @@ class Spot:
 
         for index, row in output.iterrows():
             datum = row["Datum"]
-            start_tijd = f"{datum} {row['Start tijd']}"
-            eind_tijd = f"{datum} {row['Eind tijd']}"
+            start_tijd = datetime.strptime(f"{datum} {row['Start tijd']}", "%d-%m-%Y %H:%M:%S")
+            start_tijd = start_tijd.strftime("%Y-%m-%d %H:%M:%S")
+            eind_tijd = datetime.strptime(f"{datum} {row['Eind tijd']}", "%d-%m-%Y %H:%M:%S")
+            eind_tijd = eind_tijd.strftime("%Y-%m-%d %H:%M:%S")
             query = (data.index >= start_tijd) & (data.index <= eind_tijd)
-            if all(query == False):
-                continue
+            print(f"start={start_tijd}, \teind={eind_tijd}, \taantal={sum(query)}")
+            # if all(query == False):
+            #     continue
             data.loc[query, columns] =  row[columns]
         if non_zero_only:
             return data[data["rating"].notnull()]
