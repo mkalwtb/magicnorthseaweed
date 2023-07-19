@@ -41,7 +41,7 @@ class Spot:
             eind_tijd = datetime.strptime(f"{datum} {row['Eind tijd']}", "%d-%m-%Y %H:%M:%S")
             eind_tijd = eind_tijd.strftime("%Y-%m-%d %H:%M:%S")
             query = (data.index >= start_tijd) & (data.index <= eind_tijd)
-            print(f"start={start_tijd}, \teind={eind_tijd}, \taantal={sum(query)}")
+            # print(f"start={start_tijd}, \teind={eind_tijd}, \taantal={sum(query)}")
             # if all(query == False):
             #     continue
             data.loc[query, columns] =  row[columns]
