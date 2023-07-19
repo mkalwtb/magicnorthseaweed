@@ -26,10 +26,9 @@ class Spot:
         else:
             return all
 
-
     def input_output_data(self, only_spot_data, non_zero_only=False):
         columns = "rating"
-        input = self.boei.data
+        input = self.data()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
         data[columns] = np.nan
@@ -46,6 +45,17 @@ class Spot:
             return data[data["rating"].notnull()]
         else:
             return data
+
+    def data(self):
+        data = self.boei.data
+        data['wave-dir'] = (data['wave-dir'] - self.richting + 360) % 360
+        data['onshore-wave'] = np.sin(data['wave-dir'].values/360*2*np.pi)
+        data = data.drop('wave-dir', axis=1)
+
+        data['wind-dir'] = (data['wind-dir'] - self.richting + 360) % 360
+        data['onshore-wind'] = np.sin(data['wind-dir'].values/360*2*np.pi)
+        data = data.drop('wind-dir', axis=1)
+        return data
 
 
 # Add all spots here
