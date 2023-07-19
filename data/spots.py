@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from copy import deepcopy
 from datetime import datetime
+import re
 
 from dataclasses import dataclass
 import boeien, surffeedback
@@ -35,7 +36,11 @@ class Spot:
         data[columns] = np.nan
 
         for index, row in output.iterrows():
+            pattern = r'^\d{2}:\d{2}:\d{2}$'
             datum = row["Datum"]
+            date_wrong_format = not re.match(pattern, str(row['Start tijd'])) or not re.match(pattern, str(row['Start tijd']))
+            if date_wrong_format:
+                continue
             start_tijd = datetime.strptime(f"{datum} {row['Start tijd']}", "%d-%m-%Y %H:%M:%S")
             start_tijd = start_tijd.strftime("%Y-%m-%d %H:%M:%S")
             eind_tijd = datetime.strptime(f"{datum} {row['Eind tijd']}", "%d-%m-%Y %H:%M:%S")

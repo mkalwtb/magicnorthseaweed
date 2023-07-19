@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-file_raw = Path(r"surf-feedback-raw/Surf-feedback-08-07-2023v3.csv")
+file_raw = Path(r"surf-feedback-raw/Surf-feedback-19-07-2023.csv")
 file_pkl = file_raw.with_suffix(".pkl")
 
 column_names = {
@@ -36,7 +36,7 @@ def text_to_value(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 def load(file_name):
-    data = pd.read_csv(file)
+    data = pd.read_csv(file_name)
     data.columns = rename_columns(data.columns)
     data = text_to_value(data)
     data = data.drop(colums_delete, axis=1)
