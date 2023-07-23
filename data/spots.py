@@ -3,15 +3,15 @@ import numpy as np
 from copy import deepcopy
 from datetime import datetime
 import re
-
 from dataclasses import dataclass
-import boeien, surffeedback
+
+import boeien, surffeedback, stormglass
 from rijkswaterstaat import Boei
 
 @dataclass
 class Spot:
     """
-    All spot info and data in one class
+        All spot info and data in one class
 
     :param boei: Dichtstbijzijnde boei
     :param richting: Richting van het strand
@@ -41,6 +41,12 @@ class Spot:
         data = data.drop('wind-dir', axis=1)
         return data
 
+    def stormglass(self):
+        json_data = stormglass.download_json(self.boei.N, self.boei.E, cache=True)  # todo reset cache
+        df = stormglass.json_to_df(json_data)
+        df = df[['windDirection_icon', 'waveDirection_icon']]
+        return df
+
     def combine_forecast_and_feedback(self, only_spot_data, non_zero_only=False):
         """Combined surf statistics and feedback form"""
         columns = "rating"
@@ -52,7 +58,8 @@ class Spot:
         for index, row in output.iterrows():
             pattern = r'^\d{2}:\d{2}:\d{2}$'
             datum = row["Datum"]
-            date_wrong_format = not re.match(pattern, str(row['Start tijd'])) or not re.match(pattern, str(row['Start tijd']))
+            date_wrong_format = not re.match(pattern, str(row['Start tijd'])) or not re.match(pattern,
+                                                                                              str(row['Start tijd']))
             if date_wrong_format:
                 continue
             start_tijd = datetime.strptime(f"{datum} {row['Start tijd']}", "%d-%m-%Y %H:%M:%S")
@@ -62,11 +69,19 @@ class Spot:
             query = (data.index >= start_tijd) & (data.index <= eind_tijd)
             # if all(query == False):
             #     continue
-            data.loc[query, columns] =  row[columns]
+            data.loc[query, columns] = row[columns]
         if non_zero_only:
             return data[data["rating"].notnull()]
         else:
             return data
+
+    def train(self)  -> pd.DataFrame:
+        """Train a model, save it and returns the model"""
+        pass
+
+    def rate(self) -> pd.DataFrame:
+        """Rate the surf forecast based on the trained model (file)"""
+        pass
 
 
 
