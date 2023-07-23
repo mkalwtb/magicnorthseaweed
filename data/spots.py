@@ -8,6 +8,17 @@ from dataclasses import dataclass
 import boeien, surffeedback, stormglass
 from rijkswaterstaat import Boei
 
+
+def _dir_to_onshore(data: pd.DataFrame, richting: float) -> pd.DataFrame:
+    data['wave-dir'] = (data['wave-dir'] - richting + 360) % 360
+    data['onshore-wave'] = np.sin(data['wave-dir'].values / 360 * 2 * np.pi)
+    data = data.drop('wave-dir', axis=1)
+
+    data['wind-dir'] = (data['wind-dir'] - richting + 360) % 360
+    data['onshore-wind'] = np.sin(data['wind-dir'].values / 360 * 2 * np.pi)
+    data = data.drop('wind-dir', axis=1)
+    return data
+
 @dataclass
 class Spot:
     """
@@ -29,28 +40,30 @@ class Spot:
         else:
             return all
 
-    def forecast(self):
-        """Surf forecast statistics"""
+    def hindcast(self):
+        """Surf historical statistics"""
         data = self.boei.data
-        data['wave-dir'] = (data['wave-dir'] - self.richting + 360) % 360
-        data['onshore-wave'] = np.sin(data['wave-dir'].values/360*2*np.pi)
-        data = data.drop('wave-dir', axis=1)
+        data = _dir_to_onshore(data, self.richting)
+        return data
 
-        data['wind-dir'] = (data['wind-dir'] - self.richting + 360) % 360
-        data['onshore-wind'] = np.sin(data['wind-dir'].values/360*2*np.pi)
-        data = data.drop('wind-dir', axis=1)
+    def forecast(self):
+        """Surf future statistics"""
+        last_future_2_days = "-48,48"
+        data = self.boei.download(last_future_2_days, future=True, past=False)
         return data
 
     def stormglass(self):
         json_data = stormglass.download_json(self.boei.N, self.boei.E, cache=True)  # todo reset cache
         df = stormglass.json_to_df(json_data)
-        df = df[['windDirection_icon', 'waveDirection_icon']]
+        df[['wind-dir', 'wave-dir']] = df[['windDirection_icon', 'waveDirection_icon']]
+        df = _dir_to_onshore(df, self.richting)
+        df.index = df.index.tz_localize(None)
         return df
 
-    def combine_forecast_and_feedback(self, only_spot_data, non_zero_only=False):
+    def combine_hindcast_and_feedback(self, only_spot_data, non_zero_only=False):
         """Combined surf statistics and feedback form"""
         columns = "rating"
-        input = self.forecast()
+        input = self.hindcast()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
         data[columns] = np.nan
@@ -75,6 +88,13 @@ class Spot:
         else:
             return data
 
+    def combine_forecasts(self):
+        forecast = self.forecast()
+        stormglass_data = self.stormglass()
+        combined = pd.concat([forecast, stormglass_data], axis=1)
+        combined.interpolate(inplace=True)
+        return combined
+
     def train(self)  -> pd.DataFrame:
         """Train a model, save it and returns the model"""
         pass
@@ -90,5 +110,8 @@ ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV Parnassia")
 
 
 if __name__ == '__main__':
-    data = ijmuiden.combine_forecast_and_feedback(only_spot_data=False, non_zero_only=True)
+    # data = ijmuiden.combine_forecast_and_feedback(only_spot_data=False, non_zero_only=True)
+    # print(data)
+
+    data = ijmuiden.combine_forecasts()
     print(data)
