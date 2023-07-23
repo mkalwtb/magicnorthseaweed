@@ -63,12 +63,12 @@ class Spot:
         json_data = stormglass.download_json(self.boei.N, self.boei.E, cache=True)  # todo reset cache
         df_raw = stormglass.json_to_df(json_data)
         df = pd.DataFrame(index=df_raw.index)
-        df[['wind-dir', 'wave-dir']] = df_raw[['windDirection_icon', 'waveDirection_icon']]
+        df[['wind-dir', 'wave-dir', 'wave-period']] = df_raw[['windDirection_icon', 'waveDirection_icon', 'wavePeriod_icon']]
         df = _dir_to_onshore(df, self.richting)
         df.index = df.index.tz_localize(None)
         return df
 
-    def combine_hindcast_and_feedback(self, only_spot_data, non_zero_only=True  ):
+    def combine_hindcast_and_feedback(self, only_spot_data, non_zero_only=True):
         """Combined surf statistics and feedback form"""
         columns = "rating"
         input = self.hindcast()
@@ -140,9 +140,9 @@ class Spot:
 
         # Load data
         data = self.combine_forecasts()
-        y_pred = model.predict(data)
+        data["rating"] = model.predict(data[['wave-height', 'wave-period', 'wind-speed', 'tide-height', 'onshore-wave', 'onshore-wind']])
 
-        return y_pred
+        return data
 
     def plot_forecast(self):
         data = self.combine_forecasts()
@@ -159,7 +159,10 @@ if __name__ == '__main__':
     # data = ijmuiden.combine_forecast_and_feedback(only_spot_data=False, non_zero_only=True)
     # print(data)
 
-    ijmuiden.combine_forecasts()
+    # ijmuiden.combine_forecasts()
     # ijmuiden.train()
-    # ijmuiden.rate()
-    # plt.show()
+    data = ijmuiden.rate()
+    data.plot(subplots=True, grid=True)
+    plt.suptitle(ijmuiden.name)
+
+    plt.show()

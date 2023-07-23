@@ -21,7 +21,7 @@ def download_json(lat, long, hours=48, cache=False):
       params={
         'lat': lat,
         'lng': long,
-        'params': ','.join(['waveDirection', 'windDirection']),
+        'params': ','.join(['waveDirection', 'windDirection', 'wavePeriod']),
         'start': start.to('UTC').timestamp(),  # Convert to UTC timestamp
         'end': end.to('UTC').timestamp()  # Convert to UTC timestamp
       },
@@ -52,6 +52,7 @@ def json_to_df(json_data):
           # 'waveDirection_meteo': entry['waveDirection']['meteo'],
           'waveDirection_noaa': entry['waveDirection']['noaa'],
           'waveDirection_sg': entry['waveDirection']['sg'],
+          "wavePeriod_icon": entry["wavePeriod"]["icon"],
       }
       hourly_data.append(row)
 
