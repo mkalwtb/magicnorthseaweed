@@ -10,8 +10,8 @@ last_month = "-672,0"
 
 
 if __name__ == '__main__':
-    for boei in boeien:
-        boei.plot()
+    # for boei in boeien:
+    #     boei.plot()
 
     df_new = ijmuiden.download(last_future_2_days, future=True, past=False)
 
