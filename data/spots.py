@@ -3,7 +3,14 @@ import numpy as np
 from copy import deepcopy
 from datetime import datetime
 import re
+import pickle
 from dataclasses import dataclass
+from matplotlib import pyplot as plt
+from pathlib import Path
+
+import xgboost as xgb
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 
 import boeien, surffeedback, stormglass
 from rijkswaterstaat import Boei
@@ -52,15 +59,16 @@ class Spot:
         data = self.boei.download(last_future_2_days, future=True, past=False)
         return data
 
-    def stormglass(self):
+    def _stormglass(self):
         json_data = stormglass.download_json(self.boei.N, self.boei.E, cache=True)  # todo reset cache
-        df = stormglass.json_to_df(json_data)
-        df[['wind-dir', 'wave-dir']] = df[['windDirection_icon', 'waveDirection_icon']]
+        df_raw = stormglass.json_to_df(json_data)
+        df = pd.DataFrame(index=df_raw.index)
+        df[['wind-dir', 'wave-dir']] = df_raw[['windDirection_icon', 'waveDirection_icon']]
         df = _dir_to_onshore(df, self.richting)
         df.index = df.index.tz_localize(None)
         return df
 
-    def combine_hindcast_and_feedback(self, only_spot_data, non_zero_only=False):
+    def combine_hindcast_and_feedback(self, only_spot_data, non_zero_only=True  ):
         """Combined surf statistics and feedback form"""
         columns = "rating"
         input = self.hindcast()
@@ -90,18 +98,56 @@ class Spot:
 
     def combine_forecasts(self):
         forecast = self.forecast()
-        stormglass_data = self.stormglass()
+        stormglass_data = self._stormglass()
         combined = pd.concat([forecast, stormglass_data], axis=1)
         combined.interpolate(inplace=True)
         return combined
 
-    def train(self)  -> pd.DataFrame:
+    def train(self, verbose=True, save=True) -> pd.DataFrame:
         """Train a model, save it and returns the model"""
-        pass
+        df = self.combine_hindcast_and_feedback(only_spot_data=False)
+
+        X = df.drop('rating', axis=1)
+        y = df['rating']
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+        model = xgb.XGBRegressor(objective='reg:squarederror')
+        model.fit(X_train, y_train)
+
+        y_pred = model.predict(X_test)
+
+        mse = mean_squared_error(y_test, y_pred)
+        if save:
+            model_file = f"model_XGBRegressor_{self.name}.pkl"
+            with open(model_file, 'wb') as f:
+                pickle.dump(model, f)
+
+        if verbose:
+            print('Mean Squared Error:', mse)
+            for i in range(len(y_test)):
+                print('real:', y_test[i], 'pred:', y_pred[i])
+        return model
 
     def rate(self) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
-        pass
+
+        # Load model
+        model_file = Path(f"model_XGBRegressor_{self.name}.pkl")
+        print(model_file.is_file())
+        with open(model_file, 'rb') as f:
+            model = pickle.load(f)
+
+        # Load data
+        data = self.combine_forecasts()
+        y_pred = model.predict(data)
+
+        return y_pred
+
+    def plot_forecast(self):
+        data = self.combine_forecasts()
+        data.plot(subplots=True, grid=True)
+        plt.suptitle(self.name)
 
 
 
@@ -113,5 +159,7 @@ if __name__ == '__main__':
     # data = ijmuiden.combine_forecast_and_feedback(only_spot_data=False, non_zero_only=True)
     # print(data)
 
-    data = ijmuiden.combine_forecasts()
-    print(data)
+    ijmuiden.combine_forecasts()
+    # ijmuiden.train()
+    # ijmuiden.rate()
+    # plt.show()
