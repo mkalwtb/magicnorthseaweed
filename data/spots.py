@@ -47,13 +47,13 @@ class Spot:
         else:
             return all
 
-    def hindcast(self):
+    def _hindcast_boeien(self):
         """Surf historical statistics"""
         data = self.boei.data
         data = _dir_to_onshore(data, self.richting)
         return data
 
-    def forecast(self):
+    def _forecast_boeien(self):
         """Surf future statistics"""
         last_future_2_days = "-48,48"
         data = self.boei.download(last_future_2_days, future=True, past=False)
@@ -68,10 +68,10 @@ class Spot:
         df.index = df.index.tz_localize(None)
         return df
 
-    def combine_hindcast_and_feedback(self, only_spot_data, non_zero_only=True):
+    def hindcast(self, only_spot_data, non_zero_only=True):
         """Combined surf statistics and feedback form"""
         columns = "rating"
-        input = self.hindcast()
+        input = self._hindcast_boeien()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
         data[columns] = np.nan
@@ -96,16 +96,16 @@ class Spot:
         else:
             return data
 
-    def combine_forecasts(self):
-        forecast = self.forecast()
+    def forecast(self):
+        forecast = self._forecast_boeien()
         stormglass_data = self._stormglass()
         combined = pd.concat([forecast, stormglass_data], axis=1)
         combined.interpolate(inplace=True)
         return combined
 
-    def train(self, verbose=True, save=True) -> pd.DataFrame:
+    def train(self, verbose=True, save=True, only_spot_data=True) -> pd.DataFrame:
         """Train a model, save it and returns the model"""
-        df = self.combine_hindcast_and_feedback(only_spot_data=False)
+        df = self.hindcast(only_spot_data=only_spot_data)
 
         X = df.drop('rating', axis=1)
         y = df['rating']
@@ -129,26 +129,26 @@ class Spot:
                 print('real:', y_test[i], 'pred:', y_pred[i])
         return model
 
-    def rate(self) -> pd.DataFrame:
+    def predict_surf_rating(self) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
 
         # Load model
         model_file = Path(f"model_XGBRegressor_{self.name}.pkl")
-        print(model_file.is_file())
+        if not model_file.is_file():
+            raise NotImplementedError("Use .train() first to train a model")
         with open(model_file, 'rb') as f:
             model = pickle.load(f)
 
         # Load data
-        data = self.combine_forecasts()
+        data = self.forecast()
         data["rating"] = model.predict(data[['wave-height', 'wave-period', 'wind-speed', 'tide-height', 'onshore-wave', 'onshore-wind']])
 
         return data
 
-    def plot_forecast(self):
-        data = self.combine_forecasts()
+    def plot_surf_rating(self):
+        data = self.predict_surf_rating()
         data.plot(subplots=True, grid=True)
         plt.suptitle(self.name)
-
 
 
 # Add all spots here
@@ -156,13 +156,6 @@ ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV Parnassia")
 
 
 if __name__ == '__main__':
-    # data = ijmuiden.combine_forecast_and_feedback(only_spot_data=False, non_zero_only=True)
-    # print(data)
-
-    # ijmuiden.combine_forecasts()
-    # ijmuiden.train()
-    data = ijmuiden.rate()
-    data.plot(subplots=True, grid=True)
-    plt.suptitle(ijmuiden.name)
-
+    ijmuiden.train(only_spot_data=False)
+    ijmuiden.plot_surf_rating()
     plt.show()
