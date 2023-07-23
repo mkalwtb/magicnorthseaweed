@@ -22,15 +22,29 @@ class Spot:
     name: str
 
     def feedback(self, only_spot_data):
+        """Surf feedback form"""
         all = pd.read_pickle(surffeedback.file_pkl)
         if only_spot_data:
             return all.query(f"spot == '{self.name}'")
         else:
             return all
 
-    def input_output_data(self, only_spot_data, non_zero_only=False):
+    def forecast(self):
+        """Surf forecast statistics"""
+        data = self.boei.data
+        data['wave-dir'] = (data['wave-dir'] - self.richting + 360) % 360
+        data['onshore-wave'] = np.sin(data['wave-dir'].values/360*2*np.pi)
+        data = data.drop('wave-dir', axis=1)
+
+        data['wind-dir'] = (data['wind-dir'] - self.richting + 360) % 360
+        data['onshore-wind'] = np.sin(data['wind-dir'].values/360*2*np.pi)
+        data = data.drop('wind-dir', axis=1)
+        return data
+
+    def combine_forecast_and_feedback(self, only_spot_data, non_zero_only=False):
+        """Combined surf statistics and feedback form"""
         columns = "rating"
-        input = self.data()
+        input = self.forecast()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
         data[columns] = np.nan
@@ -46,7 +60,6 @@ class Spot:
             eind_tijd = datetime.strptime(f"{datum} {row['Eind tijd']}", "%d-%m-%Y %H:%M:%S")
             eind_tijd = eind_tijd.strftime("%Y-%m-%d %H:%M:%S")
             query = (data.index >= start_tijd) & (data.index <= eind_tijd)
-            # print(f"start={start_tijd}, \teind={eind_tijd}, \taantal={sum(query)}")
             # if all(query == False):
             #     continue
             data.loc[query, columns] =  row[columns]
@@ -55,16 +68,6 @@ class Spot:
         else:
             return data
 
-    def data(self):
-        data = self.boei.data
-        data['wave-dir'] = (data['wave-dir'] - self.richting + 360) % 360
-        data['onshore-wave'] = np.sin(data['wave-dir'].values/360*2*np.pi)
-        data = data.drop('wave-dir', axis=1)
-
-        data['wind-dir'] = (data['wind-dir'] - self.richting + 360) % 360
-        data['onshore-wind'] = np.sin(data['wind-dir'].values/360*2*np.pi)
-        data = data.drop('wind-dir', axis=1)
-        return data
 
 
 # Add all spots here
@@ -72,5 +75,5 @@ ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV Parnassia")
 
 
 if __name__ == '__main__':
-    data = ijmuiden.input_output_data(only_spot_data=False, non_zero_only=True)
+    data = ijmuiden.combine_forecast_and_feedback(only_spot_data=False, non_zero_only=True)
     print(data)
