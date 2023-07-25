@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-file_raw = Path(r"surf-feedback-raw/Surf-feedback-19-07-2023v2.csv")
+file_raw = Path(r"surf-feedback-raw/Surf-feedback.csv")
 file_pkl = file_raw.with_suffix(".pkl")
 
 column_names = {
@@ -42,6 +42,10 @@ def load(file_name):
     data = data.drop(colums_delete, axis=1)
     return data
 
+
+def convert_csv_to_pickle():
+    data = load(file_raw)
+    data.to_pickle(file_pkl)
 
 if __name__ == '__main__':
     data = load(file_raw)

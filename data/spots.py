@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from copy import deepcopy
-from datetime import datetime
+import datetime
 import re
 import pickle
 from dataclasses import dataclass
@@ -41,9 +41,12 @@ class Spot:
 
     def feedback(self, only_spot_data):
         """Surf feedback form"""
+        if not surffeedback.file_pkl.is_file():
+            surffeedback.convert_csv_to_pickle()
+
         all = pd.read_pickle(surffeedback.file_pkl)
         if only_spot_data:
-            return all.query(f"spot == '{self.name}'")
+            return all.query(f"'{self.name}' in spot")
         else:
             return all
 
@@ -60,7 +63,7 @@ class Spot:
         return data
 
     def _stormglass(self):
-        json_data = stormglass.download_json(self.boei.N, self.boei.E, cache=True)  # todo reset cache
+        json_data = stormglass.download_json(self.boei.N, self.boei.E, cache=False)  # todo reset cache
         df_raw = stormglass.json_to_df(json_data)
         df = pd.DataFrame(index=df_raw.index)
         df[['wind-dir', 'wave-dir', 'wave-period']] = df_raw[['windDirection_icon', 'waveDirection_icon', 'wavePeriod_icon']]
@@ -68,7 +71,7 @@ class Spot:
         df.index = df.index.tz_localize(None)
         return df
 
-    def hindcast(self, only_spot_data, non_zero_only=True):
+    def hindcast(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True):
         """Combined surf statistics and feedback form"""
         columns = "rating"
         input = self._hindcast_boeien()
@@ -83,9 +86,13 @@ class Spot:
                                                                                               str(row['Start tijd']))
             if date_wrong_format:
                 continue
-            start_tijd = datetime.strptime(f"{datum} {row['Start tijd']}", "%d-%m-%Y %H:%M:%S")
+            start_tijd = datetime.datetime.strptime(f"{datum} {row['Start tijd']}", "%d-%m-%Y %H:%M:%S")
+            eind_tijd = datetime.datetime.strptime(f"{datum} {row['Eind tijd']}", "%d-%m-%Y %H:%M:%S")
+            if not match_all_feedback_times:
+                mid_tijd = start_tijd + ((eind_tijd - start_tijd) / 2)
+                start_tijd = mid_tijd - datetime.timedelta(minutes=5)
+                eind_tijd = mid_tijd + datetime.timedelta(minutes=5)
             start_tijd = start_tijd.strftime("%Y-%m-%d %H:%M:%S")
-            eind_tijd = datetime.strptime(f"{datum} {row['Eind tijd']}", "%d-%m-%Y %H:%M:%S")
             eind_tijd = eind_tijd.strftime("%Y-%m-%d %H:%M:%S")
             query = (data.index >= start_tijd) & (data.index <= eind_tijd)
             # if all(query == False):
@@ -101,11 +108,15 @@ class Spot:
         stormglass_data = self._stormglass()
         combined = pd.concat([forecast, stormglass_data], axis=1)
         combined.interpolate(inplace=True)
+
+        now = datetime.datetime.now()
+        now = now.strftime("%Y-%m-%d %H:%M:%S")
+        combined = combined.loc[combined.index >= now]
         return combined
 
-    def train(self, verbose=True, save=True, only_spot_data=True) -> pd.DataFrame:
+    def train(self, verbose=True, save=True, only_spot_data=True, match_all_feedback_times=True) -> pd.DataFrame:
         """Train a model, save it and returns the model"""
-        df = self.hindcast(only_spot_data=only_spot_data)
+        df = self.hindcast(only_spot_data=only_spot_data, match_all_feedback_times=match_all_feedback_times)
 
         X = df.drop('rating', axis=1)
         y = df['rating']
@@ -152,10 +163,10 @@ class Spot:
 
 
 # Add all spots here
-ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV Parnassia")
+ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV")
 
 
 if __name__ == '__main__':
-    ijmuiden.train(only_spot_data=False)
+    ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
     ijmuiden.plot_surf_rating()
     plt.show()
