@@ -7,4 +7,4 @@ time_28d = "-672,0"
 if __name__ == '__main__':
     for boei in boeien:
         boei.scrape()
-        print(boei.hindcast)
+        print(boei.data)
