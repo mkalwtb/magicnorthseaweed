@@ -22,28 +22,28 @@ timing = time_28d
 ijmuiden = Boei(parameters=
                 [
                     BoeiData(name="wave-height",
-                        parameter="Significante___20golfhoogte___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20cm",
-                        locoation_slug="IJgeul(IJGL)",
-                        col_future="Verwachting"),
+                             parameter="Significante___20golfhoogte___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20cm",
+                             location_slug="IJgeul(IJGL)",
+                             col_future="Verwachting"),
                     BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                          parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
-                          locoation_slug="IJgeul-stroommeetpaal(SPY)"),
+                             parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
+                             location_slug="IJgeul-stroommeetpaal(SPY)"),
                     BoeiData(name="wind-speed",
-                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                          locoation_slug="IJmuiden-Buitenhaven(IJMH)",
-                          col_future="Verwachting"),
+                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                             location_slug="IJmuiden-Buitenhaven(IJMH)",
+                             col_future="Verwachting"),
                     BoeiData(name="wind-dir",
-                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                          locoation_slug="IJmuiden-Buitenhaven(IJMH)",
-                          col_past="Windrichting"),
+                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                             location_slug="IJmuiden-Buitenhaven(IJMH)",
+                             col_past="Windrichting"),
                     BoeiData(name="tide-height",
-                          parameter="Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm",
-                          locoation_slug="IJmuiden-Buitenhaven(IJMH)",
-                          col_future="Verwachting"),
-                    BoeiData(name="wave-dir", # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
-                          parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                          locoation_slug="IJgeul-Munitiestort-1(MUN1)",
-                          future_unavailable=True)
+                             parameter="Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm",
+                             location_slug="IJmuiden-Buitenhaven(IJMH)",
+                             col_future="Verwachting"),
+                    BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
+                             parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
+                             location_slug="IJgeul-Munitiestort-1(MUN1)",
+                             future_unavailable=True)
                 ],
                 location_slug="IJmuiden-Buitenhaven(IJMH)",
                 N=52.474773,
@@ -52,19 +52,19 @@ ijmuiden = Boei(parameters=
 K13 = Boei(parameters=
                 [
                     BoeiData(name="wave-height",
-                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                        locoation_slug="K13-Alpha(K13)",
-                        col_future="Verwachting"),
+                             parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
+                             location_slug="K13-Alpha(K13)",
+                             col_future="Verwachting"),
                     BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                          parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
-                          locoation_slug="K13-Alpha(K13)"),
+                             parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
+                             location_slug="K13-Alpha(K13)"),
                     BoeiData(name="wind-speed",
-                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                          locoation_slug="K13-Alpha(K13)",
-                          col_future="Verwachting"),
+                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                             location_slug="K13-Alpha(K13)",
+                             col_future="Verwachting"),
                     BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
                              parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                             locoation_slug="K13-Alpha(K13)",
+                             location_slug="K13-Alpha(K13)",
                              future_unavailable=True)
                 ],
                 location_slug="K13-Alpha(K13)",
@@ -74,20 +74,20 @@ K13 = Boei(parameters=
 A12 = Boei(parameters=
                 [
                     BoeiData(name="wave-height",
-                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                        locoation_slug="A12-platform(A12)",
-                        col_future="Verwachting"),
+                             parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
+                             location_slug="A12-platform(A12)",
+                             col_future="Verwachting"),
                     BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                          parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
-                          locoation_slug="A12-platform(A12)"),
+                             parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
+                             location_slug="A12-platform(A12)"),
                     BoeiData(name="wind-speed",
-                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                          locoation_slug="A12-platform(A12)",
-                          col_future="Verwachting"),
+                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                             location_slug="A12-platform(A12)",
+                             col_future="Verwachting"),
                     BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
-                              parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                              locoation_slug="A12-platform(A12)",
-                              future_unavailable=True)
+                             parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
+                             location_slug="A12-platform(A12)",
+                             future_unavailable=True)
                 ],
                 location_slug="A12-platform(A12)",
                 N=55.108640,
@@ -97,24 +97,125 @@ A12 = Boei(parameters=
 EPL = Boei(parameters=
                 [
                     BoeiData(name="wave-height",
-                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                        locoation_slug="Europlatform(EPL)",
-                        col_future="Verwachting"),
+                             parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
+                             location_slug="Europlatform(EPL)",
+                             col_future="Verwachting"),
                     BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
-                          locoation_slug="Europlatform(EPL)"),
+                             parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
+                             location_slug="Europlatform(EPL)"),
                     BoeiData(name="wind-speed",
-                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                          locoation_slug="Europlatform(EPL)",
-                          col_future="Verwachting"),
+                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                             location_slug="Europlatform(EPL)",
+                             col_future="Verwachting"),
                     BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
-                              parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                              locoation_slug="Europlatform(EPL)",
-                              future_unavailable=True)
+                             parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
+                             location_slug="Europlatform(EPL)",
+                             future_unavailable=True)
                 ],
                 location_slug="Europlatform(EPL)",
                 N=55.108640,
                 E=3.738921)
 
-boeien = [ijmuiden, K13, A12, EPL]
+K14 = Boei(parameters=
+                [
+                    BoeiData(name="wave-height",
+                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
+                        location_slug="K14-platform(K14)",
+                        col_future="Verwachting"),
+                    BoeiData(name="wave-period",
+                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
+                          location_slug="K14-platform(K14)"),
+                    BoeiData(name="wind-speed",
+                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                          location_slug="K14-platform(K14)",
+                          col_future="Verwachting"),
+                    BoeiData(name="wind-dir",
+                             parameter="Windrichting___20Lucht___20t.o.v.___20ware___20Noorden___20in___20graad",
+                             location_slug="K14-platform(K14)",
+                             col_past="Windrichting")
+                    #wave direction niet beschikbaar
+                ],
+                location_slug="K14-platform(K14)",
+                # EPSG=25831,
+                N=542240.426,
+                E=5902123.137)
+
+ijgeul_munitiestort = Boei(parameters=
+                [
+                    BoeiData(name="wave-height",
+                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
+                        location_slug="IJgeul-Munitiestort-2(MUN2)",
+                        col_future="Verwachting"),
+                    BoeiData(name="wave-period",
+                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
+                          location_slug="IJgeul-Munitiestort-2(MUN2)"),
+                    BoeiData(name="wave-dir",
+                          parameter="Gem.___20richting___20deining___20tov___20ware___20noorden___20in___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20100___20mHz___20in___20graad",
+                          location_slug="IJgeul-Munitiestort-1(MUN1)",
+                          future_unavailable=True)
+                    #winddir & windpeed niet beschikbaar
+                ],
+                location_slug="IJgeul-Munitiestort-2(MUN2)",
+                # EPSG=25831,
+                N=573307.8064,
+                E=5823774.056)
+
+eurogeul_dwe = Boei(parameters=
+                [
+                    BoeiData(name="wave-height",
+                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
+                        location_slug="Eurogeul-DWE(DWE1)",
+                        col_future="Verwachting"),
+                    BoeiData(name="wave-period",
+                        parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
+                        location_slug="Eurogeul-DWE(DWE1)")
+                    #wavedir, winddir & windspeed niet beschikbaar
+                ],
+                location_slug="Eurogeul-DWE(DWE1)",
+                # EPSG=25831,
+                N=499928.52,
+                E=5755201.264)
+
+P11 = Boei(parameters=
+                [
+                    BoeiData(name="wind-speed",
+                        parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                        location_slug="P11-platform(P11)",
+                        col_future="Verwachting"),
+                    BoeiData(name="wind-dir",
+                        parameter="Windrichting___20Lucht___20t.o.v.___20ware___20Noorden___20in___20graad",
+                        location_slug="P11-platform(P11)",
+                        col_past="Windrichting"),
+                    #waveheight, period & wavedir niet beschikbaar
+                ],
+                location_slug = "P11-platform(P11)",
+                # EPSG=25831,
+                N =523256.2982,
+                E =5800986.612)
+
+J6 = Boei(parameters=
+                [
+                    BoeiData(name="wave-height",
+                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
+                        location_slug="J6-platform(J6)",
+                        col_future="Verwachting"),
+                    BoeiData(name="wave-period",
+                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
+                          location_slug="J6-platform(J6)"),
+                    BoeiData(name="wind-speed",
+                        parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
+                        location_slug="J6-platform(J6)",
+                        col_future="Verwachting"),
+                    BoeiData(name="wind-dir",
+                        parameter="Windrichting___20Lucht___20t.o.v.___20ware___20Noorden___20in___20graad",
+                        location_slug="J6-platform(J6)",
+                        col_past="Windrichting"),
+                    #wavedir niet beschikbaar
+                ],
+                location_slug = "J6-platform(J6)",
+                # EPSG=25831,
+                N =496708.7948,
+                E =5963121.522)
+
+boeien = [ijmuiden, K13, A12, EPL, K14, eurogeul_dwe, P11, J6]
 

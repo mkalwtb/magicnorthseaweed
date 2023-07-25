@@ -46,19 +46,19 @@ class BoeiData:
     """
     name: str
     parameter: str
-    locoation_slug: str
+    location_slug: str
     col_past: str = "Waarde"
     col_future: str = ""
     future_unavailable: bool = False  # if scraping future is not possible
 
     def url(self, time_horizon: str):
-        return f"https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter={self.parameter}&locationSlug={self.locoation_slug}&timehorizon={time_horizon}"
+        return f"https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter={self.parameter}&locationSlug={self.location_slug}&timehorizon={time_horizon}"
 
     def _download_file(self, file_name: str, time_horizon: str):
         request.urlretrieve(self.url(time_horizon), file_name)
 
     def _download_raw(self, time_horizon: str) -> pd.DataFrame:
-        file_name = SCRAPE_FOLDER / f"{self.locoation_slug}_{self.name}_{timestr}.csv"
+        file_name = SCRAPE_FOLDER / f"{self.location_slug}_{self.name}_{timestr}.csv"
         self._download_file(file_name, time_horizon)
         data_csv = _read_rijkswaterstaat_csv(file_name)
         os.remove(file_name)
@@ -106,9 +106,9 @@ class Boei:
                 result = parameter.download(time_horizon, past, future)
                 results = pd.concat([results, result], axis=1)
             except error.HTTPError as e:
-                warnings.warn(f"Could receive '{parameter.name}' for '{parameter.locoation_slug}': {e}'")
+                warnings.warn(f"Could receive '{parameter.name}' for '{parameter.location_slug}': {e}'")
             except IOError as e:
-                warnings.warn(f"Could receive '{parameter.name}' for '{parameter.locoation_slug}': {e}'")
+                warnings.warn(f"Could receive '{parameter.name}' for '{parameter.location_slug}': {e}'")
         return results
 
     def _load_data(self):
