@@ -10,7 +10,8 @@ from datetime import datetime
 import pytz
 
 file = Path('data.pkl')
-
+channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection',
+            "seaLevel", "windWaveHeight"]  # "currentSpeed"
 
 # Get first hour of today
 def download_json(lat, long, start, end, cache=False):
@@ -27,7 +28,7 @@ def download_json(lat, long, start, end, cache=False):
       params={
         'lat': lat,
         'lng': long,
-        'params': ','.join(['waveDirection', 'windDirection', 'wavePeriod', "waveHeight", "windSpeed"]),
+        'params': ','.join(channels),
         'start': start.to('UTC').timestamp(),  # Convert to UTC timestamp
         'end': end.to('UTC').timestamp()  # Convert to UTC timestamp
       },
@@ -46,15 +47,14 @@ def download_json(lat, long, start, end, cache=False):
 
 def json_to_df(json_data):
   hourly_data = {}
+  if 'hours' not in json_data:
+      raise Exception('Something went wrong with the stormglass API request')
+
   for entry in json_data['hours']:
       name = entry['time']
-      hourly_data[name] = {
-          'windDirection': entry['windDirection']['sg'],
-          'waveDirection': entry['waveDirection']['sg'],
-          "wavePeriod": entry["wavePeriod"]["sg"],
-          "waveHeight": entry["waveHeight"]["sg"],
-          "windSpeed": entry["windSpeed"]["sg"],
-      }
+      hourly_data[name] = {}
+      for channel in channels:
+          hourly_data[name][channel] = entry[channel]['sg']
 
   # Create a Pandas DataFrame
   df = pd.DataFrame.from_dict(hourly_data, orient='index')
@@ -131,8 +131,8 @@ if __name__ == '__main__':
     # save_data(lat, long, start, end, cache=cache)
 
     add_x_days(lat, long, 10, cache=cache)
-    df = load_from_file(lat, long)
-    # df = load_from_file_or_download(lat, long, start, end, cache=cache)
+    # df = load_from_file(lat, long)
+    df = load_from_file_or_download(lat, long, start, end, cache=cache)
 
     # Plot
     # print(tabulate(df, headers='keys', tablefmt='psql'))
