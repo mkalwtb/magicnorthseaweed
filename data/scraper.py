@@ -6,5 +6,5 @@ time_28d = "-672,0"
 
 if __name__ == '__main__':
     for boei in boeien:
-        boei.scrape()
+        boei.scrape(time_str=time_28d)
         print(boei.data)
