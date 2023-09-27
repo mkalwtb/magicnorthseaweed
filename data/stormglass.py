@@ -6,14 +6,14 @@ import requests
 import json
 from tabulate import tabulate
 from matplotlib import pyplot as plt
+from datetime import datetime
+import pytz
+
+file = Path('data.pkl')
 
 
 # Get first hour of today
-def download_json(lat, long, moment=None, back=48, forward=48, cache=False):
-  if moment is None:
-    moment = arrow.now('Europe/Amsterdam')  # todo fix timezone?
-  end = moment .shift(hours=forward)
-  start = moment .shift(hours=-back)
+def download_json(lat, long, start, end, cache=False):
   cache_file = Path('response.json')
 
   if cache_file.is_file() and cache:
@@ -21,7 +21,7 @@ def download_json(lat, long, moment=None, back=48, forward=48, cache=False):
     with open(cache_file, 'r') as f:
       json_data = json.load(f)
   else:
-    print("Scraping")
+    print(f"Scraping from {start} to {end} with cache={cache}")
     response = requests.get(
       'https://api.stormglass.io/v2/weather/point',
       params={
@@ -32,7 +32,9 @@ def download_json(lat, long, moment=None, back=48, forward=48, cache=False):
         'end': end.to('UTC').timestamp()  # Convert to UTC timestamp
       },
       headers={
-        'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
+        # 'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
+        # 'Authorization': '5bf98f1a-2979-11ee-8d52-0242ac130002-5bf98f88-2979-11ee-8d52-0242ac130002'
+        'Authorization': 'a5396776-5d64-11ee-8b7f-0242ac130002-a53967da-5d64-11ee-8b7f-0242ac130002'
       }
     )
 
@@ -43,59 +45,96 @@ def download_json(lat, long, moment=None, back=48, forward=48, cache=False):
   return json_data
 
 def json_to_df(json_data):
-  # To json
-  # Extract the relevant data from the 'hours' list
-  hourly_data = []
+  hourly_data = {}
   for entry in json_data['hours']:
-      row = {
-          'time': entry['time'],
-          'windDirection_icon': entry['windDirection']['sg'],
-          # 'windDirection_noaa': entry['windDirection']['noaa'],
-          # 'windDirection_sg': entry['windDirection']['sg'],
-          # 'windDirection_smhi': entry['windDirection']['smhi'],
-          # 'waveDirection_dwd': entry['waveDirection']['fcoo'],
-          # 'waveDirection_icon': entry['waveDirection']['icon'],
-          # 'waveDirection_meteo': entry['waveDirection']['meteo'],
+      name = entry['time']
+      hourly_data[name] = {
+          'windDirection': entry['windDirection']['sg'],
           'waveDirection': entry['waveDirection']['sg'],
           "wavePeriod": entry["wavePeriod"]["sg"],
           "waveHeight": entry["waveHeight"]["sg"],
           "windSpeed": entry["windSpeed"]["sg"],
       }
-      hourly_data.append(row)
 
   # Create a Pandas DataFrame
-  df = pd.DataFrame(hourly_data)
-
-  # Convert the 'time' column to a proper datetime format
-  df.index = pd.to_datetime(df['time'])
+  df = pd.DataFrame.from_dict(hourly_data, orient='index')
+  df.index = pd.to_datetime(df.index)
+  df.index = df.index.tz_convert(pytz.timezone('CET'))
   return df
 
+
+def save_data(lat, long, start, end, cache=False):
+    json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache)
+    data_new = json_to_df(json_data)
+    if len(data_new) > 0:  # save data
+        data_new.to_pickle(file)
+
+def load_from_file(lat, long):
+    if file.is_file():
+        data_db = pd.read_pickle(file)
+    else:
+        data_db = pd.DataFrame()
+    return data_db
+
+
+def load_from_file_or_download(lat, long, start, end, cache=False):
+    # Timing
+    now = datetime.now()
+    data_db = load_from_file(lat, long)
+
+
+    start_in_df = arrow.get(data_db.index.min()) <= start
+    end_in_df = arrow.get(data_db.index.max()) >= end
+    if not start_in_df or not end_in_df:
+        print("Scraping new data")
+        json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache)
+        data_new = json_to_df(json_data)
+        tz = data_new.index.tz
+        now_pd = pd.to_datetime(now, utc=tz)
+        data_new_historical = data_new[data_new.index <= now_pd]
+        if len(data_new_historical) > 0:  # save data
+            data_db = pd.concat([data_db, data_new_historical], axis=0)
+            data_db.to_pickle(file)
+        result = pd.concat([data_db, data_new], axis=0)
+    else:
+        result = data_db
+
+    tz = result.index.tz
+    start_pd = pd.to_datetime(start.datetime, utc=tz)
+    end_pd = pd.to_datetime(end.datetime, utc=tz)
+    result_range = result[(result.index >=start_pd) & (result.index <= end_pd)]
+    return result_range
+
+
+def add_x_days(lat, long, days, cache=False):
+    data = load_from_file(lat, long)
+    oldest = arrow.get(min(data.index))
+
+    new_oldest = oldest.shift(days=-days)
+    save_data(lat, long, new_oldest, oldest, cache=cache)
+    # print(f"Oldest day: {new_oldest}")
+
+
 if __name__ == '__main__':
-    df_all = pd.read_pickle("data.pkl")
+    lat = 52.464295
+    long = 4.532720
+    now = arrow.now('Europe/Amsterdam')
+    start = now.shift(hours=0)
+    end = now.shift(hours=48)
+    cache=False
 
-    oldest = arrow.get(min(df_all["time"]))
-    range = 10
-    days = np.arange(start=-1000, stop=0, step=range).tolist()
-    add_new_data = False
+    # Forecast
+    # json_data = download_json(lat, long, start, end, cache=True)
+    # df = json_to_df(json_data)
 
-    if add_new_data:
-        for day in days:
-            print(day)
-            moment = oldest.shift(days=day)
-            json_data = download_json(lat=52.464295, long=4.532720, moment=moment, back=range*24, forward=0, cache=False)
-            df = json_to_df(json_data)
-            if not df_all is None and len(df_all) > 0:
-                df_all = pd.concat([df_all, df], axis=0, ignore_index=True)
-            else:
-                df_all = df
-            print(tabulate(df, headers='keys', tablefmt='psql'))
-        df_all.to_pickle("data.pkl")
+    # Historical
+    # save_data(lat, long, start, end, cache=cache)
 
-    columns = ["waveHeight", "wavePeriod", "windSpeed"]
-    print(tabulate(df_all, headers='keys', tablefmt='psql'))
-    fig, axs = plt.subplots(len(columns),1)
-    for ax, column in zip(axs, columns):
-        ax.plot(df_all.index, df_all[column])
-        # plt.plot(df_all["time"], df_all['waveHeight'])
-        # plt.grid()
+    add_x_days(lat, long, 10, cache=cache)
+    df = load_from_file(lat, long)
+    # df = load_from_file_or_download(lat, long, start, end, cache=cache)
+
+    # Plot
+    # print(tabulate(df, headers='keys', tablefmt='psql'))
+    df.plot(subplots=True, grid=True)
     plt.show()
