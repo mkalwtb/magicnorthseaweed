@@ -63,13 +63,17 @@ def json_to_df(json_data):
   return df
 
 
-def save_data(lat, long, start, end, cache=False):
+def download_and_save_data(lat, long, start, end, cache=False):
     json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache)
     data_new = json_to_df(json_data)
+    if file.is_file():
+        data_db = pd.read_pickle(file)
+        data_new = pd.concat([data_db, data_new], axis=0)
     if len(data_new) > 0:  # save data
         data_new.to_pickle(file)
+    return data_new
 
-def load_from_file(lat, long):
+def load_data(lat, long):
     if file.is_file():
         data_db = pd.read_pickle(file)
     else:
@@ -77,10 +81,10 @@ def load_from_file(lat, long):
     return data_db
 
 
-def load_from_file_or_download(lat, long, start, end, cache=False):
+def load_and_download_data(lat, long, start, end, cache=False):
     # Timing
     now = datetime.now()
-    data_db = load_from_file(lat, long)
+    data_db = load_data(lat, long)
 
 
     start_in_df = arrow.get(data_db.index.min()) <= start
@@ -106,13 +110,11 @@ def load_from_file_or_download(lat, long, start, end, cache=False):
     return result_range
 
 
-def add_x_days(lat, long, days, cache=False):
-    data = load_from_file(lat, long)
+def append_x_days_upfront(lat, long, days, cache=False):
+    data = load_data(lat, long)
     oldest = arrow.get(min(data.index))
-
     new_oldest = oldest.shift(days=-days)
-    save_data(lat, long, new_oldest, oldest, cache=cache)
-    # print(f"Oldest day: {new_oldest}")
+    return download_and_save_data(lat, long, new_oldest, oldest, cache=cache)
 
 
 if __name__ == '__main__':
@@ -128,11 +130,11 @@ if __name__ == '__main__':
     # df = json_to_df(json_data)
 
     # Historical
-    # save_data(lat, long, start, end, cache=cache)
+    # download_and_save_data(lat, long, start, end, cache=cache)
 
-    add_x_days(lat, long, 10, cache=cache)
-    # df = load_from_file(lat, long)
-    df = load_from_file_or_download(lat, long, start, end, cache=cache)
+    df = append_x_days_upfront(lat, long, 10, cache=cache)
+    # df = load_data(lat, long)
+    # df = load_from_file_or_download(lat, long, start, end, cache=cache)
 
     # Plot
     # print(tabulate(df, headers='keys', tablefmt='psql'))
