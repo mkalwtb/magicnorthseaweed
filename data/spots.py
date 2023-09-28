@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from copy import deepcopy
+from copy import deepcopy, copy
 import datetime
 import re
 import pickle
@@ -15,14 +15,16 @@ from sklearn.metrics import mean_squared_error
 import boeien, surffeedback, stormglass
 from rijkswaterstaat import Boei
 
+def _compute_onshore(data: pd.DataFrame, richting: float) -> pd.DataFrame:
+    data = (data - richting + 90 + 360) % 360
+    data = np.sin(data.values / 360 * 2 * np.pi)
+    return copy(data)
 
 def _dir_to_onshore(data: pd.DataFrame, richting: float) -> pd.DataFrame:
-    data['waveDirection'] = (data['waveDirection'] - richting + 360) % 360
-    data['waveOnshore'] = np.sin(data['waveDirection'].values / 360 * 2 * np.pi)
+    data['waveOnshore'] = _compute_onshore(data['waveDirection'], richting)
     data = data.drop('waveDirection', axis=1)
 
-    data['windDirection'] = (data['windDirection'] - richting + 360) % 360
-    data['windOnshore'] = np.sin(data['windDirection'].values / 360 * 2 * np.pi)
+    data['windOnshore'] =  _compute_onshore(data['windDirection'], richting)
     data = data.drop('windDirection', axis=1)
     return data
 
@@ -90,7 +92,7 @@ class Spot:
             return data
 
     def forecast(self, hours=48):
-        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=True)  # check: is N == lat?
+        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=False)  # check: is N == lat?
         data = _dir_to_onshore(data, self.richting)
         return data
 
@@ -137,9 +139,9 @@ class Spot:
         return data
 
     def plot_surf_rating(self):
-        channels = ['waveHeight', 'wavePeriod', 'windSpeed', 'windOnshore', 'rating']
+        channels_simple = ['waveHeight', 'wavePeriod', 'windSpeed', 'windOnshore', 'rating']
         data = self.predict_surf_rating()
-        data[channels].plot(subplots=True, grid=True)
+        data.plot(subplots=True, grid=True)
         plt.suptitle(self.name)
 
 
@@ -148,6 +150,6 @@ ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV")
 
 
 if __name__ == '__main__':
-    ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
+    # ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
     ijmuiden.plot_surf_rating()
     plt.show()
