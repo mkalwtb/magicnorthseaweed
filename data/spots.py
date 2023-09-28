@@ -92,7 +92,7 @@ class Spot:
             return data
 
     def forecast(self, hours=48):
-        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=False)  # check: is N == lat?
+        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=True)  # check: is N == lat?
         data = _dir_to_onshore(data, self.richting)
         return data
 
@@ -117,7 +117,7 @@ class Spot:
                 pickle.dump(model, f)
 
         if verbose:
-            print('Mean Squared Error:', mse)
+            print(f'Mean Squared Error: {mse} (from {len(df)} feedback entries)')
             for i in range(len(y_test)):
                 print('real:', y_test[i], 'pred:', y_pred[i])
         return model
@@ -150,6 +150,6 @@ ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV")
 
 
 if __name__ == '__main__':
-    # ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
+    ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
     ijmuiden.plot_surf_rating()
     plt.show()
