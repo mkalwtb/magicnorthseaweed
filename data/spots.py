@@ -24,7 +24,7 @@ def _dir_to_onshore(data: pd.DataFrame, richting: float) -> pd.DataFrame:
     data['waveOnshore'] = _compute_onshore(data['waveDirection'], richting)
     data = data.drop('waveDirection', axis=1)
 
-    data['windOnshore'] =  _compute_onshore(data['windDirection'], richting)
+    data['windOnshore'] = _compute_onshore(data['windDirection'], richting)
     data = data.drop('windDirection', axis=1)
     return data
 
