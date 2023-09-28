@@ -11,6 +11,7 @@ import pytz
 
 file = Path('data.pkl')
 channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "windWaveHeight", "currentSpeed"]  # "currentSpeed"
+channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "windWaveHeight", "currentSpeed"]  # "currentSpeed"
 
 # Get first hour of today
 def download_json(lat, long, start, end, cache=False):
@@ -32,9 +33,10 @@ def download_json(lat, long, start, end, cache=False):
         'end': end.to('UTC').timestamp()  # Convert to UTC timestamp
       },
       headers={
-        'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
+        # 'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
         # 'Authorization': '5bf98f1a-2979-11ee-8d52-0242ac130002-5bf98f88-2979-11ee-8d52-0242ac130002'
         # 'Authorization': 'a5396776-5d64-11ee-8b7f-0242ac130002-a53967da-5d64-11ee-8b7f-0242ac130002'
+        'Authorization': '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002'
       }
     )
 
@@ -47,7 +49,7 @@ def download_json(lat, long, start, end, cache=False):
 def json_to_df(json_data):
   hourly_data = {}
   if 'hours' not in json_data:
-      raise Exception('Something went wrong with the stormglass API request')
+      raise FileNotFoundError('Something went wrong with the stormglass API request')
 
   for entry in json_data['hours']:
       name = entry['time']
@@ -128,6 +130,16 @@ def forecast(lat, long, hours, cache=False):
     data_new = json_to_df(json_data)
     return data_new
 
+def keep_scraping_untill_error():
+    while True:
+        try:
+            df = append_x_days_upfront(lat, long, 10, cache=cache)
+        except FileNotFoundError as e:
+            print(e)
+            df = load_data(lat, long)
+            break
+    return df
+
 
 if __name__ == '__main__':
     lat = 52.464295
@@ -135,15 +147,11 @@ if __name__ == '__main__':
     now = arrow.now('Europe/Amsterdam')
     start = now.shift(hours=-45)
     end = now.shift(hours=0)
-    cache=False
+    cache=True
 
-    # Forecast
-
-    # Historical
-
-    # df = append_x_days_upfront(lat, long, 10, cache=cache)
-    df = load_data(lat, long)
-    # df = forecast(lat, long, 24, cache=cache)
+    # df = keep_scraping_untill_error()
+    # df = load_data(lat, long)
+    df = forecast(lat, long, 48, cache=cache)
 
     # Plot
     # print(tabulate(df, headers='keys', tablefmt='psql'))

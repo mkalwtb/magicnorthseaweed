@@ -17,13 +17,13 @@ from rijkswaterstaat import Boei
 
 
 def _dir_to_onshore(data: pd.DataFrame, richting: float) -> pd.DataFrame:
-    data['wave-dir'] = (data['wave-dir'] - richting + 360) % 360
-    data['onshore-wave'] = np.sin(data['wave-dir'].values / 360 * 2 * np.pi)
-    data = data.drop('wave-dir', axis=1)
+    data['waveDirection'] = (data['waveDirection'] - richting + 360) % 360
+    data['waveOnshore'] = np.sin(data['waveDirection'].values / 360 * 2 * np.pi)
+    data = data.drop('waveDirection', axis=1)
 
-    data['wind-dir'] = (data['wind-dir'] - richting + 360) % 360
-    data['onshore-wind'] = np.sin(data['wind-dir'].values / 360 * 2 * np.pi)
-    data = data.drop('wind-dir', axis=1)
+    data['windDirection'] = (data['windDirection'] - richting + 360) % 360
+    data['windOnshore'] = np.sin(data['windDirection'].values / 360 * 2 * np.pi)
+    data = data.drop('windDirection', axis=1)
     return data
 
 @dataclass
@@ -50,31 +50,17 @@ class Spot:
         else:
             return all
 
-    def _hindcast_boeien(self):
+    def _hindcast_input(self):
         """Surf historical statistics"""
-        data = self.boei.data
+        data = stormglass.load_data(self.boei.N, self.boei.E)
         data = _dir_to_onshore(data, self.richting)
         return data
 
-    def _forecast_boeien(self):
-        """Surf future statistics"""
-        last_future_2_days = "-48,48"
-        data = self.boei.download(last_future_2_days, future=True, past=False)
-        return data
-
-    def _stormglass(self):
-        json_data = stormglass.download_json(self.boei.N, self.boei.E, cache=False)  # todo reset cache
-        df_raw = stormglass.json_to_df(json_data)
-        df = pd.DataFrame(index=df_raw.index)
-        df[['wind-dir', 'wave-dir', 'wave-period']] = df_raw[['windDirection_icon', 'waveDirection_icon', 'wavePeriod_icon']]
-        df = _dir_to_onshore(df, self.richting)
-        df.index = df.index.tz_localize(None)
-        return df
 
     def hindcast(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True):
         """Combined surf statistics and feedback form"""
         columns = "rating"
-        input = self._hindcast_boeien()
+        input = self._hindcast_input()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
         data[columns] = np.nan
@@ -103,16 +89,10 @@ class Spot:
         else:
             return data
 
-    def forecast(self):
-        forecast = self._forecast_boeien()
-        stormglass_data = self._stormglass()
-        combined = pd.concat([forecast, stormglass_data], axis=1)
-        combined.interpolate(inplace=True)
-
-        now = datetime.datetime.now()
-        now = now.strftime("%Y-%m-%d %H:%M:%S")
-        combined = combined.loc[combined.index >= now]
-        return combined
+    def forecast(self, hours=48):
+        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=True)  # check: is N == lat?
+        data = _dir_to_onshore(data, self.richting)
+        return data
 
     def train(self, verbose=True, save=True, only_spot_data=True, match_all_feedback_times=True) -> pd.DataFrame:
         """Train a model, save it and returns the model"""
@@ -152,13 +132,14 @@ class Spot:
 
         # Load data
         data = self.forecast()
-        data["rating"] = model.predict(data[['wave-height', 'wave-period', 'wind-speed', 'tide-height', 'onshore-wave', 'onshore-wind']])
+        data["rating"] = model.predict(data)
 
         return data
 
     def plot_surf_rating(self):
+        channels = ['waveHeight', 'wavePeriod', 'windSpeed', 'windOnshore', 'rating']
         data = self.predict_surf_rating()
-        data.plot(subplots=True, grid=True)
+        data[channels].plot(subplots=True, grid=True)
         plt.suptitle(self.name)
 
 
