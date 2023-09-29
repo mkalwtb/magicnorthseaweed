@@ -120,7 +120,7 @@ class Spot:
             print(f'Mean Squared Error: {mse} (from {len(df)} feedback entries)')
             for i in range(len(y_test)):
                 print('real:', y_test[i], 'pred:', y_pred[i])
-        return model
+        return mse
 
     def predict_surf_rating(self) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
@@ -150,6 +150,7 @@ ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV")
 
 
 if __name__ == '__main__':
-    ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
+    # todo CACHE IS SET TO TRUE
+    mse = ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
     ijmuiden.plot_surf_rating()
     plt.show()

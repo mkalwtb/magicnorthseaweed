@@ -1,5 +1,7 @@
 response.json
 data/temp_scrape_data/
+stowmglass_response*.json
+stormglass_response_tide_sea-level.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

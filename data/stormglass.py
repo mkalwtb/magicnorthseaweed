@@ -14,31 +14,40 @@ channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirec
 channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "windWaveHeight", "currentSpeed"]  # "currentSpeed"
 
 # Get first hour of today
-def download_json(lat, long, start, end, cache=False):
-  cache_file = Path('response.json')
+def download_json(lat, long, start, end, cache=False, end_point="weather"):
+  file_name = end_point
+  if "/" in file_name:
+        file_name = end_point.replace("/", "_")
+  cache_file = Path(f'stormglass_response_{file_name}.json')
 
   if cache_file.is_file() and cache:
-    print("Cached")
+    print(f"cashing {end_point} from {start} to {end}")
     with open(cache_file, 'r') as f:
       json_data = json.load(f)
   else:
-    print(f"Scraping from {start} to {end} with cache={cache}")
-    response = requests.get(
-      'https://api.stormglass.io/v2/weather/point',
-      params={
+    print(f"Scraping {end_point} from {start} to {end}")
+    params = {
         'lat': lat,
         'lng': long,
-        'params': ','.join(channels),
         'start': start.to('UTC').timestamp(),  # Convert to UTC timestamp
         'end': end.to('UTC').timestamp()  # Convert to UTC timestamp
-      },
+    }
+    if end_point == "weather":
+        params['params'] = ','.join(channels)
+
+    response = requests.get(
+      f'https://api.stormglass.io/v2/{end_point}/point',
+      params=params,
       headers={
         # 'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
         # 'Authorization': '5bf98f1a-2979-11ee-8d52-0242ac130002-5bf98f88-2979-11ee-8d52-0242ac130002'
         # 'Authorization': 'a5396776-5d64-11ee-8b7f-0242ac130002-a53967da-5d64-11ee-8b7f-0242ac130002'
-        'Authorization': '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002'
+        # 'Authorization': '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002'
+        'Authorization': 'e2f68d4e-5eab-11ee-8d52-0242ac130002-e2f68e2a-5eab-11ee-8d52-0242ac130002'
+
       }
     )
+
 
     json_data = response.json()
     with open(cache_file, 'w') as f:
@@ -64,9 +73,32 @@ def json_to_df(json_data):
   return df
 
 
-def download_and_save_data(lat, long, start, end, cache=False):
-    json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache)
+def download_weather(lat, long, start, end, cache=False):
+    json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache, end_point="weather")
     data_new = json_to_df(json_data)
+    return data_new
+
+
+def download_tide(lat, long, start, end, cache=False):
+    json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache, end_point="tide/sea-level")
+    if 'data' not in json_data:
+        raise FileNotFoundError('Something went wrong with the stormglass API request')
+    data_list = json_data["data"]
+    df = pd.DataFrame(data_list)
+    df["time"] = pd.to_datetime(df["time"])
+    df.set_index("time", inplace=True)
+    df.columns = ["NAP"]
+    return df
+
+
+def download_weather_and_tide(lat, long, start, end, cache=False):
+    data_new = download_weather(lat, long, start, end, cache=cache)
+    data_tide = download_tide(lat, long, start, end, cache=cache)
+    data_new = pd.concat([data_new, data_tide], axis=1)
+    return data_new
+
+def download_and_save_data(lat, long, start, end, cache=False):
+    data_new = download_weather_and_tide(lat, long, start, end, cache=cache)
     append_historical_data(lat, long, data_new)
     return data_new
 
@@ -100,8 +132,7 @@ def smart_data(lat, long, start, end, cache=False):
         print("Data solely from database")
         result = data_db
     else:
-        json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache)
-        data_new = json_to_df(json_data)
+        data_new = download_weather_and_tide(lat, long, start, end, cache=cache)
         result = append_historical_data(lat, long, data_new)
 
     #Requested time range of the data
@@ -126,14 +157,13 @@ def forecast(lat, long, hours, cache=False):
     now = arrow.now('Europe/Amsterdam')
     start = now.shift(hours=0)
     end = now.shift(hours=hours)
-    json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache)
-    data_new = json_to_df(json_data)
+    data_new = download_weather_and_tide(lat, long, start, end, cache=cache)
     return data_new
 
 def keep_scraping_untill_error():
     while True:
         try:
-            df = append_x_days_upfront(lat, long, 10, cache=cache)
+            append_x_days_upfront(lat, long, 10, cache=False)
         except FileNotFoundError as e:
             print(e)
             df = load_data(lat, long)
@@ -147,11 +177,15 @@ if __name__ == '__main__':
     now = arrow.now('Europe/Amsterdam')
     start = now.shift(hours=-45)
     end = now.shift(hours=0)
-    cache=True
+    cache=False
 
-    # df = keep_scraping_untill_error()
+    # df = append_x_days_upfront(lat, long, 10, cache=cache)
+    df = keep_scraping_untill_error()
+    # df = smart_data(lat, long, start, end, cache=cache)
+
     # df = load_data(lat, long)
-    df = forecast(lat, long, 48, cache=cache)
+    # df = forecast(lat, long, 48, cache=cache)
+    # df = download_weather_and_tide(lat, long, start, end, cache=cache)
 
     # Plot
     # print(tabulate(df, headers='keys', tablefmt='psql'))
