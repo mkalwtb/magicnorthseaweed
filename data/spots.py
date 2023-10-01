@@ -11,6 +11,7 @@ from pathlib import Path
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+from tabulate import tabulate
 
 import boeien, surffeedback, stormglass
 from rijkswaterstaat import Boei
@@ -91,8 +92,8 @@ class Spot:
         else:
             return data
 
-    def forecast(self, hours=48):
-        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=True)  # check: is N == lat?
+    def forecast(self, hours=72):
+        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=False)  # check: is N == lat?
         data = _dir_to_onshore(data, self.richting)
         return data
 
@@ -122,7 +123,7 @@ class Spot:
                 print('real:', y_test[i], 'pred:', y_pred[i])
         return mse
 
-    def predict_surf_rating(self) -> pd.DataFrame:
+    def predict_surf_rating(self, data) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
 
         # Load model
@@ -132,17 +133,16 @@ class Spot:
         with open(model_file, 'rb') as f:
             model = pickle.load(f)
 
-        # Load data
+        result = model.predict(data)
+        return result
+
+    def plot_surf_rating(self, channels_simple = ['waveHeight', 'wavePeriod', 'windSpeed', 'windOnshore', 'rating']):
         data = self.forecast()
-        data["rating"] = model.predict(data)
-
-        return data
-
-    def plot_surf_rating(self):
-        channels_simple = ['waveHeight', 'wavePeriod', 'windSpeed', 'windOnshore', 'rating']
-        data = self.predict_surf_rating()
-        data.plot(subplots=True, grid=True)
+        data["rating"] = self.predict_surf_rating(data)
+        selection = data[channels_simple]
+        selection.plot(subplots=True, grid=True)
         plt.suptitle(self.name)
+        return selection
 
 
 # Add all spots here
@@ -151,6 +151,7 @@ ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV")
 
 if __name__ == '__main__':
     # todo CACHE IS SET TO TRUE
-    mse = ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
-    ijmuiden.plot_surf_rating()
+    # mse = ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
+    data = ijmuiden.plot_surf_rating()
+    print(tabulate(data, headers='keys', tablefmt='psql'))
     plt.show()
