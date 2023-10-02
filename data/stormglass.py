@@ -9,16 +9,15 @@ from matplotlib import pyplot as plt
 from datetime import datetime
 import pytz
 
-file = Path('data.pkl')
 channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "windWaveHeight", "currentSpeed"]  # "currentSpeed"
 channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "windWaveHeight", "currentSpeed"]  # "currentSpeed"
 
 # Get first hour of today
 def download_json(lat, long, start, end, cache=False, end_point="weather"):
-  file_name = end_point
-  if "/" in file_name:
-        file_name = end_point.replace("/", "_")
-  cache_file = Path(f'stormglass_response_{file_name}.json')
+  response_type = end_point
+  if "/" in response_type:
+        response_type = end_point.replace("/", "_")
+  cache_file = Path(f'stormglass/stormglass_response_{response_type}_{lat}_{long}.json')
 
   if cache_file.is_file() and cache:
     print(f"cashing {end_point} from {start} to {end}")
@@ -39,10 +38,10 @@ def download_json(lat, long, start, end, cache=False, end_point="weather"):
       f'https://api.stormglass.io/v2/{end_point}/point',
       params=params,
       headers={
-        'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
+        # 'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
         # 'Authorization': '5bf98f1a-2979-11ee-8d52-0242ac130002-5bf98f88-2979-11ee-8d52-0242ac130002'
         # 'Authorization': 'a5396776-5d64-11ee-8b7f-0242ac130002-a53967da-5d64-11ee-8b7f-0242ac130002'
-        # 'Authorization': '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002'
+        'Authorization': '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002'
         # 'Authorization': 'e2f68d4e-5eab-11ee-8d52-0242ac130002-e2f68e2a-5eab-11ee-8d52-0242ac130002'
         # 'Authorization': '9bb1648a-5ee8-11ee-a26f-0242ac130002-9bb164e4-5ee8-11ee-a26f-0242ac130002'
 
@@ -106,6 +105,7 @@ def download_and_save_data(lat, long, start, end, cache=False):
     return data_new
 
 def load_data(lat, long):
+    file = Path(f'stormglass/data_{lat}_{long}.pkl')
     if file.is_file():
         data_db = pd.read_pickle(file)
     else:
@@ -114,6 +114,7 @@ def load_data(lat, long):
 
 def append_historical_data(lat, long, data_new):
     """Only function with writing acces"""
+    file = Path(f'stormglass/data_{lat}_{long}.pkl')
     now = datetime.now()
     data_db = load_data(lat, long)
     tz = data_new.index.tz
@@ -175,8 +176,9 @@ def keep_scraping_untill_error():
 
 
 if __name__ == '__main__':
-    lat = 52.464295
-    long = 4.532720
+
+    lat = 52.474773
+    long = 4.535204
     now = arrow.now('Europe/Amsterdam')
     start = now.shift(hours=-45)
     end = now.shift(hours=0)

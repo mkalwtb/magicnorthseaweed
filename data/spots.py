@@ -38,9 +38,12 @@ class Spot:
     :param richting: Richting van het strand
     :name name: Name in the surf feedback form
     """
-    boei: Boei
+    # boei: Boei
     richting: float
     name: str
+    lat: float
+    long: float
+    model_name: str
 
     def feedback(self, only_spot_data):
         """Surf feedback form"""
@@ -55,7 +58,7 @@ class Spot:
 
     def _hindcast_input(self):
         """Surf historical statistics"""
-        data = stormglass.load_data(self.boei.N, self.boei.E)
+        data = stormglass.load_data(self.lat, self.long)
         data = _dir_to_onshore(data, self.richting)
         return data
 
@@ -93,8 +96,7 @@ class Spot:
             return data
 
     def forecast(self, hours=72):
-        data = stormglass.forecast(self.boei.N, self.boei.E, hours=hours, cache=False)  # check: is N == lat?
-        data = _dir_to_onshore(data, self.richting)
+        data = stormglass.forecast(self.lat, self.long, hours=hours, cache=True)  # check: is N == lat?
         return data
 
     def train(self, verbose=True, save=True, only_spot_data=True, match_all_feedback_times=True) -> pd.DataFrame:
@@ -127,16 +129,17 @@ class Spot:
         """Rate the surf forecast based on the trained model (file)"""
 
         # Load model
-        model_file = Path(f"model_XGBRegressor_{self.name}.pkl")
+        model_file = Path(f"model_XGBRegressor_{self.model_name}.pkl")
+        # model_file = Path(f"model_XGBRegressor_ZV.pkl")
         if not model_file.is_file():
             raise NotImplementedError("Use .train() first to train a model")
         with open(model_file, 'rb') as f:
             model = pickle.load(f)
-
+        data = _dir_to_onshore(data, self.richting)
         result = model.predict(data)
         return result
 
-    def plot_surf_rating(self, channels_simple = ['waveHeight', 'wavePeriod', 'windSpeed', 'windOnshore', 'rating']):
+    def plot_surf_rating(self, channels_simple = ['waveHeight', 'wavePeriod', 'windSpeed', 'windDirection', 'NAP', 'rating']):
         data = self.forecast()
         data["rating"] = self.predict_surf_rating(data)
         selection = data[channels_simple]
@@ -146,8 +149,11 @@ class Spot:
 
 
 # Add all spots here
-ijmuiden = Spot(boei=boeien.ijmuiden, richting=290, name="ZV")
+ijmuiden = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, model_name="ZV")
+scheveningen = Spot(richting=315, name="schev", lat=52.108703, long=4.267715, model_name="ZV")
+camperduin = Spot(richting=270, name="camperduin", lat=52.724892, long=4.650210, model_name="ZV")
 
+spots = [ijmuiden, scheveningen, camperduin]
 
 if __name__ == '__main__':
     # todo CACHE IS SET TO TRUE
