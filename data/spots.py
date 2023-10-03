@@ -12,6 +12,7 @@ import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from tabulate import tabulate
+from plotting import plot_forecast
 
 import boeien, surffeedback, stormglass
 from rijkswaterstaat import Boei
@@ -66,7 +67,6 @@ class Spot:
         columns = "rating"
         input = self._hindcast_input()
         output = self.feedback(only_spot_data=only_spot_data)
-        print(output)
         data = deepcopy(input)
         data[columns] = np.nan
 
@@ -94,8 +94,8 @@ class Spot:
         else:
             return data
 
-    def forecast(self, hours=72):
-        data = stormglass.forecast(self.lat, self.long, hours=hours, cache=True)  # check: is N == lat?
+    def forecast(self, cache, hours=72, ):
+        data = stormglass.forecast(self.lat, self.long, hours=hours, cache=cache)  # check: is N == lat?
         return data
 
     def train(self, verbose=False, save=True, only_spot_data=True, match_all_feedback_times=True) -> pd.DataFrame:
@@ -138,8 +138,8 @@ class Spot:
         result = model.predict(data)
         return result
 
-    def surf_rating(self):
-        data = self.forecast()
+    def surf_rating(self, cache=False):
+        data = self.forecast(cache)
         data["rating"] = self.predict_surf_rating(data)
         return data
 
@@ -152,11 +152,10 @@ camperduin = Spot(richting=270, name="camperduin", lat=52.724892, long=4.650210,
 spots = [ijmuiden, scheveningen, camperduin]
 
 if __name__ == '__main__':
-    # todo CACHE IS SET TO TRUE
-    # mse = ijmuiden.train(only_spot_data=True, save=False)
-    print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
+    # mse = ijmuiden.train(only_spot_data=False, save=False)
+    # print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
 
-    data = ijmuiden.surf_rating()
-    plt.plot(data["rating"])
+    data = ijmuiden.surf_rating(cache=True)
+    plot_forecast(data, ijmuiden)
     # print(tabulate(data, headers='keys', tablefmt='psql'))
     plt.show()

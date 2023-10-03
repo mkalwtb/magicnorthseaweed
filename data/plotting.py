@@ -1,7 +1,6 @@
 import pandas as pd
 from pathlib import Path
 from matplotlib import pyplot as plt
-from spots import ijmuiden, spots, camperduin
 import matplotlib.dates as mdates
 mxFmt_major = mdates.DateFormatter('%d-%m')
 mxFmt_minor = mdates.DateFormatter('%H')
@@ -69,13 +68,6 @@ def plot_forecast(data, spot):
     fig.tight_layout()
 
 
-def save_to_web():
-    plt.savefig(website_folder / f"{spot.name}.png")
+def save_to_web(spot_name):
+    plt.savefig(website_folder / f"{spot_name}.png")
 
-
-if __name__ == '__main__':
-    for spot in spots:  # [ijmuiden]:
-        data = spot.surf_rating()
-        plot_forecast(data, spot)
-        save_to_web()
-    plt.show()
