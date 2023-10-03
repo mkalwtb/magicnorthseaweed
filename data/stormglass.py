@@ -185,10 +185,10 @@ if __name__ == '__main__':
     cache=True
 
     # df = append_x_days_upfront(lat, long, 10, cache=cache)
-    df = keep_scraping_untill_error()
+    # df = keep_scraping_untill_error()
     # df = smart_data(lat, long, start, end, cache=cache)
 
-    # df = load_data(lat, long)
+    df = load_data(lat, long)
     # df = forecast(lat, long, 48, cache=cache)
     # df = download_weather_and_tide(lat, long, start, end, cache=cache)
 

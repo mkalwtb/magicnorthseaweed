@@ -47,12 +47,10 @@ class Spot:
 
     def feedback(self, only_spot_data):
         """Surf feedback form"""
-        if not surffeedback.file_pkl.is_file():
-            surffeedback.convert_csv_to_pickle()
 
-        all = pd.read_pickle(surffeedback.file_pkl)
+        all = surffeedback.load(surffeedback.file_raw)
         if only_spot_data:
-            return all.query(f"'{self.name}' in spot")
+            return all[all["spot"].str.contains(self.name)==True]
         else:
             return all
 
@@ -68,6 +66,7 @@ class Spot:
         columns = "rating"
         input = self._hindcast_input()
         output = self.feedback(only_spot_data=only_spot_data)
+        print(output)
         data = deepcopy(input)
         data[columns] = np.nan
 
@@ -99,7 +98,7 @@ class Spot:
         data = stormglass.forecast(self.lat, self.long, hours=hours, cache=True)  # check: is N == lat?
         return data
 
-    def train(self, verbose=True, save=True, only_spot_data=True, match_all_feedback_times=True) -> pd.DataFrame:
+    def train(self, verbose=False, save=True, only_spot_data=True, match_all_feedback_times=True) -> pd.DataFrame:
         """Train a model, save it and returns the model"""
         df = self.hindcast(only_spot_data=only_spot_data, match_all_feedback_times=match_all_feedback_times)
 
@@ -119,8 +118,8 @@ class Spot:
             with open(model_file, 'wb') as f:
                 pickle.dump(model, f)
 
+        print(f'Mean Squared Error: {mse:.2f} (from {len(df)} feedback entries)')
         if verbose:
-            print(f'Mean Squared Error: {mse} (from {len(df)} feedback entries)')
             for i in range(len(y_test)):
                 print('real:', y_test[i], 'pred:', y_pred[i])
         return mse
@@ -154,7 +153,10 @@ spots = [ijmuiden, scheveningen, camperduin]
 
 if __name__ == '__main__':
     # todo CACHE IS SET TO TRUE
-    # mse = ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
+    # mse = ijmuiden.train(only_spot_data=True, save=False)
+    print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
+
     data = ijmuiden.surf_rating()
-    print(tabulate(data, headers='keys', tablefmt='psql'))
+    plt.plot(data["rating"])
+    # print(tabulate(data, headers='keys', tablefmt='psql'))
     plt.show()

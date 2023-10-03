@@ -20,7 +20,7 @@ column_names = {
 colums_delete = ["Hoe was de surf? Alleen invullen bij een nat pak (: [Mellow]", "E-mailadres"]
 
 column_names_swapped = dict((v, k) for k,v in column_names.items())
-hoeveelheden = ["Helemaal niet", "Een beetje", "Best wel", "Helemaal"]
+hoeveelheden = ["Helemaal niet", "Een beetje", "Best wel", "Heel erg"]
 
 
 def rename_columns(columns):
@@ -43,11 +43,11 @@ def load(file_name):
     return data
 
 
-def convert_csv_to_pickle():
-    data = load(file_raw)
-    data.to_pickle(file_pkl)
+# def convert_csv_to_pickle():
+#     data = load(file_raw)
+#     data.to_pickle(file_pkl)
 
 if __name__ == '__main__':
     data = load(file_raw)
     print(data)
-    data.to_pickle(file_pkl)
+    # data.to_pickle(file_pkl)

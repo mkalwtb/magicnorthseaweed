@@ -57,14 +57,11 @@ def plot_forecast(data, spot):
         ax.xaxis.set_minor_formatter(mxFmt_minor)
         ax.grid(which="both")
 
-        # wind dir labels
         if key == "windSpeed":
             add_direction_annotations(ax, data, value_key=key, direction_key="windDirection")
-
         if key == "waveHeight":
             add_direction_annotations(ax, data, value_key=key, direction_key="waveDirection")
 
-        # Last x axis
         ax.xaxis.set_tick_params(which='major', pad=10)
         ax.xaxis.set_major_formatter(mxFmt_major)
         ax.xaxis.set_major_locator(mdates.DayLocator(interval=1))
