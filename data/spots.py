@@ -139,13 +139,10 @@ class Spot:
         result = model.predict(data)
         return result
 
-    def plot_surf_rating(self, channels_simple = ['waveHeight', 'wavePeriod', 'windSpeed', 'windDirection', 'NAP', 'rating']):
+    def surf_rating(self):
         data = self.forecast()
         data["rating"] = self.predict_surf_rating(data)
-        selection = data[channels_simple]
-        selection.plot(subplots=True, grid=True)
-        plt.suptitle(self.name)
-        return selection
+        return data
 
 
 # Add all spots here
@@ -158,6 +155,6 @@ spots = [ijmuiden, scheveningen, camperduin]
 if __name__ == '__main__':
     # todo CACHE IS SET TO TRUE
     # mse = ijmuiden.train(only_spot_data=False, match_all_feedback_times=True)
-    data = ijmuiden.plot_surf_rating()
+    data = ijmuiden.surf_rating()
     print(tabulate(data, headers='keys', tablefmt='psql'))
     plt.show()
