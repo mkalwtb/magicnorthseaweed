@@ -72,10 +72,13 @@ def plot_forecast(data, spot):
     fig.tight_layout()
 
 
+def save_to_web():
+    plt.savefig(website_folder / f"{spot.name}.png")
+
 
 if __name__ == '__main__':
     for spot in spots:  # [ijmuiden]:
         data = spot.surf_rating()
         plot_forecast(data, spot)
-        plt.savefig(website_folder / f"{spot.name}.png")
+        save_to_web()
     plt.show()
