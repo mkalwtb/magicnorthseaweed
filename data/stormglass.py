@@ -9,8 +9,19 @@ from matplotlib import pyplot as plt
 from datetime import datetime
 import pytz
 
-channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "windWaveHeight", "currentSpeed"]  # "currentSpeed"
-channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "windWaveHeight", "currentSpeed"]  # "currentSpeed"
+# todo try new model: using primary & secondary swells
+channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "windWaveHeight", "currentSpeed"]  # "currentSpeed"  # todo add seaLevel
+channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "windWaveHeight", "currentSpeed"]  # "currentSpeed"  # todo add seaLevel
+
+data_sources = {"waveDirection": "icon",
+               "wavePeriod": "icon",
+               "waveHeight": "icon",
+               "windSpeed": "icon",
+               "windDirection": "icon",
+               "windWaveHeight": "icon",
+               "currentSpeed": "sg",
+                "seaLevel": "sg"
+                }
 
 # Get first hour of today
 def download_json(lat, long, start, end, cache=False, end_point="weather"):
@@ -44,7 +55,6 @@ def download_json(lat, long, start, end, cache=False, end_point="weather"):
         # 'Authorization': '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002'
         # 'Authorization': 'e2f68d4e-5eab-11ee-8d52-0242ac130002-e2f68e2a-5eab-11ee-8d52-0242ac130002'
         'Authorization': '9bb1648a-5ee8-11ee-a26f-0242ac130002-9bb164e4-5ee8-11ee-a26f-0242ac130002'
-
       }
     )
 
@@ -57,7 +67,7 @@ def download_json(lat, long, start, end, cache=False, end_point="weather"):
 
   return json_data
 
-def json_to_df(json_data):
+def json_to_df(json_data, manual_source=False):
   hourly_data = {}
   if 'hours' not in json_data:
       raise FileNotFoundError('Something went wrong with the stormglass API request')
@@ -66,7 +76,8 @@ def json_to_df(json_data):
       name = entry['time']
       hourly_data[name] = {}
       for channel in channels:
-          hourly_data[name][channel] = entry[channel]['sg']
+            source = "sg" if not manual_source else data_sources[channel]
+            hourly_data[name][channel] = entry[channel][source]
 
   # Create a Pandas DataFrame
   df = pd.DataFrame.from_dict(hourly_data, orient='index')
@@ -75,9 +86,9 @@ def json_to_df(json_data):
   return df
 
 
-def download_weather(lat, long, start, end, cache=False):
+def download_weather(lat, long, start, end, manual_source, cache=False):
     json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache, end_point="weather")
-    data_new = json_to_df(json_data)
+    data_new = json_to_df(json_data, manual_source=manual_source)
     return data_new
 
 
@@ -94,7 +105,7 @@ def download_tide(lat, long, start, end, cache=False):
 
 
 def download_weather_and_tide(lat, long, start, end, cache=False):
-    data_new = download_weather(lat, long, start, end, cache=cache)
+    data_new = download_weather(lat, long, start, end, cache=cache, manual_source=True)
     data_tide = download_tide(lat, long, start, end, cache=cache)
     data_new = pd.concat([data_new, data_tide], axis=1)
     return data_new
@@ -188,8 +199,8 @@ if __name__ == '__main__':
     # df = keep_scraping_untill_error()
     # df = smart_data(lat, long, start, end, cache=cache)
 
-    df = load_data(lat, long)
-    # df = forecast(lat, long, 48, cache=cache)
+    # df = load_data(lat, long)
+    df = forecast(lat, long, 48, cache=False)
     # df = download_weather_and_tide(lat, long, start, end, cache=cache)
 
     # Plot

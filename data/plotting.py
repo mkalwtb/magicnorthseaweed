@@ -7,11 +7,11 @@ mxFmt_minor = mdates.DateFormatter('%H')
 
 website_folder = Path("D:\Goodle Drive\magicnorthseaweed")
 
-plot_titles = {
+y_labels = {
     "rating": "Surf rating",
-    "waveHeight": "Golfhoogte [m]",
-    "wavePeriod": "Periode[s]",
-    "windSpeed": "Windsnelheid [m/s]",
+    "waveHeight": "Golven [m]",
+    "wavePeriod": "Periode [s]",
+    "windSpeed": "Wind [m/s]",
     # "windDirection": "Wind richting [°]",
     "NAP": "getij [m]",
 }
@@ -44,11 +44,12 @@ def add_direction_annotations(ax, data, value_key, direction_key, num_annotation
                     ha='center', va='center', color='grey')
 
 
-def plot_forecast(data, spot):
-    fig, axs = plt.subplots(len(plot_titles), 1, figsize=(10.5, 10.5))
-    fig.suptitle(f"{spot.name} surf forecast")
+def plot_forecast(data: pd.DataFrame, spot, fig=None, axs=None):
+    if not fig and not axs:
+        fig, axs = plt.subplots(len(y_labels), 1, figsize=(10.5, 10.5))
+        fig.suptitle(f"{spot.name} surf forecast")
 
-    for ax, (key, title) in zip(axs, plot_titles.items()):
+    for ax, (key, title) in zip(axs, y_labels.items()):
         ax.plot(data[key], label=key)
         # ax.title.set_text(title)
         ax.set_ylabel(title)
@@ -66,6 +67,17 @@ def plot_forecast(data, spot):
         ax.xaxis.set_major_locator(mdates.DayLocator(interval=1))
 
     fig.tight_layout()
+    return fig, axs
+
+
+def plot_all(spots, datas):
+    for data, spot, i in zip(datas, spots, range(len(spots))):
+        if i == 0:
+            fig, axs = plot_forecast(datas[0], spots[0])
+        else:
+            plot_forecast(data, spot, fig, axs)
+        fig.legend([spot.name for spot in spots])
+        fig.suptitle(f"Alle spots surf forecast")
 
 
 def save_to_web(spot_name):

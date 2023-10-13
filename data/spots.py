@@ -124,16 +124,18 @@ class Spot:
                 print('real:', y_test[i], 'pred:', y_pred[i])
         return mse
 
-    def predict_surf_rating(self, data) -> pd.DataFrame:
-        """Rate the surf forecast based on the trained model (file)"""
-
-        # Load model
+    def load_model(self):
         model_file = Path(f"model_XGBRegressor_{self.model_name}.pkl")
-        # model_file = Path(f"model_XGBRegressor_ZV.pkl")
         if not model_file.is_file():
             raise NotImplementedError("Use .train() first to train a model")
         with open(model_file, 'rb') as f:
             model = pickle.load(f)
+        return model
+
+    def predict_surf_rating(self, data) -> pd.DataFrame:
+        """Rate the surf forecast based on the trained model (file)"""
+
+        model = self.load_model()
         data = _dir_to_onshore(data, self.richting)
         result = model.predict(data)
         return result
@@ -147,15 +149,20 @@ class Spot:
 # Add all spots here
 ijmuiden = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, model_name="ZV")
 scheveningen = Spot(richting=315, name="schev", lat=52.108703, long=4.267715, model_name="ZV")
-camperduin = Spot(richting=270, name="camperduin", lat=52.724892, long=4.650210, model_name="ZV")
+camperduin = Spot(richting=270, name="camperduin", lat=52.723113, long=4.639215, model_name="ZV")
+texel_paal17 = Spot(richting=305, name="texel17", lat=53.081695, long=4.733450, model_name="ZV")
 
-spots = [ijmuiden, scheveningen, camperduin]
+spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
 
 if __name__ == '__main__':
     # mse = ijmuiden.train(only_spot_data=False, save=False)
-    # print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
+    model = ijmuiden.load_model()
+    xgb.plot_tree(model)
+    # Plot tree
+    # xgb.plot_tree(model)
 
-    data = ijmuiden.surf_rating(cache=True)
-    plot_forecast(data, ijmuiden)
-    # print(tabulate(data, headers='keys', tablefmt='psql'))
+
+    # print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
+    # data = ijmuiden.surf_rating(cache=True)
+    # plot_forecast(data, ijmuiden)
     plt.show()
