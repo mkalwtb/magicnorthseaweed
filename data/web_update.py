@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 from plotting import plot_forecast, save_to_web, plot_all
-from spots import spots
+from spots import spots, texel_paal17, ijmuiden
 from tabulate import tabulate
 
 if __name__ == '__main__':

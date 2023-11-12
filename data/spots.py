@@ -155,14 +155,14 @@ texel_paal17 = Spot(richting=305, name="texel17", lat=53.081695, long=4.733450, 
 spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
 
 if __name__ == '__main__':
-    # mse = ijmuiden.train(only_spot_data=False, save=False)
-    model = ijmuiden.load_model()
-    xgb.plot_tree(model)
+    mse = ijmuiden.train(only_spot_data=False, save=True)
+    # model = ijmuiden.load_model()
+    # xgb.plot_tree(model)
     # Plot tree
     # xgb.plot_tree(model)
 
 
     # print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
-    # data = ijmuiden.surf_rating(cache=True)
-    # plot_forecast(data, ijmuiden)
+    data = ijmuiden.surf_rating(cache=True)
+    plot_forecast(data, ijmuiden)
     plt.show()

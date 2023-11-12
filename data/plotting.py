@@ -61,10 +61,18 @@ def plot_forecast(data: pd.DataFrame, spot, fig=None, axs=None):
             add_direction_annotations(ax, data, value_key=key, direction_key="windDirection")
         if key == "waveHeight":
             add_direction_annotations(ax, data, value_key=key, direction_key="waveDirection")
+        if key == "rating":
+            ax.set_ylim([1, 10])
 
         ax.xaxis.set_tick_params(which='major', pad=10)
         ax.xaxis.set_major_formatter(mxFmt_major)
         ax.xaxis.set_major_locator(mdates.DayLocator(interval=1))
+
+    axs[-1].text(0.25, -0.25, 'forecast from magicnorthseaweed.nl',
+            horizontalalignment='left',
+            verticalalignment='top',
+            transform=axs[-1].transAxes,
+            color="grey")
 
     fig.tight_layout()
     return fig, axs
@@ -74,6 +82,8 @@ def plot_all(spots, datas):
     for data, spot, i in zip(datas, spots, range(len(spots))):
         if i == 0:
             fig, axs = plot_forecast(datas[0], spots[0])
+            for ax in axs:
+                ax.grid(which="both")
         else:
             plot_forecast(data, spot, fig, axs)
         fig.legend([spot.name for spot in spots])

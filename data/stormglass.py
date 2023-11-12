@@ -8,10 +8,24 @@ from tabulate import tabulate
 from matplotlib import pyplot as plt
 from datetime import datetime
 import pytz
+from random import randrange
+
 
 # todo try new model: using primary & secondary swells
 channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "windWaveHeight", "currentSpeed"]  # "currentSpeed"  # todo add seaLevel
 channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "windWaveHeight", "currentSpeed"]  # "currentSpeed"  # todo add seaLevel
+
+keys = [
+    '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002',
+    '5bf98f1a-2979-11ee-8d52-0242ac130002-5bf98f88-2979-11ee-8d52-0242ac130002',
+    'a5396776-5d64-11ee-8b7f-0242ac130002-a53967da-5d64-11ee-8b7f-0242ac130002',
+    '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002',
+    'e2f68d4e-5eab-11ee-8d52-0242ac130002-e2f68e2a-5eab-11ee-8d52-0242ac130002',
+    '9bb1648a-5ee8-11ee-a26f-0242ac130002-9bb164e4-5ee8-11ee-a26f-0242ac130002'
+]
+N_KEYS = len(keys)
+
+
 
 data_sources = {"waveDirection": "icon",
                "wavePeriod": "icon",
@@ -22,6 +36,7 @@ data_sources = {"waveDirection": "icon",
                "currentSpeed": "sg",
                 "seaLevel": "sg"
                 }
+
 
 # Get first hour of today
 def download_json(lat, long, start, end, cache=False, end_point="weather"):
@@ -45,16 +60,12 @@ def download_json(lat, long, start, end, cache=False, end_point="weather"):
     if end_point == "weather":
         params['params'] = ','.join(channels)
 
+    i_key = randrange(N_KEYS)
     response = requests.get(
       f'https://api.stormglass.io/v2/{end_point}/point',
       params=params,
       headers={
-        # 'Authorization': '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002'
-        # 'Authorization': '5bf98f1a-2979-11ee-8d52-0242ac130002-5bf98f88-2979-11ee-8d52-0242ac130002'
-        # 'Authorization': 'a5396776-5d64-11ee-8b7f-0242ac130002-a53967da-5d64-11ee-8b7f-0242ac130002'
-        # 'Authorization': '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002'
-        # 'Authorization': 'e2f68d4e-5eab-11ee-8d52-0242ac130002-e2f68e2a-5eab-11ee-8d52-0242ac130002'
-        'Authorization': '9bb1648a-5ee8-11ee-a26f-0242ac130002-9bb164e4-5ee8-11ee-a26f-0242ac130002'
+        'Authorization': keys[i_key]
       }
     )
 
@@ -191,16 +202,16 @@ if __name__ == '__main__':
     lat = 52.474773
     long = 4.535204
     now = arrow.now('Europe/Amsterdam')
-    start = now.shift(hours=-45)
+    start = now.shift(hours=-24*9*5)
     end = now.shift(hours=0)
-    cache=True
+    cache=False
 
     # df = append_x_days_upfront(lat, long, 10, cache=cache)
     # df = keep_scraping_untill_error()
-    # df = smart_data(lat, long, start, end, cache=cache)
+    df = smart_data(lat, long, start, end, cache=cache)
 
     # df = load_data(lat, long)
-    df = forecast(lat, long, 48, cache=False)
+    # df = forecast(lat, long, 48, cache=False)
     # df = download_weather_and_tide(lat, long, start, end, cache=cache)
 
     # Plot
