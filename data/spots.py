@@ -17,17 +17,28 @@ from plotting import plot_forecast
 import boeien, surffeedback, stormglass
 from rijkswaterstaat import Boei
 
-def _compute_onshore(data: pd.DataFrame, richting: float) -> pd.DataFrame:
-    data = (data - richting + 90 + 360) % 360
+forecast_columns = ["rating", "hoog", "clean", "krachtig", "stijl", "stroming", "windy"]
+
+
+def _compute_onshore(data: pd.DataFrame, richting: float, side_shore) -> pd.DataFrame:
+    if side_shore:
+        data = (data - richting + 360) % 360
+    else:
+        data = (data - richting + 90 + 360) % 360
     data = np.sin(data.values / 360 * 2 * np.pi)
     return copy(data)
 
-def _dir_to_onshore(data: pd.DataFrame, richting: float) -> pd.DataFrame:
-    data['waveOnshore'] = _compute_onshore(data['waveDirection'], richting)
+def _enrich_input_data(data: pd.DataFrame, richting: float) -> pd.DataFrame:
+    data['waveOnshore'] = _compute_onshore(data['waveDirection'], richting, side_shore=False)
+    data['waveSideshore'] = _compute_onshore(data['waveDirection'], richting, side_shore=True)
     data = data.drop('waveDirection', axis=1)
 
-    data['windOnshore'] = _compute_onshore(data['windDirection'], richting)
+    data['windOnshore'] = _compute_onshore(data['windDirection'], richting, side_shore=False)
+    data['windSideshore'] = _compute_onshore(data['windDirection'], richting, side_shore=True)
     data = data.drop('windDirection', axis=1)
+
+    data['seaRise'] = data["NAP"].diff()
+
     return data
 
 @dataclass
@@ -58,17 +69,17 @@ class Spot:
     def _hindcast_input(self):
         """Surf historical statistics"""
         data = stormglass.load_data(self.lat, self.long)
-        data = _dir_to_onshore(data, self.richting)
+        data = _enrich_input_data(data, self.richting)
         return data
 
-
-    def hindcast(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True):
+    def combined(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True, fb_columns: str=None):
         """Combined surf statistics and feedback form"""
-        columns = "rating"
         input = self._hindcast_input()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
-        data[columns] = np.nan
+        if not fb_columns:
+            fb_columns = output.forecast_columns
+        data[fb_columns] = np.nan
 
         for index, row in output.iterrows():
             pattern = r'^\d{2}:\d{2}:\d{2}$'
@@ -88,9 +99,9 @@ class Spot:
             query = (data.index >= start_tijd) & (data.index <= eind_tijd)
             # if all(query == False):
             #     continue
-            data.loc[query, columns] = row[columns]
+            data.loc[query, fb_columns] = row[fb_columns]
         if non_zero_only:
-            return data[data["rating"].notnull()]
+            return data[data[fb_columns].notnull()]
         else:
             return data
 
@@ -98,12 +109,14 @@ class Spot:
         data = stormglass.forecast(self.lat, self.long, hours=hours, cache=cache)  # check: is N == lat?
         return data
 
-    def train(self, verbose=False, save=True, only_spot_data=True, match_all_feedback_times=True) -> pd.DataFrame:
+    def train(self, channel, verbose=False, save=True, only_spot_data=True, match_all_feedback_times=True
+              ) -> pd.DataFrame:
         """Train a model, save it and returns the model"""
-        df = self.hindcast(only_spot_data=only_spot_data, match_all_feedback_times=match_all_feedback_times)
+        df = self.combined(only_spot_data=only_spot_data, match_all_feedback_times=match_all_feedback_times,
+                           fb_columns=channel)
 
-        X = df.drop('rating', axis=1)
-        y = df['rating']
+        X = df.drop(channel, axis=1)
+        y = df[channel]
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
@@ -114,7 +127,7 @@ class Spot:
 
         mse = mean_squared_error(y_test, y_pred)
         if save:
-            model_file = f"model_XGBRegressor_{self.name}.pkl"
+            model_file = fr"AI-models/model_XGBRegressor_{self.name}_{channel}.pkl"
             with open(model_file, 'wb') as f:
                 pickle.dump(model, f)
 
@@ -124,25 +137,27 @@ class Spot:
                 print('real:', y_test[i], 'pred:', y_pred[i])
         return mse
 
-    def load_model(self):
-        model_file = Path(f"model_XGBRegressor_{self.model_name}.pkl")
+    def load_model(self, perk_name):
+        model_file = Path(f"AI-models/model_XGBRegressor_{self.model_name}_{perk_name}.pkl")
         if not model_file.is_file():
             raise NotImplementedError("Use .train() first to train a model")
         with open(model_file, 'rb') as f:
             model = pickle.load(f)
         return model
 
-    def predict_surf_rating(self, data) -> pd.DataFrame:
+    def predict_surf_perk(self, data, perk_name) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
 
-        model = self.load_model()
-        data = _dir_to_onshore(data, self.richting)
+        model = self.load_model(perk_name)
+        data = _enrich_input_data(data, self.richting)
         result = model.predict(data)
         return result
 
-    def surf_rating(self, cache=False):
-        data = self.forecast(cache)
-        data["rating"] = self.predict_surf_rating(data)
+    def surf_rating(self, perks=forecast_columns, cache=False):
+        data_init = self.forecast(cache)
+        data = deepcopy(data_init)
+        for perk in perks:
+            data[perk] = self.predict_surf_perk(data_init, perk)
         return data
 
 
@@ -155,7 +170,23 @@ texel_paal17 = Spot(richting=305, name="texel17", lat=53.081695, long=4.733450, 
 spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
 
 if __name__ == '__main__':
-    mse = ijmuiden.train(only_spot_data=False, save=True)
+
+    # Train models
+    for column in forecast_columns:
+        msw = ijmuiden.train(only_spot_data=False, channel=column, save=True)
+        print(f"{column}: {msw}")
+
+
+    # Perks
+    df = ijmuiden.surf_rating(cache=True)
+    plot_forecast(df, ijmuiden, perks_plot=True)
+    plot_forecast(df, ijmuiden)
+    plt.show()
+
+
+
+    # print(tabulate(df, df.columns))
+    # mse = ijmuiden.train(only_spot_data=False, save=True)
     # model = ijmuiden.load_model()
     # xgb.plot_tree(model)
     # Plot tree
@@ -163,6 +194,6 @@ if __name__ == '__main__':
 
 
     # print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
-    data = ijmuiden.surf_rating(cache=True)
-    plot_forecast(data, ijmuiden)
-    plt.show()
+    # data = ijmuiden.surf_rating(cache=True)
+    # plot_forecast(data, ijmuiden)
+    # plt.show()

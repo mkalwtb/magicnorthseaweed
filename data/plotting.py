@@ -6,14 +6,24 @@ mxFmt_major = mdates.DateFormatter('%d-%m')
 mxFmt_minor = mdates.DateFormatter('%H')
 
 website_folder = Path("D:\Goodle Drive\magicnorthseaweed")
+perks = ['hoog', 'clean', 'krachtig', 'stijl', 'stroming', 'windy']
+perk_levels = ["niet", "beetje", "best", "heel"]
 
-y_labels = {
+y_labels_main = {
     "rating": "Surf rating",
     "waveHeight": "Golven [m]",
     "wavePeriod": "Periode [s]",
     "windSpeed": "Wind [m/s]",
-    # "windDirection": "Wind richting [°]",
     "NAP": "getij [m]",
+}
+
+y_labels_perks = {
+    # "rating": "Surf rating",
+    "hoog": "Hoog",
+    "clean": "Clean",
+    # "krachtig": "Krachtig",
+    "stroming": "Stroming",
+    # "windy": "Windy",
 }
 
 
@@ -44,9 +54,13 @@ def add_direction_annotations(ax, data, value_key, direction_key, num_annotation
                     ha='center', va='center', color='grey')
 
 
-def plot_forecast(data: pd.DataFrame, spot, fig=None, axs=None):
+def plot_forecast(data: pd.DataFrame, spot, fig=None, axs=None, perks_plot=False):
+    y_labels = y_labels_main
+    add = 1 if perks_plot else 0
+
+
     if not fig and not axs:
-        fig, axs = plt.subplots(len(y_labels), 1, figsize=(10.5, 10.5))
+        fig, axs = plt.subplots(len(y_labels) + add, 1, figsize=(10.5, 10.5))
         fig.suptitle(f"{spot.name} surf forecast")
 
     for ax, (key, title) in zip(axs, y_labels.items()):
@@ -63,10 +77,35 @@ def plot_forecast(data: pd.DataFrame, spot, fig=None, axs=None):
             add_direction_annotations(ax, data, value_key=key, direction_key="waveDirection")
         if key == "rating":
             ax.set_ylim([1, 10])
+        if key in ["windSpeed", "waveHeight"]:
+            y_min, y_max = ax.get_ylim()
+            ax.set_ylim([0, y_max])
+        if key in ["wavePeriod"]:
+            y_min, y_max = ax.get_ylim()
+            ax.set_ylim([min(y_min, 4), max(9, y_max)])
+        if key in perks:
+            ax.set_ylim([0, 3])
+            ax.set_yticklabels(perk_levels)
+
 
         ax.xaxis.set_tick_params(which='major', pad=10)
         ax.xaxis.set_major_formatter(mxFmt_major)
         ax.xaxis.set_major_locator(mdates.DayLocator(interval=1))
+
+    if perks_plot:
+        for key, title in y_labels_perks.items():
+            axs[-1].plot(data[key], label=key)
+        axs[-1].set_ylim([0, 3])
+        axs[-1].grid(which="both")
+        axs[-1].set_yticklabels(perk_levels)
+        axs[-1].legend(y_labels_perks.values())
+        axs[-1].xaxis.set_minor_locator(mdates.HourLocator(byhour=range(0, 24, 6)))
+        axs[-1].xaxis.set_minor_formatter(mxFmt_minor)
+        axs[-1].xaxis.set_tick_params(which='major', pad=10)
+        axs[-1].xaxis.set_major_formatter(mxFmt_major)
+        axs[-1].xaxis.set_major_locator(mdates.DayLocator(interval=1))
+
+
 
     axs[-1].text(0.25, -0.25, 'forecast from magicnorthseaweed.nl',
             horizontalalignment='left',
@@ -78,14 +117,14 @@ def plot_forecast(data: pd.DataFrame, spot, fig=None, axs=None):
     return fig, axs
 
 
-def plot_all(spots, datas):
+def plot_all(spots, datas, perks_plot):
     for data, spot, i in zip(datas, spots, range(len(spots))):
         if i == 0:
             fig, axs = plot_forecast(datas[0], spots[0])
             for ax in axs:
                 ax.grid(which="both")
         else:
-            plot_forecast(data, spot, fig, axs)
+            plot_forecast(data, spot, fig, axs, perks_plot=perks_plot)
         fig.legend([spot.name for spot in spots])
         fig.suptitle(f"Alle spots surf forecast")
 
