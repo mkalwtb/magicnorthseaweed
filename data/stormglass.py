@@ -121,24 +121,24 @@ def download_weather_and_tide(lat, long, start, end, cache=False):
     data_new = pd.concat([data_new, data_tide], axis=1)
     return data_new
 
-def download_and_save_data(lat, long, start, end, cache=False):
+def download_and_save_data(name, lat, long, start, end, cache=False):
     data_new = download_weather_and_tide(lat, long, start, end, cache=cache)
-    append_historical_data(lat, long, data_new)
+    append_historical_data(name, lat, long, data_new)
     return data_new
 
-def load_data(lat, long):
-    file = Path(f'stormglass/data_{lat}_{long}.pkl')
+def load_data(name: str):
+    file = Path(f'stormglass/data_{name}.pkl')
     if file.is_file():
         data_db = pd.read_pickle(file)
     else:
         data_db = pd.DataFrame()
     return data_db
 
-def append_historical_data(lat, long, data_new):
+def append_historical_data(name, lat, long, data_new):
     """Only function with writing acces"""
     file = Path(f'stormglass/data_{lat}_{long}.pkl')
     now = datetime.now()
-    data_db = load_data(lat, long)
+    data_db = load_data(name)
     tz = data_new.index.tz
     now_pd = pd.to_datetime(now, utc=tz)
     data_new_historical = data_new[data_new.index <= now_pd]
@@ -148,8 +148,8 @@ def append_historical_data(lat, long, data_new):
     return data_new
 
 
-def smart_data(lat, long, start, end, cache=False):
-    data_db = load_data(lat, long)
+def smart_data(name, lat, long, start, end, cache=False):
+    data_db = load_data(name)
     start_in_df = arrow.get(data_db.index.min()) <= start
     end_in_df = arrow.get(data_db.index.max()) >= end
     request_is_fully_in_df = start_in_df and end_in_df
@@ -159,7 +159,7 @@ def smart_data(lat, long, start, end, cache=False):
         result = data_db
     else:
         data_new = download_weather_and_tide(lat, long, start, end, cache=cache)
-        result = append_historical_data(lat, long, data_new)
+        result = append_historical_data(name, lat, long, data_new)
 
     #Requested time range of the data
     tz = result.index.tz
@@ -169,8 +169,8 @@ def smart_data(lat, long, start, end, cache=False):
     return result_range
 
 
-def append_x_days_back(lat, long, days: float, cache=False):
-    data = load_data(lat, long)
+def append_x_days_back(name, lat, long, days: float, cache=False):
+    data = load_data(name)
     if len(data) > 0:
         oldest = arrow.get(min(data.index))
     else:
@@ -178,14 +178,14 @@ def append_x_days_back(lat, long, days: float, cache=False):
     new_oldest = oldest.shift(days=-days)
     return download_and_save_data(lat, long, new_oldest, oldest, cache=cache)
 
-def append_x_days_upfront(lat, long, days: float, cache=False):
-    data = load_data(lat, long)
+def append_x_days_upfront(name, lat, long, days: float, cache=False):
+    data = load_data(name)
     if len(data) > 0:
         oldest = arrow.get(max(data.index))
     else:
         oldest = arrow.now('Europe/Amsterdam')
     new_oldest = oldest.shift(days=days)
-    return download_and_save_data(lat, long, oldest,new_oldest, cache=cache)
+    return download_and_save_data(name, lat, long, oldest,new_oldest, cache=cache)
 
 
 def forecast(lat, long, hours, cache=False):
@@ -195,22 +195,22 @@ def forecast(lat, long, hours, cache=False):
     data_new = download_weather_and_tide(lat, long, start, end, cache=cache)
     return data_new
 
-def keep_scraping_untill_error(back=False):
+def keep_scraping_untill_error(name, back=False):
     while True:
         try:
             if back:
-                append_x_days_back(lat, long, 10, cache=False)
+                append_x_days_back(name, lat, long, 10, cache=False)
             else:
-                append_x_days_upfront(lat, long, 10, cache=False)
+                append_x_days_upfront(name, lat, long, 10, cache=False)
         except FileNotFoundError as e:
             print(e)
-            df = load_data(lat, long)
+            df = load_data(name)
             break
     return df
 
 
 if __name__ == '__main__':
-
+    name = "ZV"
     lat = 52.474773
     long = 4.535204
     now = arrow.now('Europe/Amsterdam')
@@ -219,8 +219,8 @@ if __name__ == '__main__':
     cache=False
 
     # df = append_x_days_upfront(lat, long, 10, cache=cache)
-    df = keep_scraping_untill_error(back=False)
-    # df = smart_data(lat, long, start, end, cache=cache)
+    df = keep_scraping_untill_error(name, back=False)
+    # df = smart_data(name, lat, long, start, end, cache=cache)
 
     # df = load_data(lat, long)
     # df = forecast(lat, long, 48, cache=False)

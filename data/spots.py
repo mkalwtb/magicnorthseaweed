@@ -3,7 +3,7 @@ import numpy as np
 from copy import deepcopy, copy
 import datetime
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from matplotlib import pyplot as plt
 
 from data.models import Model, MODELS
@@ -34,6 +34,9 @@ def _enrich_input_data(data: pd.DataFrame, richting: float) -> pd.DataFrame:
     return data
 
 
+@dataclass
+class SpotInfo:
+    pier: int
 
 
 @dataclass
@@ -50,6 +53,8 @@ class Spot:
     name: str
     lat: float
     long: float
+    db_name: str
+    spot_info: SpotInfo
 
     def feedback(self, only_spot_data):
         """Surf feedback form"""
@@ -62,7 +67,7 @@ class Spot:
 
     def _hindcast_input(self):
         """Surf historical statistics"""
-        data = stormglass.load_data(self.lat, self.long)
+        data = stormglass.load_data(self.db_name)
         data = _enrich_input_data(data, self.richting)
         return data
 
@@ -71,6 +76,8 @@ class Spot:
         input = self._hindcast_input()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
+        self._add_spot_info(data)
+
         if not fb_columns:
             fb_columns = output.forecast_columns
         data[fb_columns] = np.nan
@@ -107,6 +114,7 @@ class Spot:
         """Rate the surf forecast based on the trained model (file)"""
 
         data = _enrich_input_data(data, self.richting)
+        self._add_spot_info(data)
         result = model.model.predict(data)
         return result
 
@@ -117,27 +125,42 @@ class Spot:
             data[model.perk] = self.predict_surf_perk(data_init, model)
         return data
 
+    def _add_spot_info(self, data):
+        # Add pier data
+        for field in fields(self.spot_info):
+            value = getattr(self.spot_info, field.name)
+            data[field.name] = value
+
+strand = SpotInfo(pier=0)
+pier_links = SpotInfo(pier=-1)
+pier_rechts = SpotInfo(pier=1)
 
 # Add all spots here
-ijmuiden = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204)
-scheveningen = Spot(richting=315, name="schev", lat=52.108703, long=4.267715)
-camperduin = Spot(richting=270, name="camperduin", lat=52.723113, long=4.639215)
-texel_paal17 = Spot(richting=305, name="texel17", lat=53.081695, long=4.733450)
+ZV = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, db_name="ZV", spot_info=strand)
+scheveningen = Spot(richting=315, name="Schev", lat=52.108703, long=4.267715, db_name="ZV", spot_info=strand)
+camperduin = Spot(richting=270, name="Camperduin", lat=52.723113, long=4.639215, db_name="ZV", spot_info=strand)
+texel_paal17 = Spot(richting=305, name="Texel17", lat=53.081695, long=4.733450, db_name="ZV", spot_info=strand)
 
-spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
+wijk = Spot(richting=295, name="Wijk", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_links)  # todo set lat, long, en richting
+ijmuiden = Spot(richting=250, name="Ijmuiden", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_rechts)  # todo set lat, long, en richting
+
+# spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
+spots = [wijk, ZV, ijmuiden, camperduin, scheveningen, texel_paal17]
 
 if __name__ == '__main__':
-
-
     # Train models
     for model in MODELS:
-        model.train(ijmuiden, channel=model.perk, only_spot_data=True, save=False)
+        model = model.train(spots, channel=model.perk, save=True)
 
 
-    # Perks
+    df = wijk.surf_rating(cache=True)
+    plot_forecast(df, wijk, perks_plot=True)
+
+    df = ZV.surf_rating(cache=True)
+    plot_forecast(df, ZV, perks_plot=True)
+
     df = ijmuiden.surf_rating(cache=True)
     plot_forecast(df, ijmuiden, perks_plot=True)
-    plot_forecast(df, ijmuiden)
     plt.show()
 
 
