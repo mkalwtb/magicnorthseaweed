@@ -19,7 +19,6 @@ from rijkswaterstaat import Boei
 
 forecast_columns = ["rating", "hoog", "clean", "krachtig", "stijl", "stroming", "windy"]
 
-
 def _compute_onshore(data: pd.DataFrame, richting: float, side_shore) -> pd.DataFrame:
     if side_shore:
         data = (data - richting + 360) % 360
@@ -41,6 +40,58 @@ def _enrich_input_data(data: pd.DataFrame, richting: float) -> pd.DataFrame:
 
     return data
 
+class Model:
+    def __init__(self, perk: str, model=None):
+        self.perk = perk
+        self.model: xgb.XGBModel = model if model is not None else self._load_model()
+
+    @classmethod
+    def train(cls, spot, channel, verbose=False, save=True, only_spot_data=True, match_all_feedback_times=True):
+        """Train a model, save it and returns the model"""
+        df = spot.combined(only_spot_data=only_spot_data, match_all_feedback_times=match_all_feedback_times,
+                           fb_columns=channel)
+        # TODO add loop, this line for each spot
+
+        X = df.drop(channel, axis=1)
+        y = df[channel]
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+        model = xgb.XGBRegressor(objective='reg:squarederror')
+        model.fit(X_train, y_train)
+
+        y_pred = model.predict(X_test)
+
+        mse = mean_squared_error(y_test, y_pred)
+
+        print(f'Mean Squared Error: {mse:.2f} (from {len(df)} feedback entries)')
+        if verbose:
+            for i in range(len(y_test)):
+                print('real:', y_test[i], 'pred:', y_pred[i])
+        obj = cls(perk=channel, model=model)
+        if save:
+            obj.save_model()
+        return obj
+
+    def _load_model(self):
+        if not self.model_file.is_file():
+            raise NotImplementedError("Use .train() first to train a model")
+        with open(self.model_file, 'rb') as f:
+            model = pickle.load(f)
+        return model
+
+    def save_model(self):
+        with open(self.model_file, 'wb') as f:
+            pickle.dump(self.model, f)
+
+    @property
+    def model_file(self):
+        return Path(f"AI-models/model_XGBRegressor_ZV_{self.perk}.pkl")  # todo remove ZV
+
+
+MODELS = [Model(perk) for perk in forecast_columns]
+
+
 @dataclass
 class Spot:
     """
@@ -55,7 +106,6 @@ class Spot:
     name: str
     lat: float
     long: float
-    model_name: str
 
     def feedback(self, only_spot_data):
         """Surf feedback form"""
@@ -109,72 +159,35 @@ class Spot:
         data = stormglass.forecast(self.lat, self.long, hours=hours, cache=cache)  # check: is N == lat?
         return data
 
-    def train(self, channel, verbose=False, save=True, only_spot_data=True, match_all_feedback_times=True
-              ) -> pd.DataFrame:
-        """Train a model, save it and returns the model"""
-        df = self.combined(only_spot_data=only_spot_data, match_all_feedback_times=match_all_feedback_times,
-                           fb_columns=channel)
-
-        X = df.drop(channel, axis=1)
-        y = df[channel]
-
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
-
-        model = xgb.XGBRegressor(objective='reg:squarederror')
-        model.fit(X_train, y_train)
-
-        y_pred = model.predict(X_test)
-
-        mse = mean_squared_error(y_test, y_pred)
-        if save:
-            model_file = fr"AI-models/model_XGBRegressor_{self.name}_{channel}.pkl"
-            with open(model_file, 'wb') as f:
-                pickle.dump(model, f)
-
-        print(f'Mean Squared Error: {mse:.2f} (from {len(df)} feedback entries)')
-        if verbose:
-            for i in range(len(y_test)):
-                print('real:', y_test[i], 'pred:', y_pred[i])
-        return mse
-
-    def load_model(self, perk_name):
-        model_file = Path(f"AI-models/model_XGBRegressor_{self.model_name}_{perk_name}.pkl")
-        if not model_file.is_file():
-            raise NotImplementedError("Use .train() first to train a model")
-        with open(model_file, 'rb') as f:
-            model = pickle.load(f)
-        return model
-
-    def predict_surf_perk(self, data, perk_name) -> pd.DataFrame:
+    def predict_surf_perk(self, data, model: Model) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
 
-        model = self.load_model(perk_name)
         data = _enrich_input_data(data, self.richting)
-        result = model.predict(data)
+        result = model.model.predict(data)
         return result
 
-    def surf_rating(self, perks=forecast_columns, cache=False):
+    def surf_rating(self, models=MODELS, cache=False):
         data_init = self.forecast(cache)
         data = deepcopy(data_init)
-        for perk in perks:
-            data[perk] = self.predict_surf_perk(data_init, perk)
+        for model in models:
+            data[model.perk] = self.predict_surf_perk(data_init, model)
         return data
 
 
 # Add all spots here
-ijmuiden = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, model_name="ZV")
-scheveningen = Spot(richting=315, name="schev", lat=52.108703, long=4.267715, model_name="ZV")
-camperduin = Spot(richting=270, name="camperduin", lat=52.723113, long=4.639215, model_name="ZV")
-texel_paal17 = Spot(richting=305, name="texel17", lat=53.081695, long=4.733450, model_name="ZV")
+ijmuiden = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204)
+scheveningen = Spot(richting=315, name="schev", lat=52.108703, long=4.267715)
+camperduin = Spot(richting=270, name="camperduin", lat=52.723113, long=4.639215)
+texel_paal17 = Spot(richting=305, name="texel17", lat=53.081695, long=4.733450)
 
 spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
 
 if __name__ == '__main__':
 
+
     # Train models
-    for column in forecast_columns:
-        msw = ijmuiden.train(only_spot_data=True, channel=column, save=True)
-        print(f"{column}: {msw}")
+    for model in MODELS:
+        model.train(ijmuiden, channel=model.perk, only_spot_data=True, save=False)
 
 
     # Perks
