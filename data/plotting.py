@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 from matplotlib import pyplot as plt
 import matplotlib.dates as mdates
-mxFmt_major = mdates.DateFormatter('%d-%m')
+mxFmt_major = mdates.DateFormatter('%A, %d-%m')
 mxFmt_minor = mdates.DateFormatter('%H')
 
 website_folder = Path("D:\Goodle Drive\magicnorthseaweed")

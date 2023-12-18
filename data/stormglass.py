@@ -78,7 +78,7 @@ def download_json(lat, long, start, end, cache=False, end_point="weather"):
 
   return json_data
 
-def json_to_df(json_data, manual_source=False):
+def json_to_df(json_data, manual_source=True):
   hourly_data = {}
   if 'hours' not in json_data:
       raise FileNotFoundError('Something went wrong with the stormglass API request')
@@ -93,7 +93,7 @@ def json_to_df(json_data, manual_source=False):
   # Create a Pandas DataFrame
   df = pd.DataFrame.from_dict(hourly_data, orient='index')
   df.index = pd.to_datetime(df.index)
-  df.index = df.index.tz_convert(pytz.timezone('CET'))
+  df.index = df.index.tz_convert(pytz.timezone('CET')) # todo 1 hour wrong?
   return df
 
 
@@ -169,7 +169,7 @@ def smart_data(lat, long, start, end, cache=False):
     return result_range
 
 
-def append_x_days_upfront(lat, long, days: float, cache=False):
+def append_x_days_back(lat, long, days: float, cache=False):
     data = load_data(lat, long)
     if len(data) > 0:
         oldest = arrow.get(min(data.index))
@@ -177,6 +177,15 @@ def append_x_days_upfront(lat, long, days: float, cache=False):
         oldest = arrow.now('Europe/Amsterdam')
     new_oldest = oldest.shift(days=-days)
     return download_and_save_data(lat, long, new_oldest, oldest, cache=cache)
+
+def append_x_days_upfront(lat, long, days: float, cache=False):
+    data = load_data(lat, long)
+    if len(data) > 0:
+        oldest = arrow.get(max(data.index))
+    else:
+        oldest = arrow.now('Europe/Amsterdam')
+    new_oldest = oldest.shift(days=days)
+    return download_and_save_data(lat, long, oldest,new_oldest, cache=cache)
 
 
 def forecast(lat, long, hours, cache=False):
@@ -186,10 +195,13 @@ def forecast(lat, long, hours, cache=False):
     data_new = download_weather_and_tide(lat, long, start, end, cache=cache)
     return data_new
 
-def keep_scraping_untill_error():
+def keep_scraping_untill_error(back=False):
     while True:
         try:
-            append_x_days_upfront(lat, long, 10, cache=False)
+            if back:
+                append_x_days_back(lat, long, 10, cache=False)
+            else:
+                append_x_days_upfront(lat, long, 10, cache=False)
         except FileNotFoundError as e:
             print(e)
             df = load_data(lat, long)
@@ -207,8 +219,8 @@ if __name__ == '__main__':
     cache=False
 
     # df = append_x_days_upfront(lat, long, 10, cache=cache)
-    # df = keep_scraping_untill_error()
-    df = smart_data(lat, long, start, end, cache=cache)
+    df = keep_scraping_untill_error(back=False)
+    # df = smart_data(lat, long, start, end, cache=cache)
 
     # df = load_data(lat, long)
     # df = forecast(lat, long, 48, cache=False)

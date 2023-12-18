@@ -173,7 +173,7 @@ if __name__ == '__main__':
 
     # Train models
     for column in forecast_columns:
-        msw = ijmuiden.train(only_spot_data=False, channel=column, save=True)
+        msw = ijmuiden.train(only_spot_data=True, channel=column, save=True)
         print(f"{column}: {msw}")
 
 

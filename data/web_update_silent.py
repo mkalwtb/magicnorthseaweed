@@ -7,9 +7,7 @@ from tabulate import tabulate
 if __name__ == '__main__':
     datas = []
     for spot in spots:  # [ijmuiden]:
-        data = spot.surf_rating(cache=True)
-        # csv = data.to_csv()
-        # print(csv)
+        data = spot.surf_rating(cache=False)
         datas.append(data)
         plotting2.write_table_per_day(data, spot.name)
         plot_forecast(data, spot, perks_plot=True)
@@ -18,4 +16,4 @@ if __name__ == '__main__':
     plot_all(spots, datas, perks_plot=False)
     save_to_web("all")
 
-    plt.show()
+    # plt.show()
