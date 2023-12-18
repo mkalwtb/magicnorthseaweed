@@ -1,6 +1,7 @@
 import pickle
 from pathlib import Path
 
+import pandas as pd
 import xgboost as xgb
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
@@ -12,14 +13,16 @@ class Model:
         self.model: xgb.XGBModel = model if model is not None else self._load_model()
 
     @classmethod
-    def train(cls, spot, channel, verbose=False, save=True, only_spot_data=True, match_all_feedback_times=True):
+    def train(cls, spots, channel, verbose=False, save=True, match_all_feedback_times=True):
         """Train a model, save it and returns the model"""
-        df = spot.combined(only_spot_data=only_spot_data, match_all_feedback_times=match_all_feedback_times,
-                           fb_columns=channel)
-        # TODO add loop, this line for each spot
+        dfs = pd.DataFrame()
+        for spot in spots:
+            df = spot.combined(only_spot_data=True, match_all_feedback_times=match_all_feedback_times,
+                               fb_columns=channel)
+            dfs = pd.concat([df, dfs])
 
-        X = df.drop(channel, axis=1)
-        y = df[channel]
+        X = dfs.drop(channel, axis=1)
+        y = dfs[channel]
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
@@ -30,7 +33,7 @@ class Model:
 
         mse = mean_squared_error(y_test, y_pred)
 
-        print(f'Mean Squared Error: {mse:.2f} (from {len(df)} feedback entries)')
+        print(f'Mean Squared Error: {mse:.2f} (from {len(dfs)} feedback entries)')
         if verbose:
             for i in range(len(y_test)):
                 print('real:', y_test[i], 'pred:', y_pred[i])

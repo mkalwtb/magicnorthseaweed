@@ -127,6 +127,7 @@ def plot_all(spots, datas, perks_plot):
             plot_forecast(data, spot, fig, axs, perks_plot=perks_plot)
         fig.legend([spot.name for spot in spots])
         fig.suptitle(f"Alle spots surf forecast")
+    return fig
 
 
 def save_to_web(spot_name):

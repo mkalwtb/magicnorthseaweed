@@ -1,4 +1,5 @@
 from math import radians, cos, sin
+from typing import List
 
 import pandas as pd
 from tabulate import tabulate
@@ -17,6 +18,47 @@ hex_colors = [
     "#66bd63",  # 9 green
     "#800080"  # purple for scale 10
 ]
+
+style = """
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<style>
+    table {
+        min-width: 600px;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        /* border: 1px solid #ddd; Adding a border for better visibility */
+    }
+
+    h3 {
+      display: inline-block; /* Make the h3 inline-block */
+      margin: 5px; /* Add some margin between the div and h3 */
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+    .grey {
+        color: rgb(152, 162, 175);
+    }
+    .unit {
+        font-size: 14px;
+        padding-right: 12px;
+    }
+    .rounded-span {
+        height: 20px; /* Adjust the height as needed */
+        width: 5px; /* Adjust the height as needed */
+        border-radius: 2.5px; /* Adjust the border-radius for round corners */
+        display: inline-block;
+    }
+
+</style>
+"""
 
 def replace_last_comma_by_and(string):
     delimiter = ", "
@@ -64,48 +106,8 @@ def table_html(df):
     # columns = ["rating", "waveHeight", "waveDirection", "wavePeriod", "windSpeed", "windDirection"]
     headers = ["Tijd", "rating", "golven", "wind", "getij", "beschrijving"]
 
-    html = """
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <style>
-        table {
-            min-width: 600px;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-    
-        th, td {
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: middle;
-            /* border: 1px solid #ddd; Adding a border for better visibility */
-        }
-        
-        h3 {
-          display: inline-block; /* Make the h3 inline-block */
-          margin: 5px; /* Add some margin between the div and h3 */
-        }
-    
-        th {
-            background-color: #f2f2f2;
-        }
-        .grey {
-            color: rgb(152, 162, 175);
-        }
-        .unit {
-            font-size: 14px;
-            padding-right: 12px;
-        }
-        .rounded-span {
-            height: 20px; /* Adjust the height as needed */
-            width: 5px; /* Adjust the height as needed */
-            border-radius: 2.5px; /* Adjust the border-radius for round corners */
-            display: inline-block;
-        }
-        
-    </style>
-    """
-
     # header
+    html = style
     html += f"<h2> {df.index[0].strftime('%A, %d-%m')} </h2>"
     html += "<table>\n"
     html += "<tr>\n"
@@ -144,18 +146,32 @@ def table_html(df):
     html += "</table>\n"
     return html
 
-def table_per_day(df):
+
+def table_html_search(dfs):
+    headers = ["Tijd"] + [df.name for df in dfs]
+
+    # header
+    html = style
+    html += f"<h2> {df[0].index[0].strftime('%A, %d-%m')} </h2>"
+    html += "<table>\n"
+    html += "<tr>\n"
+    for header in headers:
+        html += f"<th>{header}</th>\n"
+    html += "</tr>\n"
+    pass
+
+def table_per_day(df, function):
     df_days = [group[1] for group in df.groupby(df.index.date)]
     # table(df_days[1])
 
     html = ""
     for df_day in df_days:
-        html += table_html(df_day)
+        html += function(df_day)
     return html
 
 
-def write_table_per_day(df, spot_name):
-    html = table_per_day(df)
+def write_table_per_day(df, spot_name, function=table_html):
+    html = table_per_day(df, function)
     with open(website_folder / "tables" / f"table_{spot_name}.html", "w") as fp:
         fp.write(html)
 
@@ -163,7 +179,7 @@ def write_table_per_day(df, spot_name):
 if __name__ == "__main__":
     df = pd.read_pickle("df.pkl")
 
-    html = table_per_day(df)
+    html = table_per_day(df, table_html)
     with open("table_ZV.html", "w") as fp:
         fp.write(html)
 

@@ -8,6 +8,7 @@ if __name__ == '__main__':
     datas = []
     for spot in spots:  # [ijmuiden]:
         data = spot.surf_rating(cache=True)
+        data.name = spot.name
         # csv = data.to_csv()
         # print(csv)
         datas.append(data)
@@ -15,7 +16,8 @@ if __name__ == '__main__':
         plot_forecast(data, spot, perks_plot=True)
         save_to_web(spot.name)
 
-    plot_all(spots, datas, perks_plot=False)
+    fig = plot_all(spots, datas, perks_plot=False)
     save_to_web("all")
 
+    fig.show()
     plt.show()
