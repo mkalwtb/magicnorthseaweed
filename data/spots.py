@@ -12,22 +12,69 @@ from plotting import plot_forecast
 import surffeedback, stormglass
 
 
+def shelter_from_series(signal_richting, spot):
+    # Add shelter
+    angle_wind = compute_angle(signal_richting, spot.richting+90)
+    if spot.spot_info.pier == -1:
+        return angle_wind.apply(compute_shelter)
+    elif spot.spot_info.pier == 0:
+        return 0
+    elif spot.spot_info.pier == 1:
+        return (-angle_wind).apply(compute_shelter)
+    else:
+        raise NotImplementedError("Pier not implemented")
+
+def compute_shelter(shelter_angle):
+    if 0 <= shelter_angle <= 20 or 160 <= shelter_angle <= 180:
+        # Linear increase from 0 to 0.4 and then decrease back
+        return 0.4 / 20 * min(shelter_angle, 180 - shelter_angle)
+    elif 20 < shelter_angle < 160:
+        # Linear increase from 0.4 to 0.7 up to 90°, then decrease back to 0.4
+        if shelter_angle <= 90:
+            return 0.4 + (0.7 - 0.4) / (90 - 20) * (shelter_angle - 20)
+        else:
+            return 0.4 + (0.7 - 0.4) / (90 - 20) * (160 - shelter_angle)
+    else:
+        # Zero reduction factor beyond 180°
+        return 0
+
+
+def compute_angle(data: pd.DataFrame, richting: float):
+    return (data - richting + 360) % 360
+
+
 def _compute_onshore(data: pd.DataFrame, richting: float, side_shore) -> pd.DataFrame:
     if side_shore:
-        data = (data - richting + 360) % 360
+        angle = compute_angle(data, richting)
     else:
-        data = (data - richting + 90 + 360) % 360
-    data = np.sin(data.values / 360 * 2 * np.pi)
+        angle = compute_angle(data, richting + 90)
+    data = np.sin(angle.values / 360 * 2 * np.pi)
     return copy(data)
 
-def _enrich_input_data(data: pd.DataFrame, richting: float) -> pd.DataFrame:
-    data['waveOnshore'] = _compute_onshore(data['waveDirection'], richting, side_shore=False)
-    data['waveSideshore'] = _compute_onshore(data['waveDirection'], richting, side_shore=True)
-    data = data.drop('waveDirection', axis=1)
+def enrich_input_data(data: pd.DataFrame, spot) -> pd.DataFrame:
+    spot.add_spot_info(data)
+    data['waveOnshore'] = _compute_onshore(data['waveDirection'], spot.richting, side_shore=False)
+    data['waveSideshore'] = _compute_onshore(data['waveDirection'], spot.richting, side_shore=True)
+    # data = data.drop('waveDirection', axis=1)
 
-    data['windOnshore'] = _compute_onshore(data['windDirection'], richting, side_shore=False)
-    data['windSideshore'] = _compute_onshore(data['windDirection'], richting, side_shore=True)
-    data = data.drop('windDirection', axis=1)
+    data['windOnshore'] = _compute_onshore(data['windDirection'], spot.richting, side_shore=False)
+    data['windSideshore'] = _compute_onshore(data['windDirection'], spot.richting, side_shore=True)
+    data["windMagOnShore"] = data['windOnshore'] * data["windSpeed"]
+    data["windMagSideShore"] = data['windSideshore'] * data["windSpeed"]
+    # data = data.drop('windDirection', axis=1)
+
+    data["shelterWind"] = shelter_from_series(data["windDirection"], spot)
+
+    # data["windMagOnShoreShelter"] = data["windMagOnShore"] * data["shelter"]
+    # data["windMagSideShoreShelter"] = data["windMagSideShore"] * data["shelter"]
+
+    data["waveEnergy"] = data["waveHeight"]**2 * data["wavePeriod"]**2 * data["waveOnshore"]
+    data.loc[data['waveEnergy'] < 0, 'waveEnergy'] = 0
+
+    # data['waveOnshore2nd'] = _compute_onshore(data['secondarySwellDirection'], richting, side_shore=False)
+    # data["waveEnergy2nd"] = data["secondarySwellHeight"]**2 * data["secondarySwellPeriod"]**2 * data["waveOnshore2nd"]
+    # data.loc[data['waveEnergy2nd'] < 0, 'waveEnergy2nd'] = 0
+    data["windWaveHeight2"] = data["windWaveHeight"]**2  # todo use the code above: Tis is wrong and temp
 
     data['seaRise'] = data["NAP"].diff()
 
@@ -68,7 +115,7 @@ class Spot:
     def _hindcast_input(self):
         """Surf historical statistics"""
         data = stormglass.load_data(self.db_name)
-        data = _enrich_input_data(data, self.richting)
+        data = enrich_input_data(data, self)
         return data
 
     def combined(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True, fb_columns: str=None):
@@ -76,7 +123,7 @@ class Spot:
         input = self._hindcast_input()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
-        self._add_spot_info(data)
+        self.add_spot_info(data)
 
         if not fb_columns:
             fb_columns = output.forecast_columns
@@ -113,23 +160,25 @@ class Spot:
     def predict_surf_perk(self, data, model: Model) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
 
-        data = _enrich_input_data(data, self.richting)
-        self._add_spot_info(data)
+        data = enrich_input_data(data, self)
+        data = data[model.channels]
         result = model.model.predict(data)
         return result
 
     def surf_rating(self, models=MODELS, cache=False):
         data_init = self.forecast(cache)
+
         data = deepcopy(data_init)
         for model in models:
             data[model.perk] = self.predict_surf_perk(data_init, model)
         return data
 
-    def _add_spot_info(self, data):
+    def add_spot_info(self, data):
         # Add pier data
         for field in fields(self.spot_info):
             value = getattr(self.spot_info, field.name)
             data[field.name] = value
+
 
 strand = SpotInfo(pier=0)
 pier_links = SpotInfo(pier=-1)
@@ -150,17 +199,17 @@ spots = [wijk, ZV, ijmuiden, camperduin, scheveningen, texel_paal17]
 if __name__ == '__main__':
     # Train models
     for model in MODELS:
-        model = model.train(spots, channel=model.perk, save=True)
+        model.train(spots, perk=model.perk, channels=model.channels, save=True)
 
 
     df = wijk.surf_rating(cache=True)
     plot_forecast(df, wijk, perks_plot=True)
 
-    df = ZV.surf_rating(cache=True)
-    plot_forecast(df, ZV, perks_plot=True)
-
-    df = ijmuiden.surf_rating(cache=True)
-    plot_forecast(df, ijmuiden, perks_plot=True)
+    # df = ZV.surf_rating(cache=True)
+    # plot_forecast(df, ZV, perks_plot=True)
+    #
+    # df = ijmuiden.surf_rating(cache=True)
+    # plot_forecast(df, ijmuiden, perks_plot=True)
     plt.show()
 
 

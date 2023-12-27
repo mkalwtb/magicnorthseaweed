@@ -12,8 +12,8 @@ from random import randrange
 
 
 # todo try new model: using primary & secondary swells
-channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "windWaveHeight", "currentSpeed"]  # "currentSpeed"  # todo add seaLevel
-channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "windWaveHeight", "currentSpeed"]  # "currentSpeed"  # todo add seaLevel
+channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "currentSpeed", 'windWaveHeight']  # "currentSpeed"  # todo add seaLevel
+channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "currentSpeed", 'windWaveHeight']  # "currentSpeed"  # todo add secondarySwellHeight
 
 keys = [
     '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002',
@@ -34,7 +34,10 @@ data_sources = {"waveDirection": "icon",
                "windDirection": "icon",
                "windWaveHeight": "icon",
                "currentSpeed": "sg",
-                "seaLevel": "sg"
+                "seaLevel": "sg",
+                # "secondarySwellDirection": "sg",
+                # "secondarySwellHeight": "sg",
+                # "secondarySwellPeriod": "sg",
                 }
 
 

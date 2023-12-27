@@ -60,6 +60,11 @@ style = """
 </style>
 """
 
+def round_off_rating(number):
+    # return number
+    return round(number * 2) / 2
+
+
 def replace_last_comma_by_and(string):
     delimiter = ", "
     replacement = " en "
@@ -123,7 +128,7 @@ def table_html(df):
 
         html += "<tr>\n"
         html += f"\t<td>{index.strftime('%H:%M')}</td>\n"
-        html += f"\t<td> {color_bar} <h3>{row['rating']:.0f}</h3></td>\n"
+        html += f"\t<td> {color_bar} <h3>{round_off_rating(row['rating']):.1f}</h3></td>\n"
 
         div = "<td>"
         div += f"<b>{row['waveHeight']:.1f} </b> <i class='unit'>m</i>"
