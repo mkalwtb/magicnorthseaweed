@@ -19,11 +19,14 @@ hex_colors = [
     "#800080"  # purple for scale 10
 ]
 
-style = """
+head = """
+<head>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     table {
-        min-width: 600px;
         border-collapse: collapse;
         margin-top: 20px;
     }
@@ -56,8 +59,37 @@ style = """
         border-radius: 2.5px; /* Adjust the border-radius for round corners */
         display: inline-block;
     }
+    .large {
+        min-width: 600px;
+    }
+    .widget {
+        width: 100%;
+        max-width: 300px; /* Or any maximum width you prefer */
+        margin: auto; /* Centers the container */
+    }
+    .widget table {
+        width: 300px; /* Set a minimum width for the table */
+        font-size: 32px;
+    }
+    .large-font-table {
+        font-size: 1.5em; /* Adjust the size as needed */
+        /* Other styling as needed */
+    }
+
+    .widget table {
+        width: 300px; /* Set a minimum width for the table */
+        font-size: 32px; /* Increase font size */
+    }
+    body {
+        font-size: 32px; /* Increase font size */
+    }
+    .large-font-table .unit, .grey {
+        font-size: 10px; /* Adjust text sizes within the table */
+    }
+}
 
 </style>
+</head>
 """
 
 def round_off_rating(number):
@@ -112,9 +144,9 @@ def table_html(df):
     headers = ["Tijd", "rating", "golven", "wind", "getij", "beschrijving"]
 
     # header
-    html = style
+    html = head
     html += f"<h2> {df.index[0].strftime('%A, %d-%m')} </h2>"
-    html += "<table>\n"
+    html += "<table class='large'>\n"
     html += "<tr>\n"
     for header in headers:
         html += f"<th>{header}</th>\n"
@@ -151,12 +183,52 @@ def table_html(df):
     html += "</table>\n"
     return html
 
+def table_html_simple(df):
+    headers = ["Tijd", "", "golven", "wind"]
+
+    # header
+    html =  head + "\n<body>"
+    with open("website-components/tableFilterNow.js", 'r') as fp:
+        html += "\n<script>\n" + fp.read() + "\n</script>\n"
+    html += "<table id='timeTable' class='widget'>\n"
+    html += "<tr>\n"
+    for header in headers:
+        html += f"<th>{header}</th>\n"
+    html += "</tr>\n"
+
+    # rows
+    df = df.between_time('08:00', '17:00')
+    for index, row in df.iterrows():
+        color = hex_colors[round(row['rating'])-1]
+        color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
+
+        html += f"<tr data-time='{index}'>\n"
+        html += f"\t<td>{index.strftime('%H:%M')}</td>\n"
+        html += f"\t<td> {color_bar} <h3>{round_off_rating(row['rating']):.1f}</h3></td>\n"
+
+        html += f"<td>{row['waveHeight']:.1f} <i class='unit'>m</i></td>"
+
+        html += f"\t<td>{row['windSpeed']*3.6:.0f}  <i class='unit'>km/h</i>"
+        html += f"{html_arrow(row['windDirection'])}</td>"
+
+        # html += f"\t<td>{10*round(10*row['NAP']):.0f} <i class='unit'>cm</i></td>"
+
+        # html += "<td>"
+        # perks = perk_identification(row)
+        # html += replace_last_comma_by_and(", ".join(perks))
+        # html += "</td>"
+
+        html += "</tr>\n"
+    html += "</table>\n"
+    html += "</body>\n"
+    return html
+
 
 def table_html_search(dfs):
     headers = ["Tijd"] + [df.name for df in dfs]
 
     # header
-    html = style
+    html = head
     html += f"<h2> {df[0].index[0].strftime('%A, %d-%m')} </h2>"
     html += "<table>\n"
     html += "<tr>\n"
@@ -171,6 +243,8 @@ def table_per_day(df, function):
 
     html = ""
     for df_day in df_days:
+        if len(df_day) == 0:
+            continue
         html += function(df_day)
     return html
 
@@ -181,12 +255,16 @@ def write_table_per_day(df, spot_name, function=table_html):
         fp.write(html)
 
 
+def write_simple_table_per_day(df, spot_name):
+    html = table_html_simple(df)
+    with open(website_folder / "tables_widget" / f"table_{spot_name}.html", "w") as fp:
+        fp.write(html)
+
+
 if __name__ == "__main__":
     df = pd.read_pickle("df.pkl")
 
-    html = table_per_day(df, table_html)
-    with open("table_ZV.html", "w") as fp:
-        fp.write(html)
+    html = write_simple_table_per_day(df, "ZV")
 
     # table_per_day(df, "ZV")
 
