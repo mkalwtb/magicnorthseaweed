@@ -1,4 +1,4 @@
-from math import radians, cos, sin
+from math import radians, cos, sin, floor
 from typing import List
 
 import pandas as pd
@@ -93,8 +93,8 @@ head = """
 """
 
 def round_off_rating(number):
-    # return number
-    return round(number * 2) / 2
+    return number
+    # return round(number * 2) / 2
 
 
 def replace_last_comma_by_and(string):
@@ -155,7 +155,7 @@ def table_html(df):
     # rows
     df = df.between_time('08:00', '17:00')
     for index, row in df.iterrows():
-        color = hex_colors[round(row['rating'])-1]
+        color = hex_colors[floor(row['rating'])-1]
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
 
         html += "<tr>\n"
@@ -199,7 +199,7 @@ def table_html_simple(df):
     # rows
     df = df.between_time('08:00', '17:00')
     for index, row in df.iterrows():
-        color = hex_colors[round(row['rating'])-1]
+        color = hex_colors[floor(row['rating'])-1]
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
 
         html += f"<tr data-time='{index}'>\n"
@@ -255,7 +255,7 @@ def write_table_per_day(df, spot_name, function=table_html):
         fp.write(html)
 
 
-def write_simple_table_per_day(df, spot_name):
+def write_simple_table(df, spot_name):
     html = table_html_simple(df)
     with open(website_folder / "tables_widget" / f"table_{spot_name}.html", "w") as fp:
         fp.write(html)
@@ -264,7 +264,7 @@ def write_simple_table_per_day(df, spot_name):
 if __name__ == "__main__":
     df = pd.read_pickle("df.pkl")
 
-    html = write_simple_table_per_day(df, "ZV")
+    html = write_simple_table(df, "ZV")
 
     # table_per_day(df, "ZV")
 

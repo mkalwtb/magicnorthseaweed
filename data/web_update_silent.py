@@ -10,6 +10,7 @@ if __name__ == '__main__':
         data = spot.surf_rating(cache=False)
         datas.append(data)
         plotting2.write_table_per_day(data, spot.name)
+        plotting2.write_simple_table(data, spot.name)
         plot_forecast(data, spot, perks_plot=True)
         save_to_web(spot.name)
 

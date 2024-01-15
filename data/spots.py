@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass, fields
 from matplotlib import pyplot as plt
 
-from data.models import Model, MODELS
+from models import Model, MODELS
 from plotting import plot_forecast
 
 import surffeedback, stormglass
