@@ -139,15 +139,16 @@ def load_data(name: str):
 
 def append_historical_data(name, lat, long, data_new):
     """Only function with writing acces"""
-    file = Path(f'stormglass/data_{lat}_{long}.pkl')
+    file = Path(f'stormglass/data_{name}.pkl')
     now = datetime.now()
     data_db = load_data(name)
     tz = data_new.index.tz
     now_pd = pd.to_datetime(now, utc=tz)
     data_new_historical = data_new[data_new.index <= now_pd]
-    data = pd.concat([data_db, data_new_historical], axis=0)
+    data_new_historical = data_new_historical.dropna()
+    data_total = pd.concat([data_db, data_new_historical], axis=0)
     if len(data_new) > 0:  # save data
-        data.to_pickle(file)
+        data_total.to_pickle(file)
     return data_new
 
 

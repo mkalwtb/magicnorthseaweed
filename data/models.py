@@ -4,6 +4,7 @@ from typing import List
 
 import pandas as pd
 import xgboost as xgb
+from cleanlab.regression.learn import CleanLearning
 from matplotlib import pyplot as plt
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
@@ -29,19 +30,39 @@ class Model:
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
-        self.model = xgb.XGBRegressor(objective='reg:squarederror')
+        self.model = xgb.XGBRegressor(objective='reg:squarederror', max_depth=3)
         self.model.fit(X_train, y_train)
 
-        y_pred = self.model.predict(X_test)
+        y_pred_test = self.model.predict(X_test)
+        y_pred_train = self.model.predict(X_train)
 
-        mse = mean_squared_error(y_test, y_pred)
+        mse_train = mean_squared_error(y_train, y_pred_train)
+        mse_test = mean_squared_error(y_test, y_pred_test)
 
-        print(f'Mean Squared Error {perk}: {mse:.2f} (from {len(dfs)} feedback entries)')
+
         if verbose:
-            for i in range(len(y_test)):
-                print('real:', y_test[i], 'pred:', y_pred[i])
+            print(f'RMS {perk}: train={mse_train:.2f}, test={mse_test:.2f} (from {len(dfs)} feedback entries)')
         if save:
             self.save_model()
+        return mse_test
+
+    def train_best(self, spots, perk: str, channels: List[str], verbose=True, save=True, match_all_feedback_times=True, attempts=10):
+        model_best = None
+        rms_best = 9999
+        for i in range(attempts):
+            rms = self.train(spots, perk=perk, channels=channels, save=False, verbose=True, match_all_feedback_times=match_all_feedback_times)
+            model = self.model
+            if rms < rms_best:
+                rms_best = rms
+                model_best = model
+                if save:
+                    self.save_model()
+                if verbose:
+                    print(f"new best model: {perk}:\t{rms:.2f}")
+        self.model = model_best
+
+    def clean_model(self):
+        self.model = CleanLearning(self.model)
 
     def _load_model(self):
         if not self.model_file.is_file():
@@ -57,6 +78,10 @@ class Model:
     @property
     def model_file(self):
         return Path(f"AI-models/model_XGBRegressor_ZV_{self.perk}.pkl")  # todo remove ZV
+
+    def plot_model(self):
+        xgb.plot_tree(self.model)
+        plt.show()
 
 input_columns = ['wavePeriod', 'waveHeight', 'windSpeed', 'windWaveHeight',
        'currentSpeed', 'NAP', 'waveOnshore', 'waveSideshore', 'windOnshore',

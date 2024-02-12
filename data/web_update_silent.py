@@ -16,5 +16,6 @@ if __name__ == '__main__':
 
     plot_all(spots, datas, perks_plot=False)
     save_to_web("all")
+    print(tabulate(datas[0], headers='keys'))
 
     # plt.show()

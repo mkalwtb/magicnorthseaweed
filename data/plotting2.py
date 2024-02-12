@@ -111,25 +111,30 @@ def perk_identification(row):
     perks = []
     # if row["krachtig"] > 2:
     #     perks.append("krachtig")
+    if row["rating"] < 6:
+        return []
+
     if row["clean"] <= 1:
-        if row["hoog"] >= 2.5 and row["krachtig"] >= 2:
+        if row["hoog"] >= 2.25:
             perks.append("stormachtig")
-        elif row["hoog"] >= 1.5:
-            perks.append("klotsbak")
         else:
-            perks.append("rommel")
+            perks.append("klotsbak")
     elif row["clean"] >= 2:
         perks.append("clean")
 
     if row["hoog"] <= 0.3:
         perks.append("flat")
-    elif row["hoog"] <= 1.2:
+    elif row["hoog"] <= 1.0:
         perks.append("klein")
     elif row["hoog"] >= 2:
         perks.append("hoog")
 
-    if row["stroming"] > 2:
+    if row["stroming"] >= 2:
         perks.append("stroming")
+    if row["windy"] >= 2:
+        perks.append("winderig")
+    if row["stijl"] >= 2:
+        perks.append("stijl")
     return perks
 
 def html_arrow(angle):
@@ -229,7 +234,7 @@ def table_html_search(dfs):
 
     # header
     html = head
-    html += f"<h2> {df[0].index[0].strftime('%A, %d-%m')} </h2>"
+    html += f"<h2> {dfs[0].index[0].strftime('%A, %d-%m')} </h2>"
     html += "<table>\n"
     html += "<tr>\n"
     for header in headers:
