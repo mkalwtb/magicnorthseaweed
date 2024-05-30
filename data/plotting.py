@@ -2,6 +2,9 @@ import pandas as pd
 from pathlib import Path
 from matplotlib import pyplot as plt
 import matplotlib.dates as mdates
+
+from data.surffeedback import hoeveelheden_hoogtev2
+
 mxFmt_major = mdates.DateFormatter('%A, %d-%m')
 mxFmt_minor = mdates.DateFormatter('%H')
 
@@ -11,6 +14,7 @@ perk_levels = ["niet", "beetje", "best", "heel"]
 
 y_labels_main = {
     "rating": "Surf rating",
+    "hoogte-v2": "Surf hoogte",
     "waveHeight": "Golven [m]",
     "wavePeriod": "Periode [s]",
     "windSpeed": "Wind [m/s]",
@@ -86,6 +90,9 @@ def plot_forecast(data: pd.DataFrame, spot, fig=None, axs=None, perks_plot=False
         if key in perks:
             ax.set_ylim([0, 3])
             ax.set_yticklabels(perk_levels)
+        # if key == "hoogte-v2":
+        #     ax.set_ylim([0, len(hoeveelheden_hoogtev2)])
+            # ax._axes_locator(hoeveelheden_hoogtev2)
 
 
         ax.xaxis.set_tick_params(which='major', pad=10)

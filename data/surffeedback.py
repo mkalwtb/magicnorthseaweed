@@ -14,13 +14,23 @@ column_names = {
     "hoog": "Hoe was de surf? Alleen invullen bij een nat pak (: [Hoog]",
     "windy": "Hoe was de surf? Alleen invullen bij een nat pak (: [Windy]",
     "rating": "Hoe goed was de surf?",
-    "spot": "Spot"
+    "spot": "Spot",
+    "hoogte-v2": "Hoe hoog was het?",
+
 }
 
 colums_delete = ["Hoe was de surf? Alleen invullen bij een nat pak (: [Mellow]", "E-mailadres"]
 
 column_names_swapped = dict((v, k) for k,v in column_names.items())
 hoeveelheden = ["Helemaal niet", "Een beetje", "Best wel", "Heel erg"]
+
+hoeveelheden_hoogtev2 = ["Flat", "Knie-hoog", "Heup-hoog", "Navel-hoog", "Borst-hoog", "Schouder-hoog", "Head-hoog", "Overhead"]
+hoeveelheden_hoogtev2_view = ["flat", "knie", "heup", "navel", "borst", "schouder", "head", "overhead"]
+def hoogte_label(hoogte):
+    if hoogte > len(hoeveelheden_hoogtev2)-1:
+        hoogte = len(hoeveelheden_hoogtev2)-1
+    hoogte = round(hoogte)
+    return hoeveelheden_hoogtev2_view[hoogte]
 
 
 def rename_columns(columns):
@@ -32,6 +42,8 @@ def rename_columns(columns):
 
 def text_to_value(data: pd.DataFrame) -> pd.DataFrame:
     for waarde, text in enumerate(hoeveelheden):
+        data = data.replace(to_replace=text, value=waarde)
+    for waarde, text in enumerate(hoeveelheden_hoogtev2):
         data = data.replace(to_replace=text, value=waarde)
     return data
 

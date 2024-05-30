@@ -3,6 +3,8 @@ from typing import List
 
 import pandas as pd
 from tabulate import tabulate
+
+from data.surffeedback import hoeveelheden_hoogtev2, hoeveelheden_hoogtev2_view, hoogte_label
 from plotting import angle_to_direction
 from plotting import website_folder
 
@@ -118,23 +120,16 @@ def perk_identification(row):
         if row["hoog"] >= 2.25:
             perks.append("stormachtig")
         else:
-            perks.append("klotsbak")
+            perks.append("klotsbafk")
     elif row["clean"] >= 2:
         perks.append("clean")
-
-    if row["hoog"] <= 0.3:
-        perks.append("flat")
-    elif row["hoog"] <= 1.0:
-        perks.append("klein")
-    elif row["hoog"] >= 2:
-        perks.append("hoog")
 
     if row["stroming"] >= 2:
         perks.append("stroming")
     if row["windy"] >= 2:
         perks.append("winderig")
-    if row["stijl"] >= 2:
-        perks.append("stijl")
+    # if row["stijl"] >= 2:
+    #     perks.append("stijl")
     return perks
 
 def html_arrow(angle):
@@ -144,9 +139,9 @@ def html_arrow(angle):
     # return f"<i  class='fa fa-arrow-left' style='transform: rotate({angle+180:.0f}deg);'></i>"
 
 def table_html(df, spot):
-    columns_df = ["rating", "waveHeight", "wavePeriod", "windSpeed"]
+    columns_df = ["rating", "waveHeight", "wavePeriod", "windSpeed", "hoogte-v2"]
     # columns = ["rating", "waveHeight", "waveDirection", "wavePeriod", "windSpeed", "windDirection"]
-    headers = ["Tijd", "rating", "golven", "wind", "getij", "beschrijving"]
+    headers = ["Tijd", "rating", "swell", "wind", "getij", "hoogte", "beschrijving"]
 
     # header
     html = head
@@ -158,7 +153,7 @@ def table_html(df, spot):
     html += "</tr>\n"
 
     # rows
-    df = df.between_time('07:00', '19:00')
+    df = df.between_time('06:00', '21:00')
     for index, row in df.iterrows():
         color = hex_colors[floor(row['rating'])-1]
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
@@ -179,6 +174,9 @@ def table_html(df, spot):
 
         html += f"\t<td>{10*round(10*row['NAP']):.0f} <i class='unit'>cm</i></td>"
 
+        hoogtev2 = hoogte_label(row["hoogte-v2"])
+        html += f"\t<td>{hoogtev2}</td>\n"
+
         html += "<td>"
         perks = perk_identification(row)
         html += replace_last_comma_by_and(", ".join(perks))
@@ -188,8 +186,8 @@ def table_html(df, spot):
     html += "</table>\n"
     return html
 
-def table_html_simple(df):
-    headers = ["Tijd", "", "golven", "wind"]
+def table_html_simple(df, spot):
+    headers = [spot.name, "", "hoogte", "wind"]
 
     # header
     html =  head + "\n<body>"
@@ -211,7 +209,8 @@ def table_html_simple(df):
         html += f"\t<td>{index.strftime('%H:%M')}</td>\n"
         html += f"\t<td> {color_bar} <h3>{round_off_rating(row['rating']):.1f}</h3></td>\n"
 
-        html += f"<td>{row['waveHeight']:.1f} <i class='unit'>m</i></td>"
+        hoogtev2 = hoogte_label(row["hoogte-v2"])
+        html += f"\t<td>{hoogtev2}</td>\n"
 
         html += f"\t<td>{row['windSpeed']*3.6:.0f}  <i class='unit'>km/h</i>"
         html += f"{html_arrow(row['windDirection'])}</td>"
@@ -261,7 +260,7 @@ def write_table_per_day(df, spot, function=table_html):
 
 
 def write_simple_table(df, spot):
-    html = table_html_simple(df)
+    html = table_html_simple(df, spot)
     with open(website_folder / "tables_widget" / f"table_{spot.name}.html", "w") as fp:
         fp.write(html)
 

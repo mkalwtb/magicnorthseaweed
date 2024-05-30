@@ -210,8 +210,8 @@ spots = [wijk, ZV, ijmuiden, camperduin, scheveningen, texel_paal17, Wadduwa, La
 if __name__ == '__main__':
     # Train models
     attenpts = 10
-    rating = MODELS[0]
-    rating.train_best(spots, perk=rating.perk, channels=rating.channels, save=False, verbose=True, attempts=attenpts)
+    rating = MODELS[2]
+    # rating.train_best(spots, perk=rating.perk, channels=rating.channels, save=True, verbose=True, attempts=attenpts)
     # for model in MODELS:
     #     model.train_best(spots, perk=model.perk, channels=model.channels, save=True, attempts=attenpts)
 

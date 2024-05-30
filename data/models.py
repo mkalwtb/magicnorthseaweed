@@ -46,6 +46,27 @@ class Model:
             self.save_model()
         return mse_test
 
+
+    @classmethod
+    def train_new(cls, spots, perk: str, channels: List[str], verbose=False, save=True, match_all_feedback_times=True):
+        # double with train. Temp.
+        dfs = pd.DataFrame()
+        for spot in spots:
+            df = spot.combined(only_spot_data=True, match_all_feedback_times=match_all_feedback_times,
+                               fb_columns=perk)
+            dfs = pd.concat([df, dfs])
+
+        dfs = dfs[channels + [perk]]
+        X = dfs.drop(perk, axis=1)
+        y = dfs[perk]
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+        model = xgb.XGBRegressor(objective='reg:squarederror', max_depth=3)
+        model.fit(X_train, y_train)
+        return cls(perk, channels, model=model)
+
+
     def train_best(self, spots, perk: str, channels: List[str], verbose=True, save=True, match_all_feedback_times=True, attempts=10):
         model_best = None
         rms_best = 9999
@@ -91,6 +112,7 @@ input_columns = ['wavePeriod', 'waveHeight', 'windSpeed', 'windWaveHeight',
 forecast_columns = {
     "rating": ['waveEnergy', 'wavePeriod', 'windWaveHeight2', 'NAP', 'windMagOnShore', 'shelterWind', 'seaRise'],
     "hoog": ['waveEnergy', 'wavePeriod', 'seaRise'],
+    "hoogte-v2": ['waveEnergy', 'wavePeriod', 'seaRise'],
     "clean": ['windMagOnShore', 'waveEnergy', 'windWaveHeight2', 'shelterWind'],
     "krachtig": ['waveEnergy', 'NAP', 'seaRise'],
     "stijl": ['waveEnergy', 'wavePeriod', 'NAP', 'windMagOnShore', 'shelterWind'],
@@ -98,13 +120,15 @@ forecast_columns = {
     "windy": ['windMagOnShore', 'windSpeed', 'shelterWind'],
 }
 
+hoog2_forecase_cols = ['waveEnergy', 'waveHeight', 'wavePeriod', 'seaRise']
+
 MODELS = []
 for perk, in_columns in forecast_columns.items():
     model = Model(perk, channels=in_columns)
     MODELS.append(model)
 
 if __name__ == "__main__":
-    model = MODELS[0]
+    model = MODELS[2]
     xgb.plot_tree(model.model, num_trees=3)
     fig = plt.gcf()
     fig.set_size_inches(150, 100)
