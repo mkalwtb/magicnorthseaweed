@@ -6,7 +6,7 @@ from tabulate import tabulate
 
 if __name__ == '__main__':
     datas = []
-    for spot in spots:  # [ijmuiden]:
+    for spot in [ijmuiden]:  # [ijmuiden]:
         data = spot.surf_rating(cache=True)
         data.name = spot.name
         # csv = data.to_csv()

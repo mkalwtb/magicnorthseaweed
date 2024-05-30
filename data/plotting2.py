@@ -62,7 +62,7 @@ head = """
         display: inline-block;
     }
     .large {
-        min-width: 600px;
+        min-width: 700px;
     }
     .widget {
         width: 100%;
@@ -120,7 +120,7 @@ def perk_identification(row):
         if row["hoog"] >= 2.25:
             perks.append("stormachtig")
         else:
-            perks.append("klotsbafk")
+            perks.append("klotsbak")
     elif row["clean"] >= 2:
         perks.append("clean")
 

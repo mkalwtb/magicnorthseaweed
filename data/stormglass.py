@@ -96,7 +96,7 @@ def json_to_df(json_data, manual_source=True):
   # Create a Pandas DataFrame
   df = pd.DataFrame.from_dict(hourly_data, orient='index')
   df.index = pd.to_datetime(df.index)
-  df.index = df.index.tz_convert(pytz.timezone('CET')) # todo 1 hour wrong?
+  # df.index = df.index.tz_convert(pytz.timezone('CET')) # todo 1 hour wrong?
   return df
 
 

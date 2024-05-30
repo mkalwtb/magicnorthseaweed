@@ -29,6 +29,8 @@ hoeveelheden_hoogtev2_view = ["flat", "knie", "heup", "navel", "borst", "schoude
 def hoogte_label(hoogte):
     if hoogte > len(hoeveelheden_hoogtev2)-1:
         hoogte = len(hoeveelheden_hoogtev2)-1
+    if hoogte < 0:
+        hoogte = 0
     hoogte = round(hoogte)
     return hoeveelheden_hoogtev2_view[hoogte]
 
