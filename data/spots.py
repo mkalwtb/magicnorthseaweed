@@ -5,6 +5,8 @@ import datetime
 import re
 from dataclasses import dataclass, fields
 from matplotlib import pyplot as plt
+import xgboost as xgb
+from suntime import Sun
 
 from models import Model, MODELS
 from plotting import plot_forecast
@@ -118,15 +120,22 @@ class Spot:
         data = enrich_input_data(data, self)
         return data
 
-    def combined(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True, fb_columns: str=None):
+    @staticmethod
+    def _pims_hindcast_input():
+        return pd.read_pickle(r"RWS/test.pkl")
+
+    def combined(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True, fb_columns: str=None, pim=False):
         """Combined surf statistics and feedback form"""
-        input = self._hindcast_input()
+        if pim:
+            input = self._pims_hindcast_input()
+        else:
+            input = self._hindcast_input()
         output = self.feedback(only_spot_data=only_spot_data)
         data = deepcopy(input)
         self.add_spot_info(data)
 
         if not fb_columns:
-            fb_columns = output.forecast_columns
+            fb_columns = output.columns
         data[fb_columns] = np.nan
 
         for index, row in output.iterrows():
@@ -191,19 +200,25 @@ camperduin = Spot(richting=270, name="Camperduin", lat=52.723113, long=4.639215,
 texel_paal17 = Spot(richting=305, name="Texel17", lat=53.081695, long=4.733450, db_name="ZV", spot_info=strand)
 
 wijk = Spot(richting=295, name="Wijk", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_links)  # todo set lat, long, en richting
-ijmuiden = Spot(richting=250, name="Ijmuiden", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_rechts)  # todo set lat, long, en richting
+ijmuiden = Spot(richting=260, name="Ijmuiden", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_rechts)  # todo set lat, long, en richting
+Wadduwa = Spot(richting=240, name="Wadduwa", lat=6.625524189426171, long=79.93779864874834, db_name="ZV", spot_info=strand)
+Lavinia = Spot(richting=265, name="Lavinia", lat=6.848208867737467, long=79.85826985402555, db_name="ZV", spot_info=strand)
 
 # spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
-spots = [wijk, ZV, ijmuiden, camperduin, scheveningen, texel_paal17]
+spots = [wijk, ZV, ijmuiden, camperduin, scheveningen, texel_paal17, Wadduwa, Lavinia]
 
 if __name__ == '__main__':
     # Train models
-    for model in MODELS:
-        model.train(spots, perk=model.perk, channels=model.channels, save=True)
+    attenpts = 10
+    rating = MODELS[0]
+    rating.train_best(spots, perk=rating.perk, channels=rating.channels, save=False, verbose=True, attempts=attenpts)
+    # for model in MODELS:
+    #     model.train_best(spots, perk=model.perk, channels=model.channels, save=True, attempts=attenpts)
 
 
-    df = wijk.surf_rating(cache=True)
-    plot_forecast(df, wijk, perks_plot=True)
+    spot = ZV
+    df = spot.surf_rating(cache=True)
+    plot_forecast(df, spot, perks_plot=True)
 
     # df = ZV.surf_rating(cache=True)
     # plot_forecast(df, ZV, perks_plot=True)
@@ -211,6 +226,8 @@ if __name__ == '__main__':
     # df = ijmuiden.surf_rating(cache=True)
     # plot_forecast(df, ijmuiden, perks_plot=True)
     plt.show()
+
+    rating.plot_model()
 
 
 

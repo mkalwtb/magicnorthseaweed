@@ -143,7 +143,7 @@ def html_arrow(angle):
     # return f"<b title='{angle_name} ({angle:.0f} deg)' style='height: 18px; transform: rotate({angle+180:.0f}deg);'>&uarr;</b>"
     # return f"<i  class='fa fa-arrow-left' style='transform: rotate({angle+180:.0f}deg);'></i>"
 
-def table_html(df):
+def table_html(df, spot):
     columns_df = ["rating", "waveHeight", "wavePeriod", "windSpeed"]
     # columns = ["rating", "waveHeight", "waveDirection", "wavePeriod", "windSpeed", "windDirection"]
     headers = ["Tijd", "rating", "golven", "wind", "getij", "beschrijving"]
@@ -158,7 +158,7 @@ def table_html(df):
     html += "</tr>\n"
 
     # rows
-    df = df.between_time('08:00', '17:00')
+    df = df.between_time('07:00', '19:00')
     for index, row in df.iterrows():
         color = hex_colors[floor(row['rating'])-1]
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
@@ -242,7 +242,7 @@ def table_html_search(dfs):
     html += "</tr>\n"
     pass
 
-def table_per_day(df, function):
+def table_per_day(df, spot, function):
     df_days = [group[1] for group in df.groupby(df.index.date)]
     # table(df_days[1])
 
@@ -250,19 +250,19 @@ def table_per_day(df, function):
     for df_day in df_days:
         if len(df_day) == 0:
             continue
-        html += function(df_day)
+        html += function(df_day, spot)
     return html
 
 
-def write_table_per_day(df, spot_name, function=table_html):
-    html = table_per_day(df, function)
-    with open(website_folder / "tables" / f"table_{spot_name}.html", "w") as fp:
+def write_table_per_day(df, spot, function=table_html):
+    html = table_per_day(df, spot, function)
+    with open(website_folder / "tables" / f"table_{spot.name}.html", "w") as fp:
         fp.write(html)
 
 
-def write_simple_table(df, spot_name):
+def write_simple_table(df, spot):
     html = table_html_simple(df)
-    with open(website_folder / "tables_widget" / f"table_{spot_name}.html", "w") as fp:
+    with open(website_folder / "tables_widget" / f"table_{spot.name}.html", "w") as fp:
         fp.write(html)
 
 

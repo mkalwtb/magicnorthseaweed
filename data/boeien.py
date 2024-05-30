@@ -1,221 +1,255 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 from pathlib import Path
-from rijkswaterstaat import Boei, BoeiData
+import numpy as np
 
-"""
-Om de boei data op te zoeken:
-1. Ga naar https://waterinfo.rws.nl/#!/details/publiek/waterhoogte/
-2. Selecteer de boei & data die je wil
-3. click Export/Delen
-4. Right click op CSV
-5. copy link adress
-6. Extract de parameter=... en location_slug=... en time_horizon=...
-7. Indien nodig, open de csv file en kijk hoe de colom heet. Normaal is dit Waarde
-"""
+class Boei:
+    location_slug: str
+    waterinfo_code: str
+    donar_code: str
+    knmi_code: str
+    swan_code: str
+    lon: float
+    lat: float
+    input_or_output: str
+    def __init__(self, location_slug: str, waterinfo_code: str, donar_code: str, knmi_code: str, swan_code: str, lon: float, lat: float, input_or_output: str, seq_offset: str):
+        self.location_slug: str = location_slug
+        self.waterinfo_code: str = waterinfo_code
+        self.donar_code: str = donar_code
+        self.knmi_code: str = knmi_code
+        self.swan_code: str = swan_code
+        self.lon: float = lon
+        self.lat: float = lat
+        self.input_or_output: str = input_or_output
+        self.seq_offset: str = seq_offset
 
-time_48h48h = "-48,48"
-time_48h0h = "-48,0"
-time_28d = "-672,0"
-timing = time_28d
+ijmuiden = Boei(
+                location_slug= "IJgeul-stroommeetpaal(SPY)",
+                waterinfo_code = "SPY",
+                donar_code = "IJMDSMPL",
+                knmi_code = "IJmond",
+                swan_code = "SPY",
+                lon=4.517361,
+                lat=52.463736,
+                input_or_output = "output",
+                seq_offset = False
+                )
 
-ijmuiden = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                             parameter="Significante___20golfhoogte___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20cm",
-                             location_slug="IJgeul(IJGL)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                             parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
-                             location_slug="IJgeul-stroommeetpaal(SPY)"),
-                    BoeiData(name="wind-speed",
-                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                             location_slug="IJmuiden-Buitenhaven(IJMH)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wind-dir",
-                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                             location_slug="IJmuiden-Buitenhaven(IJMH)",
-                             col_past="Windrichting"),
-                    BoeiData(name="tide-height",
-                             parameter="Waterhoogte___20Oppervlaktewater___20t.o.v.___20Normaal___20Amsterdams___20Peil___20in___20cm",
-                             location_slug="IJmuiden-Buitenhaven(IJMH)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
-                             parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                             location_slug="IJgeul-Munitiestort-1(MUN1)",
-                             future_unavailable=True)
-                ],
-                location_slug="IJmuiden-Buitenhaven(IJMH)",
-                N=52.474773,
-                E=4.535204)
+ijgeul = Boei(
+                location_slug="IJgeul(IJGL)",
+                waterinfo_code = "IJGL",
+                donar_code = "IJMDN05",
+                knmi_code = False,
+                swan_code = "IJGL",
+                lon=4.33293,
+                lat=52.48144,
+                input_or_output = "input",
+                seq_offset = 3
+                )
 
-K13 = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                             parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                             location_slug="K13-Alpha(K13)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                             parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
-                             location_slug="K13-Alpha(K13)"),
-                    BoeiData(name="wind-speed",
-                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                             location_slug="K13-Alpha(K13)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
-                             parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                             location_slug="K13-Alpha(K13)",
-                             future_unavailable=True)
-                ],
+F3 = Boei(
+                location_slug="F3-platform(F3)",
+                waterinfo_code = "F3",
+                donar_code = "F3PFM",
+                knmi_code = 'platform F3 locatie FD2',
+                swan_code = "F003",
+                lon= 4.696111,
+                lat= 54.853889,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+D15 = Boei(
+                location_slug="D15-platform(D15)",
+                waterinfo_code = "D15",
+                donar_code = False, #donar_code geeft geen informatie
+                knmi_code = 'platform D15-FA-1 locatie DV', #'platform D15-FA-1 locatie DV1' 'platform D15-FA-1 locatie DV2',
+                swan_code = "D151",
+                lon= 2.935833,
+                lat= 54.325556,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+L9 = Boei(
+                location_slug="L9-platform(L9)",
+                waterinfo_code = "L9",
+                donar_code = "L9PFM",
+                knmi_code = 'platform L9-FF-1 locatie MG', #'platform L9-FF-1 locatie MG1' 'platform L9-FF-1 locatie MG2',
+                swan_code = "L9",
+                lon= 4.960278,
+                lat= 53.614444,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+eierlandse_gat = Boei(
+                location_slug="Eierlandse-Gat-boei(ELD1)-1",
+                waterinfo_code = "ELD1",
+                donar_code = "EIELSGT",
+                knmi_code = False,
+                swan_code = "ELD",
+                lon= 4.641966,
+                lat= 53.285332,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+munitiestort = Boei(
+                location_slug="IJgeul-Munitiestort-1(MUN1)",
+                waterinfo_code = "MUN1",
+                donar_code = "IJMDMNTSPS",
+                knmi_code = False,
+                swan_code = "MUNS",
+                lon=4.081380001,
+                lat=52.55909,
+                input_or_output = "input",
+                seq_offset = 6 * 1
+                )
+
+maasvlakte = Boei(
+                location_slug="Maasgeul-Maasvlakte-Noord(MMND)",
+                waterinfo_code = "MMND",
+                donar_code = "MAASMSMPL",
+                knmi_code = False,
+                swan_code = "MG04",
+                lon=3.98961,
+                lat=52.00401,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+K13 = Boei(
                 location_slug="K13-Alpha(K13)",
-                N=53.586792,
-                E=3.075473)
+                waterinfo_code = "K13",
+                donar_code = "K13APFM",
+                knmi_code =  'platform K13 locatie 0', # 'platform K13 locatie 1' "platform K13 locatie 2"
+                swan_code = "K13",
+                lon=3.218932,
+                lat=53.21701,
+                input_or_output = "input",
+                seq_offset = 6 * 4
+                )
 
-A12 = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                             parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                             location_slug="A12-platform(A12)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                             parameter="Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s",
-                             location_slug="A12-platform(A12)"),
-                    BoeiData(name="wind-speed",
-                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                             location_slug="A12-platform(A12)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
-                             parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                             location_slug="A12-platform(A12)",
-                             future_unavailable=True)
-                ],
+A12 = Boei(
                 location_slug="A12-platform(A12)",
-                N=55.108640,
-                E=3.738921)
+                waterinfo_code = "A12",
+                donar_code = "A12",
+                knmi_code = "platform A12-CPP locatie AK", #'platform A12-CPP locatie AK1' 'platform A12-CPP locatie AK2'
+                swan_code = "A121",
+                lon=3.816671,
+                lat=55.416663,
+                input_or_output = "input",
+                seq_offset = 0
+                )
 
-
-EPL = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                             parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                             location_slug="Europlatform(EPL)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-period",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Golfperiode___20bepaald___20uit___20de___20spectrale___20momenten___20m0___20en___20m2___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20s&locationSlug=IJgeul-stroommeetpaal(SPY)&timehorizon=-672,0                          col_past="Waarde",
-                             parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
-                             location_slug="Europlatform(EPL)"),
-                    BoeiData(name="wind-speed",
-                             parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                             location_slug="Europlatform(EPL)",
-                             col_future="Verwachting"),
-                    BoeiData(name="wave-dir",  # https://waterinfo.rws.nl/api/CsvDownload/CSV?expertParameter=Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad&locationSlug=IJgeul-Munitiestort-1(MUN1)&timehorizon=-48,0
-                             parameter="Gemiddelde___20golfrichting___20in___20het___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20500___20mHz___20in___20graad",
-                             location_slug="Europlatform(EPL)",
-                             future_unavailable=True)
-                ],
+EPL = Boei(
                 location_slug="Europlatform(EPL)",
-                N=55.108640,
-                E=3.738921)
+                waterinfo_code = "EPL",
+                donar_code = "EURPFM",
+                knmi_code = "Europlatform locatie 0", #'Europlatform locatie 1' 'Europlatform locatie 2'
+                swan_code = "EUGL",
+                lon=3.275075,
+                lat=51.997801,
+                input_or_output = "input",
+                seq_offset = 6 * 3
+                )
 
-K14 = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                        location_slug="K14-platform(K14)",
-                        col_future="Verwachting"),
-                    BoeiData(name="wave-period",
-                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
-                          location_slug="K14-platform(K14)"),
-                    BoeiData(name="wind-speed",
-                          parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                          location_slug="K14-platform(K14)",
-                          col_future="Verwachting"),
-                    BoeiData(name="wind-dir",
-                             parameter="Windrichting___20Lucht___20t.o.v.___20ware___20Noorden___20in___20graad",
-                             location_slug="K14-platform(K14)",
-                             col_past="Windrichting")
-                    #wave direction niet beschikbaar
-                ],
+K14 = Boei(
                 location_slug="K14-platform(K14)",
-                # EPSG=25831,
-                N=542240.426,
-                E=5902123.137)
+                waterinfo_code = "K14",
+                donar_code = "K14PFM",
+                knmi_code = "platform K14-FA-1C locatie KV", #'platform K14-FA-1C locatie KV1' 'platform K14-FA-1C locatie KV2'
+                swan_code = False,
+                lon=3.63333,
+                lat=53.26667,
+                input_or_output = "input",
+                seq_offset = 0
+                )
 
-ijgeul_munitiestort = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                        location_slug="IJgeul-Munitiestort-2(MUN2)",
-                        col_future="Verwachting"),
-                    BoeiData(name="wave-period",
-                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
-                          location_slug="IJgeul-Munitiestort-2(MUN2)"),
-                    BoeiData(name="wave-dir",
-                          parameter="Gem.___20richting___20deining___20tov___20ware___20noorden___20in___20spectrale___20domein___20Oppervlaktewater___20golffrequentie___20tussen___2030___20en___20100___20mHz___20in___20graad",
-                          location_slug="IJgeul-Munitiestort-1(MUN1)",
-                          future_unavailable=True)
-                    #winddir & windpeed niet beschikbaar
-                ],
-                location_slug="IJgeul-Munitiestort-2(MUN2)",
-                # EPSG=25831,
-                N=573307.8064,
-                E=5823774.056)
-
-eurogeul_dwe = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                        location_slug="Eurogeul-DWE(DWE1)",
-                        col_future="Verwachting"),
-                    BoeiData(name="wave-period",
-                        parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
-                        location_slug="Eurogeul-DWE(DWE1)")
-                    #wavedir, winddir & windspeed niet beschikbaar
-                ],
+eurogeul_dwe = Boei(
                 location_slug="Eurogeul-DWE(DWE1)",
-                # EPSG=25831,
-                N=499928.52,
-                E=5755201.264)
+                waterinfo_code = "DWE1",
+                donar_code = "EURGDWE",
+                knmi_code = False,
+                swan_code = "DWE",
+                lon=2.99896,
+                lat=51.94752,
+                input_or_output = "input",
+                seq_offset = 0
+                )
 
-P11 = Boei(parameters=
-                [
-                    BoeiData(name="wind-speed",
-                        parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                        location_slug="P11-platform(P11)",
-                        col_future="Verwachting"),
-                    BoeiData(name="wind-dir",
-                        parameter="Windrichting___20Lucht___20t.o.v.___20ware___20Noorden___20in___20graad",
-                        location_slug="P11-platform(P11)",
-                        col_past="Windrichting"),
-                    #waveheight, period & wavedir niet beschikbaar
-                ],
+P11 = Boei(
                 location_slug = "P11-platform(P11)",
-                # EPSG=25831,
-                N =523256.2982,
-                E =5800986.612)
+                waterinfo_code = "P11",
+                donar_code = False,
+                knmi_code = "platform P11-B locatie PG", #'platform P11-B locatie PG1'
+                swan_code = False,
+                lon =3.341500001,
+                lat =52.35867,
+                input_or_output = "input",
+                seq_offset = 0
+                )
 
-J6 = Boei(parameters=
-                [
-                    BoeiData(name="wave-height",
-                        parameter="Gem.___20hoogte___20van___20hoogste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20cm",
-                        location_slug="J6-platform(J6)",
-                        col_future="Verwachting"),
-                    BoeiData(name="wave-period",
-                          parameter="Gem.___20golfperiode___20langste___201___2F3___20deel___20v.d.___20golven___20___28tijdsdomein___29___20Oppervlaktewater___20s",
-                          location_slug="J6-platform(J6)"),
-                    BoeiData(name="wind-speed",
-                        parameter="Windsnelheid___20Lucht___20t.o.v.___20Mean___20Sea___20Level___20in___20m___2Fs",
-                        location_slug="J6-platform(J6)",
-                        col_future="Verwachting"),
-                    BoeiData(name="wind-dir",
-                        parameter="Windrichting___20Lucht___20t.o.v.___20ware___20Noorden___20in___20graad",
-                        location_slug="J6-platform(J6)",
-                        col_past="Windrichting"),
-                    #wavedir niet beschikbaar
-                ],
+J6 = Boei(
                 location_slug = "J6-platform(J6)",
-                # EPSG=25831,
-                N =496708.7948,
-                E =5963121.522)
+                waterinfo_code = "J6",
+                donar_code = "J6",
+                knmi_code = "platform J6-A locatie JA", #'platform J6-A locatie JA1' 'platform J6-A locatie JA2'
+                swan_code = "J61",
+                lon =2.950010001,
+                lat =53.816632,
+                input_or_output = "input",
+                seq_offset = 0
+                )
 
-boeien = [ijmuiden, K13, A12, EPL, K14, eurogeul_dwe, P11, J6]
+brent_charlie_platform = Boei(
+                location_slug="Brent-Charlie-Platform(BTC1)",
+                waterinfo_code = "BTC1",
+                donar_code = "BRENTCLE",
+                knmi_code = False,
+                swan_code = False,
+                lon=1.721389999,
+                lat=61.09611,
+                input_or_output = "input",
+                seq_offset = 0
+                )
 
+gannet_platform = Boei(
+                location_slug="Gannet-platform-1(GAN1)",
+                waterinfo_code = "GAN1",
+                donar_code = False,
+                knmi_code = False,
+                swan_code = False,
+                lon=1,
+                lat=57.18503,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+nelson_platform = Boei(
+                location_slug="Nelson-platform1(NLS1)",
+                waterinfo_code = "NLS1",
+                donar_code = False,
+                knmi_code = False,
+                swan_code = False,
+                lon=1.144999999,
+                lat=57.66169,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+north_cormorant = Boei(
+                location_slug="North-Cormorant(NC1)",
+                waterinfo_code = "NC1",
+                donar_code = "NORTHCMRT",
+                knmi_code = False,
+                swan_code = False,
+                lon=1.166098999,
+                lat=61.338188,
+                input_or_output = "input",
+                seq_offset = 0
+                )
+
+boeien = [ijmuiden]
+#boeien = [ijmuiden, ijgeul, munitiestort, P11, eierlandse_gat, EPL, K14, eurogeul_dwe, K13, L9, J6, F3, D15, A12, gannet_platform, nelson_platform, brent_charlie_platform, north_cormorant]
