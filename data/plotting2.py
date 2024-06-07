@@ -233,6 +233,42 @@ def table_html_simple(df, spot):
     return html
 
 
+def weekoverzicht(datas):
+
+    n_hours_av = 3
+    datas_daily = [spot.rolling(n_hours_av).mean().resample('D').max() for spot in datas]
+    for data_daily, data in zip(datas_daily, datas):
+        data_daily["hoogte-v2"] = data["hoogte-v2"].rolling(n_hours_av).mean().resample('D').mean()
+
+    names = [spot.name for spot in datas]
+    rating = pd.concat([spot["rating"] for spot in datas_daily], axis=1, keys=names)
+    hooogte = pd.concat([spot["hoogte-v2"] for spot in datas_daily], axis=1, keys=names)
+
+    html = head
+    html += "<table>\n"
+    html += "<tr>\n"
+    html += "<th></th>\n"
+    for name in names:
+        html += f"<th>{name}</th>\n"
+    html += "</tr>\n"
+
+    for (index, row_rating), (_, row_hoogte) in zip(rating.iterrows(), hooogte.iterrows()):
+        html += "<tr>\n"
+        html += f"\t<td>{index.strftime('%A, %d-%m')}</td>\n"
+        for name in names:
+            print(row_rating[name])
+            color = hex_colors[floor(row_rating[name])-1]
+            hoogtev2 = hoogte_label(row_hoogte[name])
+            color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
+            html += f"\t<td style='text-align: left;'>{color_bar} <h3>{round_off_rating(row_rating[name]):.1f}</h3> {hoogtev2}</td>\n"
+
+        html += "</tr>\n"
+
+    html += "</table>\n"
+    with open(website_folder / "tables" / "weekoverzicht.html", "w") as fp:
+        fp.write(html)
+
+
 def table_html_search(dfs):
     headers = ["Tijd"] + [df.name for df in dfs]
 

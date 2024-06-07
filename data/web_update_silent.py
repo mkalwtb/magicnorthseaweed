@@ -7,7 +7,7 @@ from tabulate import tabulate
 if __name__ == '__main__':
     datas = []
     for spot in spots:  # [ijmuiden]:
-        data = spot.surf_rating(cache=False)
+        data = spot.surf_rating(cache=True)
         data.name = spot.name
         datas.append(data)
         plotting2.write_table_per_day(data, spot)
@@ -15,8 +15,7 @@ if __name__ == '__main__':
         # plot_forecast(data, spot, perks_plot=True)
         save_to_web(spot.name)
 
-    # plot_all(spots, datas, perks_plot=False)
-    save_to_web("all")
+    plotting2.weekoverzicht(datas)
 
     ZV = [data for data in datas if data.name == "ZV"][0]
     ZV_simple = ZV.resample('D').max()
