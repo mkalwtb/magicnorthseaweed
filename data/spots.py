@@ -195,17 +195,18 @@ pier_rechts = SpotInfo(pier=1)
 
 # Add all spots here
 ZV = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, db_name="ZV", spot_info=strand)
-scheveningen = Spot(richting=315, name="Schev", lat=52.108703, long=4.267715, db_name="ZV", spot_info=strand)
+NW = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, db_name="ZV", spot_info=strand)
+scheveningen = Spot(richting=302, name="Noordwijk", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=strand)
 camperduin = Spot(richting=270, name="Camperduin", lat=52.723113, long=4.639215, db_name="ZV", spot_info=strand)
 texel_paal17 = Spot(richting=305, name="Texel17", lat=53.081695, long=4.733450, db_name="ZV", spot_info=strand)
-
 wijk = Spot(richting=295, name="Wijk", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_links)  # todo set lat, long, en richting
-ijmuiden = Spot(richting=260, name="Ijmuiden", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_rechts)  # todo set lat, long, en richting
+ijmuiden = Spot(richting=260, name="Ijmuiden", lat=52.45671763333488, long=4.5514045296565335, db_name="ZV", spot_info=pier_rechts)  # todo set lat, long, en richting
+
 Wadduwa = Spot(richting=240, name="Wadduwa", lat=6.625524189426171, long=79.93779864874834, db_name="ZV", spot_info=strand)
 Lavinia = Spot(richting=265, name="Lavinia", lat=6.848208867737467, long=79.85826985402555, db_name="ZV", spot_info=strand)
 
 # spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
-spots = [wijk, ZV, ijmuiden, camperduin, scheveningen, texel_paal17, Wadduwa, Lavinia]
+spots = [wijk, ZV, ijmuiden, NW, camperduin, scheveningen, texel_paal17, Wadduwa, Lavinia]
 
 if __name__ == '__main__':
     # Train models

@@ -116,20 +116,27 @@ def perk_identification(row):
     if row["rating"] < 6:
         return []
 
-    if row["clean"] <= 1:
-        if row["hoog"] >= 2.25:
-            perks.append("stormachtig")
+    if row["clean"] < 1:
+        if row["hoog"] >= 2:
+            perks.append("stormy")
         else:
             perks.append("klotsbak")
-    elif row["clean"] >= 2:
+    elif row["clean"] >= 1.8:
         perks.append("clean")
+    elif row["clean"] >= 2.6:
+        perks.append("ultra clean")
 
-    if row["stroming"] >= 2:
+
+    if row["stroming"] >= 2.6:
+        perks.append("veel stroming")
+    elif row["stroming"] >= 1.8:
         perks.append("stroming")
-    if row["windy"] >= 2:
-        perks.append("winderig")
-    # if row["stijl"] >= 2:
-    #     perks.append("stijl")
+
+    if row["windy"] >= 1.8:
+        perks.append("windy")
+    elif row["windy"] >= 2.6:
+        perks.append("heel windy")
+
     return perks
 
 def html_arrow(angle):
