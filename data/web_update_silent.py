@@ -8,14 +8,18 @@ if __name__ == '__main__':
     datas = []
     for spot in spots:  # [ijmuiden]:
         data = spot.surf_rating(cache=False)
+        data.name = spot.name
         datas.append(data)
         plotting2.write_table_per_day(data, spot)
         plotting2.write_simple_table(data, spot)
-        plot_forecast(data, spot, perks_plot=True)
+        # plot_forecast(data, spot, perks_plot=True)
         save_to_web(spot.name)
 
-    plot_all(spots, datas, perks_plot=False)
+    # plot_all(spots, datas, perks_plot=False)
     save_to_web("all")
-    print(tabulate(datas[0], headers='keys'))
+
+    ZV = [data for data in datas if data.name == "ZV"][0]
+    ZV_simple = ZV.resample('D').max()
+    print(tabulate(ZV_simple[["rating", "hoogte-v2"]], headers='keys'))
 
     # plt.show()

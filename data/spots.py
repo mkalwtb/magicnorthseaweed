@@ -110,7 +110,7 @@ class Spot:
 
         all = surffeedback.load(surffeedback.file_raw)
         if only_spot_data:
-            return all[all["spot"].str.contains(self.name)==True]
+            return all[all["spot"].str.contains(self.name) == True]
         else:
             return all
 
@@ -162,7 +162,7 @@ class Spot:
         else:
             return data
 
-    def forecast(self, cache, hours=72, ):
+    def forecast(self, cache, hours=24*7, ):
         data = stormglass.forecast(self.lat, self.long, hours=hours, cache=cache)  # check: is N == lat?
         return data
 
@@ -209,11 +209,11 @@ spots = [wijk, ZV, ijmuiden, camperduin, scheveningen, texel_paal17, Wadduwa, La
 
 if __name__ == '__main__':
     # Train models
-    attenpts = 10
-    rating = MODELS[2]
+    attenpts = 50
+    rating = MODELS[0]
     # rating.train_best(spots, perk=rating.perk, channels=rating.channels, save=True, verbose=True, attempts=attenpts)
-    # for model in MODELS:
-    #     model.train_best(spots, perk=model.perk, channels=model.channels, save=True, attempts=attenpts)
+    for model in MODELS:
+        model.train_best(spots, perk=model.perk, channels=model.channels, save=True, attempts=attenpts)
 
 
     spot = ZV

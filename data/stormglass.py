@@ -9,6 +9,7 @@ from matplotlib import pyplot as plt
 from datetime import datetime
 import pytz
 from random import randrange
+from timezonefinder import TimezoneFinder
 
 
 # todo try new model: using primary & secondary swells
@@ -81,7 +82,7 @@ def download_json(lat, long, start, end, cache=False, end_point="weather"):
 
   return json_data
 
-def json_to_df(json_data, manual_source=True):
+def json_to_df(json_data, best_sg_source, lat, long):
   hourly_data = {}
   if 'hours' not in json_data:
       raise FileNotFoundError('Something went wrong with the stormglass API request')
@@ -90,19 +91,22 @@ def json_to_df(json_data, manual_source=True):
       name = entry['time']
       hourly_data[name] = {}
       for channel in channels:
-            source = "sg" if not manual_source else data_sources[channel]
+            source = "sg" if best_sg_source else data_sources[channel]
+            assert channel in entry, f"channel {channel} not in entry"
+            assert source in entry[channel], f"source '{source}' not in {entry[channel]} for channel '{channel}'"
             hourly_data[name][channel] = entry[channel][source]
 
   # Create a Pandas DataFrame
   df = pd.DataFrame.from_dict(hourly_data, orient='index')
   df.index = pd.to_datetime(df.index)
-  # df.index = df.index.tz_convert(pytz.timezone('CET')) # todo 1 hour wrong?
+  timezone = TimezoneFinder().timezone_at(lat=lat, lng=long)
+  df.index = df.index.tz_convert(pytz.timezone(timezone))
   return df
 
 
-def download_weather(lat, long, start, end, manual_source, cache=False):
+def download_weather(lat, long, start, end, best_sg_source, cache=False):
     json_data = download_json(lat=lat, long=long, start=start, end=end, cache=cache, end_point="weather")
-    data_new = json_to_df(json_data, manual_source=manual_source)
+    data_new = json_to_df(json_data, best_sg_source, lat, long)
     return data_new
 
 
@@ -114,12 +118,14 @@ def download_tide(lat, long, start, end, cache=False):
     df = pd.DataFrame(data_list)
     df["time"] = pd.to_datetime(df["time"])
     df.set_index("time", inplace=True)
+    timezone = TimezoneFinder().timezone_at(lat=lat, lng=long)
+    df.index = df.index.tz_convert(pytz.timezone(timezone))
     df.columns = ["NAP"]
     return df
 
 
 def download_weather_and_tide(lat, long, start, end, cache=False):
-    data_new = download_weather(lat, long, start, end, cache=cache, manual_source=True)
+    data_new = download_weather(lat, long, start, end, cache=cache, best_sg_source=True)
     data_tide = download_tide(lat, long, start, end, cache=cache)
     data_new = pd.concat([data_new, data_tide], axis=1)
     return data_new

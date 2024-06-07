@@ -4,7 +4,7 @@ from typing import List
 import pandas as pd
 from tabulate import tabulate
 
-from data.surffeedback import hoeveelheden_hoogtev2, hoeveelheden_hoogtev2_view, hoogte_label
+from surffeedback import hoogte_label
 from plotting import angle_to_direction
 from plotting import website_folder
 
@@ -139,13 +139,11 @@ def html_arrow(angle):
     # return f"<i  class='fa fa-arrow-left' style='transform: rotate({angle+180:.0f}deg);'></i>"
 
 def table_html(df, spot):
-    columns_df = ["rating", "waveHeight", "wavePeriod", "windSpeed", "hoogte-v2"]
-    # columns = ["rating", "waveHeight", "waveDirection", "wavePeriod", "windSpeed", "windDirection"]
-    headers = ["Tijd", "rating", "swell", "wind", "getij", "hoogte", "beschrijving"]
+    headers = ["Tijd", "rating", "hoogte", "swell", "wind", "getij", "beschrijving"]
 
     # header
     html = head
-    html += f"<h2> {df.index[0].strftime('%A, %d-%m')} </h2>"
+    html += f"<h3> {df.index[0].strftime('%A, %d-%m')} </h3>"
     html += "<table class='large'>\n"
     html += "<tr>\n"
     for header in headers:
@@ -162,6 +160,9 @@ def table_html(df, spot):
         html += f"\t<td>{index.strftime('%H:%M')}</td>\n"
         html += f"\t<td> {color_bar} <h3>{round_off_rating(row['rating']):.1f}</h3></td>\n"
 
+        hoogtev2 = hoogte_label(row["hoogte-v2"])
+        html += f"\t<td>{hoogtev2}</td>\n"
+
         div = "<td>"
         div += f"<b>{row['waveHeight']:.1f} </b> <i class='unit'>m</i>"
         div += f"<b>{row['wavePeriod']:.0f} </b> <i class='unit'>s</i>"
@@ -173,9 +174,6 @@ def table_html(df, spot):
         html += f"{html_arrow(row['windDirection'])}</td>"
 
         html += f"\t<td>{10*round(10*row['NAP']):.0f} <i class='unit'>cm</i></td>"
-
-        hoogtev2 = hoogte_label(row["hoogte-v2"])
-        html += f"\t<td>{hoogtev2}</td>\n"
 
         html += "<td>"
         perks = perk_identification(row)

@@ -1,6 +1,8 @@
 import pandas as pd
 from pathlib import Path
 
+from tabulate import tabulate
+
 file_raw = Path(r"surf-feedback-raw/Surf-feedback.csv")
 file_pkl = file_raw.with_suffix(".pkl")
 
@@ -63,5 +65,5 @@ def load(file_name):
 
 if __name__ == '__main__':
     data = load(file_raw)
-    print(data)
-    # data.to_pickle(file_pkl)
+    print(tabulate(data))
+    data.to_pickle(file_pkl)

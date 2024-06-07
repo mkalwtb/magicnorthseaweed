@@ -3,8 +3,6 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 import matplotlib.dates as mdates
 
-from data.surffeedback import hoeveelheden_hoogtev2
-
 mxFmt_major = mdates.DateFormatter('%A, %d-%m')
 mxFmt_minor = mdates.DateFormatter('%H')
 
