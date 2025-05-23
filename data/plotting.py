@@ -6,7 +6,7 @@ import matplotlib.dates as mdates
 mxFmt_major = mdates.DateFormatter('%A, %d-%m')
 mxFmt_minor = mdates.DateFormatter('%H')
 
-website_folder = Path("D:\Goodle Drive\magicnorthseaweed")
+website_folder = Path(r"G:\My Drive\magicnorthseaweed")
 perks = ['hoog', 'clean', 'krachtig', 'stijl', 'stroming', 'windy']
 perk_levels = ["niet", "beetje", "best", "heel"]
 
