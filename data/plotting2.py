@@ -1,7 +1,9 @@
+from datetime import timezone, timedelta
 from math import radians, cos, sin, floor
 from typing import List
 
 import pandas as pd
+from suntime import suntime
 from tabulate import tabulate
 
 from surffeedback import hoogte_label
@@ -158,7 +160,7 @@ def table_html(df, spot):
     html += "</tr>\n"
 
     # rows
-    df = df.between_time('06:00', '21:00')
+    df = df.between_time('06:00', '23:00')
     for index, row in df.iterrows():
         color = hex_colors[floor(row['rating'])-1]
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
@@ -205,7 +207,11 @@ def table_html_simple(df, spot):
     html += "</tr>\n"
 
     # rows
-    df = df.between_time('08:00', '17:00')
+    time_zone_cet = timezone(timedelta(hours=1))  # Central European Time
+    sun = suntime.Sun(spot.lat, spot.long)
+    sun_set = sun.get_sunset_time(time_zone=time_zone_cet).hour + 2
+    sun_rise = sun.get_sunrise_time(time_zone=time_zone_cet).hour +2
+    df = df.between_time(f'{sun_rise}:00', f'{sun_set}:00')
     for index, row in df.iterrows():
         color = hex_colors[floor(row['rating'])-1]
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
@@ -257,8 +263,8 @@ def weekoverzicht(datas):
         html += f"\t<td>{index.strftime('%A, %d-%m')}</td>\n"
         for name in names:
             print(row_rating[name])
-            color = hex_colors[floor(row_rating[name])-1]
-            hoogtev2 = hoogte_label(row_hoogte[name])
+            color = hex_colors[floor(row_rating[name])-1] if row_rating[name] > 0 else "rgba(255, 0, 0, 0.0)"
+            hoogtev2 = hoogte_label(row_hoogte[name]) if row_hoogte[name] > 0 else "geen data"
             color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
             html += f"\t<td style='text-align: left;'>{color_bar} <h3>{round_off_rating(row_rating[name]):.1f}</h3> {hoogtev2}</td>\n"
 
