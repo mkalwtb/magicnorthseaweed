@@ -4,13 +4,6 @@ from copy import deepcopy, copy
 import datetime
 import re
 from dataclasses import dataclass, fields
-from matplotlib import pyplot as plt
-import xgboost as xgb
-from suntime import Sun
-
-from models import Model, MODELS
-from plotting import plot_forecast
-
 import surffeedback, stormglass
 
 
@@ -166,7 +159,7 @@ class Spot:
         data = stormglass.forecast(self.lat, self.long, hours=hours, cache=cache)  # check: is N == lat?
         return data
 
-    def predict_surf_perk(self, data, model: Model) -> pd.DataFrame:
+    def predict_surf_perk(self, data, model) -> pd.DataFrame:
         """Rate the surf forecast based on the trained model (file)"""
 
         data = enrich_input_data(data, self)
@@ -174,7 +167,7 @@ class Spot:
         result = model.model.predict(data)
         return result
 
-    def surf_rating(self, models=MODELS, cache=False):
+    def surf_rating(self, models, cache=False):
         data_init = self.forecast(cache)
 
         data = deepcopy(data_init)
@@ -207,41 +200,4 @@ Wadduwa = Spot(richting=240, name="Wadduwa", lat=6.625524189426171, long=79.9377
 Lavinia = Spot(richting=265, name="Lavinia", lat=6.848208867737467, long=79.85826985402555, db_name="ZV", spot_info=strand)
 
 # spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
-spots = [scheveningen, NW, ZV, ijmuiden, wijk, camperduin, texel_paal17, ameland]
-
-if __name__ == '__main__':
-    # Train models
-    attenpts = 50
-    rating = MODELS[0]
-    # rating.train_best(spots, perk=rating.perk, channels=rating.channels, save=True, verbose=True, attempts=attenpts)
-    for model in MODELS:
-        model.train_best(spots, perk=model.perk, channels=model.channels, save=True, attempts=attenpts)
-
-
-    spot = ZV
-    df = spot.surf_rating(cache=True)
-    plot_forecast(df, spot, perks_plot=True)
-
-    # df = ZV.surf_rating(cache=True)
-    # plot_forecast(df, ZV, perks_plot=True)
-    #
-    # df = ijmuiden.surf_rating(cache=True)
-    # plot_forecast(df, ijmuiden, perks_plot=True)
-    plt.show()
-
-    rating.plot_model()
-
-
-
-    # print(tabulate(df, df.columns))
-    # mse = ijmuiden.train(only_spot_data=False, save=True)
-    # model = ijmuiden.load_model()
-    # xgb.plot_tree(model)
-    # Plot tree
-    # xgb.plot_tree(model)
-
-
-    # print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
-    # data = ijmuiden.surf_rating(cache=True)
-    # plot_forecast(data, ijmuiden)
-    # plt.show()
+SPOTS = [scheveningen, NW, ZV, ijmuiden, wijk, camperduin, texel_paal17, ameland]

@@ -9,6 +9,10 @@ from matplotlib import pyplot as plt
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
+from data.plotting import plot_forecast
+from data.spots import ZV
+from data.spots import SPOTS
+
 
 class Model:
     def __init__(self, perk: str, channels, model=None):
@@ -127,9 +131,47 @@ for perk, in_columns in forecast_columns.items():
     model = Model(perk, channels=in_columns)
     MODELS.append(model)
 
-if __name__ == "__main__":
-    model = MODELS[2]
-    xgb.plot_tree(model.model, num_trees=3)
-    fig = plt.gcf()
-    fig.set_size_inches(150, 100)
+# if __name__ == "__main__":
+#     model = MODELS[2]
+#     xgb.plot_tree(model.model, num_trees=3)
+#     fig = plt.gcf()
+#     fig.set_size_inches(150, 100)
+#     plt.show()
+
+
+if __name__ == '__main__':
+    # Train models
+    attenpts = 20
+    rating = MODELS[0]
+    # rating.train_best(spots, perk=rating.perk, channels=rating.channels, save=True, verbose=True, attempts=attenpts)
+    for model in MODELS:
+        model.train_best(SPOTS, perk=model.perk, channels=model.channels, save=True, attempts=attenpts)
+
+
+    spot = ZV
+    df = spot.surf_rating(cache=True)
+    plot_forecast(df, spot, perks_plot=True)
+
+    # df = ZV.surf_rating(cache=True)
+    # plot_forecast(df, ZV, perks_plot=True)
+    #
+    # df = ijmuiden.surf_rating(cache=True)
+    # plot_forecast(df, ijmuiden, perks_plot=True)
     plt.show()
+
+    rating.plot_model()
+
+
+
+    # print(tabulate(df, df.columns))
+    # mse = ijmuiden.train(only_spot_data=False, save=True)
+    # model = ijmuiden.load_model()
+    # xgb.plot_tree(model)
+    # Plot tree
+    # xgb.plot_tree(model)
+
+
+    # print(tabulate(ijmuiden.feedback(only_spot_data=True), headers='keys', tablefmt='psql'))
+    # data = ijmuiden.surf_rating(cache=True)
+    # plot_forecast(data, ijmuiden)
+    # plt.show()

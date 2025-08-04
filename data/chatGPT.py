@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 from plotting import plot_forecast, save_to_web
-from spots import spots, ijmuiden
+from spots import SPOTS, ijmuiden
 from tabulate import tabulate
 import openai
 

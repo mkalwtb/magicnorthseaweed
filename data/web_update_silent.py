@@ -1,12 +1,12 @@
 from matplotlib import pyplot as plt
 from plotting import plot_forecast, save_to_web, plot_all
 import plotting2
-from spots import spots, texel_paal17, ijmuiden
+from spots import SPOTS, texel_paal17, ijmuiden
 from tabulate import tabulate
 
 if __name__ == '__main__':
     datas = []
-    for spot in spots:  # [ijmuiden]:
+    for spot in SPOTS:  # [ijmuiden]:
         data = spot.surf_rating(cache=False)
         data.name = spot.name
         datas.append(data)

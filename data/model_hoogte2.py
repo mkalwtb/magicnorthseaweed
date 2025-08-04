@@ -5,14 +5,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from data.models import Model, forecast_columns, hoog2_forecase_cols
-from data.spots import spots
+from data.spots import SPOTS
 import xgboost as xgb
 
 perk = 'hoogte-v2'
 channels = hoog2_forecase_cols
 
 dfs = pd.DataFrame()
-for spot in spots:
+for spot in SPOTS:
     df = spot.combined(only_spot_data=True, match_all_feedback_times=True,
                        fb_columns=perk)
     dfs = pd.concat([df, dfs])
