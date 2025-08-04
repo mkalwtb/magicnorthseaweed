@@ -138,3 +138,4 @@ def plot_all(spots, datas, perks_plot):
 def save_to_web(spot_name):
     plt.savefig(website_folder / f"{spot_name}.png")
 
+
