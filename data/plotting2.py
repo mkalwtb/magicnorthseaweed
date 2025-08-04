@@ -23,6 +23,9 @@ hex_colors = [
     "#800080"  # purple for scale 10
 ]
 
+def get_color(rating: float) -> str:
+    return hex_colors[floor(rating+0.5)-1] if rating > 0 else "rgba(255, 0, 0, 0.0)"
+
 head = """
 <head>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -162,7 +165,8 @@ def table_html(df, spot):
     # rows
     df = df.between_time('06:00', '23:00')
     for index, row in df.iterrows():
-        color = hex_colors[floor(row['rating'])-1]
+
+        color = get_color(row['rating'])
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
 
         html += "<tr>\n"
@@ -213,7 +217,7 @@ def table_html_simple(df, spot):
     sun_rise = sun.get_sunrise_time(time_zone=time_zone_cet).hour +2
     df = df.between_time(f'{sun_rise}:00', f'{sun_set}:00')
     for index, row in df.iterrows():
-        color = hex_colors[floor(row['rating'])-1]
+        color = get_color(row['rating'])
         color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
 
         html += f"<tr data-time='{index}'>\n"
@@ -263,7 +267,7 @@ def weekoverzicht(datas):
         html += f"\t<td>{index.strftime('%A, %d-%m')}</td>\n"
         for name in names:
             print(row_rating[name])
-            color = hex_colors[floor(row_rating[name])-1] if row_rating[name] > 0 else "rgba(255, 0, 0, 0.0)"
+            color = get_color(row_rating['name'])
             hoogtev2 = hoogte_label(row_hoogte[name]) if row_hoogte[name] > 0 else "geen data"
             color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
             html += f"\t<td style='text-align: left;'>{color_bar} <h3>{round_off_rating(row_rating[name]):.1f}</h3> {hoogtev2}</td>\n"

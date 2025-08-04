@@ -9,7 +9,7 @@ from tabulate import tabulate
 if __name__ == '__main__':
     datas = []
     for spot in SPOTS:  # [ijmuiden]:
-        data = spot.surf_rating(cache=False, models=MODELS)
+        data = spot.surf_rating(cache=True, models=MODELS)
         data.name = spot.name
         datas.append(data)
         plotting2.write_table_per_day(data, spot)
