@@ -56,20 +56,15 @@ def enrich_input_data(data: pd.DataFrame, spot) -> pd.DataFrame:
     data['windSideshore'] = _compute_onshore(data['windDirection'], spot.richting, side_shore=True)
     data["windMagOnShore"] = data['windOnshore'] * data["windSpeed"]
     data["windMagSideShore"] = data['windSideshore'] * data["windSpeed"]
-    # data = data.drop('windDirection', axis=1)
 
     data["shelterWind"] = shelter_from_series(data["windDirection"], spot)
 
-    # data["windMagOnShoreShelter"] = data["windMagOnShore"] * data["shelter"]
-    # data["windMagSideShoreShelter"] = data["windMagSideShore"] * data["shelter"]
-
-    data["waveEnergy"] = data["waveHeight"]**2 * data["wavePeriod"]**2 * data["waveOnshore"]
-    data.loc[data['waveEnergy'] < 0, 'waveEnergy'] = 0
+    data["waveEnergyOnshore"] = data["waveHeight"]**2 * data["wavePeriod"]**2 * data["waveOnshore"]
 
     # data['waveOnshore2nd'] = _compute_onshore(data['secondarySwellDirection'], richting, side_shore=False)
     # data["waveEnergy2nd"] = data["secondarySwellHeight"]**2 * data["secondarySwellPeriod"]**2 * data["waveOnshore2nd"]
     # data.loc[data['waveEnergy2nd'] < 0, 'waveEnergy2nd'] = 0
-    data["windWaveHeight2"] = data["windWaveHeight"]**2  # todo use the code above: Tis is wrong and temp
+    data["windWaveHeightEnergy"] = data["windWaveHeight"]**2  # todo use the code above: Tis is wrong and temp
 
     data['seaRise'] = data["NAP"].diff()
 

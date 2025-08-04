@@ -1,4 +1,6 @@
 from matplotlib import pyplot as plt
+
+from data.models import MODELS
 from plotting import plot_forecast, save_to_web, plot_all
 import plotting2
 from spots import SPOTS, texel_paal17, ijmuiden
@@ -7,7 +9,7 @@ from tabulate import tabulate
 if __name__ == '__main__':
     datas = []
     for spot in SPOTS:  # [ijmuiden]:
-        data = spot.surf_rating(cache=False)
+        data = spot.surf_rating(cache=True, models=MODELS)
         data.name = spot.name
         datas.append(data)
         plotting2.write_table_per_day(data, spot)
