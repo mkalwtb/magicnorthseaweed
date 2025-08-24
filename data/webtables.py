@@ -1,14 +1,29 @@
 from datetime import timezone, timedelta
-from math import radians, cos, sin, floor
+from math import radians, cos, sin, floor, ceil
 from typing import List
 
 import pandas as pd
 from suntime import suntime
 from tabulate import tabulate
 
-from surffeedback import hoogte_label
+from data.surffeedback import hoeveelheden_hoogtev2, hoeveelheden_hoogtev2_view
 from plotting import angle_to_direction
 from plotting import website_folder
+
+
+def height_label(hoogte: float):
+    if hoogte > len(hoeveelheden_hoogtev2)-1:
+        hoogte = len(hoeveelheden_hoogtev2)-1
+    if hoogte < 0:
+        hoogte = 0
+
+    label_low = hoeveelheden_hoogtev2_view[floor(hoogte)]
+    label_high = hoeveelheden_hoogtev2_view[ceil(hoogte)]
+    if 0.25 < hoogte - floor(hoogte) < 0.75:
+        return f"{label_low}/{label_high}"
+    else:
+        return  hoeveelheden_hoogtev2_view[round(hoogte)]
+
 
 hex_colors = [
     "rgba(255, 0, 0, 0.0)", "rgba(255, 0, 0, 0.0)", "rgba(255, 0, 0, 0.0)",
@@ -173,7 +188,7 @@ def table_html(df, spot):
         html += f"\t<td>{index.strftime('%H:%M')}</td>\n"
         html += f"\t<td> {color_bar} <h3>{round_off_rating(row['rating']):.1f}</h3></td>\n"
 
-        hoogtev2 = hoogte_label(row["hoogte-v2"])
+        hoogtev2 = height_label(row["hoogte-v2"])
         html += f"\t<td>{hoogtev2}</td>\n"
 
         div = "<td>"
@@ -224,7 +239,7 @@ def table_html_simple(df, spot):
         html += f"\t<td>{index.strftime('%H:%M')}</td>\n"
         html += f"\t<td> {color_bar} <h3>{round_off_rating(row['rating']):.1f}</h3></td>\n"
 
-        hoogtev2 = hoogte_label(row["hoogte-v2"])
+        hoogtev2 = height_label(row["hoogte-v2"])
         html += f"\t<td>{hoogtev2}</td>\n"
 
         html += f"\t<td>{row['windSpeed']*3.6:.0f}  <i class='unit'>km/h</i>"
@@ -267,8 +282,8 @@ def weekoverzicht(datas):
         html += f"\t<td>{index.strftime('%A, %d-%m')}</td>\n"
         for name in names:
             print(row_rating[name])
-            color = get_color(row_rating['name'])
-            hoogtev2 = hoogte_label(row_hoogte[name]) if row_hoogte[name] > 0 else "geen data"
+            color = get_color(row_rating[name])
+            hoogtev2 = height_label(row_hoogte[name]) if row_hoogte[name] > 0 else "geen data"
             color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
             html += f"\t<td style='text-align: left;'>{color_bar} <h3>{round_off_rating(row_rating[name]):.1f}</h3> {hoogtev2}</td>\n"
 

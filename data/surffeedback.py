@@ -28,14 +28,6 @@ hoeveelheden = ["Helemaal niet", "Een beetje", "Best wel", "Heel erg"]
 
 hoeveelheden_hoogtev2 = ["Flat", "Knie-hoog", "Heup-hoog", "Navel-hoog", "Borst-hoog", "Schouder-hoog", "Head-hoog", "Overhead"]
 hoeveelheden_hoogtev2_view = ["flat", "knie", "heup", "navel", "borst", "schouder", "head", "overhead"]
-def hoogte_label(hoogte):
-    if hoogte > len(hoeveelheden_hoogtev2)-1:
-        hoogte = len(hoeveelheden_hoogtev2)-1
-    if hoogte < 0:
-        hoogte = 0
-    hoogte = round(hoogte)
-    return hoeveelheden_hoogtev2_view[hoogte]
-
 
 def rename_columns(columns):
     columns = list(columns)

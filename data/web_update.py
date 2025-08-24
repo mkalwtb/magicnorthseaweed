@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 from plotting import plot_forecast, save_to_web, plot_all
-import plotting2
+import webtables
 from spots import SPOTS, texel_paal17, ijmuiden, ZV, Lavinia, scheveningen
 from tabulate import tabulate
 
