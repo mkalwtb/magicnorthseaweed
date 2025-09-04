@@ -93,6 +93,11 @@ class Spot:
     db_name: str
     spot_info: SpotInfo
 
+    def __eq__(self, other):
+        if isinstance(other, Spot):
+            return self.name == other.name and self.lat == other.lat and self.long == other.long
+        return False
+
     def feedback(self, only_spot_data):
         """Surf feedback form"""
 
@@ -182,17 +187,19 @@ pier_links = SpotInfo(pier=-1)
 pier_rechts = SpotInfo(pier=1)
 
 # Add all spots here
-ZV = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, db_name="ZV", spot_info=strand)
-NW = Spot(richting=290, name="Noordwijk", lat=52.474773, long=4.535204, db_name="ZV", spot_info=strand)
-scheveningen = Spot(richting=302, name="Scheveningen", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=strand)
 camperduin = Spot(richting=270, name="Camperduin", lat=52.723113, long=4.639215, db_name="ZV", spot_info=strand)
+wijk = Spot(richting=295, name="Wijk", lat=52.469333, long=4.564015, db_name="ZV", spot_info=pier_links)  # todo set lat, long, en richting
+ijmuiden = Spot(richting=255, name="Ijmuiden", lat=52.45671763333488, long=4.5514045296565335, db_name="ZV", spot_info=pier_rechts)  # todo set lat, long, en richting
+ZV = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, db_name="ZV", spot_info=strand)
+NW = Spot(richting=295, name="Noordwijk", lat=52.245855, long=4.427838, db_name="ZV", spot_info=strand)
+schev = Spot(richting=302, name="Schev", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=strand)
+schev_haven_N = Spot(richting=302, name="Schev_N", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=pier_links)
+schev_haven_Z = Spot(richting=302, name="Schev_Z", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=pier_rechts)
 texel_paal17 = Spot(richting=305, name="Texel17", lat=53.081695, long=4.733450, db_name="ZV", spot_info=strand)
-wijk = Spot(richting=295, name="Wijk", lat=53.081695, long=4.733450, db_name="ZV", spot_info=pier_links)  # todo set lat, long, en richting
-ijmuiden = Spot(richting=260, name="Ijmuiden", lat=52.45671763333488, long=4.5514045296565335, db_name="ZV", spot_info=pier_rechts)  # todo set lat, long, en richting
 ameland = Spot(richting=0, name="Ameland", lat=53.460190, long=5.772728, db_name="ZV", spot_info=strand)
 
 Wadduwa = Spot(richting=240, name="Wadduwa", lat=6.625524189426171, long=79.93779864874834, db_name="ZV", spot_info=strand)
 Lavinia = Spot(richting=265, name="Lavinia", lat=6.848208867737467, long=79.85826985402555, db_name="ZV", spot_info=strand)
 
 # spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
-SPOTS = [scheveningen, NW, ZV, ijmuiden, wijk, camperduin, texel_paal17, ameland]
+SPOTS = [schev, NW, ZV, ijmuiden, wijk, camperduin, texel_paal17, ameland]
