@@ -11,7 +11,7 @@ from plotting import angle_to_direction
 from plotting import website_folder
 
 
-def height_label(hoogte: float):
+def height_label(hoogte: float, simple: bool = False):
     if hoogte > len(hoeveelheden_hoogtev2)-1:
         hoogte = len(hoeveelheden_hoogtev2)-1
     if hoogte < 0:
@@ -19,7 +19,7 @@ def height_label(hoogte: float):
 
     label_low = hoeveelheden_hoogtev2_view[floor(hoogte)]
     label_high = hoeveelheden_hoogtev2_view[ceil(hoogte)]
-    if 0.25 < hoogte - floor(hoogte) < 0.75:
+    if 0.25 < hoogte - floor(hoogte) < 0.75 and not simple:
         return f"{label_low}/{label_high}"
     else:
         return  hoeveelheden_hoogtev2_view[round(hoogte)]
@@ -178,7 +178,7 @@ def table_html(df, spot):
     html += "</tr>\n"
 
     # rows
-    df = df.between_time('06:00', '23:00')
+    df = df.between_time('07:00', '21:00')
     for index, row in df.iterrows():
 
         color = get_color(row['rating'])
@@ -281,9 +281,8 @@ def weekoverzicht(datas):
         html += "<tr>\n"
         html += f"\t<td>{index.strftime('%A, %d-%m')}</td>\n"
         for name in names:
-            print(row_rating[name])
             color = get_color(row_rating[name])
-            hoogtev2 = height_label(row_hoogte[name]) if row_hoogte[name] > 0 else "geen data"
+            hoogtev2 = height_label(row_hoogte[name], simple=True) if row_hoogte[name] > 0 else "geen data"
             color_bar = f"<div class='rounded-span'  style='background-color: {color}'></div>"
             html += f"\t<td style='text-align: left;'>{color_bar} <h3>{round_off_rating(row_rating[name]):.1f}</h3> {hoogtev2}</td>\n"
 
