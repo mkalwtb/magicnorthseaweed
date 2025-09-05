@@ -24,10 +24,11 @@ class Model:
         """Train a model, save it and returns the model"""
         dfs = pd.DataFrame()
         for spot in spots:
-            df = spot.combined(only_spot_data=True, match_all_feedback_times=match_all_feedback_times,
-                               fb_columns=perk)
+            df = spot.training_data(only_spot_data=True, match_all_feedback_times=match_all_feedback_times,
+                                    fb_columns=perk)
             dfs = pd.concat([df, dfs])
 
+        # print(f"Training {perk} with {len(dfs)} feedback entries from {len(spots)} spots")
         dfs = dfs[channels + [perk]]
         X = dfs.drop(perk, axis=1)
         y = dfs[perk]
@@ -64,7 +65,7 @@ class Model:
             print(f'RMS {perk}: train={mse_train:.2f}, test={mse_test:.2f} (from {len(dfs)} feedback entries)')
         if save:
             self.save_model()
-        return mse_test
+        return mse_test, mse_train
 
 
     @classmethod
@@ -72,8 +73,8 @@ class Model:
         # double with train. Temp.
         dfs = pd.DataFrame()
         for spot in spots:
-            df = spot.combined(only_spot_data=True, match_all_feedback_times=match_all_feedback_times,
-                               fb_columns=perk)
+            df = spot.training_data(only_spot_data=True, match_all_feedback_times=match_all_feedback_times,
+                                    fb_columns=perk)
             dfs = pd.concat([df, dfs])
 
         dfs = dfs[channels + [perk]]
@@ -104,19 +105,26 @@ class Model:
         return cls(perk, channels, model=model)
 
 
-    def train_best(self, spots, perk: str, channels: List[str], verbose=True, save=True, match_all_feedback_times=True, attempts=10):
+    def train_best(self, spots, perk: str, channels: List[str], verbose=True, save=True, match_all_feedback_times=True, attempts=10, overtrain_limit=0.7):
         model_best = None
         rms_best = 9999
-        for i in range(attempts):
-            rms = self.train(spots, perk=perk, channels=channels, save=False, verbose=True, match_all_feedback_times=match_all_feedback_times)
+        i = 0
+        while i < attempts:
+            i += 1
+            rms_test, rms_train = self.train(spots, perk=perk, channels=channels, save=False, verbose=True, match_all_feedback_times=match_all_feedback_times)
             model = self.model
-            if rms < rms_best:
-                rms_best = rms
+            overtrained = rms_train < (rms_test * overtrain_limit)
+            if rms_test < rms_best and not overtrained:
+                rms_best = rms_test
                 model_best = model
                 if save:
                     self.save_model()
                 # if verbose:
                 #     print(f"new best model: {perk}:\t{rms:.2f}")
+            elif overtrained:
+                attempts += 1
+
+
         self.model = model_best
 
     def clean_model(self):
@@ -147,14 +155,14 @@ input_columns = ['wavePeriod', 'waveHeight', 'windSpeed', 'windWaveHeight',
 
 # forecast_columns = ["rating", "hoog", "clean", "krachtig", "stijl", "stroming", "windy"]
 forecast_columns = {
-    "rating": ['waveEnergyOnshore', 'wavePeriod', 'windWaveHeightEnergy', 'NAP', 'windMagOnShore'],
-    "hoog": ['waveEnergyOnshore', 'wavePeriod', 'NAP', 'shelterWind'],
-    "hoogte-v2": ['waveEnergyOnshore', 'wavePeriod', 'NAP', 'shelterWind', 'windWaveHeightEnergy'],
-    "clean": ['windMagOnShore', 'waveEnergyOnshore', 'windWaveHeightEnergy', 'shelterWind', 'NAP'],
-    "krachtig": ['waveEnergyOnshore', 'NAP', 'seaRise', 'windMagOnShore', 'shelterWind'],
-    "stijl": ['waveEnergyOnshore', 'wavePeriod', 'windMagOnShore', 'shelterWind', 'NAP', 'seaRise'],
-    "stroming": ['currentSpeed', 'seaRise', 'windMagSideShore'],
-    "windy": ['windMagOnShore', 'windSpeed', 'shelterWind'],
+    "rating": ['waveEnergyOnshore', 'wavePeriod', 'windWaveHeight', 'NAP', 'windMagOnShore', 'pier'],
+    "hoog": ['waveEnergyOnshore', 'wavePeriod', 'NAP', 'shelterWind', 'pier'],
+    "hoogte-v2": ['waveEnergyOnshore', 'wavePeriod', 'NAP', 'shelterWind', 'windWaveHeight', 'pier'],
+    "clean": ['windMagOnShore', 'waveEnergyOnshore', 'windWaveHeight', 'shelterWind', 'NAP', 'pier'],
+    "krachtig": ['waveEnergyOnshore', 'NAP', 'seaRise', 'windMagOnShore', 'shelterWind', 'pier'],
+    "stijl": ['waveEnergyOnshore', 'wavePeriod', 'windMagOnShore', 'shelterWind', 'NAP', 'seaRise', 'pier'],
+    "stroming": ['currentSpeed', 'seaRise', 'windMagSideShore', 'pier'],
+    "windy": ['windMagOnShore', 'windSpeed', 'shelterWind', 'pier'],
 }
 
 MODELS = []

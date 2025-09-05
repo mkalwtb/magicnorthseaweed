@@ -1,363 +1,514 @@
-Tijdstempel,E-mailadres,Datum,Start tijd,Eind tijd,Spot,Hoe goed was de surf?,Hoe was de surf? Alleen invullen bij een nat pak (: [Mellow],Type data,Type board,Hoe was de surf? Alleen invullen bij een nat pak (: [Clean],Hoe was de surf? Alleen invullen bij een nat pak (: [Krachtig],Hoe was de surf? Alleen invullen bij een nat pak (: [Lange ritjes],Hoe was de surf? Alleen invullen bij een nat pak (: [Stijle golven],Hoe was de surf? Alleen invullen bij een nat pak (: [Stroming],Hoe was de surf? Alleen invullen bij een nat pak (: [Crowd],Hoe was de surf? Alleen invullen bij een nat pak (: [Hoog],Hoe was de surf? Alleen invullen bij een nat pak (: [Windy],Hoe hoog was het?,Hoe was de surf? Alleen invullen bij een nat pak (: [Voor beginners],Data comments
-4-6-2023 23:08:17,,2-6-2023,16:30:00,17:20:00,ZV Bloemendaal,7,Een beetje,,,Een beetje,Best wel,Een beetje,,Best wel,Helemaal niet,,,,,
-10-6-2023 15:32:52,,9-6-2023,19:00:00,20:15:00,ZV,6,Een beetje,,,Best wel,Een beetje,Een beetje,,Helemaal niet,Helemaal niet,Helemaal niet,,,,
-12-6-2023 11:57:32,,7-6-2023,20:00:00,22:00:00,ZV Bloemendaal,7,Best wel,,,Heel erg,Een beetje,Een beetje,,Helemaal niet,Helemaal niet,Een beetje,,,,
-19-6-2023 21:10:49,,19-6-2023,21:09:00,21:09:00,Wijk aan zee,2,,Eyeball,,,,,,,,,,,,
-19-6-2023 21:11:18,,19-6-2023,20:30:00,21:30:00,ZV Parnassia,2,,Cam,,,,,,,,,,,,
-19-6-2023 21:13:22,,19-6-2023,21:00:00,21:30:00,ZV Bloemendaal,2,,Cam,,,,,,,,,,,,
-19-6-2023 21:13:32,,19-6-2023,21:00:00,21:30:00,ZV Bloemendaal,2,,Cam,,,,,,,,,,,,
-20-6-2023 13:20:54,,20-6-2023,13:00:00,13:30:00,ZV Bloemendaal,1,,Cam,,,,,,,,,,,,
-21-6-2023 10:32:57,,21-6-2023,10:00:00,11:00:00,ZV Parnassia,2,,Cam,,,,,,,,,,,,
-22-6-2023 14:46:07,,22-6-2023,14:45:00,15:00:00,ZV Bloemendaal,1,,Eyeball,,,,,,,,Helemaal niet,,,,
-26-6-2023 14:55:07,,26-6-2023,14:00:00,15:00:00,ZV Bloemendaal,2,,Cam,,,,,,,,,,,,
-26-6-2023 23:26:55,,26-6-2023,20:00:00,21:30:00,ZV Parnassia,6,Een beetje,Nat pak,,Een beetje,Een beetje,Helemaal niet,,Een beetje,Een beetje,Een beetje,,,,
-27-6-2023 15:56:09,,26-6-2023,19:30:00,20:30:00,ZV Parnassia,7,Een beetje,Nat pak,,Best wel,Een beetje,Een beetje,,Helemaal niet,Helemaal niet,Best wel,,,,
-27-6-2023 19:25:32,,26-6-2023,19:00:00,20:15:00,ZV Parnassia,7,Best wel,Nat pak,,Een beetje,Best wel,Een beetje,,Best wel,Helemaal niet,Een beetje,,,,
-27-6-2023 19:50:32,,26-6-2023,14:30:00,15:30:00,ZV Parnassia,5,,Eyeball,,Helemaal niet,,,,,,,,,,
-27-6-2023 20:11:18,,26-6-2023,19:30:00,22:00:00,ZV Parnassia,6,Een beetje,Nat pak,,Een beetje,Een beetje,Een beetje,,Best wel,Een beetje,Best wel,,,,
-27-6-2023 21:30:57,,28-8-2021,8:30:00,10:30:00,IJmuiden,9,,Hind sight (Whatsapp),Longboard,Heel erg,,Best wel,,,,Best wel,,,,
-27-6-2023 21:34:13,,29-5-2022,19:00:00,21:00:00,,9,,Hind sight (Whatsapp),,,Best wel,,,,,,Een beetje,,,
-27-6-2023 21:36:52,,18-9-2022,10:00:00,12:00:00,,6,,Hind sight (Whatsapp),,Een beetje,,,,,,,,,,
-27-6-2023 21:37:28,,3-6-2021,9:00:00,11:00:00,,10,,Hind sight (Whatsapp),,Heel erg,,,,,,,,,,
-27-6-2023 21:38:06,,27-11-2021,11:00:00,13:00:00,,4,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:39:17,,15-7-2021,19:00:00,21:00:00,,8,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:39:28,,28-11-2021,16:30:00,17:30:00,,7,,Hind sight (Whatsapp),,,Een beetje,,,,,,,,,
-27-6-2023 21:40:43,,20-6-2022,21:00:00,22:00:00,,7,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:40:54,,20-12-2020,15:00:00,17:00:00,,7,,Hind sight (Whatsapp),Short board,Best wel,,,,,,,,,,
-27-6-2023 21:41:55,,23-11-2021,15:30:00,17:00:00,,6,,Hind sight (Whatsapp),,,,,,,,,Best wel,,,
-27-6-2023 21:43:01,,27-7-2022,15:00:00,16:00:00,,7,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:43:26,,26-5-2022,9:00:00,11:00:00,,7,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:44:15,,8-6-2022,9:00:00,11:00:00,,8,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:44:22,,21-11-2021,16:00:00,17:00:00,,8,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:46:49,,18-4-2020,17:00:00,19:00:00,Scheveningen zwarte pad,9,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:47:32,,29-9-2022,10:00:00,12:00:00,,7,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:47:50,,10-12-2019,16:00:00,18:00:00,,3,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:48:25,,12-6-2019,10:00:00,12:00:00,,7,,Hind sight (Whatsapp),,,,,,,,,,,,
-27-6-2023 21:49:44,,28-7-2019,15:00:00,17:00:00,,1,,Hind sight (Whatsapp),,,,,,,,Helemaal niet,,,,
-2-7-2023 9:53:53,,2-7-2023,9:51:00,10:00:00,Wijk aan zee,6,,Cam,,Helemaal niet,,,,,,Best wel,Best wel,,,
-3-7-2023 21:20:25,,3-7-2023,19:00:00,21:00:00,Wijk aan zee,7,,Nat pak,Short board,Helemaal niet,Een beetje,Best wel,Een beetje,Helemaal niet,Best wel,Heel erg,Heel erg,,,
-3-7-2023 22:50:27,,3-7-2023,19:00:00,21:00:00,Wijk aan zee,8,,Nat pak,Short board,Een beetje,Best wel,Best wel,Een beetje,Helemaal niet,Best wel,Heel erg,Heel erg,,,
-4-7-2023,,4-7-2023,15:00,16:00,Wijk aan zee,9,,Hind sight (Whatsapp),Fish of funboard,,,,,,,,,,,
-4-7-2023,,4-7-2023,15:00,16:00,Wijk aan zee,7,,Hind sight (Whatsapp),Longboard,,,,,,,,,,,
-4-7-2023,,4-7-2023,18:00,19:00,Wijk aan zee,8,,Hind sight (Whatsapp),Fish of funboard,,,,,,,,,,,
-4-7-2023,,4-7-2023,18:00,19:00,Wijk aan zee,8,,Hind sight (Whatsapp),Longboard,,,,,,,,,,,
-4-7-2023 7:46:09,,4-7-2023,19:00:00,21:30:00,ZV Parnassia,8,,Nat pak,Short board,Heel erg,Best wel,Best wel,Heel erg,Een beetje,Een beetje,Best wel,Helemaal niet,,,
-4-7-2023 22:15:43,,4-7-2022,16:00:00,18:30:00,Wijk aan zee,9,,Nat pak,Short board,Best wel,Best wel,Best wel,Best wel,Een beetje,Best wel,Best wel,Een beetje,,,
-4-7-2023 22:41:42,,4-7-2023,20:45:00,22:00:00,ZV Parnassia,7,,Nat pak,Longboard,Best wel,Best wel,Een beetje,Een beetje,Heel erg,Best wel,Best wel,Helemaal niet,,,
-4-7-2023 22:45:30,,4-7-2023,21:00:00,22:30:00,ZV Parnassia,8,,Nat pak,Longboard,Best wel,Best wel,Best wel,Best wel,Best wel,Een beetje,Best wel,Helemaal niet,,,
-9-7-2023 0:00:00,,18-3-2018,,,Maasvlakte,10,,Hind sight (Boekje),,,,,,,,,,,,Boek : Overhead barrels
-9-7-2023 0:00:00,,30-4-2018,,,Domburg,10,,Hind sight (Boekje),,,,,,,,,,,,"Boek : Was goed, overhead barrels"
-9-7-2023 0:00:00,,29-7-2018,Voor werk extra vroeg gegaan,,Terheijde,9,,Hind sight (Boekje),,,,,,,,,,,,"Boek : Sets met lange periode, heuphoog, longboard golven"
-9-7-2023 0:00:00,,26-6-2019,,,,4,,Hind sight (Whatsapp),,,,,,,,,,,,Maite : Rommelig
-9-7-2023 0:00:00,,27-6-2019,,,,6,,Hind sight (Whatsapp),,,,,,,,,,,,"Maite : Rommelig, maar minder hoogte en meer kracht dan dag ervoor"
-9-7-2023 0:00:00,,6-12-2019,,,,,,Hind sight (Whatsapp),,,,,,,,,,,,Maite tegen yael in whatsapp gezegd dat ze de dag na 5 dec gingen surfen : ?
-4-7-2023 22:55:45,,3-7-2023,19:30:00,21:30:00,Wijk aan zee,8,,Nat pak,Short board,Helemaal niet,Best wel,Best wel,Een beetje,Helemaal niet,Een beetje,Best wel,Heel erg,,,
-9-7-2023 0:00:00,,24-12-2019,12:00,,,,,Hind sight (Whatsapp),,,,,,,,,,,,Pim tegen Mait in whatsapp : ?
-9-7-2023 0:00:00,,5-2-2020,,,,9,,Hind sight (Whatsapp),,,,,,,,,,,,Pim tegen Maite in whatsapp op 4 feb : Zieke surf
-4-7-2023 22:57:37,,4-7-2023,19:00:00,21:30:00,ZV Parnassia,7,,Nat pak,Fish of funboard,Best wel,Een beetje,Best wel,Een beetje,Een beetje,Een beetje,Best wel,Helemaal niet,,,
-5-7-2023,,5-7-2023,19:00,21:00,Wijk aan zee,8.5,,Hind sight (Whatsapp),Fish of funboard,,,,,,,Heel erg,,,,Sessie na Poly (Pim was toen tot 18:00 a 18:30 een weg afsluiten bij Laaglandersluisweg)
-5-7-2023 21:17:40,,5-7-2023,19:00:00,20:00:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Helemaal niet,Best wel,Best wel,Best wel,Een beetje,Een beetje,Best wel,Een beetje,,,
-5-7-2023 22:46:46,,5-7-2023,19:00:00,20:30:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Helemaal niet,Heel erg,Een beetje,Best wel,Helemaal niet,Helemaal niet,Heel erg,Een beetje,,,
-9-7-2023 0:00:00,,13-12-2019,11:00,13:00,,,,Hind sight (Whatsapp),,,,,,,,,,,,Maite tegen Pim in Whatsapp de dag ervoor (12-dec-2019) dat we met stijn gingen : ?
-9-7-2023 0:00:00,,29-8-2021,8:30,9:30,Bloemendaal,4,,Hind sight (Whatsapp),,,,,,,,,,,,Filmpje Maite : Klotsbak
-9-7-2023 0:00:00,,30-4-2020,In avond,,,9,,Hind sight (Whatsapp),,,,,,,,,,,,Volgens Maite tegen Pim Whatsapp : Zieke surf
-9-7-2023 0:00:00,,4-6-2020,,,,,,Hind sight (Whatsapp),,,,,,,,,,,,Pim tegen Maite in whatsapp : ?
-9-7-2023 0:00:00,,29-6-2020,In avond,,,,,Hind sight (Whatsapp),,,,,,,,,,,,Pim en Maite in Striep app : ?
-9-7-2023 0:00:00,,29-7-2020,ochtend en avondsessie,,Belgie,9,,Hind sight (Boekje),,,,,,,,,,,,"Boek: Savonds was beter.  Was in belgie maar in nl ook heel goed : 1 tot 1,5. Clean en krachtig. Barrels en geen wind"
-9-7-2023 0:00:00,,23-9-2020,19:30,20:30,Wijk aan zee,8,,Hind sight (Surfweer),,,,,,,,,,,,"Surfweer:Zo hey… wie waren er nog meer op Wijk vanavond? Zeg maar met recht Wijkiki. Voor een half uur / drie kwartier echt bizar lange lijnen die maar door rolden zonder eind - september 23, 2020 om 9:53 pm (https://surfweer.nl/surf/surfweer-woensdag-23-september-2020/)"
-9-7-2023 0:00:00,,25-9-2020,9:00,10:00,Zandvoort,9,,Hind sight (Whatsapp),,,,,,,,,,,,"Surfweer : Twee meter, krachtige chaos"
-9-7-2023 0:00:00,,25-9-2020,8:00,10:00,Wijk aan zee,8,,Hind sight (Surfweer),,,,,,,,,,,,"Surfweer : Mooi, offshore wind. Ochtend en middag"
-9-7-2023 0:00:00,,27-9-2020,14:30,15:30,IJmuiden,10,,Hind sight (Surfweer),,,,,,,,,,,,"Surfweer.nl forum, met foto's van dikke golven. Buitenlandse omstandigheden. : Barrels en lange ritten"
-9-7-2023 0:00:00,,28-9-2020,19:00,20:00,Wijk aan zee,,,Hind sight (Whatsapp),,,,,,,,,,,,Maite tegen Luuk via Whatsapp. Volgens mij was dit onze barrelsessie bij wijk. : Nog even checken of het dé epische dag bij wijk was
-9-7-2023 0:00:00,,2-11-2020,,,,10,,Hind sight (Boekje),,,,,,,,,,,,"Boekje : Head high, clean, barrels"
-9-7-2023 0:00:00,,22-12-2020,,,,8,,Hind sight (Whatsapp),,,,,,,,,,,,Pim : Nice
-9-7-2023 0:00:00,,25-12-2020,,,,8,,Hind sight (Whatsapp),,,,,,,,,,,,Maite : Goed
-9-7-2023 0:00:00,,29-12-2020,,,,1,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Flat
-9-7-2023 0:00:00,,31-12-2020,,,,8,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Clean
-9-7-2023 0:00:00,,1-1-2021,,,,1,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Flat
-9-7-2023 0:00:00,,2-1-2021,,,,8,,Hind sight (Whatsapp),,,,,,,,,,,,Onbekende bron : Clean
-9-7-2023 0:00:00,,30-1-2021,,,,1,,Hind sight (Whatsapp),,,,,,,,,,,,Onbekende bron : Flat
-9-7-2023 0:00:00,,7-2-2021,7:00,9:00,Schevingen,9,,Hind sight (Boekje),,,,,,,,,,,,Boekje : Clean en hoog. sochtends vroeg
-9-7-2023 0:00:00,,7-2-2021,tijdens mid en hoog water,,Schevingen,10,,Hind sight (Boekje),,,,,,,,,,,,"Boek : overhead golven, episch, cleane golven"
-9-7-2023 0:00:00,,16-5-2021,,,,1,,Hind sight (Whatsapp),,,,,,,,,,,,Onbekende bron : Flat
-9-7-2023 0:00:00,,30-6-2021,,,,7,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Leuk
-9-7-2023 0:00:00,,16-8-2021,19:00,,,,,Hind sight (Whatsapp),,,,,,,,,,,,Pim zegt tegen Stijn dat ie net terug is van surf om 21:53 : ?
-9-7-2023 0:00:00,,16-1-2023,9:00:00,11:00:00,ZV Bloemendaal,8,,Hind sight (Surfweer),,,,,,,,,,,,"Surfweer.nl forum: Ziet er goed uit op de cams.- januari 16, 2023 om 8:56 am, Was inderdaad heerlijk. Wel wat aan de holle kant… ((https://surfweer.nl/surf/surfweer-vrijdag-13-januari-2023/))"
-9-7-2023 0:00:00,,20-10-2021,,,,7,,Hind sight (Whatsapp),,,,,,,,,,,,Pim : Lachen
-9-7-2023 0:00:00,,30-10-2021,,,Wijk aan Zee,1,,Hind sight (Whatsapp),,,,,,,,,,,,Maite : Webcam was flat
-9-7-2023 0:00:00,,4-11-2021,14:00,16:00,Wijk aan Zee,9,,Hind sight (Whatsapp),,,,,,,,,,,,"Pim gaan surfen tijdens werk (sick goede sessie in zn eentje met oranje plankje?) Pim had om 16:00 een afspraak voor werk, dus daarvoor gegaan: Goede surf. SMS van tobias zegt: ""rond 13:30 gaat wind eruit. Wijk is te shortboarden van 14:00 - 16:00. Zvoort en bloemendaal van 13:00 - 15:00"""
-9-7-2023 0:00:00,,23-11-2021,,,,8,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Heel lekker maar zwaar
-9-7-2023 0:00:00,,30-12-2021,,,,3,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Slecht
-9-7-2023 0:00:00,,5-1-2022,,,,7,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Windy/pittig/groot
-9-7-2023 0:00:00,,29-2-2020,11:00,12:30,Zandvoort,8,,Hind sight (Whatsapp),,,,,,,,,,,,"Maite tegen Bas in Whatsapp dat er later zieke surf kwam : Goede surf. ""Wij gaan in de middag surfen"" ""Er is goeie surf"" Om 13:30 stonden we bij Bas voor de deur, dus daarvoor gesurfd."
-9-7-2023 0:00:00,,2-2-2022,,,,4,,Hind sight (Whatsapp),,,,,,,,,,,,Berry : Windy
-9-7-2023 0:00:00,,23-3-2022,,,,1,,Hind sight (Whatsapp),,,,,,,,,,,,Maite : Flat
-9-7-2023 0:00:00,,26-5-2022,,,,1,,Hind sight (Whatsapp),,,,,,,,,,,,Maite : Surf looks flat
-9-7-2023 0:00:00,,29-5-2022,13:30,14:30,IJmuiden,8,,Hind sight (Filmpje Mees),,,,,,,,,,,,"Filmpjes Mees : Middelhoog, was prima"
-9-7-2023 0:00:00,,17-8-2022,,,,9,,Hind sight (Whatsapp),,,,,,,,,,,,Daniel : Heel nice
-9-7-2023 0:00:00,,1-1-2023,,,,9,,Hind sight (Whatsapp),,,,,,,,,,,,Daniel : Echt nice
-9-7-2023 0:00:00,,2-1-2023,,,Wijk aan Zee,9,,Hind sight (Whatsapp),,,,,,,,,,,,Berrys vrienden : Clean en hoog
-9-7-2023 0:00:00,,14-1-2023,7:00:00,9:30:00,Wijk aan Zee,9,,Hind sight (Surfweer),,,,,,,,,,,,"Surfweer.nl forum : ""Damn! Wijk was magisch vanochtend!""  - januari 14, 2023 om 11:04 am (https://surfweer.nl/surf/surfweer-vrijdag-13-januari-2023/)"
-9-7-2023 0:00:00,,16-1-2023,9:00:00,11:00:00,Wijk aan Zee,8,,Hind sight (Surfweer),,,,,,,,,,,,"Surfweer.nl forum: Ziet er goed uit op de cams.- januari 16, 2023 om 8:56 am, Was inderdaad heerlijk. Wel wat aan de holle kant… ((https://surfweer.nl/surf/surfweer-vrijdag-13-januari-2023/))"
-9-7-2023 0:00:00,,15-1-2022,14:30,15:30,Bloemendaal,6,,Hind sight (Whatsapp),,,,,,,,,,,,Filmpje Maite in whatsapp 15:00 ('very smoll') bij rapa nui en bericht yael 17:30 ('klein')
-9-7-2023 16:26:31,,9-7-2023,16:00:00,17:00:00,ZV Bloemendaal,1,,Cam,,,,,,,,,,,,
-16-7-2023 15:04:02,,16-7-2023,13:30:00,14:30:00,Wijk aan zee,5,,Eyeball,,Helemaal niet,,,,,Helemaal niet,Een beetje,Heel erg,,,
-16-7-2023 21:07:30,,16-7-2023,13:00:00,15:00:00,Wijk aan zee,6,,Eyeball,,Helemaal niet,,,,,,Een beetje,Heel erg,,,
-19-7-2023 22:10:51,,19-7-2023,18:00:00,20:00:00,IJmuiden,5,,Nat pak,Longboard,Een beetje,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,,,
-20-7-2023 11:42:18,,20-7-2023,11:10:00,12:40:00,Wijk aan zee,7,,Cam,Longboard,Best wel,,,,,,Een beetje,,,,
-20-7-2023 19:09:10,,20-7-2023,17:00:00,18:30:00,ZV Parnassia,7,,Nat pak,Fish of funboard,Best wel,Een beetje,Een beetje,Een beetje,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,,,
-20-7-2023 19:12:22,,20-7-2023,16:00:00,19:00:00,ZV Bloemendaal,8,,Nat pak,Short board,Heel erg,Een beetje,Een beetje,Best wel,Een beetje,Best wel,Een beetje,Een beetje,,,
-20-7-2023 20:14:18,,20-7-2023,17:00:00,18:00:00,ZV Parnassia,6,,Nat pak,Fish of funboard,Best wel,Helemaal niet,Een beetje,Een beetje,Helemaal niet,Best wel,Helemaal niet,Helemaal niet,,,
-20-7-2023 22:03:34,,20-7-2023,16:00:00,18:00:00,ZV Parnassia,6,,Nat pak,Fish of funboard,Een beetje,Een beetje,Helemaal niet,Een beetje,Een beetje,Een beetje,Een beetje,Helemaal niet,,,
-20-7-2023 23:50:31,,20-7-2023,20:00:00,22:00:00,Camperduin ,8,,Nat pak,Longboard,Best wel,Een beetje,Een beetje,Een beetje,Helemaal niet,Een beetje,Een beetje,Helemaal niet,,,
-22-7-2023 0:13:39,,22-7-2023,21:00:00,22:00:00,Wijk aan zee,6,,Eyeball,,,,,Best wel,,,,,,,
-22-7-2023 0:58:53,,21-7-2023,14:00:00,16:15:00,Wijk aan zee,8,,Nat pak,Fish of funboard,Heel erg,Een beetje,Heel erg,Een beetje,Helemaal niet,Een beetje,Een beetje,Helemaal niet,,,
-23-7-2023 17:40:05,,23-7-2023,17:10:00,18:10:00,Wijk aan zee,7,,Cam,,,,,,,,,,,,
-23-7-2023 17:40:52,,23-7-2023,17:00:00,18:10:00,ZV Parnassia,3,,Cam,,,,,,,,,,,,
-23-7-2023 22:08:48,,23-7-2023,13:00:00,15:00:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Helemaal niet,Een beetje,Een beetje,Een beetje,Helemaal niet,Helemaal niet,Een beetje,Heel erg,,,
-23-7-2023 23:09:28,,23-7-2023,13:00:00,14:30:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Helemaal niet,Een beetje,Een beetje,Een beetje,Helemaal niet,Helemaal niet,Een beetje,Heel erg,,,
-24-7-2023 17:20:10,,24-7-2023,16:40:00,17:40:00,ZV Parnassia,3,,Cam,,Helemaal niet,,,,,,,Heel erg,,,
-24-7-2023 19:41:39,,23-7-2023,13:00:00,14:30:00,Wijk aan zee,7,,Nat pak,Short board,Een beetje,Best wel,Een beetje,Een beetje,Helemaal niet,Een beetje,Best wel,Heel erg,,,
-25-7-2023 23:45:01,,25-7-2023,19:40:00,21:40:00,ZV Parnassia,4,,Nat pak,Fish of funboard,Helemaal niet,Helemaal niet,Een beetje,Een beetje,Een beetje,Een beetje,Een beetje,Een beetje,,,
-27-7-2023 11:57:40,,27-7-2023,7:30:00,8:30:00,Wijk aan zee,8,,Cam,,Heel erg,,,,,,,,,,
-27-7-2023 15:18:03,,27-7-2023,13:45:00,15:00:00,Wijk aan zee,6,,Nat pak,Fish of funboard,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Een beetje,Een beetje,,,
-27-7-2023 15:18:25,,27-7-2023,13:45:00,15:00:00,Wijk aan zee,6,,Nat pak,Fish of funboard,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Een beetje,Een beetje,,,
-3-8-2023 8:51:10,,1-8-2023,18:00:00,20:00:00,Camperduin,7,,Nat pak,Fish of funboard,Een beetje,Best wel,Een beetje,Best wel,Helemaal niet,Helemaal niet,Best wel,Best wel,,,
-4-8-2023 23:40:09,,4-8-2023,16:00:00,18:00:00,ZV Parnassia,5,,Nat pak,Fish of funboard,Een beetje,Een beetje,Een beetje,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Heel erg,,,
-5-8-2023 9:21:34,,5-8-2023,6:45:00,9:00:00,Camperduin,10,,Nat pak,Longboard,Heel erg,Heel erg,Heel erg,Heel erg,Een beetje,Helemaal niet,Heel erg,Helemaal niet,,,
-5-8-2023 9:29:18,,5-8-2023,7:00:00,8:15:00,ZV Bloemendaal,8,,Nat pak,Fish of funboard,Heel erg,Best wel,Een beetje,Best wel,Een beetje,Een beetje,Best wel,Helemaal niet,,,
-5-8-2023 11:54:28,,5-8-2023,7:00:00,9:00:00,ZV Bloemendaal,8,,Nat pak,Short board,Heel erg,Best wel,Een beetje,Heel erg,Een beetje,Een beetje,Best wel,Helemaal niet,,,
-6-8-2023 9:22:10,,5-8-2023,18:45:00,20:00:00,ZV Bloemendaal,8,,Nat pak,Fish of funboard,Best wel,Een beetje,Best wel,Een beetje,Best wel,Een beetje,Best wel,Helemaal niet,,,
-6-8-2023 19:27:05,,6-8-2023,7:00:00,9:00:00,ZV Bloemendaal,8,,Nat pak,Short board,Heel erg,Heel erg,Helemaal niet,Heel erg,Helemaal niet,Een beetje,Heel erg,Helemaal niet,,,
-6-8-2023 19:30:16,,6-8-2023,18:45:00,21:00:00,ZV Bloemendaal,8,,Nat pak,Longboard,Best wel,Best wel,Een beetje,Een beetje,Best wel,Een beetje,Een beetje,Helemaal niet,,,
-9-8-2023 8:45:23,,5-8-2023,6:30:00,9:00:00,ZV Bloemendaal,7,,Nat pak,Short board,Heel erg,Best wel,Een beetje,Een beetje,Helemaal niet,Een beetje,Best wel,Helemaal niet,,,
-9-8-2023 8:46:42,,5-8-2023,19:30:00,21:00:00,ZV Bloemendaal,8,,Nat pak,Fish of funboard,Best wel,Een beetje,Best wel,Best wel,Best wel,Helemaal niet,Een beetje,Helemaal niet,,,
-9-8-2023 8:47:43,,6-8-2023,17:00:00,21:00:00,IJmuiden,6,,Nat pak,Short board,Helemaal niet,Best wel,Een beetje,Heel erg,Best wel,Helemaal niet,Heel erg,Heel erg,,,
-9-8-2023 8:48:41,,8-8-2023,20:00:00,21:30:00,ZV Bloemendaal,7,,Nat pak,Short board,Helemaal niet,Heel erg,Een beetje,Best wel,Best wel,Helemaal niet,Heel erg,Een beetje,,,
-9-8-2023 23:14:14,,9-8-2023,20:30:00,22:00:00,ZV Bloemendaal,9,,Nat pak,Fish of funboard,Heel erg,Best wel,Heel erg,Best wel,Een beetje,Best wel,Heel erg,Helemaal niet,,,
-9-8-2023 23:15:02,,9-8-2023,20:30:00,22:00:00,ZV Parnassia,9,,Nat pak,Short board,Heel erg,Heel erg,Heel erg,Best wel,Een beetje,Best wel,Heel erg,Helemaal niet,,,
-11-8-2023 12:07:02,,10-8-2023,19:30:00,22:00:00,ZV Bloemendaal,9,,Nat pak,Fish of funboard,Heel erg,Best wel,Best wel,Heel erg,Een beetje,Heel erg,Best wel,Helemaal niet,,,
-11-8-2023 21:45:36,,10-8-2023,19:30:00,22:00:00,ZV Parnassia,10,,Nat pak,Fish of funboard,Heel erg,Heel erg,Heel erg,Heel erg,Helemaal niet,Heel erg,Heel erg,Helemaal niet,,,
-20-8-2023 20:42:00,,20-8-2023,15:00:00,17:00:00,Zandvoort Naakstrand,2,,Eyeball,,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,,,
-4-9-2023 8:35:11,,4-9-2023,8:00:00,9:00:00,Wijk aan zee,1,,Cam,,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,,,
-9-9-2023 13:14:43,,9-9-2023,0:01:00,23:59:00,ZV Parnassia,1,,Eyeball,,,Helemaal niet,,,,,Helemaal niet,,,,
-13-9-2023 23:17:31,,13-9-2023,18:00:00,20:00:00,Scheveningen zuid,8,,Nat pak,Longboard,Een beetje,Best wel,Best wel,Een beetje,Heel erg,Best wel,Best wel,Best wel,,,
-13-9-2023 23:20:36,,13-9-2023,17:45:00,19:45:00,Scheveningen zuid,7,,Nat pak,Short board,Best wel,Een beetje,Best wel,Een beetje,Heel erg,Best wel,Een beetje,Een beetje,,,
-13-9-2023 23:32:46,,13-9-2023,17:45:00,19:30:00,Scheveningen zuid,8,,Nat pak,Short board,Best wel,Best wel,Een beetje,Een beetje,Best wel,Een beetje,Best wel,Helemaal niet,,,
-14-9-2023 14:14:28,,13-9-2023,18:00:00,20:15:00,ZV Bloemendaal,8,,Nat pak,Fish of funboard,Heel erg,Een beetje,Best wel,Een beetje,Een beetje,Een beetje,Een beetje,Helemaal niet,,,
-21-9-2023 8:33:06,,20-9-2023,18:00:00,20:00:00,ZV Bloemendaal,8,,Nat pak,Fish of funboard,Een beetje,Heel erg,Heel erg,Best wel,Heel erg,Helemaal niet,Best wel,Een beetje,,,
-23-9-2023 18:33:34,,23-9-2023,14:00:00,16:00:00,ZV Parnassia,4,,Eyeball,,,,,,,,,,,,
-23-9-2023 18:41:35,,23-9-2023,12:00:00,14:00:00,ZV Bloemendaal,3,,Nat pak,Short board,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Een beetje,,,
-25-9-2023 11:57:59,,25-9-2023,7:30:00,8:30:00,ZV Bloemendaal,3,,Eyeball,,,,,,,,,,,,
-25-9-2023 17:05:04,,23-9-2023,14:00:00,16:00:00,Scheveningen hartbeach,6,,Nat pak,Fish of funboard,Een beetje,Een beetje,Helemaal niet,Best wel,Een beetje,Best wel,Best wel,Best wel,,,
-28-9-2023 10:11:56,,27-9-2023,17:00:00,19:00:00,ZV Bloemendaal,1,,Nat pak,,,,,,,,,,,,
-28-9-2023 13:59:01,,28-9-2023,10:00:00,11:30:00,ZV Bloemendaal,7,,Nat pak,Fish of funboard,Helemaal niet,Best wel,Een beetje,Best wel,Heel erg,Helemaal niet,Best wel,Best wel,,,
-28-9-2023 14:00:28,,24-9-2023,19:00:00,20:00:00,ZV Bloemendaal,9,,Nat pak,Fish of funboard,Heel erg,Heel erg,Heel erg,Een beetje,Een beetje,Een beetje,Best wel,Helemaal niet,,,
-29-9-2023 8:56:48,,28-9-2023,18:00:00,19:00:00,ZV Bloemendaal,6,,Nat pak,Fish of funboard,Een beetje,Een beetje,Helemaal niet,Best wel,Een beetje,Helemaal niet,Een beetje,Helemaal niet,,,
-30-9-2023 9:52:12,,30-9-2023,8:30:00,9:30:00,ZV Bloemendaal,4,,Cam,,,,,,,,,,,,
-1-10-2023 15:30:03,,1-10-2023,10:30:00,10:30:00,ZV Parnassia,4,,Eyeball,,,,,,,,,,,,
-1-10-2023 15:31:38,,30-9-2023,19:00:00,20:30:00,Castricum,4,,Eyeball,,,,,,,,,,,,
-4-10-2023 13:45:08,,4-10-2023,13:00:00,14:00:00,ZV,3,,Cam,,,,,,,,,,,,
-4-10-2023 18:26:42,,4-10-2023,16:30:00,18:00:00,ZV Bloemendaal,7,,Nat pak,Short board,Helemaal niet,Best wel,Een beetje,Best wel,Een beetje,Helemaal niet,Best wel,Een beetje,,,
-6-10-2023 12:03:17,,6-10-2023,11:30:00,12:30:00,Wijk aan zee,7,,Cam,,,,,,,,,,,,
-7-10-2023 7:40:08,,6-10-2023,15:30:00,17:00:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Een beetje,Een beetje,Een beetje,Helemaal niet,Best wel,Een beetje,Best wel,Best wel,,,
-7-10-2023 11:59:09,,6-10-2023,15:30:00,17:00:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Een beetje,Een beetje,Best wel,Helemaal niet,Best wel,Een beetje,Best wel,Heel erg,,,
-8-10-2023 16:52:48,,8-10-2023,14:00:00,17:00:00,Texel paal 17,9,,Nat pak,Short board,Heel erg,Heel erg,Een beetje,Heel erg,Best wel,Een beetje,Heel erg,Helemaal niet,,,
-8-10-2023 16:55:11,,8-10-2023,10:00:00,12:00:00,Texel paal 17,7,,Nat pak,Short board,Best wel,Best wel,Helemaal niet,Heel erg,Een beetje,Helemaal niet,Heel erg,Helemaal niet,,,
-9-10-2023 9:56:45,,8-10-2023,9:00:00,11:00:00,Texel paal 17,7,,Nat pak,Longboard,Best wel,Best wel,Helemaal niet,Heel erg,Een beetje,Een beetje,Heel erg,Een beetje,,,
-9-10-2023 9:58:11,,8-10-2023,16:00:00,17:00:00,Texel paal 17,8,,Nat pak,Longboard,Heel erg,Best wel,Best wel,Best wel,Een beetje,Een beetje,Best wel,Een beetje,,,
-10-10-2023 14:43:34,,10-10-2023,14:15:00,15:14:00,Wijk aan zee,6,,Cam,,,,,,,,,,,,
-12-10-2023 20:14:09,,12-10-2023,14:00:00,16:30:00,ZV Bloemendaal,7,,Nat pak,Fish of funboard,Best wel,Een beetje,Een beetje,Een beetje,Best wel,Een beetje,Best wel,Helemaal niet,,,
-12-10-2023 20:15:14,,12-10-2023,18:30:00,19:15:00,ZV Parnassia,8,,Nat pak,Fish of funboard,Heel erg,Best wel,Best wel,Best wel,Helemaal niet,Best wel,Best wel,Helemaal niet,,,
-16-10-2023 22:13:53,,16-10-2023,16:00:00,18:00:00,ZV Parnassia,9,,Nat pak,Longboard,Heel erg,Heel erg,Best wel,Best wel,Een beetje,Een beetje,Best wel,Helemaal niet,,,
-17-10-2023 12:25:38,,16-10-2023,14:45:00,18:45:00,ZV Bloemendaal,9,,Nat pak,Short board,Heel erg,Heel erg,Best wel,Heel erg,Best wel,Best wel,Heel erg,Helemaal niet,,,
-20-10-2023 21:25:45,,20-10-2023,16:30:00,17:15:00,ZV Parnassia,9,,Nat pak,Fish of funboard,Heel erg,Heel erg,Best wel,Heel erg,Een beetje,Helemaal niet,Heel erg,Helemaal niet,,,
-20-10-2023 21:27:11,,20-10-2023,17:00:00,19:00:00,ZV Parnassia,8,,Nat pak,Fish of funboard,Heel erg,Heel erg,Een beetje,Best wel,Een beetje,Helemaal niet,Heel erg,Helemaal niet,,,
-21-10-2023 11:44:40,,20-10-2023,17:30:00,18:45:00,ZV Parnassia,9,,Nat pak,Fish of funboard,Heel erg,Heel erg,Heel erg,Heel erg,Een beetje,Helemaal niet,Heel erg,Best wel,,,
-21-10-2023 11:46:21,,21-10-2023,10:00:00,10:45:00,ZV Bloemendaal,7,,Nat pak,Fish of funboard,Een beetje,Best wel,Een beetje,Best wel,Een beetje,Helemaal niet,Best wel,Een beetje,,,
-21-10-2023 18:57:03,,18-10-2023,12:00:00,15:00:00,IJmuiden,1,,Eyeball,,,,,,,,,,,,
-23-10-2023 17:21:17,,23-10-2023,16:00:00,18:00:00,Wijk aan zee,5,,Cam,,,,,,,,Helemaal niet,,,,
-29-10-2023 12:13:36,,29-10-2023,11:00:00,13:00:00,ZV Bloemendaal,5,,Eyeball,,,,,,,,,,,,
-2-11-2023 10:09:14,,2-11-2023,8:30:00,10:30:00,Wijk aan zee,1,,Cam,,,,,,,,Helemaal niet,,,,"Bij de pier helemaal flat, verderop hele kleine golfjes"
-2-11-2023 15:41:16,,2-11-2023,15:00:00,16:00:00,Wijk aan zee,5,,Cam,,,,,,,,,Heel erg,,,"Hoge golven, maar zieke wind, stroming en klotsbak. Bij pier kleine golven"
-2-11-2023 15:41:16,,2-11-2023,15:00:00,16:00:00,ZV Bloemendaal,3,,Cam,,,,,,,,,Heel erg,,,"Hoge golven, maar zieke wind, stroming en klotsbak."
-2-11-2023 17:26:47,,2-11-2023,17:00:00,17:30:00,Wijk aan zee,7,,Cam,,,,,,,,,,,,"Hoge golven, maar zieke wind, stroming en klotsbak. Bij pier twee surfers, lijkt een beetje surfbaar misch zelfs een 7"
-4-11-2023 13:52:11,,4-11-2023,10:30:00,12:30:00,Wijk aan zee,8,,Nat pak,Fish of funboard,Best wel,Best wel,Best wel,Een beetje,Helemaal niet,Heel erg,Een beetje,Een beetje,,,
-8-11-2023 15:37:15,,8-11-2023,12:00:00,13:00:00,Wijk aan zee,9,,Nat pak,Fish of funboard,Best wel,Heel erg,Heel erg,Best wel,Een beetje,Een beetje,Heel erg,Best wel,Overhead,,
-8-11-2023 15:39:24,,8-11-2023,13:00:00,14:00:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Best wel,Een beetje,Een beetje,Een beetje,Een beetje,Een beetje,Een beetje,Best wel,,,
-13-11-2023 12:47:41,,13-11-2023,12:00:00,13:00:00,Wijk aan zee,1,,Cam,,,,,,,,Helemaal niet,,Flat,,
-13-11-2023 12:49:31,,13-11-2023,12:00:00,13:00:00,ZV Bloemendaal,3,,Cam,,,,,,,,Helemaal niet,,Knie-hoog,,
-14-11-2023 15:07:28,,13-11-2023,16:00:00,17:00:00,Wijk aan zee,6,,Nat pak,Fish of funboard,Helemaal niet,Heel erg,Een beetje,Heel erg,Best wel,Helemaal niet,Heel erg,Heel erg,Overhead,,
-14-11-2023 15:09:15,,13-11-2023,15:00:00,16:00:00,Wijk aan zee,7,,Eyeball,,,,,,,,,,,,
-26-11-2023 10:01:11,,26-11-2023,9:00:00,10:00:00,Wijk aan zee,6,,Cam,,Helemaal niet,,,,,,Een beetje,,,,
-26-11-2023 11:31:04,,26-11-2023,9:00:00,10:00:00,ZV Bloemendaal,5,,Cam,,Helemaal niet,,,,,,,,,,
-28-11-2023 14:16:17,,28-11-2023,14:00:00,14:30:00,ZV Bloemendaal,4,,Eyeball,,Best wel,Helemaal niet,,,,Helemaal niet,Helemaal niet,,Knie-hoog,,
-1-12-2023 12:45:17,,1-12-2023,12:00:00,13:00:00,Wijk aan zee,6,,Cam,Longboard,Best wel,,,,,,Helemaal niet,,Knie-hoog,,Longboarders pakten nog wel wat golfjes bij Wijk. Best clean en windstil. Dus met Longboard zou het leuk zijn geweest
-1-12-2023 12:46:18,,1-12-2023,12:00:00,13:00:00,ZV Bloemendaal,6,,Cam,Longboard,Best wel,,,,,,Helemaal niet,,Knie-hoog,,Longboarders pakten nog wel wat golfjes bij Wijk. Best clean en windstil. Dus met Longboard zou het leuk zijn geweest
-2-12-2023 14:15:06,,2-12-2023,14:00:00,15:00:00,Wijk aan zee,4.5,,Cam,,,,,,,,Helemaal niet,,,,
-2-12-2023 14:15:06,,2-12-2023,14:00:00,15:00:00,ZV Bloemendaal,4.5,,Cam,,,,,,,,Helemaal niet,,,,Eén longboarder wat verder van de pier met mini golfjes
-5-12-2023 14:51:43,,5-12-2023,14:00:00,15:00:00,Wijk aan zee,4,,Cam,,,,,,,,Helemaal niet,,Heup-hoog,,
-5-12-2023 14:51:43,,5-12-2023,14:00:00,15:00:00,ZV Bloemendaal,4,,Cam,,,,,,,,Helemaal niet,,Heup-hoog,,
-9-12-2023 9:17:27,,9-12-2023,8:00:00,9:00:00,Wijk aan zee,4,,Cam,,Best wel,,,,,,Helemaal niet,,Knie-hoog,,"Mini golven op cam wijk, verder van de pier ook. Lag 1 longboarder in"
-9-12-2023 9:18:28,,9-12-2023,8:00:00,9:00:00,ZV Bloemendaal,4,,Cam,,Best wel,,,,,,Helemaal niet,,Knie-hoog,,"Mini golven op cam wijk, verder van de pier ook. Lag 1 longboarder in"
-9-12-2023 10:56:29,,9-12-2023,10:30:00,11:30:00,Wijk aan zee,6.5,,Cam,,Best wel,,,,,,Een beetje,,Heup-hoog,,"Lagen wat longboarders in bij Wijk, klein maar clean"
-9-12-2023 10:57:35,,9-12-2023,10:30:00,11:30:00,ZV Bloemendaal,6.5,,Cam,,Best wel,,,,,,Een beetje,,Heup-hoog,,"Lagen wat longboarders in bij Wijk, klein maar clean"
-9-12-2023 15:59:14,,9-12-2023,13:00:00,14:00:00,Wijk aan zee,7.5,,Cam,,Best wel,,,,,,Een beetje,,Borst-hoog,,Zag er hoger uit dan eerder op de cam van wijk
-9-12-2023 15:59:14,,9-12-2023,13:00:00,14:00:00,ZV Bloemendaal,7.5,,Cam,,Best wel,,,,,,Een beetje,,Borst-hoog,,Zag er hoger uit dan eerder op de cam van wijk
-10-12-2023 9:01:26,,10-12-2023,8:30:00,9:30:00,Wijk aan zee,3,,Cam,,Helemaal niet,Heel erg,Helemaal niet,Heel erg,,Helemaal niet,Heel erg,Heel erg,Overhead,,
-10-12-2023 9:02:34,,10-12-2023,8:30:00,9:30:00,ZV Bloemendaal,3,,Cam,,Helemaal niet,Heel erg,Helemaal niet,Heel erg,,Helemaal niet,Heel erg,Heel erg,Overhead,,
-10-12-2023 10:52:56,,10-12-2023,10:30:00,11:30:00,Wijk aan zee,3,,Cam,,Helemaal niet,,Helemaal niet,,,,Heel erg,,Overhead,,
-10-12-2023 10:52:56,,10-12-2023,10:30:00,11:30:00,ZV Bloemendaal,3,,Cam,,Helemaal niet,,Helemaal niet,,,,Heel erg,,Overhead,,
-10-12-2023 18:21:13,,10-12-2023,11:00:00,13:00:00,ZV Parnassia,1,,Eyeball,,Helemaal niet,Heel erg,Helemaal niet,,,Helemaal niet,Heel erg,Heel erg,Overhead,,
-10-12-2023 23:03:27,,10-12-2023,15:45:00,17:00:00,Wijk aan zee,7,,Nat pak,Fish of funboard,Een beetje,Heel erg,Best wel,Best wel,Een beetje,Best wel,Heel erg,Best wel,Overhead,,
-11-12-2023 9:57:49,,10-12-2023,15:00:00,17:00:00,IJmuiden,6,,Nat pak,Short board,,,,,,,,,Borst-hoog,,
-16-12-2023 15:43:36,,12-11-2023,15:00:00,17:00:00,Wijk aan zee,6,,Nat pak,Short board,,,,,,,,,,,
-17-12-2023 16:46:03,,17-12-2023,8:00:00,9:00:00,Wijk aan zee,5,,Cam,,,,,,,,,,,,
-20-12-2023 13:39:23,,20-12-2023,12:00:00,13:00:00,ZV Bloemendaal,4,,Cam,,Helemaal niet,,,,,,Best wel,Best wel,Overhead,,
-21-12-2023 14:03:26,,21-12-2023,13:00:00,15:00:00,Wijk aan zee,4,,Cam,,Helemaal niet,Heel erg,Helemaal niet,,,Helemaal niet,Heel erg,Heel erg,Overhead,,
-25-12-2023 11:37:53,,25-12-2023,11:30:00,12:00:00,Wijk aan zee,7,,Cam,,,,,,,,,,Borst-hoog,,
-26-12-2023 9:18:45,,26-12-2023,8:30:00,9:30:00,ZV Bloemendaal,2,,Eyeball,,Helemaal niet,,Helemaal niet,,,Helemaal niet,Best wel,Heel erg,Head-hoog,,
-26-12-2023 9:19:51,,26-12-2023,8:30:00,9:30:00,Wijk aan zee,3,,Cam,,Helemaal niet,,,,,Helemaal niet,Best wel,Heel erg,Head-hoog,,
-27-12-2023 14:37:29,,27-12-2023,12:00:00,13:00:00,Wijk aan zee,8,,Cam,,Heel erg,,,,,Heel erg,Een beetje,Een beetje,Navel-hoog,,
-27-12-2023 14:38:41,,27-12-2023,14:00:00,15:00:00,Wijk aan zee,7,,Cam,,Heel erg,,,,,,Een beetje,,Navel-hoog,,
-27-12-2023 14:39:23,,27-12-2023,12:00:00,13:00:00,ZV Bloemendaal,8,,Cam,,Heel erg,,,,,,Een beetje,Een beetje,Borst-hoog,,
-28-12-2023 10:22:38,,27-12-2023,14:30:00,15:30:00,Wijk aan zee,6.5,,Nat pak,Fish of funboard,Heel erg,,,,,,Helemaal niet,,Navel-hoog,,Berry was gaan surfen zei hij via Whatsapp
-29-12-2023 15:11:56,,29-12-2023,14:30:00,15:30:00,Wijk aan zee,7,,Cam,,Helemaal niet,,,,,Helemaal niet,Best wel,,Head-hoog,,
-1-1-2024 9:54:12,,1-1-2024,9:30:00,10:30:00,Wijk aan zee,4,,Cam,,Helemaal niet,,,,,Helemaal niet,,,,,
-1-1-2024 9:55:10,,1-1-2024,9:30:00,10:30:00,ZV Bloemendaal,3,,Cam,,Helemaal niet,,,,,Helemaal niet,,,,,
-1-1-2024 13:21:00,,1-1-2024,13:00:00,14:00:00,ZV Bloemendaal,3,,Eyeball,,Helemaal niet,Best wel,Helemaal niet,,Heel erg,Helemaal niet,Heel erg,Heel erg,Overhead,,
-1-1-2024 14:58:37,,30-12-2023,13:30:00,14:30:00,ZV Parnassia,4.5,,Eyeball,,Helemaal niet,Best wel,,,,Helemaal niet,Best wel,Best wel,,,
-3-1-2024 12:24:13,,3-1-2024,11:00:00,12:00:00,Wijk aan zee,6.5,,Cam,,,,,,,,,,,,
-4-1-2024 9:25:17,,4-1-2024,8:00:00,9:00:00,Wijk aan zee,7,,Cam,Fish of funboard,Best wel,Helemaal niet,Een beetje,,,Best wel,Helemaal niet,Helemaal niet,Navel-hoog,,
-4-1-2024 9:25:17,,4-1-2024,8:00:00,9:00:00,Wijk aan zee,8,,Cam,Longboard,Best wel,Helemaal niet,Een beetje,,,Best wel,Helemaal niet,Helemaal niet,Navel-hoog,,
-4-1-2024 9:26:36,,4-1-2024,8:00:00,9:00:00,ZV Bloemendaal,7,,Cam,Fish of funboard,Best wel,,Een beetje,,,,Een beetje,Helemaal niet,Navel-hoog,,
-4-1-2024 9:26:36,,4-1-2024,8:00:00,9:00:00,ZV Bloemendaal,8,,Cam,Longboard,Best wel,,Een beetje,,,,Een beetje,Helemaal niet,Navel-hoog,,
-4-1-2024 15:47:03,,4-1-2024,15:00:00,16:00:00,Wijk aan zee,6,,Cam,Fish of funboard,,,,,,,,,Schouder-hoog,,
-4-1-2024 15:47:03,,4-1-2024,15:00:00,16:00:00,ZV Bloemendaal,6,,Cam,Fish of funboard,,,,,,,,,Schouder-hoog,,
-4-1-2024 15:47:03,,4-1-2024,15:00:00,16:00:00,Wijk aan zee,7,,Cam,Longboard,,,,,,,,,Schouder-hoog,,
-4-1-2024 15:47:03,,4-1-2024,15:00:00,16:00:00,ZV Bloemendaal,7,,Cam,Longboard,,,,,,,,,Schouder-hoog,,
-5-1-2024 8:41:12,,5-1-2024,8:00:00,9:00:00,Wijk aan zee,7,,Cam,Longboard,Heel erg,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Heup-hoog,,
-5-1-2024 8:41:12,,5-1-2024,8:00:00,9:00:00,Wijk aan zee,5,,Cam,Shortboard,Heel erg,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Heup-hoog,,
-5-1-2024 8:41:12,,5-1-2024,8:00:00,9:00:00,Wijk aan zee,6,,Cam,Fish of funboard,Heel erg,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Helemaal niet,Heup-hoog,,
-7-1-2024 8:50:30,,7-1-2024,7:00:00,10:00:00,Wijk aan zee,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-7-1-2024 9:12:26,,7-1-2024,8:00:00,10:00:00,ZV Bloemendaal,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-8-1-2024 9:58:07,,8-1-2024,9:00:00,10:00:00,Wijk aan zee,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-8-1-2024 9:58:07,,8-1-2024,9:00:00,10:00:00,ZV Bloemendaal,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-9-1-2024 10:04:06,,9-1-2024,8:00:00,11:00:00,Wijk aan zee,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-9-1-2024 10:08:19,,9-1-2024,8:00:00,11:00:00,ZV Bloemendaal,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-10-1-2024 11:15:40,,10-1-2024,9:00:00,11:00:00,Wijk aan zee,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-10-1-2024 11:15:40,,10-1-2024,9:00:00,11:00:00,ZV Bloemendaal,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-12-1-2024 9:11:47,,12-1-2024,8:00:00,9:00:00,Wijk aan zee,6,,Cam,,Een beetje,,,,,,,,Navel-hoog,Best wel,
-12-1-2024 9:11:47,,12-1-2024,8:00:00,9:00:00,ZV Bloemendaal,6,,Cam,,Een beetje,,,,,,,,Navel-hoog,Best wel,
-12-1-2024 11:55:39,,12-1-2024,11:00:00,12:00:00,Wijk aan zee,6,,Cam,,Een beetje,,,,,,,,Navel-hoog,Best wel,
-12-1-2024 11:55:39,,12-1-2024,11:00:00,12:00:00,ZV Bloemendaal,6,,Cam,,Een beetje,,,,,,,,Navel-hoog,Best wel,
-14-1-2024 10:07:44,,14-1-2024,9:30:00,10:30:00,Wijk aan zee,7,,Cam,,,,,,,Een beetje,,,Head-hoog,Een beetje,
-14-1-2024 13:03:55,,14-1-2024,12:30:00,13:30:00,ZV Bloemendaal,4,,Eyeball,,Helemaal niet,,,,,,,Best wel,Borst-hoog,,
-15-1-2024 13:10:42,,15-1-2024,12:30:00,13:30:00,Wijk aan zee,3,,Cam,,Helemaal niet,Helemaal niet,,,,,,,,,
-16-1-2024 12:36:27,,16-1-2024,12:00:00,13:00:00,ZV,5,,Cam,,,,,,,,,,,,
-16-1-2024 12:36:27,,16-1-2024,12:00:00,13:00:00,IJmuiden,5,,Cam,,,,,,,,,,,,
-16-1-2024 12:37:37,,16-1-2024,12:00:00,13:00:00,Wijk aan zee,7,,Cam,,Een beetje,Heel erg,Een beetje,Best wel,,Helemaal niet,Best wel,,Head-hoog,Helemaal niet,
-16-1-2024 13:32:07,,16-1-2024,13:00:00,14:00:00,Wijk aan zee,5,,Cam,,Helemaal niet,,,,,,,,,,
-16-1-2024 13:32:07,,16-1-2024,13:00:00,14:00:00,ZV Bloemendaal,5,,Cam,,Helemaal niet,,,,,,,,,,
-17-1-2024 10:05:18,,17-1-2024,9:00:00,10:00:00,Wijk aan zee,8,,Cam,Longboard,Best wel,Een beetje,,Helemaal niet,,,Een beetje,,Borst-hoog,Heel erg,
-17-1-2024 10:05:18,,17-1-2024,9:00:00,10:00:00,Wijk aan zee,7.5,,Cam,Fish of funboard,Best wel,Een beetje,,Helemaal niet,,,Een beetje,,Borst-hoog,Heel erg,
-17-1-2024 10:05:18,,17-1-2024,9:00:00,10:00:00,ZV Bloemendaal,8,,Cam,Longboard,Best wel,Een beetje,,Helemaal niet,,,Een beetje,,Borst-hoog,Heel erg,
-17-1-2024 10:05:18,,17-1-2024,9:00:00,10:00:00,ZV Bloemendaal,7.5,,Cam,Fish of funboard,Best wel,Een beetje,,Helemaal niet,,,Een beetje,,Borst-hoog,Heel erg,
-18-1-2024 15:28:20,,18-1-2024,15:00:00,16:00:00,Wijk aan zee,4,,Cam,,Helemaal niet,,,,,,Een beetje,,Navel-hoog,,
-18-1-2024 15:28:20,,18-1-2024,15:00:00,16:00:00,ZV Bloemendaal,4,,Cam,,Helemaal niet,,,,,,Een beetje,,Navel-hoog,,
-19-1-2024 23:12:36,,19-1-2024,10:30:00,11:30:00,Wijk aan zee,4,,Nat pak,Fish of funboard,Helemaal niet,Heel erg,Helemaal niet,Heel erg,Best wel,Helemaal niet,Heel erg,Een beetje,Overhead,Helemaal niet,
-21-1-2024 9:29:50,,21-1-2024,9:00:00,10:00:00,Wijk aan zee,4,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,,Flat,,
-21-1-2024 16:56:45,,21-1-2024,14:00:00,15:00:00,ZV Parnassia,2,,Eyeball,,Helemaal niet,Best wel,Helemaal niet,,Heel erg,Helemaal niet,Best wel,Heel erg,Overhead,Helemaal niet,
-22-1-2024 13:01:23,,22-1-2024,12:00:00,13:00:00,Wijk aan zee,7,,Cam,,Een beetje,,,,,,Een beetje,,Borst-hoog,Best wel,
-22-1-2024 14:01:24,,22-1-2024,12:00:00,13:00:00,ZV Bloemendaal,3,,Cam,,Helemaal niet,,,,,Heel erg,Best wel,,,Helemaal niet,
-23-1-2024 12:57:16,,23-1-2024,12:30:00,13:30:00,Wijk aan zee,6,,Cam,,Helemaal niet,Best wel,,,,Een beetje,Best wel,,Head-hoog,Helemaal niet,
-24-1-2024 12:48:01,,24-1-2024,12:00:00,13:00:00,Wijk aan zee,3,,Cam,,Helemaal niet,,,Heel erg,,Helemaal niet,Heel erg,,,Helemaal niet,
-24-1-2024 12:48:01,,24-1-2024,12:00:00,13:00:00,ZV Bloemendaal,3,,Cam,,Helemaal niet,,,Heel erg,,Helemaal niet,Heel erg,,,Helemaal niet,
-25-1-2024 8:56:24,,25-1-2024,8:00:00,9:00:00,ZV Bloemendaal,4,,Eyeball,,Een beetje,,,,,Helemaal niet,Een beetje,Een beetje,Borst-hoog,,
-25-1-2024 8:57:13,,25-1-2024,8:00:00,9:00:00,Wijk aan zee,7,,Cam,,Een beetje,,,,,,Best wel,,Head-hoog,Een beetje,
-28-1-2024 15:54:27,,28-1-2024,15:00:00,16:00:00,Wijk aan zee,1,,Cam,,,,,,,,,,Flat,,
-28-1-2024 15:55:41,,28-1-2024,15:00:00,16:00:00,ZV Bloemendaal,1,,Cam,,,,,,,,,,Flat,,
-28-1-2024 18:41:23,,28-1-2024,16:00:00,18:00:00,ZV Parnassia,3,,Eyeball,Longboard,Heel erg,Helemaal niet,,,,,Helemaal niet,,Knie-hoog,,
-1-2-2024 14:46:03,,1-2-2024,14:00:00,15:00:00,Wijk aan zee,5,,Cam,,Helemaal niet,,,,,,,,Borst-hoog,Een beetje,
-1-2-2024 14:46:03,,1-2-2024,14:00:00,15:00:00,ZV Bloemendaal,5,,Cam,,Helemaal niet,,,,,,,,Borst-hoog,Een beetje,
-2-2-2024 9:00:53,,2-2-2024,8:30:00,9:30:00,Wijk aan zee,8,,Cam,,Best wel,,,,,Een beetje,Best wel,,Head-hoog,Best wel,
-2-2-2024 22:12:08,,2-2-2024,11:00:00,12:00:00,Wijk aan zee,7.5,,Nat pak,Fish of funboard,Een beetje,Heel erg,Best wel,Best wel,Een beetje,Best wel,Best wel,Best wel,Overhead,Helemaal niet,
-2-2-2024 22:14:21,,2-2-2024,12:00:00,13:00:00,Wijk aan zee,6.5,,Nat pak,Fish of funboard,Een beetje,Best wel,Een beetje,Heel erg,Een beetje,Een beetje,Best wel,Best wel,Overhead,Helemaal niet,
-3-2-2024 10:22:17,,3-2-2024,10:00:00,10:30:00,Wijk aan zee,8,,Cam,Longboard,Best wel,,,,,,Een beetje,,Borst-hoog,Heel erg,
-3-2-2024 10:23:21,,3-2-2024,10:00:00,10:30:00,Wijk aan zee,7,,Cam,Fish of funboard,Best wel,,,,,,,,Borst-hoog,Best wel,
-4-2-2024 17:11:24,,4-2-2024,17:00:00,17:30:00,Wijk aan zee,7,,Cam,,Een beetje,,,,,,Een beetje,,Head-hoog,Best wel,
-7-2-2024 16:03:13,,7-2-2024,13:00:00,14:45:00,ZV Bloemendaal,9,,Nat pak,Fish of funboard,Heel erg,Heel erg,Heel erg,Een beetje,Een beetje,Helemaal niet,Best wel,Helemaal niet,Overhead,Best wel,
-7-2-2024 17:20:22,,7-2-2024,14:45:00,16:00:00,ZV Bloemendaal,7.5,,Nat pak,Fish of funboard,Een beetje,Best wel,Best wel,Best wel,Een beetje,Helemaal niet,Best wel,Een beetje,Head-hoog,Een beetje,
-7-2-2024 22:58:40,,7-2-2024,12:00:00,14:00:00,Wijk aan zee,9,,Cam,,Heel erg,Heel erg,Heel erg,,,Heel erg,Best wel,Helemaal niet,Overhead,Een beetje,
-8-2-2024 11:48:58,,8-2-2024,11:30:00,12:30:00,Wijk aan zee,7,,Cam,Longboard,Best wel,,,,,,,,Navel-hoog,Heel erg,
-8-2-2024 17:18:44,,8-2-2024,16:00:00,17:00:00,Wijk aan zee,3,,Cam,Fish of funboard,Heel erg,Helemaal niet,,,,,,,Heup-hoog,,
-8-2-2024 17:18:44,,8-2-2024,16:00:00,17:00:00,Wijk aan zee,5,,Cam,Longboard,Heel erg,Helemaal niet,,,,,,,Heup-hoog,,
-8-2-2024 17:18:44,,8-2-2024,16:00:00,17:00:00,ZV Bloemendaal,3,,Cam,Fish of funboard,Heel erg,Helemaal niet,,,,,,,Heup-hoog,,
-8-2-2024 17:18:44,,8-2-2024,16:00:00,17:00:00,ZV Bloemendaal,5,,Cam,Longboard,Heel erg,Helemaal niet,,,,,,,Heup-hoog,,
-10-2-2024 13:50:17,,10-2-2024,13:00:00,14:00:00,Wijk aan zee,7.5,,Cam,Longboard,Heel erg,,,,,,Helemaal niet,,Heup-hoog,,
-10-2-2024 14:23:22,,10-2-2024,11:00:00,12:00:00,ZV Bloemendaal,8,,Eyeball,Longboard,Heel erg,Helemaal niet,,Helemaal niet,,Helemaal niet,Een beetje,Een beetje,Navel-hoog,Heel erg,
-10-2-2024 14:24:35,,10-2-2024,11:00:00,12:00:00,ZV Bloemendaal,5.5,,Eyeball,Fish of funboard,Heel erg,,,,,Helemaal niet,Een beetje,Een beetje,Navel-hoog,Heel erg,
-10-2-2024 14:25:49,,10-2-2024,13:00:00,14:00:00,Wijk aan zee,8,,Cam,Longboard,Heel erg,,Best wel,,,Best wel,Een beetje,Een beetje,Navel-hoog,Heel erg,
-10-2-2024 14:26:56,,10-2-2024,13:00:00,14:00:00,Wijk aan zee,5.5,,Cam,Fish of funboard,Heel erg,Een beetje,,,,Heel erg,Een beetje,Een beetje,Navel-hoog,Heel erg,
-11-2-2024 10:20:03,,11-2-2024,10:00:00,11:00:00,Wijk aan zee,6,,Cam,Longboard,Heel erg,Helemaal niet,Een beetje,Helemaal niet,,Helemaal niet,Helemaal niet,,Knie-hoog,Heel erg,
-11-2-2024 10:20:03,,11-2-2024,10:00:00,11:00:00,ZV Bloemendaal,6,,Cam,Longboard,Heel erg,Helemaal niet,Een beetje,Helemaal niet,,Helemaal niet,Helemaal niet,,Knie-hoog,Heel erg,
-11-2-2024 10:25:13,,11-2-2024,10:00:00,11:00:00,ZV Bloemendaal,2,,Cam,Fish of funboard,Heel erg,,,,,,,,Knie-hoog,,
-11-2-2024 10:25:13,,11-2-2024,10:00:00,11:00:00,Wijk aan zee,2,,Cam,Fish of funboard,Heel erg,,,,,,,,Knie-hoog,,
-15-2-2024 11:07:58,,15-2-2024,10:00:00,17:00:00,Wijk aan zee,2,,Cam,Longboard,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,Helemaal niet,Flat,Heel erg,
-15-2-2024 11:07:58,,15-2-2024,10:00:00,17:00:00,Zandvoort,2,,Cam,Longboard,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,Helemaal niet,Flat,Heel erg,
-15-2-2024 11:07:58,,15-2-2024,10:00:00,17:00:00,Wijk aan zee,1,,Cam,Fish of funboard,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,Helemaal niet,Flat,Heel erg,
-15-2-2024 11:07:58,,15-2-2024,10:00:00,17:00:00,Zandvoort,1,,Cam,Fish of funboard,,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,Helemaal niet,Flat,Heel erg,
-23-2-2024 11:13:58,,23-2-2024,11:00:00,12:00:00,Wijk aan zee,6.5,,Cam,Longboard,Een beetje,Een beetje,,,,Helemaal niet,Best wel,Best wel,Head-hoog,Een beetje,
-23-2-2024 11:13:58,,23-2-2024,11:00:00,12:00:00,Wijk aan zee,7.5,,Cam,Fish of funboard,Een beetje,Een beetje,,,,Helemaal niet,Best wel,Best wel,Head-hoog,Een beetje,
-23-2-2024 11:20:34,,23-2-2024,11:00:00,12:00:00,ZV Bloemendaal,4,,Cam,Fish of funboard,Helemaal niet,,Helemaal niet,,,,,Heel erg,Head-hoog,Helemaal niet,
-23-2-2024 11:20:34,,23-2-2024,11:00:00,12:00:00,ZV Bloemendaal,2,,Cam,Longboard,Helemaal niet,,Helemaal niet,,,,,Heel erg,Head-hoog,Helemaal niet,
-29-2-2024 11:17:55,,29-2-2024,10:30:00,11:30:00,Wijk aan zee,7,,Cam,Longboard,Best wel,,,,,Een beetje,Helemaal niet,,Navel-hoog,Heel erg,
-1-3-2024 12:56:01,,1-3-2024,12:00:00,13:00:00,Wijk aan zee,3,,Cam,,,,,,,,Helemaal niet,,Knie-hoog,,
-1-3-2024 12:56:01,,1-3-2024,12:00:00,13:00:00,Bloemendaal,3,,Cam,,,,,,,,Helemaal niet,,Knie-hoog,,
-2-3-2024 8:48:57,,2-3-2024,8:00:00,9:00:00,Wijk aan zee,2,,Cam,Fish of funboard,Heel erg,Helemaal niet,Helemaal niet,,,Helemaal niet,Helemaal niet,,Knie-hoog,,
-2-3-2024 8:48:57,,2-3-2024,8:00:00,9:00:00,Zandvoort,2,,Cam,Fish of funboard,Heel erg,Helemaal niet,Helemaal niet,,,Helemaal niet,Helemaal niet,,Knie-hoog,,
-2-3-2024 8:51:24,,2-3-2024,8:00:00,9:00:00,Wijk aan zee,3,,Cam,Longboard,Heel erg,Helemaal niet,,,,Helemaal niet,Helemaal niet,,Knie-hoog,Heel erg,
-2-3-2024 8:51:24,,2-3-2024,8:00:00,9:00:00,Zandvoort,3,,Cam,Longboard,Heel erg,Helemaal niet,,,,Helemaal niet,Helemaal niet,,Knie-hoog,Heel erg,
-8-3-2024 17:48:43,,8-3-2024,16:30:00,17:30:00,Wijk aan zee,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,,Helemaal niet,,Flat,,
-8-3-2024 17:48:43,,8-3-2024,16:30:00,17:30:00,Zandvoort,1,,Cam,,,Helemaal niet,Helemaal niet,Helemaal niet,,,Helemaal niet,,Flat,,
-12-3-2024 17:34:44,,12-3-2024,17:00:00,18:00:00,Wijk aan zee,8,,Cam,Longboard,Heel erg,Een beetje,Best wel,Helemaal niet,,Best wel,Een beetje,,Heup-hoog,Heel erg,
-12-3-2024 17:34:44,,12-3-2024,17:00:00,18:00:00,Wijk aan zee,3,,Cam,Shortboard,Heel erg,Een beetje,Best wel,Helemaal niet,,Best wel,Een beetje,,Heup-hoog,Heel erg,
-12-3-2024 17:34:44,,12-3-2024,17:00:00,18:00:00,Wijk aan zee,5,,Cam,Fish of funboard,Heel erg,Een beetje,Best wel,Helemaal niet,,Best wel,Een beetje,,Heup-hoog,Heel erg,
-17-3-2024 12:05:29,,16-3-2024,15:00:00,17:00:00,Wijk aan zee,6,,Nat pak,Short board,,,,,,,,,Heup-hoog,,
-17-3-2024 12:08:00,,17-3-2024,10:00:00,11:30:00,ZV Parnassia,7,,Nat pak,Longboard,Heel erg,Helemaal niet,Best wel,Helemaal niet,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Knie-hoog,Heel erg,
-17-3-2024 12:09:26,,17-3-2024,10:00:00,11:30:00,ZV Bloemendaal,6,,Nat pak,Longboard,Best wel,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Heup-hoog,Best wel,
-17-3-2024 12:11:01,,17-3-2024,10:00:00,11:30:00,ZV Parnassia,3,,Nat pak,Short board,Heel erg,Helemaal niet,Een beetje,Helemaal niet,Helemaal niet,Een beetje,Helemaal niet,,Knie-hoog,Heel erg,
-17-3-2024 12:11:04,,17-3-2024,10:00:00,11:00:00,ZV Bloemendaal,7,,Nat pak,Fish of funboard,Heel erg,Helemaal niet,Een beetje,Helemaal niet,Een beetje,Een beetje,Helemaal niet,Een beetje,Heup-hoog,Heel erg,
-17-3-2024 12:12:38,,17-3-2024,10:00:00,11:30:00,ZV Bloemendaal,6,,Nat pak,Fish of funboard,Best wel,Een beetje,Helemaal niet,Een beetje,Helemaal niet,Een beetje,Een beetje,Helemaal niet,Heup-hoog,Best wel,
-17-3-2024 12:14:10,,17-3-2024,7:00:00,8:00:00,Wijk aan zee,8,,Cam,Longboard,Heel erg,Een beetje,Best wel,Helemaal niet,Helemaal niet,Heel erg,Een beetje,Helemaal niet,Borst-hoog,Heel erg,
-20-3-2024 12:49:25,,20-3-2024,12:00:00,13:00:00,Wijk aan zee,1,,Cam,,Heel erg,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,Een beetje,Flat,Een beetje,
-24-3-2024 22:14:00,,24-3-2024,16:00:00,18:00:00,Wijk aan zee,3,,Cam,,Helemaal niet,Heel erg,,Heel erg,,Helemaal niet,Heel erg,Heel erg,Overhead,Helemaal niet,
-26-3-2024 7:32:03,,25-3-2024,17:15:00,17:00:00,ZV Bloemendaal,7.5,,Nat pak,Fish of funboard,Heel erg,Een beetje,Een beetje,Een beetje,Helemaal niet,Best wel,Een beetje,Helemaal niet,Borst-hoog,Heel erg,
-26-3-2024 7:33:07,,25-3-2024,17:15:00,18:00:00,ZV Bloemendaal,8.5,,Eyeball,Longboard,Heel erg,Een beetje,Best wel,Een beetje,Helemaal niet,Best wel,Een beetje,Helemaal niet,Borst-hoog,Heel erg,
-26-3-2024 18:37:10,,26-3-2024,18:00:00,19:00:00,Wijk aan zee,7,,Cam,Longboard,Heel erg,Helemaal niet,Een beetje,,,Een beetje,Helemaal niet,,Knie-hoog,Heel erg,
-29-3-2024 8:10:16,,29-3-2024,7:00:00,8:00:00,Wijk aan zee,7.5,,Cam,Fish of funboard,Best wel,,,,,Een beetje,Best wel,Een beetje,Borst-hoog,Best wel,Bij de pier helemaal flat. Je ziet de golven zijwaards weggeblazen worden. Zonnig en best clean.
-29-3-2024 9:28:58,,29-3-2024,9:00:00,9:30:00,Wijk aan zee,6.5,,Cam,Fish of funboard,,,,,,,,,Navel-hoog,,
-7-4-2024 19:33:38,,7-4-2024,17:00:00,18:00:00,Zandvoort,6,,Nat pak,Longboard,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Best wel,Helemaal niet,Een beetje,Best wel,Heup-hoog,Heel erg,
-7-4-2024 19:35:10,,7-4-2024,17:00:00,18:00:00,Zandvoort,5,,Nat pak,Fish of funboard,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Best wel,Helemaal niet,Helemaal niet,Best wel,Heup-hoog,Heel erg,
-7-4-2024 19:36:16,,7-4-2024,17:00:00,18:00:00,Zandvoort,4,,Nat pak,Short board,Een beetje,Helemaal niet,Helemaal niet,Helemaal niet,Best wel,Helemaal niet,Helemaal niet,Best wel,Heup-hoog,Heel erg,
-10-4-2024 21:05:38,,10-4-2024,17:00:00,18:30:00,Wijk aan zee,9,,Nat pak,Fish of funboard,Best wel,Heel erg,Best wel,Best wel,Best wel,Heel erg,Best wel,Best wel,Overhead,Helemaal niet,
-10-4-2024 21:06:47,,10-4-2024,18:45:00,19:15:00,Wijk aan zee,8,,Nat pak,Fish of funboard,Een beetje,Heel erg,Best wel,Heel erg,Best wel,Heel erg,Heel erg,Best wel,Overhead,Helemaal niet,
-10-4-2024 21:09:09,,10-4-2024,17:45:00,19:15:00,Wijk aan zee,8,,Nat pak,Fish of funboard,Een beetje,Best wel,Best wel,Best wel,Helemaal niet,Heel erg,Heel erg,Best wel,Overhead,Helemaal niet,
-16-4-2024 15:20:08,,16-4-2024,14:00:00,15:30:00,ZV Bloemendaal,2,,Cam,,Helemaal niet,Heel erg,Helemaal niet,,,Helemaal niet,Heel erg,Heel erg,Overhead,Helemaal niet,
-16-4-2024 15:24:39,,16-4-2024,14:00:00,15:30:00,Wijk aan zee,2,,Cam,,Helemaal niet,,,Heel erg,,Helemaal niet,Best wel,Heel erg,Overhead,Helemaal niet,
-21-5-2024 14:54:03,,21-5-2024,14:00:00,15:00:00,Wijk aan zee,5.5,,Cam,Shortboard,Heel erg,Een beetje,,,,,Een beetje,,Navel-hoog,,
-21-5-2024 14:54:03,,21-5-2024,14:00:00,15:00:00,Wijk aan zee,7,,Cam,Fish of funboard,Heel erg,Een beetje,,,,,Een beetje,,Navel-hoog,,
-21-5-2024 14:54:03,,21-5-2024,14:00:00,15:00:00,Wijk aan zee,8,,Cam,Longboard,Heel erg,Een beetje,,,,,Een beetje,,Navel-hoog,,
-23-5-2024 9:12:53,,22-5-2024,21:00:00,22:00:00,ZV Bloemendaal,6,,Nat pak,Longboard,Helemaal niet,Een beetje,Een beetje,Best wel,Heel erg,Helemaal niet,Een beetje,Heel erg,Navel-hoog,Een beetje,
-23-5-2024 9:12:53,,22-5-2024,21:00:00,22:00:00,ZV Bloemendaal,6,,Nat pak,Shortboard,Helemaal niet,Een beetje,Een beetje,Best wel,Heel erg,Helemaal niet,Een beetje,Heel erg,Navel-hoog,Een beetje,
-23-5-2024 9:12:53,,22-5-2024,21:00:00,22:00:00,ZV Bloemendaal,6,,Nat pak,Fish of funboard,Helemaal niet,Een beetje,Een beetje,Best wel,Heel erg,Helemaal niet,Een beetje,Heel erg,Navel-hoog,Een beetje,
-23-5-2024 9:13:42,,23-5-2024,7:00:00,8:00:00,Wijk aan zee,5.5,,Cam,Shortboard,,,,,,,,,Heup-hoog,,
-23-5-2024 9:13:42,,23-5-2024,7:00:00,8:00:00,Wijk aan zee,6.5,,Cam,Fish of funboard,,,,,,,,,Heup-hoog,,
-23-5-2024 9:13:42,,23-5-2024,7:00:00,8:00:00,Wijk aan zee,7,,Cam,Longboard,,,,,,,,,Heup-hoog,,
-17-3-2024 12:14:10,,17-3-2024,7:00:00,8:00:00,Wijk aan zee,6.5,,Cam,Fish of funboard,Heel erg,Een beetje,Best wel,Helemaal niet,Helemaal niet,Heel erg,Een beetje,Helemaal niet,Borst-hoog,Heel erg,
-20-3-2024 12:49:25,,20-3-2024,12:00:00,13:00:00,ZV Bloemendaal,1,,Cam,,Heel erg,Helemaal niet,Helemaal niet,Helemaal niet,,Helemaal niet,Helemaal niet,Een beetje,Flat,Een beetje,
-24-3-2024 22:14:00,,24-3-2024,16:00:00,18:00:00,ZV Bloemendaal,3,,Cam,,Helemaal niet,Heel erg,,Heel erg,,Helemaal niet,Heel erg,Heel erg,Overhead,Helemaal niet,
-26-3-2024 7:33:07,,25-3-2024,16:00:00,17:00:00,Wijk aan zee,8.5,,Cam,Longboard,Heel erg,Een beetje,Best wel,Een beetje,Helemaal niet,Heel erg,Een beetje,Helemaal niet,Borst-hoog,Heel erg,
-26-3-2024 7:33:07,,25-3-2024,16:00:00,17:00:00,Wijk aan zee,8,,Cam,Fish of funboard,Heel erg,Een beetje,Best wel,Een beetje,Helemaal niet,Heel erg,Een beetje,Helemaal niet,Borst-hoog,Heel erg,
-29-3-2024 8:10:16,,29-3-2024,7:00:00,8:00:00,Wijk aan zee,8,,Cam,Longboard,Best wel,,,,,Een beetje,Best wel,Een beetje,Borst-hoog,Best wel,Bij de pier helemaal flat. Je ziet de golven zijwaards weggeblazen worden. Zonnig en best clean.
-29-3-2024 9:28:58,,29-3-2024,9:00:00,9:30:00,Wijk aan zee,7,,Cam,Longboard,,,,,,,,,Navel-hoog,,
+Tijdstempel	E-mailadres	Datum	Start tijd	Eind tijd	Spot	Hoe goed was de surf?	Hoe was de surf? Alleen invullen bij een nat pak (: [Mellow]	Type data	Type board	Hoe was de surf? Alleen invullen bij een nat pak (: [Clean]	Hoe was de surf? Alleen invullen bij een nat pak (: [Krachtig]	Hoe was de surf? Alleen invullen bij een nat pak (: [Lange ritjes]	Hoe was de surf? Alleen invullen bij een nat pak (: [Stijle golven]	Hoe was de surf? Alleen invullen bij een nat pak (: [Stroming]	Hoe was de surf? Alleen invullen bij een nat pak (: [Crowd]	Hoe was de surf? Alleen invullen bij een nat pak (: [Hoog]	Hoe was de surf? Alleen invullen bij een nat pak (: [Windy]	Hoe hoog was het?	Hoe was de surf? Alleen invullen bij een nat pak (: [Voor beginners]	Best geschikt voor ...	Data comments
+4-9-2025 12:03:22		12-9-2025	9:15:00	11:00:00	Katwijk aan zee	6		Nat pak		Een beetje	Best wel	Een beetje	Best wel	Heel erg	Een beetje	Best wel	Best wel	Best wel	Een beetje	Shortboard, Fish/funboard, Longboard	
+3-9-2025 13:23:12		3-9-2025	11:00:00	12:00:00	Katwijk aan zee	7,5		Nat pak		Best wel				Best wel		Best wel		Borst-hoog		Shortboard	
+24-8-2025 21:09:26		24-8-2025	9:30:00	11:00:00	ZV Bloemendaal	7		Nat pak		Best wel	Helemaal niet	Een beetje	Helemaal niet	Een beetje	Heel erg	Een beetje	Helemaal niet	Heup-hoog	Best wel	Fish/funboard, Longboard	
+21-8-2025 23:17:04		21-8-2025	20:00:00	21:30:00	IJmuiden	5,5		Nat pak	Longboard	Best wel	Helemaal niet	Een beetje	Een beetje	Best wel	Helemaal niet	Helemaal niet	Een beetje	Heup-hoog	Een beetje	Longboard	
+17-8-2025 16:08:30		17-8-2025	13:30:00	15:00:00	ZV Parnassia	6		Nat pak	Fish of funboard	Een beetje	Een beetje	Helemaal niet	Best wel	Een beetje	Een beetje	Best wel	Een beetje	Navel-hoog	Best wel		
+16-8-2025 16:31:06		16-8-2025	14:30:00	15:30:00	ZV Parnassia	6		Nat pak	Longboard	Een beetje	Best wel	Helemaal niet	Best wel	Heel erg	Helemaal niet	Best wel	Best wel	Borst-hoog	Een beetje		
+16-7-2025 19:56:39		16-7-2025	19:00:00	21:00:00	ZV Bloemendaal	6		Eyeball		Een beetje					Een beetje	Best wel		Borst-hoog			
+29-11-2024		2-7-2024	18:45	19:15	Wijk aan zee	7		Webcam	Shortboard												Pim stuurde naae zichzelf: *02-07-2024* 19:00 wijk is choppy, maar wel hoog. Licht druk. Voor shortboarders wel nice. Longboarders minder. 7 voor short en fish, 5 voor longboard. Golven waren te stijl voor longboarders. Via de cam
+29-11-2024		2-7-2024	18:45	19:15	Wijk aan zee	7		Webcam	Fish of funboard												Pim stuurde naae zichzelf: *02-07-2024* 19:00 wijk is choppy, maar wel hoog. Licht druk. Voor shortboarders wel nice. Longboarders minder. 7 voor short en fish, 5 voor longboard. Golven waren te stijl voor longboarders. Via de cam
+29-11-2024		2-7-2024	18:45	19:15	Wijk aan zee	5		Webcam	Longboard												Pim stuurde naae zichzelf: *02-07-2024* 19:00 wijk is choppy, maar wel hoog. Licht druk. Voor shortboarders wel nice. Longboarders minder. 7 voor short en fish, 5 voor longboard. Golven waren te stijl voor longboarders. Via de cam
+29-11-2024		2-7-2024	20:00	21:00	Wijk aan zee	7,5		Nat pak	Shortboard				Een beetje		Een beetje	Een beetje		Schouderhoog			Pim stuurde naae zichzelf: *02-07-2024* 20:00 tot 21:00: 7,5 voor short en 7 voor fish, 6.5 voor longboard. Bij wijk, nat pak. Crowd een beetje. Schouder hoog. Soms stijle golven. Eyeball bij ijmuiden: flat om 20:00. Wel wat leuke beginner golven voor longboard.
+29-11-2024		2-7-2024	20:00	21:00	Wijk aan zee	7,5		Nat pak	Fish of funboard				Een beetje		Een beetje	Een beetje		Schouderhoog			Pim stuurde naae zichzelf: *02-07-2024* 20:00 tot 21:00: 7,5 voor short en 7 voor fish, 6.5 voor longboard. Bij wijk, nat pak. Crowd een beetje. Schouder hoog. Soms stijle golven. Eyeball bij ijmuiden: flat om 20:00. Wel wat leuke beginner golven voor longboard.
+29-11-2024		2-7-2024	20:00	21:00	Wijk aan zee	6,5		Nat pak	Longboard				Een beetje		Een beetje	Een beetje		Schouderhoog			Pim stuurde naae zichzelf: *02-07-2024* 20:00 tot 21:00: 7,5 voor short en 7 voor fish, 6.5 voor longboard. Bij wijk, nat pak. Crowd een beetje. Schouder hoog. Soms stijle golven. Eyeball bij ijmuiden: flat om 20:00. Wel wat leuke beginner golven voor longboard.
+29-11-2024		2-7-2024	19:45	20:15	IJmuiden	6		Eyeball	Longboard										Heel erg		Pim stuurde naar zichzelf op 02-07-2024: Eyeball bij ijmuiden: flat om 20:00. Wel wat leuke beginner golven voor longboard.   
+29-11-2024		2-7-2024	19:45	20:15	IJmuiden	3		Eyeball	Shortboard												Pim stuurde naar zichzelf op 02-07-2024: Eyeball bij ijmuiden: flat om 20:00. Wel wat leuke beginner golven voor longboard.   
+29-11-2024		2-7-2024	19:45	20:15	IJmuiden	4		Eyeball	Fish of funboard												Pim stuurde naar zichzelf op 02-07-2024: Eyeball bij ijmuiden: flat om 20:00. Wel wat leuke beginner golven voor longboard.   
+29-11-2024		29-6-2024	6:45	7:15	Wijk aan zee	7		Webcam	Longboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	Wijk aan zee	4		Webcam	Shortboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	Wijk aan zee	5		Webcam	Fish of funboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	Zandvoort	7		Schatting a.d.h.v. webcam	Fish of funboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	Zandvoort	4		Schatting a.d.h.v. webcam	Shortboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	Zandvoort	5		Schatting a.d.h.v. webcam	Fish of funboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	IJmuiden	6		Schatting a.d.h.v. webcam	Fish of funboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	IJmuiden	3		Schatting a.d.h.v. webcam	Shortboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		29-6-2024	6:45	7:15	IJmuiden	4		Schatting a.d.h.v. webcam	Fish of funboard	Heel erg											Pim stuurde op 02-07-2024: 29-06-2024:       29 juni 2024 om 07:00 bij wijk en waarsch ook ijmuiden en zandvoort: 7 voor longboard maar voor short en fish een 4 of 5. Heel clean. Via cam
+29-11-2024		30-6-2024	13:45	14:15	Wijk aan zee	6,5		Webcam	Longboard	Een beetje					Een beetje		Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	Wijk aan zee	5		Webcam	Fish of funboard	Een beetje					Een beetje		Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	Wijk aan zee	4		Webcam	Shortboard	Een beetje					Een beetje		Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	Zandvoort	6,5		Schatting a.d.h.v. webcam	Longboard	Een beetje							Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	Zandvoort	5		Schatting a.d.h.v. webcam	Fish of funboard	Een beetje							Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	Zandvoort	4		Schatting a.d.h.v. webcam	Shortboard	Een beetje							Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	IJmuiden	6,5		Schatting a.d.h.v. webcam	Longboard	Een beetje							Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	IJmuiden	5		Schatting a.d.h.v. webcam	Fish of funboard	Een beetje							Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		30-6-2024	13:45	14:15	IJmuiden	4		Schatting a.d.h.v. webcam	Shortboard	Een beetje							Een beetje				Pim stuurde op 02-07-2024:      30-06-2024 14:00 webcam wijk ziet er laag uit. Leuk voor longboards 6,5. Wel een beetje winderig. Niet zo goed voor fish of shortboard. Niet heel clean. Liggen meerdere surfers in, beetje crowd. Waarsch bij ijmuiden en zandvoort hetzelfde, want ver van de pier lijkt het hetzelfde.
+29-11-2024		3-7-2024	16:15	16:45	Wijk aan zee	8		Webcam	Longboard												Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	16:15	16:45	Wijk aan zee	8		Webcam	Fish of funboard												Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	16:15	16:45	Wijk aan zee	8		Webcam	Shortboard												Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	18:45	20:00	Wijk aan zee	8		Nat pak	Longboard	Best wel					Best wel	Best wel					Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	18:45	20:00	Wijk aan zee	8		Nat pak	Fish of funboard	Best wel					Best wel	Best wel					Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	18:45	20:00	Wijk aan zee	8		Nat pak	Shortboard	Best wel					Best wel	Best wel					Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	20:30	21:15	Wijk aan zee	7		Nat pak	Longboard	Best wel					Best wel						Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	20:30	21:15	Wijk aan zee	7		Nat pak	Fish of funboard	Best wel					Best wel						Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		3-7-2024	20:30	21:15	Wijk aan zee	7		Nat pak	Shortboard	Best wel					Best wel						Pim stuurde naar zichzelf: 03-07-2024 16:30 zag er via de cam heel goed uit bij wijk. Voor alle boards een 8. 18:45 - 20:00 nat pak bij wijk. Was voor alle boards een 8. Vrij clean, maar wel druk. Van 20:30 tot 21:15 was het een 7 geworden. Niet veel hoogte meer. Zat toen af en toe nog wel een leuke golf tussen
+29-11-2024		5-7-2024																			
+28-11-2024		1-6-2024	17:50	18:15	IJmuiden	7,5		Eyeball	Longboard												Pim stuurde 02-06-2024 naar zichzelf (hij had toen met Stanley gezwommen): Gisteren bij ijmuiden 7 voor longboarden om 18:00 ofz. En bij zandvoort een 4. Vandaag om 12:30 bij wijk een 6.5
+28-11-2024		1-6-2024	17:50	18:15	IJmuiden	6,5		Eyeball	Fish of funboard												Pim stuurde 02-06-2024 naar zichzelf (hij had toen met Stanley gezwommen): Gisteren bij ijmuiden 7 voor longboarden om 18:00 ofz. En bij zandvoort een 4. Vandaag om 12:30 bij wijk een 6.5
+28-11-2024		1-6-2024	17:50	18:15	IJmuiden	6		Eyeball	Shortboard												Pim stuurde 02-06-2024 naar zichzelf (hij had toen met Stanley gezwommen): Gisteren bij ijmuiden 7 voor longboarden om 18:00 ofz. En bij zandvoort een 4. Vandaag om 12:30 bij wijk een 6.5
+28-11-2024		1-6-2024	17:50	18:15	Zandvoort	4		Eyeball	Longboard												Pim stuurde 02-06-2024 naar zichzelf (hij had toen met Stanley gezwommen): Gisteren bij ijmuiden 7 voor longboarden om 18:00 ofz. En bij zandvoort een 4. Vandaag om 12:30 bij wijk een 6.5
+28-11-2024		2-6-2024	12:15	12:30	Wijk aan zee	6,5		Webcam													Pim stuurde 02-06-2024 naar zichzelf (hij had toen met Stanley gezwommen): Gisteren bij ijmuiden 7 voor longboarden om 18:00 ofz. En bij zandvoort een 4. Vandaag om 12:30 bij wijk een 6.5
+28-11-2024		7-6-2024	18:45	19:15	Wijk aan zee	7		Webcam	Longboard												Pim stuurde 07-06-2024 naar zichzelf: Vandaag: 19:00 7 voor longboard en fish bij wijk. Lager voor short
+28-11-2024		7-6-2024	18:45	19:15	Wijk aan zee	6,5		Webcam	Fish of funboard												Pim stuurde 07-06-2024 naar zichzelf: Vandaag: 19:00 7 voor longboard en fish bij wijk. Lager voor short
+28-11-2024		7-6-2024	18:45	19:15	Wijk aan zee	5,5		Webcam	Shortboard												Pim stuurde 07-06-2024 naar zichzelf: Vandaag: 19:00 7 voor longboard en fish bij wijk. Lager voor short
+28-11-2024		6-6-2024	18:45	19:15	Wijk aan zee	7,5		Webcam	Longboard	Best wel											Pim stuurde 07-06-2024 naar zichzelf: Gisteren om 16:30: Wijk ziet er ook wel leuk uit. Zonnetje, alles Zitten wel wat hoge golven tussen. Lijkt best clean. Veel mensen met longboards. 7.5 voor longboards, fish en shortboard.
+28-11-2024		6-6-2024	18:45	19:15	Wijk aan zee	7,5		Webcam	Fish of funboard	Best wel											Pim stuurde 07-06-2024 naar zichzelf: Gisteren om 16:30: Wijk ziet er ook wel leuk uit. Zonnetje, alles Zitten wel wat hoge golven tussen. Lijkt best clean. Veel mensen met longboards. 7.5 voor longboards, fish en shortboard.
+28-11-2024		6-6-2024	18:45	19:15	Wijk aan zee	7,5		Webcam	Shortboard	Best wel											Pim stuurde 07-06-2024 naar zichzelf: Gisteren om 16:30: Wijk ziet er ook wel leuk uit. Zonnetje, alles Zitten wel wat hoge golven tussen. Lijkt best clean. Veel mensen met longboards. 7.5 voor longboards, fish en shortboard.
+28-11-2024		6-6-2024	18:45	19:15	Zandvoort	7,5		Eyeball	Longboard	Best wel								Borsthoog			Maite stuurde 06-06-2024 in de surfchat om 16:07: mooi aflandig windje, tepel hoog, ziet er best leuk uit
+28-11-2024		6-6-2024	18:45	19:15	Zandvoort	7		Eyeball	Fish of funboard	Best wel								Borsthoog			Maite stuurde 06-06-2024 in de surfchat om 16:07: mooi aflandig windje, tepel hoog, ziet er best leuk uit
+28-11-2024		6-6-2024	18:45	19:15	Zandvoort	6,5		Eyeball	Shortboard	Best wel								Borsthoog			Maite stuurde 06-06-2024 in de surfchat om 16:07: mooi aflandig windje, tepel hoog, ziet er best leuk uit
+28-11-2024		7-6-2024	20:45	21:15	Wijk aan zee	4		Webcam	Longboard	Helemaal niet								Heup hoog			Pim stuurde 07-06-2024 naar zichzelf: 21:00 vandaag, 4 long, 3,5 fish en 2,5 short. Winderig en licht choppy. Heup hoog
+28-11-2024		7-6-2024	20:45	21:15	Wijk aan zee	3,5		Webcam	Fish of funboard	Helemaal niet								Heup hoog			Pim stuurde 07-06-2024 naar zichzelf: 21:00 vandaag, 4 long, 3,5 fish en 2,5 short. Winderig en licht choppy. Heup hoog
+28-11-2024		7-6-2024	20:45	21:15	Wijk aan zee	2,5		Webcam	Shortboard	Helemaal niet								Heup hoog			Pim stuurde 07-06-2024 naar zichzelf: 21:00 vandaag, 4 long, 3,5 fish en 2,5 short. Winderig en licht choppy. Heup hoog
+28-11-2024		9-6-2024	18:45	19:15	Wijk aan zee	8		Nat pak	Shortboard						Heel erg			Overhead			Pim stuurde 09-06-2024 naar zichzelf: 19:00 bij wijk. Overhead golven. Leuk voor short en fish 8. Minder leuk voor longboard door stijle golven  6. Best wel crowded. Nat pak
+28-11-2024		9-6-2024	18:45	19:15	Wijk aan zee	8		Nat pak	Fish						Heel erg			Overhead			Pim stuurde 09-06-2024 naar zichzelf: 19:00 bij wijk. Overhead golven. Leuk voor short en fish 8. Minder leuk voor longboard door stijle golven  6. Best wel crowded. Nat pak
+28-11-2024		9-6-2024	18:45	19:15	Wijk aan zee	6,5		Nat pak	Longboard						Heel erg			Overhead			Pim stuurde 09-06-2024 naar zichzelf: 19:00 bij wijk. Overhead golven. Leuk voor short en fish 8. Minder leuk voor longboard door stijle golven  6. Best wel crowded. Nat pak
+28-11-2024		10-6-2024	6:15	6:45	Wijk aan zee	8,5		Webcam	Fish of funboard												Pim stuurde 10-06-2024 naar zichzelf: 06:30 bij wijk een 8.5 voor fish en short. 8 voor longboard. Best clean. Zelfde waarsch voor zandvoort. Verder van de pier lijkt het niet zo goed als bij de pier
+28-11-2024		10-6-2024	6:15	6:45	Wijk aan zee	8,5		Webcam	Shortboard												Pim stuurde 10-06-2024 naar zichzelf: 06:30 bij wijk een 8.5 voor fish en short. 8 voor longboard. Best clean. Zelfde waarsch voor zandvoort. Verder van de pier lijkt het niet zo goed als bij de pier
+28-11-2024		10-6-2024	6:15	6:45	Wijk aan zee	8		Webcam	Longboard	Best wel											Pim stuurde 10-06-2024 naar zichzelf: 06:30 bij wijk een 8.5 voor fish en short. 8 voor longboard. Best clean. Zelfde waarsch voor zandvoort. Verder van de pier lijkt het niet zo goed als bij de pier
+28-11-2024		10-6-2024	9:30	12:00	Zandvoort	8,5		Hind sight (Surfweer)	Shortboard	Heel erg											Om 04:21 op 10-06-2024 stuurde iemand dat Zandvoort goed was tussen 09:30 en 12:00. Heb de foto's gezien en er waren toen barrels
+28-11-2024		10-6-2024	9:30	12:00	Zandvoort	8,5		Hind sight (Surfweer)	Fish of funboard	Heel erg											Om 04:21 op 10-06-2024 stuurde iemand dat Zandvoort goed was tussen 09:30 en 12:00. Heb de foto's gezien en er waren toen barrels
+28-11-2024		10-6-2024	9:30	12:00	Zandvoort	8		Hind sight (Surfweer)	Longboard	Heel erg											Om 04:21 op 10-06-2024 stuurde iemand dat Zandvoort goed was tussen 09:30 en 12:00. Heb de foto's gezien en er waren toen barrels
+28-11-2024		10-6-2024	9:30	12:00	Wijk aan zee	8,5		Hind sight (Surfweer)	Shortboard	Heel erg											Iemand zei dat Wijk heerlijk was in de ochtend. Heb de foto's gezien en er waren toen barrels
+28-11-2024		10-6-2024	9:30	12:00	Wijk aan zee	8,5		Hind sight (Surfweer)	Fish of funboard	Heel erg											Iemand zei dat Wijk heerlijk was in de ochtend. Heb de foto's gezien en er waren toen barrels
+28-11-2024		10-6-2024	9:30	12:00	Wijk aan zee	8		Hind sight (Surfweer)	Longboard	Heel erg											Iemand zei dat Wijk heerlijk was in de ochtend. Heb de foto's gezien en er waren toen barrels
+28-11-2024		12-6-2024	20:00	21:45	Wijk aan zee	8		Hind sight (Whatsapp)	Shortboard	Heel erg					Heel erg						Yael stuurde 12-06-2024 dat wijk lekker was maar heel druk. Ze gaf het een 8
+28-11-2024		12-6-2024	20:00	21:45	Zandvoort	8		Hind sight (Whatsapp)	Fish of funboard	Heel erg					Heel erg						Pim stuurde naar Yael dat Zandvoort sick was.
+28-11-2024		17-6-2024	16:45	17:15	Wijk aan zee	3		Webcam	Shortboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	Wijk aan zee	3		Webcam	Fish of funboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	Wijk aan zee	3		Webcam	Longboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	IJmuiden	3		Schatting a.d.h.v. webcam	Shortboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	IJmuiden	3		Schatting a.d.h.v. webcam	Fish of funboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	IJmuiden	3		Schatting a.d.h.v. webcam	Longboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	Bloemendaal	3		Webcam	Shortboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	Bloemendaal	3		Webcam	Fish of funboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		17-6-2024	16:45	17:15	Bloemendaal	3		Webcam	Longboard												Pim stuurde 17-06-2024 naar zichzelf: 17:15 wijk ziet er inimini uit, ook ver van de pier. Beachcam bloemendaal ziet er ook mini uit
+28-11-2024		18-6-2024	13:45	14:15	Wijk aan zee	6,5		Webcam	Longboard	Heel erg											Pim stuurde 18-06 naar zichzelf: Wijk aan zee ziet er klein uit, wel heeeeel clean en weinig wind. 6 voor longboarders? 3 voor fish en short? 14:00. 6.5 voor longboarders zelfs, lagen 2 longboarders die mini golven pakten
+28-11-2024		18-6-2024	13:45	14:15	Wijk aan zee	3		Webcam	Fish of funboard	Heel erg											Pim stuurde 18-06 naar zichzelf: Wijk aan zee ziet er klein uit, wel heeeeel clean en weinig wind. 6 voor longboarders? 3 voor fish en short? 14:00. 6.5 voor longboarders zelfs, lagen 2 longboarders die mini golven pakten
+28-11-2024		18-6-2024	13:45	14:15	Wijk aan zee	3		Webcam	Shortboard	Heel erg											Pim stuurde 18-06 naar zichzelf: Wijk aan zee ziet er klein uit, wel heeeeel clean en weinig wind. 6 voor longboarders? 3 voor fish en short? 14:00. 6.5 voor longboarders zelfs, lagen 2 longboarders die mini golven pakten
+28-11-2024		20-6-2024	7:30	8:00	Wijk aan zee	8		Webcam	Longboard	Best wel					Een beetje						Pim stuurde naar zichzelf: Wijk aan zee 07:45 een 7,5. Beetje druk, best clean. Leuke golfjes voor alle boards. Ijmuiden en zandvoort zijn denk ik ook leuk maar wel een 7 denk k ik
+28-11-2024		20-6-2024	7:30	8:00	Wijk aan zee	8		Webcam	Fish of funboard	Best wel					Een beetje						Pim stuurde naar zichzelf: Wijk aan zee 07:45 een 7,5. Beetje druk, best clean. Leuke golfjes voor alle boards. Ijmuiden en zandvoort zijn denk ik ook leuk maar wel een 7 denk k ik
+28-11-2024		20-6-2024	7:30	8:00	Wijk aan zee	8		Webcam	Shortboard	Best wel					Een beetje						Pim stuurde naar zichzelf: Wijk aan zee 07:45 een 7,5. Beetje druk, best clean. Leuke golfjes voor alle boards. Ijmuiden en zandvoort zijn denk ik ook leuk maar wel een 7 denk k ik
+28-11-2024		20-6-2024	7:30	8:00	Zandvoort	8		Schatting a.d.h.v. webcam	Longboard	Best wel					Een beetje						Pim stuurde naar zichzelf: Wijk aan zee 07:45 een 7,5. Beetje druk, best clean. Leuke golfjes voor alle boards. Ijmuiden en zandvoort zijn denk ik ook leuk maar wel een 7 denk k ik
+28-11-2024		20-6-2024	7:30	8:00	Zandvoort	8		Schatting a.d.h.v. webcam	Fish of funboard	Best wel					Een beetje						Pim stuurde naar zichzelf: Wijk aan zee 07:45 een 7,5. Beetje druk, best clean. Leuke golfjes voor alle boards. Ijmuiden en zandvoort zijn denk ik ook leuk maar wel een 7 denk k ik
+28-11-2024		20-6-2024	7:30	8:00	Zandvoort	8		Schatting a.d.h.v. webcam	Shortboard	Best wel					Een beetje						Pim stuurde naar zichzelf: Wijk aan zee 07:45 een 7,5. Beetje druk, best clean. Leuke golfjes voor alle boards. Ijmuiden en zandvoort zijn denk ik ook leuk maar wel een 7 denk k ik
+28-11-2024		24-6-2024	20:00	22:00	Zandvoort	1		Nat pak	Longboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	Zandvoort	1		Nat pak	Fish of funboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	Zandvoort	1		Nat pak	Shortboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	Wijk aan zee	1		Nat pak	Longboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	Wijk aan zee	1		Nat pak	Fish of funboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	Wijk aan zee	1		Nat pak	Shortboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	IJmuiden	1		Nat pak	Longboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	IJmuiden	1		Nat pak	Fish of funboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		24-6-2024	20:00	22:00	IJmuiden	1		Nat pak	Shortboard												Pikm stuurde naar zichzelf: 20:00 - 22:00 flat. Natpak
+28-11-2024		28-6-2024	20:15	20:45	Wijk aan zee	7,5		Webcam	Longboard												Pim stuurde naar zichzelf: Wijk ziet er leuk uit voor longboarders om 20:30 op 28-06-2024. Denk een 7.5 voor longboarders Voor fish misch een 6.5 en shortboard een 6
+28-11-2024		28-6-2024	20:15	20:45	Wijk aan zee	7		Webcam	Fish of funboard												Pim stuurde naar zichzelf: Wijk ziet er leuk uit voor longboarders om 20:30 op 28-06-2024. Denk een 7.5 voor longboarders Voor fish misch een 6.5 en shortboard een 6
+28-11-2024		28-6-2024	20:15	20:45	Wijk aan zee	6		Webcam	Shortboard												Pim stuurde naar zichzelf: Wijk ziet er leuk uit voor longboarders om 20:30 op 28-06-2024. Denk een 7.5 voor longboarders Voor fish misch een 6.5 en shortboard een 6
+17-6-2024 11:22:05		12-6-2024	20:00:00	21:45:00	ZV Bloemendaal	8		Nat pak	Fish of funboard	Een beetje	Best wel	Best wel	Best wel	Een beetje	Een beetje	Best wel	Een beetje	Overhead	Een beetje		Maite, Stijn en Pim bij Bloemendaal surfen. Yael was bij Wijk. Was erg goed, niet heel clean maar wel sick! Was best hoog, waren soms barrels. Lagen ook wat longboarders in die leuke golven pakten!
+17-6-2024 11:22:05		12-6-2024	20:00:00	21:45:00	Wijk aan zee	8		Nat pak	Fish of funboard	Een beetje	Best wel	Best wel	Best wel		Heel erg	Best wel	Een beetje	Overhead	Een beetje		Maite, Stijn en Pim bij Bloemendaal surfen. Yael was bij Wijk. Was erg goed, niet heel clean maar wel sick! Was best hoog, waren soms barrels. Lagen ook wat longboarders in die leuke golven pakten!
+17-6-2024 11:22:05		12-6-2024	20:00:00	21:45:00	ZV Bloemendaal	8		Nat pak	Shortboard	Een beetje	Best wel	Best wel	Best wel	Een beetje	Een beetje	Best wel	Een beetje	Overhead	Een beetje		Maite, Stijn en Pim bij Bloemendaal surfen. Yael was bij Wijk. Was erg goed, niet heel clean maar wel sick! Was best hoog, waren soms barrels. Lagen ook wat longboarders in die leuke golven pakten!
+17-6-2024 11:22:05		12-6-2024	20:00:00	21:45:00	Wijk aan zee	8		Nat pak	Shortboard	Een beetje	Best wel	Best wel	Best wel		Heel erg	Best wel	Een beetje	Overhead	Een beetje		Maite, Stijn en Pim bij Bloemendaal surfen. Yael was bij Wijk. Was erg goed, niet heel clean maar wel sick! Was best hoog, waren soms barrels. Lagen ook wat longboarders in die leuke golven pakten!
+17-6-2024 11:22:05		12-6-2024	20:00:00	21:45:00	ZV Bloemendaal	8		Nat pak	Longboard	Een beetje	Best wel	Best wel	Best wel	Een beetje	Een beetje	Best wel	Een beetje	Overhead	Een beetje		Maite, Stijn en Pim bij Bloemendaal surfen. Yael was bij Wijk. Was erg goed, niet heel clean maar wel sick! Was best hoog, waren soms barrels. Lagen ook wat longboarders in die leuke golven pakten!
+17-6-2024 11:22:05		12-6-2024	20:00:00	21:45:00	Wijk aan zee	8		Nat pak	Longboard	Een beetje	Best wel	Best wel	Best wel		Heel erg	Best wel	Een beetje	Overhead	Een beetje		Maite, Stijn en Pim bij Bloemendaal surfen. Yael was bij Wijk. Was erg goed, niet heel clean maar wel sick! Was best hoog, waren soms barrels. Lagen ook wat longboarders in die leuke golven pakten!
+17-06-2024		31-05-2024	10:00:00	12:00:00	IJmuiden	9		Hind sight (Surfweer)													"IJmuiden tussen 10:00 en 12:00 was lekker afgelopen vrijdag" Foto van een guy in een barrel erbij. Staat geen type board bij. Was die ochtend ook heel sick bij Zandvoort!
+17-06-2024		10-06-2024	9:30:00	12:00:00	Zandvoort	9		Hind sight (Surfweer)													"Zandvoort was goed vanochtend tussen 09:30 en 12:00. Strakke voorspelling weer Tobias". Staat geen type board bij. Cam bij Wijk zag er die ochtend ook leip uit
+17-06-2024		10-06-2024	8:00:00	11:00:00	Wijk aan zee	9		Hind sight (Surfweer)													"Heerlijk vanochtend WaZ" Staat geen type board bij of tijd bij. Cam bij Wijk zag er die ochtend ook leip uit
+10-06-2024		10-06-2024	6:30:00	7:30:00	Wijk aan zee	7,5		Cam	Longboard												
+10-06-2024		10-06-2024	6:30:00	7:30:00	Wijk aan zee	9		Cam	Fish of funboard												
+10-06-2024		10-06-2024	6:30:00	7:30:00	Wijk aan zee	9		Cam	Shortboard												
+09-06-2024		09-06-2024	19:00:00	20:00:00	Wijk aan zee	6		Cam	Longboard	Best wel											
+09-06-2024		09-06-2024	19:00:00	20:00:00	Wijk aan zee	8		Cam	Fish of funboard	Best wel											
+09-06-2024		09-06-2024	19:00:00	20:00:00	Wijk aan zee	8		Cam	Shortboard	Best wel											
+07-06-2024		7-6-2024	18:30:00	19:30:00	Wijk aan zee	7		Cam	Longboard												
+07-06-2024		7-6-2024	18:30:00	19:30:00	Wijk aan zee	7		Cam	Fish of funboard												
+07-06-2024		7-6-2024	18:30:00	19:30:00	Wijk aan zee	5		Cam	Shortboard												
+07-06-2024		7-6-2024	21:00:00	21:30:00	Parnassia	4		Nat pak	Longboard						Helemaal niet		Een beetje	Heup-hoog			Met Gwen, Maite en Binkie naar Parnassia gegaan. Pim nam een duik in de zee. Niet clean en ook vrij laag. Aleen shorebreak brak een beetje.
+07-06-2024		7-6-2024	21:00:00	21:30:00	Parnassia	3,5		Nat pak	Fish of funboard						Helemaal niet		Een beetje	Heup-hoog			Met Gwen, Maite en Binkie naar Parnassia gegaan. Pim nam een duik in de zee. Niet clean en ook vrij laag. Aleen shorebreak brak een beetje.
+07-06-2024		7-6-2024	21:00:00	21:30:00	Parnassia	2,5		Nat pak	Shortboard						Helemaal niet		Een beetje	Heup-hoog			Met Gwen, Maite en Binkie naar Parnassia gegaan. Pim nam een duik in de zee. Niet clean en ook vrij laag. Aleen shorebreak brak een beetje.
+6-6-2024 7:17:57		6-6-2024	6:30:00	7:30:00	Wijk aan zee	7,5		Cam	Longboard	Best wel					Een beetje	Een beetje		Borst-hoog	Heel erg		Nabij de pier zag het er erg clean uit! Voor longboarders, fish en ook wel voor shortboarders waarsch. Verder van de pier wat meer choppy, dus bij zandvoort waarsch niet echt heel goed. Voor fish zelfde cijfer als longboard. Shortboard misch 1 of 0.5 lager
+06-06-2024		6-6-2024	16:00:00	17:00:00	Wijk aan zee	7,5		Cam	Longboard												
+06-06-2024		6-6-2024	16:00:00	17:00:00	Wijk aan zee	7,5		Cam	Fish of funboard												
+06-06-2024		6-6-2024	16:00:00	17:00:00	Wijk aan zee	7,5		Cam	Shortboard												
+06-06-2024		6-6-2024	16:00:00	17:00:00	Zandvoort	7,5		Eyeball	Longboard												Maite werkte in Zandvoort en zag dat de golven goed waren
+06-06-2024		6-6-2024	16:00:00	17:00:00	Zandvoort	7,5		Eyeball	Fish of funboard												Maite werkte in Zandvoort en zag dat de golven goed waren
+06-06-2024		6-6-2024	16:00:00	17:00:00	Zandvoort	7,5		Eyeball	Shortboard												Maite werkte in Zandvoort en zag dat de golven goed waren
+3-6-2024		1-6-2024	18:00:00	19:00:00	IJmuiden	7		Nat pak	Longboard									Navel-hoog	Heel erg		Bij IJmuiden een duik genomen. Zaten soms best cleane navel hoog golven tussen
+3-6-2024		1-6-2024	18:00:00	19:00:00	IJmuiden	6		Nat pak	Fish of funboard									Navel-hoog	Heel erg		Bij IJmuiden een duik genomen. Zaten soms best cleane navel hoog golven tussen
+3-6-2024		1-6-2024	18:00:00	19:00:00	IJmuiden	5		Nat pak	Shortboard									Navel-hoog	Heel erg		Bij IJmuiden een duik genomen. Zaten soms best cleane navel hoog golven tussen
+3-6-2024		1-6-2024	18:00:00	19:00:00	Zandvoort	4		Eyeball	Longboard												Vanaf IJmuiden zagen we de golven bij Zandvoort. Zag er heel erg messy uit
+3-6-2024		1-6-2024	18:00:00	19:00:00	Zandvoort	4		Eyeball	Fish of funboard												Vanaf IJmuiden zagen we de golven bij Zandvoort. Zag er heel erg messy uit
+3-6-2024		1-6-2024	18:00:00	19:00:00	Zandvoort	4		Eyeball	Shortboard												Vanaf IJmuiden zagen we de golven bij Zandvoort. Zag er heel erg messy uit
+3-6-2024		2-6-2024	12:00:00	13:00:00	Wijk aan zee	6		Cam	Shortboard												
+3-6-2024		2-6-2024	12:00:00	13:00:00	Wijk aan zee	6		Cam	Fish of funboard												
+3-6-2024		2-6-2024	12:00:00	13:00:00	Wijk aan zee	7		Cam	Longboard												
+3-6-2024		3-6-2024	11:30:00	12:30:00	Wijk aan zee	7,5		Cam	Longboard						Best wel			Heup-hoog	Heel erg		Ziet er clean maar klein uit. Veel longboarders die vaak lange golfjes pakken. Voor fish ook nog wel leuk, maar voor shortboarders ziet het er niet goed uit
+3-6-2024		3-6-2024	11:30:00	12:30:00	Wijk aan zee	6,5		Cam	Fish of funboard						Best wel			Heup-hoog	Heel erg		Ziet er clean maar klein uit. Veel longboarders die vaak lange golfjes pakken. Voor fish ook nog wel leuk, maar voor shortboarders ziet het er niet goed uit
+3-6-2024		3-6-2024	11:30:00	12:30:00	Wijk aan zee	5,5		Cam	Shortboard						Best wel			Heup-hoog	Heel erg		Ziet er clean maar klein uit. Veel longboarders die vaak lange golfjes pakken. Voor fish ook nog wel leuk, maar voor shortboarders ziet het er niet goed uit
+3-6-2024		3-6-2024	11:30:00	12:30:00	Zandvoort	7,5		Cam	Longboard						Best wel			Heup-hoog	Heel erg		Ziet er clean maar klein uit. Veel longboarders die vaak lange golfjes pakken. Voor fish ook nog wel leuk, maar voor shortboarders ziet het er niet goed uit
+3-6-2024		3-6-2024	11:30:00	12:30:00	Zandvoort	6,5		Cam	Fish of funboard						Best wel			Heup-hoog	Heel erg		Ziet er clean maar klein uit. Veel longboarders die vaak lange golfjes pakken. Voor fish ook nog wel leuk, maar voor shortboarders ziet het er niet goed uit
+3-6-2024		3-6-2024	11:30:00	12:30:00	Zandvoort	5,5		Cam	Shortboard						Best wel			Heup-hoog	Heel erg		Ziet er clean maar klein uit. Veel longboarders die vaak lange golfjes pakken. Voor fish ook nog wel leuk, maar voor shortboarders ziet het er niet goed uit
+31-5-2024 14:16:40		29-5-2024	19:00:00	21:00:00	ZV Bloemendaal	5,5		Eyeball	?												
+31-5-2024 14:14:18		31-5-2024	8:00:00	11:30:00	ZV Bloemendaal	9		Nat pak	Fish of funboard	Heel erg	Heel erg	Heel erg	Best wel	Een beetje	Een beetje	Heel erg	Helemaal niet	Overhead	Helemaal niet		Was heel erg hoog. Voorin helemaal niet clean, maar achterin wel
+31-5-2024 14:14:18		31-5-2024	8:00:00	11:30:00	ZV Bloemendaal	9		Nat pak	Shortboard	Heel erg	Heel erg	Heel erg	Best wel	Een beetje	Een beetje	Heel erg	Helemaal niet	Overhead	Helemaal niet		Was heel erg hoog. Voorin helemaal niet clean, maar achterin wel
+31-5-2024 14:14:18		31-5-2024	8:00:00	11:30:00	ZV Bloemendaal	7,5		Nat pak	Longboard	Heel erg	Heel erg	Heel erg	Best wel	Een beetje	Een beetje	Heel erg	Helemaal niet	Overhead	Helemaal niet		Was heel erg hoog. Voorin helemaal niet clean, maar achterin wel
+23-5-2024 9:13:42		23-5-2024	7:00:00	8:00:00	Wijk aan zee	5,5		Cam	Shortboard									Heup-hoog			
+23-5-2024 9:13:42		23-5-2024	7:00:00	8:00:00	Wijk aan zee	6,5		Cam	Fish of funboard									Heup-hoog			
+23-5-2024 9:13:42		23-5-2024	7:00:00	8:00:00	Wijk aan zee	7		Cam	Longboard									Heup-hoog			
+23-5-2024 9:12:53		22-5-2024	21:00:00	22:00:00	ZV Bloemendaal	6		Nat pak	Longboard	Helemaal niet	Een beetje	Een beetje	Best wel	Heel erg	Helemaal niet	Een beetje	Heel erg	Navel-hoog	Een beetje		
+23-5-2024 9:12:53		22-5-2024	21:00:00	22:00:00	ZV Bloemendaal	6		Nat pak	Shortboard	Helemaal niet	Een beetje	Een beetje	Best wel	Heel erg	Helemaal niet	Een beetje	Heel erg	Navel-hoog	Een beetje		
+23-5-2024 9:12:53		22-5-2024	21:00:00	22:00:00	ZV Bloemendaal	6		Nat pak	Fish of funboard	Helemaal niet	Een beetje	Een beetje	Best wel	Heel erg	Helemaal niet	Een beetje	Heel erg	Navel-hoog	Een beetje		
+21-5-2024 14:54:03		21-5-2024	14:00:00	15:00:00	Wijk aan zee	5,5		Cam	Shortboard	Heel erg	Een beetje					Een beetje		Navel-hoog			
+21-5-2024 14:54:03		21-5-2024	14:00:00	15:00:00	Wijk aan zee	7		Cam	Fish of funboard	Heel erg	Een beetje					Een beetje		Navel-hoog			
+21-5-2024 14:54:03		21-5-2024	14:00:00	15:00:00	Wijk aan zee	8		Cam	Longboard	Heel erg	Een beetje					Een beetje		Navel-hoog			
+16-4-2024 15:24:39		16-4-2024	14:00:00	15:30:00	Wijk aan zee	2		Cam		Helemaal niet			Heel erg		Helemaal niet	Best wel	Heel erg	Overhead	Helemaal niet		
+16-4-2024 15:20:08		16-4-2024	14:00:00	15:30:00	ZV Bloemendaal	2		Cam		Helemaal niet	Heel erg	Helemaal niet			Helemaal niet	Heel erg	Heel erg	Overhead	Helemaal niet		
+10-4-2024 21:09:09		10-4-2024	17:45:00	19:15:00	Wijk aan zee	8		Nat pak	Fish of funboard	Een beetje	Best wel	Best wel	Best wel	Helemaal niet	Heel erg	Heel erg	Best wel	Overhead	Helemaal niet		
+10-4-2024 21:06:47		10-4-2024	18:45:00	19:15:00	Wijk aan zee	8		Nat pak	Fish of funboard	Een beetje	Heel erg	Best wel	Heel erg	Best wel	Heel erg	Heel erg	Best wel	Overhead	Helemaal niet		
+10-4-2024 21:05:38		10-4-2024	17:00:00	18:30:00	Wijk aan zee	9		Nat pak	Fish of funboard	Best wel	Heel erg	Best wel	Best wel	Best wel	Heel erg	Best wel	Best wel	Overhead	Helemaal niet		
+7-4-2024 19:36:16		7-4-2024	17:00:00	18:00:00	Zandvoort	4		Nat pak	Short board	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Best wel	Helemaal niet	Helemaal niet	Best wel	Heup-hoog	Heel erg		
+7-4-2024 19:35:10		7-4-2024	17:00:00	18:00:00	Zandvoort	5		Nat pak	Fish of funboard	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Best wel	Helemaal niet	Helemaal niet	Best wel	Heup-hoog	Heel erg		
+7-4-2024 19:33:38		7-4-2024	17:00:00	18:00:00	Zandvoort	6		Nat pak	Longboard	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Best wel	Helemaal niet	Een beetje	Best wel	Heup-hoog	Heel erg		
+29-3-2024 9:28:58		29-3-2024	9:00:00	9:30:00	Wijk aan zee	6,5		Cam	Fish of funboard									Navel-hoog			
+29-3-2024 9:28:58		29-3-2024	9:00:00	9:30:00	Wijk aan zee	7		Cam	Longboard												
+29-3-2024 8:10:16		29-3-2024	7:00:00	8:00:00	Wijk aan zee	7,5		Cam	Fish of funboard	Best wel					Een beetje	Best wel	Een beetje	Borst-hoog	Best wel		Bij de pier helemaal flat. Je ziet de golven zijwaards weggeblazen worden. Zonnig en best clean.
+29-3-2024 8:10:16		29-3-2024	7:00:00	8:00:00	Wijk aan zee	8		Cam	Longboard	Best wel					Een beetje	Best wel	Een beetje	Borst-hoog	Best wel		Bij de pier helemaal flat. Je ziet de golven zijwaards weggeblazen worden. Zonnig en best clean.
+26-3-2024 18:37:10		26-3-2024	18:00:00	19:00:00	Wijk aan zee	7		Cam	Longboard	Heel erg	Helemaal niet	Een beetje			Een beetje	Helemaal niet		Knie-hoog	Heel erg		
+26-3-2024 7:33:07		25-3-2024	17:15:00	18:00:00	ZV Bloemendaal	8,5		Eyeball	Longboard	Heel erg	Een beetje	Best wel	Een beetje	Helemaal niet	Best wel	Een beetje	Helemaal niet	Borst-hoog	Heel erg		
+26-3-2024 7:33:07		25-3-2024	16:00:00	17:00:00	Wijk aan zee	8,5		Cam	Longboard	Heel erg	Een beetje	Best wel	Een beetje	Helemaal niet	Heel erg	Een beetje	Helemaal niet	Borst-hoog	Heel erg		
+26-3-2024 7:33:07		25-3-2024	16:00:00	17:00:00	Wijk aan zee	8		Cam	Fish of funboard	Heel erg	Een beetje	Best wel	Een beetje	Helemaal niet	Heel erg	Een beetje	Helemaal niet	Borst-hoog	Heel erg		
+26-3-2024 7:32:03		25-3-2024	17:15:00	17:00:00	ZV Bloemendaal	7,5		Nat pak	Fish of funboard	Heel erg	Een beetje	Een beetje	Een beetje	Helemaal niet	Best wel	Een beetje	Helemaal niet	Borst-hoog	Heel erg		
+24-3-2024 22:14:00		24-3-2024	16:00:00	18:00:00	Wijk aan zee	3		Cam		Helemaal niet	Heel erg		Heel erg		Helemaal niet	Heel erg	Heel erg	Overhead	Helemaal niet		
+24-3-2024 22:14:00		24-3-2024	16:00:00	18:00:00	ZV Bloemendaal	3		Cam		Helemaal niet	Heel erg		Heel erg		Helemaal niet	Heel erg	Heel erg	Overhead	Helemaal niet		
+20-3-2024 12:49:25		20-3-2024	12:00:00	13:00:00	Wijk aan zee	1		Cam		Heel erg	Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet	Een beetje	Flat	Een beetje		
+20-3-2024 12:49:25		20-3-2024	12:00:00	13:00:00	ZV Bloemendaal	1		Cam		Heel erg	Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet	Een beetje	Flat	Een beetje		
+17-3-2024 12:14:10		17-3-2024	7:00:00	8:00:00	Wijk aan zee	8		Cam	Longboard	Heel erg	Een beetje	Best wel	Helemaal niet	Helemaal niet	Heel erg	Een beetje	Helemaal niet	Borst-hoog	Heel erg		
+17-3-2024 12:14:10		17-3-2024	7:00:00	8:00:00	Wijk aan zee	6,5		Cam	Fish of funboard	Heel erg	Een beetje	Best wel	Helemaal niet	Helemaal niet	Heel erg	Een beetje	Helemaal niet	Borst-hoog	Heel erg		
+17-3-2024 12:12:38		17-3-2024	10:00:00	11:30:00	ZV Bloemendaal	6		Nat pak	Fish of funboard	Best wel	Een beetje	Helemaal niet	Een beetje	Helemaal niet	Een beetje	Een beetje	Helemaal niet	Heup-hoog	Best wel		
+17-3-2024 12:11:04		17-3-2024	10:00:00	11:00:00	ZV Bloemendaal	7		Nat pak	Fish of funboard	Heel erg	Helemaal niet	Een beetje	Helemaal niet	Een beetje	Een beetje	Helemaal niet	Een beetje	Heup-hoog	Heel erg		
+17-3-2024 12:11:01		17-3-2024	10:00:00	11:30:00	ZV Parnassia	3		Nat pak	Short board	Heel erg	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Een beetje	Helemaal niet		Knie-hoog	Heel erg		
+17-3-2024 12:09:26		17-3-2024	10:00:00	11:30:00	ZV Bloemendaal	6		Nat pak	Longboard	Best wel	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Heup-hoog	Best wel		
+17-3-2024 12:08:00		17-3-2024	10:00:00	11:30:00	ZV Parnassia	7		Nat pak	Longboard	Heel erg	Helemaal niet	Best wel	Helemaal niet	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Knie-hoog	Heel erg		
+17-3-2024 12:05:29		16-3-2024	15:00:00	17:00:00	Wijk aan zee	6		Nat pak	Short board									Heup-hoog			
+12-3-2024 17:34:44		12-3-2024	17:00:00	18:00:00	Wijk aan zee	8		Cam	Longboard	Heel erg	Een beetje	Best wel	Helemaal niet		Best wel	Een beetje		Heup-hoog	Heel erg		
+12-3-2024 17:34:44		12-3-2024	17:00:00	18:00:00	Wijk aan zee	3		Cam	Shortboard	Heel erg	Een beetje	Best wel	Helemaal niet		Best wel	Een beetje		Heup-hoog	Heel erg		
+12-3-2024 17:34:44		12-3-2024	17:00:00	18:00:00	Wijk aan zee	5		Cam	Fish of funboard	Heel erg	Een beetje	Best wel	Helemaal niet		Best wel	Een beetje		Heup-hoog	Heel erg		
+8-3-2024 17:48:43		8-3-2024	16:30:00	17:30:00	Wijk aan zee	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet			Helemaal niet		Flat			
+8-3-2024 17:48:43		8-3-2024	16:30:00	17:30:00	Zandvoort	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet			Helemaal niet		Flat			
+2-3-2024 8:51:24		2-3-2024	8:00:00	9:00:00	Wijk aan zee	3		Cam	Longboard	Heel erg	Helemaal niet				Helemaal niet	Helemaal niet		Knie-hoog	Heel erg		
+2-3-2024 8:51:24		2-3-2024	8:00:00	9:00:00	Zandvoort	3		Cam	Longboard	Heel erg	Helemaal niet				Helemaal niet	Helemaal niet		Knie-hoog	Heel erg		
+2-3-2024 8:48:57		2-3-2024	8:00:00	9:00:00	Wijk aan zee	2		Cam	Fish of funboard	Heel erg	Helemaal niet	Helemaal niet			Helemaal niet	Helemaal niet		Knie-hoog			
+2-3-2024 8:48:57		2-3-2024	8:00:00	9:00:00	Zandvoort	2		Cam	Fish of funboard	Heel erg	Helemaal niet	Helemaal niet			Helemaal niet	Helemaal niet		Knie-hoog			
+1-3-2024 12:56:01		1-3-2024	12:00:00	13:00:00	Wijk aan zee	3		Cam								Helemaal niet		Knie-hoog			
+1-3-2024 12:56:01		1-3-2024	12:00:00	13:00:00	Bloemendaal	3		Cam								Helemaal niet		Knie-hoog			
+29-2-2024 11:17:55		29-2-2024	10:30:00	11:30:00	Wijk aan zee	7		Cam	Longboard	Best wel					Een beetje	Helemaal niet		Navel-hoog	Heel erg		
+23-2-2024 11:20:34		23-2-2024	11:00:00	12:00:00	ZV Bloemendaal	4		Cam	Fish of funboard	Helemaal niet		Helemaal niet					Heel erg	Head-hoog	Helemaal niet		
+23-2-2024 11:20:34		23-2-2024	11:00:00	12:00:00	ZV Bloemendaal	2		Cam	Longboard	Helemaal niet		Helemaal niet					Heel erg	Head-hoog	Helemaal niet		
+23-2-2024 11:13:58		23-2-2024	11:00:00	12:00:00	Wijk aan zee	6,5		Cam	Longboard	Een beetje	Een beetje				Helemaal niet	Best wel	Best wel	Head-hoog	Een beetje		
+23-2-2024 11:13:58		23-2-2024	11:00:00	12:00:00	Wijk aan zee	7,5		Cam	Fish of funboard	Een beetje	Een beetje				Helemaal niet	Best wel	Best wel	Head-hoog	Een beetje		
+15-2-2024 11:07:58		15-2-2024	10:00:00	17:00:00	Wijk aan zee	2		Cam	Longboard		Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet	Helemaal niet	Flat	Heel erg		
+15-2-2024 11:07:58		15-2-2024	10:00:00	17:00:00	Zandvoort	2		Cam	Longboard		Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet	Helemaal niet	Flat	Heel erg		
+15-2-2024 11:07:58		15-2-2024	10:00:00	17:00:00	Wijk aan zee	1		Cam	Fish of funboard		Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet	Helemaal niet	Flat	Heel erg		
+15-2-2024 11:07:58		15-2-2024	10:00:00	17:00:00	Zandvoort	1		Cam	Fish of funboard		Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet	Helemaal niet	Flat	Heel erg		
+11-2-2024 10:25:13		11-2-2024	10:00:00	11:00:00	ZV Bloemendaal	2		Cam	Fish of funboard	Heel erg								Knie-hoog			
+11-2-2024 10:25:13		11-2-2024	10:00:00	11:00:00	Wijk aan zee	2		Cam	Fish of funboard	Heel erg								Knie-hoog			
+11-2-2024 10:20:03		11-2-2024	10:00:00	11:00:00	Wijk aan zee	6		Cam	Longboard	Heel erg	Helemaal niet	Een beetje	Helemaal niet		Helemaal niet	Helemaal niet		Knie-hoog	Heel erg		
+11-2-2024 10:20:03		11-2-2024	10:00:00	11:00:00	ZV Bloemendaal	6		Cam	Longboard	Heel erg	Helemaal niet	Een beetje	Helemaal niet		Helemaal niet	Helemaal niet		Knie-hoog	Heel erg		
+10-2-2024 14:26:56		10-2-2024	13:00:00	14:00:00	Wijk aan zee	5,5		Cam	Fish of funboard	Heel erg	Een beetje				Heel erg	Een beetje	Een beetje	Navel-hoog	Heel erg		
+10-2-2024 14:25:49		10-2-2024	13:00:00	14:00:00	Wijk aan zee	8		Cam	Longboard	Heel erg		Best wel			Best wel	Een beetje	Een beetje	Navel-hoog	Heel erg		
+10-2-2024 14:24:35		10-2-2024	11:00:00	12:00:00	ZV Bloemendaal	5,5		Eyeball	Fish of funboard	Heel erg					Helemaal niet	Een beetje	Een beetje	Navel-hoog	Heel erg		
+10-2-2024 14:23:22		10-2-2024	11:00:00	12:00:00	ZV Bloemendaal	8		Eyeball	Longboard	Heel erg	Helemaal niet		Helemaal niet		Helemaal niet	Een beetje	Een beetje	Navel-hoog	Heel erg		
+10-2-2024 13:50:17		10-2-2024	13:00:00	14:00:00	Wijk aan zee	7,5		Cam	Longboard	Heel erg						Helemaal niet		Heup-hoog			
+8-2-2024 17:18:44		8-2-2024	16:00:00	17:00:00	Wijk aan zee	3		Cam	Fish of funboard	Heel erg	Helemaal niet							Heup-hoog			
+8-2-2024 17:18:44		8-2-2024	16:00:00	17:00:00	Wijk aan zee	5		Cam	Longboard	Heel erg	Helemaal niet							Heup-hoog			
+8-2-2024 17:18:44		8-2-2024	16:00:00	17:00:00	ZV Bloemendaal	3		Cam	Fish of funboard	Heel erg	Helemaal niet							Heup-hoog			
+8-2-2024 17:18:44		8-2-2024	16:00:00	17:00:00	ZV Bloemendaal	5		Cam	Longboard	Heel erg	Helemaal niet							Heup-hoog			
+8-2-2024 11:48:58		8-2-2024	11:30:00	12:30:00	Wijk aan zee	7		Cam	Longboard	Best wel								Navel-hoog	Heel erg		
+7-2-2024 22:58:40		7-2-2024	12:00:00	14:00:00	Wijk aan zee	9		Cam		Heel erg	Heel erg	Heel erg			Heel erg	Best wel	Helemaal niet	Overhead	Een beetje		
+7-2-2024 17:20:22		7-2-2024	14:45:00	16:00:00	ZV Bloemendaal	7,5		Nat pak	Fish of funboard	Een beetje	Best wel	Best wel	Best wel	Een beetje	Helemaal niet	Best wel	Een beetje	Head-hoog	Een beetje		
+7-2-2024 16:03:13		7-2-2024	13:00:00	14:45:00	ZV Bloemendaal	9		Nat pak	Fish of funboard	Heel erg	Heel erg	Heel erg	Een beetje	Een beetje	Helemaal niet	Best wel	Helemaal niet	Overhead	Best wel		
+4-2-2024 17:11:24		4-2-2024	17:00:00	17:30:00	Wijk aan zee	7		Cam		Een beetje						Een beetje		Head-hoog	Best wel		
+3-2-2024 10:23:21		3-2-2024	10:00:00	10:30:00	Wijk aan zee	7		Cam	Fish of funboard	Best wel								Borst-hoog	Best wel		
+3-2-2024 10:22:17		3-2-2024	10:00:00	10:30:00	Wijk aan zee	8		Cam	Longboard	Best wel						Een beetje		Borst-hoog	Heel erg		
+2-2-2024 22:14:21		2-2-2024	12:00:00	13:00:00	Wijk aan zee	6,5		Nat pak	Fish of funboard	Een beetje	Best wel	Een beetje	Heel erg	Een beetje	Een beetje	Best wel	Best wel	Overhead	Helemaal niet		
+2-2-2024 22:12:08		2-2-2024	11:00:00	12:00:00	Wijk aan zee	7,5		Nat pak	Fish of funboard	Een beetje	Heel erg	Best wel	Best wel	Een beetje	Best wel	Best wel	Best wel	Overhead	Helemaal niet		
+2-2-2024 9:00:53		2-2-2024	8:30:00	9:30:00	Wijk aan zee	8		Cam		Best wel					Een beetje	Best wel		Head-hoog	Best wel		
+1-2-2024 14:46:03		1-2-2024	14:00:00	15:00:00	Wijk aan zee	5		Cam		Helemaal niet								Borst-hoog	Een beetje		
+1-2-2024 14:46:03		1-2-2024	14:00:00	15:00:00	ZV Bloemendaal	5		Cam		Helemaal niet								Borst-hoog	Een beetje		
+28-1-2024 18:41:23		28-1-2024	16:00:00	18:00:00	ZV Parnassia	3		Eyeball	Longboard	Heel erg	Helemaal niet					Helemaal niet		Knie-hoog			
+28-1-2024 15:55:41		28-1-2024	15:00:00	16:00:00	ZV Bloemendaal	1		Cam										Flat			
+28-1-2024 15:54:27		28-1-2024	15:00:00	16:00:00	Wijk aan zee	1		Cam										Flat			
+25-1-2024 8:57:13		25-1-2024	8:00:00	9:00:00	Wijk aan zee	7		Cam		Een beetje						Best wel		Head-hoog	Een beetje		
+25-1-2024 8:56:24		25-1-2024	8:00:00	9:00:00	ZV Bloemendaal	4		Eyeball		Een beetje					Helemaal niet	Een beetje	Een beetje	Borst-hoog			
+24-1-2024 12:48:01		24-1-2024	12:00:00	13:00:00	Wijk aan zee	3		Cam		Helemaal niet			Heel erg		Helemaal niet	Heel erg			Helemaal niet		
+24-1-2024 12:48:01		24-1-2024	12:00:00	13:00:00	ZV Bloemendaal	3		Cam		Helemaal niet			Heel erg		Helemaal niet	Heel erg			Helemaal niet		
+23-1-2024 12:57:16		23-1-2024	12:30:00	13:30:00	Wijk aan zee	6		Cam		Helemaal niet	Best wel				Een beetje	Best wel		Head-hoog	Helemaal niet		
+22-1-2024 14:01:24		22-1-2024	12:00:00	13:00:00	ZV Bloemendaal	3		Cam		Helemaal niet					Heel erg	Best wel			Helemaal niet		
+22-1-2024 13:01:23		22-1-2024	12:00:00	13:00:00	Wijk aan zee	7		Cam		Een beetje						Een beetje		Borst-hoog	Best wel		
+21-1-2024 16:56:45		21-1-2024	14:00:00	15:00:00	ZV Parnassia	2		Eyeball		Helemaal niet	Best wel	Helemaal niet		Heel erg	Helemaal niet	Best wel	Heel erg	Overhead	Helemaal niet		
+21-1-2024 9:29:50		21-1-2024	9:00:00	10:00:00	Wijk aan zee	4		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+19-1-2024 23:12:36		19-1-2024	10:30:00	11:30:00	Wijk aan zee	4		Nat pak	Fish of funboard	Helemaal niet	Heel erg	Helemaal niet	Heel erg	Best wel	Helemaal niet	Heel erg	Een beetje	Overhead	Helemaal niet		
+18-1-2024 15:28:20		18-1-2024	15:00:00	16:00:00	Wijk aan zee	4		Cam		Helemaal niet						Een beetje		Navel-hoog			
+18-1-2024 15:28:20		18-1-2024	15:00:00	16:00:00	ZV Bloemendaal	4		Cam		Helemaal niet						Een beetje		Navel-hoog			
+17-1-2024 10:05:18		17-1-2024	9:00:00	10:00:00	Wijk aan zee	8		Cam	Longboard	Best wel	Een beetje		Helemaal niet			Een beetje		Borst-hoog	Heel erg		
+17-1-2024 10:05:18		17-1-2024	9:00:00	10:00:00	Wijk aan zee	7,5		Cam	Fish of funboard	Best wel	Een beetje		Helemaal niet			Een beetje		Borst-hoog	Heel erg		
+17-1-2024 10:05:18		17-1-2024	9:00:00	10:00:00	ZV Bloemendaal	8		Cam	Longboard	Best wel	Een beetje		Helemaal niet			Een beetje		Borst-hoog	Heel erg		
+17-1-2024 10:05:18		17-1-2024	9:00:00	10:00:00	ZV Bloemendaal	7,5		Cam	Fish of funboard	Best wel	Een beetje		Helemaal niet			Een beetje		Borst-hoog	Heel erg		
+16-1-2024 13:32:07		16-1-2024	13:00:00	14:00:00	Wijk aan zee	5		Cam		Helemaal niet											
+16-1-2024 13:32:07		16-1-2024	13:00:00	14:00:00	ZV Bloemendaal	5		Cam		Helemaal niet											
+16-1-2024 12:37:37		16-1-2024	12:00:00	13:00:00	Wijk aan zee	7		Cam		Een beetje	Heel erg	Een beetje	Best wel		Helemaal niet	Best wel		Head-hoog	Helemaal niet		
+16-1-2024 12:36:27		16-1-2024	12:00:00	13:00:00	ZV	5		Cam													
+16-1-2024 12:36:27		16-1-2024	12:00:00	13:00:00	IJmuiden	5		Cam													
+15-1-2024 13:10:42		15-1-2024	12:30:00	13:30:00	Wijk aan zee	3		Cam		Helemaal niet	Helemaal niet										
+14-1-2024 13:03:55		14-1-2024	12:30:00	13:30:00	ZV Bloemendaal	4		Eyeball		Helemaal niet							Best wel	Borst-hoog			
+14-1-2024 10:07:44		14-1-2024	9:30:00	10:30:00	Wijk aan zee	7		Cam							Een beetje			Head-hoog	Een beetje		
+12-1-2024 11:55:39		12-1-2024	11:00:00	12:00:00	Wijk aan zee	6		Cam		Een beetje								Navel-hoog	Best wel		
+12-1-2024 11:55:39		12-1-2024	11:00:00	12:00:00	ZV Bloemendaal	6		Cam		Een beetje								Navel-hoog	Best wel		
+12-1-2024 9:11:47		12-1-2024	8:00:00	9:00:00	Wijk aan zee	6		Cam		Een beetje								Navel-hoog	Best wel		
+12-1-2024 9:11:47		12-1-2024	8:00:00	9:00:00	ZV Bloemendaal	6		Cam		Een beetje								Navel-hoog	Best wel		
+10-1-2024 11:15:40		10-1-2024	9:00:00	11:00:00	Wijk aan zee	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+10-1-2024 11:15:40		10-1-2024	9:00:00	11:00:00	ZV Bloemendaal	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+9-1-2024 10:08:19		9-1-2024	8:00:00	11:00:00	ZV Bloemendaal	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+9-1-2024 10:04:06		9-1-2024	8:00:00	11:00:00	Wijk aan zee	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+8-1-2024 9:58:07		8-1-2024	9:00:00	10:00:00	Wijk aan zee	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+8-1-2024 9:58:07		8-1-2024	9:00:00	10:00:00	ZV Bloemendaal	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+7-1-2024 9:12:26		7-1-2024	8:00:00	10:00:00	ZV Bloemendaal	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+7-1-2024 8:50:30		7-1-2024	7:00:00	10:00:00	Wijk aan zee	1		Cam			Helemaal niet	Helemaal niet	Helemaal niet		Helemaal niet	Helemaal niet		Flat			
+5-1-2024 8:41:12		5-1-2024	8:00:00	9:00:00	Wijk aan zee	7		Cam	Longboard	Heel erg	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Heup-hoog			
+5-1-2024 8:41:12		5-1-2024	8:00:00	9:00:00	Wijk aan zee	5		Cam	Shortboard	Heel erg	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Heup-hoog			
+5-1-2024 8:41:12		5-1-2024	8:00:00	9:00:00	Wijk aan zee	6		Cam	Fish of funboard	Heel erg	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Heup-hoog			
+4-1-2024 15:47:03		4-1-2024	15:00:00	16:00:00	Wijk aan zee	6		Cam	Fish of funboard									Schouder-hoog			
+4-1-2024 15:47:03		4-1-2024	15:00:00	16:00:00	ZV Bloemendaal	6		Cam	Fish of funboard									Schouder-hoog			
+4-1-2024 15:47:03		4-1-2024	15:00:00	16:00:00	Wijk aan zee	7		Cam	Longboard									Schouder-hoog			
+4-1-2024 15:47:03		4-1-2024	15:00:00	16:00:00	ZV Bloemendaal	7		Cam	Longboard									Schouder-hoog			
+4-1-2024 9:26:36		4-1-2024	8:00:00	9:00:00	ZV Bloemendaal	7		Cam	Fish of funboard	Best wel		Een beetje				Een beetje	Helemaal niet	Navel-hoog			
+4-1-2024 9:26:36		4-1-2024	8:00:00	9:00:00	ZV Bloemendaal	8		Cam	Longboard	Best wel		Een beetje				Een beetje	Helemaal niet	Navel-hoog			
+4-1-2024 9:25:17		4-1-2024	8:00:00	9:00:00	Wijk aan zee	7		Cam	Fish of funboard	Best wel	Helemaal niet	Een beetje			Best wel	Helemaal niet	Helemaal niet	Navel-hoog			
+4-1-2024 9:25:17		4-1-2024	8:00:00	9:00:00	Wijk aan zee	8		Cam	Longboard	Best wel	Helemaal niet	Een beetje			Best wel	Helemaal niet	Helemaal niet	Navel-hoog			
+3-1-2024 12:24:13		3-1-2024	11:00:00	12:00:00	Wijk aan zee	6,5		Cam													
+1-1-2024 14:58:37		30-12-2023	13:30:00	14:30:00	ZV Parnassia	4,5		Eyeball		Helemaal niet	Best wel				Helemaal niet	Best wel	Best wel				
+1-1-2024 13:21:00		1-1-2024	13:00:00	14:00:00	ZV Bloemendaal	3		Eyeball		Helemaal niet	Best wel	Helemaal niet		Heel erg	Helemaal niet	Heel erg	Heel erg	Overhead			
+1-1-2024 9:55:10		1-1-2024	9:30:00	10:30:00	ZV Bloemendaal	3		Cam		Helemaal niet					Helemaal niet						
+1-1-2024 9:54:12		1-1-2024	9:30:00	10:30:00	Wijk aan zee	4		Cam		Helemaal niet					Helemaal niet						
+29-12-2023 15:11:56		29-12-2023	14:30:00	15:30:00	Wijk aan zee	7		Cam		Helemaal niet					Helemaal niet	Best wel		Head-hoog			
+28-12-2023 10:22:38		27-12-2023	14:30:00	15:30:00	Wijk aan zee	6,5		Nat pak	Fish of funboard	Heel erg						Helemaal niet		Navel-hoog			Berry was gaan surfen zei hij via Whatsapp
+27-12-2023 14:39:23		27-12-2023	12:00:00	13:00:00	ZV Bloemendaal	8		Cam		Heel erg						Een beetje	Een beetje	Borst-hoog			
+27-12-2023 14:38:41		27-12-2023	14:00:00	15:00:00	Wijk aan zee	7		Cam		Heel erg						Een beetje		Navel-hoog			
+27-12-2023 14:37:29		27-12-2023	12:00:00	13:00:00	Wijk aan zee	8		Cam		Heel erg					Heel erg	Een beetje	Een beetje	Navel-hoog			
+26-12-2023 9:19:51		26-12-2023	8:30:00	9:30:00	Wijk aan zee	3		Cam		Helemaal niet					Helemaal niet	Best wel	Heel erg	Head-hoog			
+26-12-2023 9:18:45		26-12-2023	8:30:00	9:30:00	ZV Bloemendaal	2		Eyeball		Helemaal niet		Helemaal niet			Helemaal niet	Best wel	Heel erg	Head-hoog			
+25-12-2023 11:37:53		25-12-2023	11:30:00	12:00:00	Wijk aan zee	7		Cam										Borst-hoog			
+21-12-2023 14:03:26		21-12-2023	13:00:00	15:00:00	Wijk aan zee	4		Cam		Helemaal niet	Heel erg	Helemaal niet			Helemaal niet	Heel erg	Heel erg	Overhead			
+20-12-2023 13:39:23		20-12-2023	12:00:00	13:00:00	ZV Bloemendaal	4		Cam		Helemaal niet						Best wel	Best wel	Overhead			
+17-12-2023 16:46:03		17-12-2023	8:00:00	9:00:00	Wijk aan zee	5		Cam													
+16-12-2023 15:43:36		12-11-2023	15:00:00	17:00:00	Wijk aan zee	6		Nat pak	Short board												
+11-12-2023 9:57:49		10-12-2023	15:00:00	17:00:00	IJmuiden	6		Nat pak	Short board									Borst-hoog			
+10-12-2023 23:03:27		10-12-2023	15:45:00	17:00:00	Wijk aan zee	7		Nat pak	Fish of funboard	Een beetje	Heel erg	Best wel	Best wel	Een beetje	Best wel	Heel erg	Best wel	Overhead			
+10-12-2023 18:21:13		10-12-2023	11:00:00	13:00:00	ZV Parnassia	1		Eyeball		Helemaal niet	Heel erg	Helemaal niet			Helemaal niet	Heel erg	Heel erg	Overhead			
+10-12-2023 10:52:56		10-12-2023	10:30:00	11:30:00	Wijk aan zee	3		Cam		Helemaal niet		Helemaal niet				Heel erg		Overhead			
+10-12-2023 10:52:56		10-12-2023	10:30:00	11:30:00	ZV Bloemendaal	3		Cam		Helemaal niet		Helemaal niet				Heel erg		Overhead			
+10-12-2023 9:02:34		10-12-2023	8:30:00	9:30:00	ZV Bloemendaal	3		Cam		Helemaal niet	Heel erg	Helemaal niet	Heel erg		Helemaal niet	Heel erg	Heel erg	Overhead			
+10-12-2023 9:01:26		10-12-2023	8:30:00	9:30:00	Wijk aan zee	3		Cam		Helemaal niet	Heel erg	Helemaal niet	Heel erg		Helemaal niet	Heel erg	Heel erg	Overhead			
+9-12-2023 15:59:14		9-12-2023	13:00:00	14:00:00	Wijk aan zee	7,5		Cam		Best wel						Een beetje		Borst-hoog			Zag er hoger uit dan eerder op de cam van wijk
+9-12-2023 15:59:14		9-12-2023	13:00:00	14:00:00	ZV Bloemendaal	7,5		Cam		Best wel						Een beetje		Borst-hoog			Zag er hoger uit dan eerder op de cam van wijk
+9-12-2023 10:57:35		9-12-2023	10:30:00	11:30:00	ZV Bloemendaal	6,5		Cam		Best wel						Een beetje		Heup-hoog			Lagen wat longboarders in bij Wijk, klein maar clean
+9-12-2023 10:56:29		9-12-2023	10:30:00	11:30:00	Wijk aan zee	6,5		Cam		Best wel						Een beetje		Heup-hoog			Lagen wat longboarders in bij Wijk, klein maar clean
+9-12-2023 9:18:28		9-12-2023	8:00:00	9:00:00	ZV Bloemendaal	4		Cam		Best wel						Helemaal niet		Knie-hoog			Mini golven op cam wijk, verder van de pier ook. Lag 1 longboarder in
+9-12-2023 9:17:27		9-12-2023	8:00:00	9:00:00	Wijk aan zee	4		Cam		Best wel						Helemaal niet		Knie-hoog			Mini golven op cam wijk, verder van de pier ook. Lag 1 longboarder in
+5-12-2023 14:51:43		5-12-2023	14:00:00	15:00:00	Wijk aan zee	4		Cam								Helemaal niet		Heup-hoog			
+5-12-2023 14:51:43		5-12-2023	14:00:00	15:00:00	ZV Bloemendaal	4		Cam								Helemaal niet		Heup-hoog			
+2-12-2023 14:15:06		2-12-2023	14:00:00	15:00:00	Wijk aan zee	4,5		Cam								Helemaal niet					
+2-12-2023 14:15:06		2-12-2023	14:00:00	15:00:00	ZV Bloemendaal	4,5		Cam								Helemaal niet					Eén longboarder wat verder van de pier met mini golfjes
+1-12-2023 12:46:18		1-12-2023	12:00:00	13:00:00	ZV Bloemendaal	6		Cam	Longboard	Best wel						Helemaal niet		Knie-hoog			Longboarders pakten nog wel wat golfjes bij Wijk. Best clean en windstil. Dus met Longboard zou het leuk zijn geweest
+1-12-2023 12:45:17		1-12-2023	12:00:00	13:00:00	Wijk aan zee	6		Cam	Longboard	Best wel						Helemaal niet		Knie-hoog			Longboarders pakten nog wel wat golfjes bij Wijk. Best clean en windstil. Dus met Longboard zou het leuk zijn geweest
+28-11-2023 14:16:17		28-11-2023	14:00:00	14:30:00	ZV Bloemendaal	4		Eyeball		Best wel	Helemaal niet				Helemaal niet	Helemaal niet		Knie-hoog			
+26-11-2023 11:31:04		26-11-2023	9:00:00	10:00:00	ZV Bloemendaal	5		Cam		Helemaal niet											
+26-11-2023 10:01:11		26-11-2023	9:00:00	10:00:00	Wijk aan zee	6		Cam		Helemaal niet						Een beetje					
+14-11-2023 15:09:15		13-11-2023	15:00:00	16:00:00	Wijk aan zee	7		Eyeball													
+14-11-2023 15:07:28		13-11-2023	16:00:00	17:00:00	Wijk aan zee	6		Nat pak	Fish of funboard	Helemaal niet	Heel erg	Een beetje	Heel erg	Best wel	Helemaal niet	Heel erg	Heel erg	Overhead			
+13-11-2023 12:49:31		13-11-2023	12:00:00	13:00:00	ZV Bloemendaal	3		Cam								Helemaal niet		Knie-hoog			
+13-11-2023 12:47:41		13-11-2023	12:00:00	13:00:00	Wijk aan zee	1		Cam								Helemaal niet		Flat			
+8-11-2023 15:39:24		8-11-2023	13:00:00	14:00:00	Wijk aan zee	7		Nat pak	Fish of funboard	Best wel	Een beetje	Een beetje	Een beetje	Een beetje	Een beetje	Een beetje	Best wel				
+8-11-2023 15:37:15		8-11-2023	12:00:00	13:00:00	Wijk aan zee	9		Nat pak	Fish of funboard	Best wel	Heel erg	Heel erg	Best wel	Een beetje	Een beetje	Heel erg	Best wel	Overhead			
+4-11-2023 13:52:11		4-11-2023	10:30:00	12:30:00	Wijk aan zee	8		Nat pak	Fish of funboard	Best wel	Best wel	Best wel	Een beetje	Helemaal niet	Heel erg	Een beetje	Een beetje				
+2-11-2023 17:26:47		2-11-2023	17:00:00	17:30:00	Wijk aan zee	7		Cam													Hoge golven, maar zieke wind, stroming en klotsbak. Bij pier twee surfers, lijkt een beetje surfbaar misch zelfs een 7
+2-11-2023 15:41:16		2-11-2023	15:00:00	16:00:00	Wijk aan zee	5		Cam									Heel erg				Hoge golven, maar zieke wind, stroming en klotsbak. Bij pier kleine golven
+2-11-2023 15:41:16		2-11-2023	15:00:00	16:00:00	ZV Bloemendaal	3		Cam									Heel erg				Hoge golven, maar zieke wind, stroming en klotsbak.
+2-11-2023 10:09:14		2-11-2023	8:30:00	10:30:00	Wijk aan zee	1		Cam								Helemaal niet					Bij de pier helemaal flat, verderop hele kleine golfjes
+29-10-2023 12:13:36		29-10-2023	11:00:00	13:00:00	ZV Bloemendaal	5		Eyeball													
+23-10-2023 17:21:17		23-10-2023	16:00:00	18:00:00	Wijk aan zee	5		Cam								Helemaal niet					
+21-10-2023 18:57:03		18-10-2023	12:00:00	15:00:00	IJmuiden	1		Eyeball													
+21-10-2023 11:46:21		21-10-2023	10:00:00	10:45:00	ZV Bloemendaal	7		Nat pak	Fish of funboard	Een beetje	Best wel	Een beetje	Best wel	Een beetje	Helemaal niet	Best wel	Een beetje				
+21-10-2023 11:44:40		20-10-2023	17:30:00	18:45:00	ZV Parnassia	9		Nat pak	Fish of funboard	Heel erg	Heel erg	Heel erg	Heel erg	Een beetje	Helemaal niet	Heel erg	Best wel				
+20-10-2023 21:27:11		20-10-2023	17:00:00	19:00:00	ZV Parnassia	8		Nat pak	Fish of funboard	Heel erg	Heel erg	Een beetje	Best wel	Een beetje	Helemaal niet	Heel erg	Helemaal niet				
+20-10-2023 21:25:45		20-10-2023	16:30:00	17:15:00	ZV Parnassia	9		Nat pak	Fish of funboard	Heel erg	Heel erg	Best wel	Heel erg	Een beetje	Helemaal niet	Heel erg	Helemaal niet				
+17-10-2023 12:25:38		16-10-2023	14:45:00	18:45:00	ZV Bloemendaal	9		Nat pak	Short board	Heel erg	Heel erg	Best wel	Heel erg	Best wel	Best wel	Heel erg	Helemaal niet				
+16-10-2023 22:13:53		16-10-2023	16:00:00	18:00:00	ZV Parnassia	9		Nat pak	Longboard	Heel erg	Heel erg	Best wel	Best wel	Een beetje	Een beetje	Best wel	Helemaal niet				
+12-10-2023 20:15:14		12-10-2023	18:30:00	19:15:00	ZV Parnassia	8		Nat pak	Fish of funboard	Heel erg	Best wel	Best wel	Best wel	Helemaal niet	Best wel	Best wel	Helemaal niet				
+12-10-2023 20:14:09		12-10-2023	14:00:00	16:30:00	ZV Bloemendaal	7		Nat pak	Fish of funboard	Best wel	Een beetje	Een beetje	Een beetje	Best wel	Een beetje	Best wel	Helemaal niet				
+10-10-2023 14:43:34		10-10-2023	14:15:00	15:14:00	Wijk aan zee	6		Cam													
+9-10-2023 9:58:11		8-10-2023	16:00:00	17:00:00	Texel paal 17	8		Nat pak	Longboard	Heel erg	Best wel	Best wel	Best wel	Een beetje	Een beetje	Best wel	Een beetje				
+9-10-2023 9:56:45		8-10-2023	9:00:00	11:00:00	Texel paal 17	7		Nat pak	Longboard	Best wel	Best wel	Helemaal niet	Heel erg	Een beetje	Een beetje	Heel erg	Een beetje				
+8-10-2023 16:55:11		8-10-2023	10:00:00	12:00:00	Texel paal 17	7		Nat pak	Short board	Best wel	Best wel	Helemaal niet	Heel erg	Een beetje	Helemaal niet	Heel erg	Helemaal niet				
+8-10-2023 16:52:48		8-10-2023	14:00:00	17:00:00	Texel paal 17	9		Nat pak	Short board	Heel erg	Heel erg	Een beetje	Heel erg	Best wel	Een beetje	Heel erg	Helemaal niet				
+7-10-2023 11:59:09		6-10-2023	15:30:00	17:00:00	Wijk aan zee	7		Nat pak	Fish of funboard	Een beetje	Een beetje	Best wel	Helemaal niet	Best wel	Een beetje	Best wel	Heel erg				
+7-10-2023 7:40:08		6-10-2023	15:30:00	17:00:00	Wijk aan zee	7		Nat pak	Fish of funboard	Een beetje	Een beetje	Een beetje	Helemaal niet	Best wel	Een beetje	Best wel	Best wel				
+6-10-2023 12:03:17		6-10-2023	11:30:00	12:30:00	Wijk aan zee	7		Cam													
+4-10-2023 18:26:42		4-10-2023	16:30:00	18:00:00	ZV Bloemendaal	7		Nat pak	Short board	Helemaal niet	Best wel	Een beetje	Best wel	Een beetje	Helemaal niet	Best wel	Een beetje				
+4-10-2023 13:45:08		4-10-2023	13:00:00	14:00:00	ZV	3		Cam													
+1-10-2023 15:31:38		30-9-2023	19:00:00	20:30:00	Castricum	4		Eyeball													
+1-10-2023 15:30:03		1-10-2023	10:30:00	10:30:00	ZV Parnassia	4		Eyeball													
+30-9-2023 9:52:12		30-9-2023	8:30:00	9:30:00	ZV Bloemendaal	4		Cam													
+29-9-2023 8:56:48		28-9-2023	18:00:00	19:00:00	ZV Bloemendaal	6		Nat pak	Fish of funboard	Een beetje	Een beetje	Helemaal niet	Best wel	Een beetje	Helemaal niet	Een beetje	Helemaal niet				
+28-9-2023 14:00:28		24-9-2023	19:00:00	20:00:00	ZV Bloemendaal	9		Nat pak	Fish of funboard	Heel erg	Heel erg	Heel erg	Een beetje	Een beetje	Een beetje	Best wel	Helemaal niet				
+28-9-2023 13:59:01		28-9-2023	10:00:00	11:30:00	ZV Bloemendaal	7		Nat pak	Fish of funboard	Helemaal niet	Best wel	Een beetje	Best wel	Heel erg	Helemaal niet	Best wel	Best wel				
+28-9-2023 10:11:56		27-9-2023	17:00:00	19:00:00	ZV Bloemendaal	1		Nat pak													
+25-9-2023 17:05:04		23-9-2023	14:00:00	16:00:00	Scheveningen hartbeach	6		Nat pak	Fish of funboard	Een beetje	Een beetje	Helemaal niet	Best wel	Een beetje	Best wel	Best wel	Best wel				
+25-9-2023 11:57:59		25-9-2023	7:30:00	8:30:00	ZV Bloemendaal	3		Eyeball													
+23-9-2023 18:41:35		23-9-2023	12:00:00	14:00:00	ZV Bloemendaal	3		Nat pak	Short board	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Een beetje				
+23-9-2023 18:33:34		23-9-2023	14:00:00	16:00:00	ZV Parnassia	4		Eyeball													
+21-9-2023 8:33:06		20-9-2023	18:00:00	20:00:00	ZV Bloemendaal	8		Nat pak	Fish of funboard	Een beetje	Heel erg	Heel erg	Best wel	Heel erg	Helemaal niet	Best wel	Een beetje				
+14-9-2023 14:14:28		13-9-2023	18:00:00	20:15:00	ZV Bloemendaal	8		Nat pak	Fish of funboard	Heel erg	Een beetje	Best wel	Een beetje	Een beetje	Een beetje	Een beetje	Helemaal niet				
+13-9-2023 23:32:46		13-9-2023	17:45:00	19:30:00	Scheveningen zuid	8		Nat pak	Short board	Best wel	Best wel	Een beetje	Een beetje	Best wel	Een beetje	Best wel	Helemaal niet				
+13-9-2023 23:20:36		13-9-2023	17:45:00	19:45:00	Scheveningen zuid	7		Nat pak	Short board	Best wel	Een beetje	Best wel	Een beetje	Heel erg	Best wel	Een beetje	Een beetje				
+13-9-2023 23:17:31		13-9-2023	18:00:00	20:00:00	Scheveningen zuid	8		Nat pak	Longboard	Een beetje	Best wel	Best wel	Een beetje	Heel erg	Best wel	Best wel	Best wel				
+9-9-2023 13:14:43		9-9-2023	0:01:00	23:59:00	ZV Parnassia	1		Eyeball			Helemaal niet					Helemaal niet					
+4-9-2023 8:35:11		4-9-2023	8:00:00	9:00:00	Wijk aan zee	1		Cam		Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet				
+20-8-2023 20:42:00		20-8-2023	15:00:00	17:00:00	Zandvoort Naakstrand	2		Eyeball		Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet				
+11-8-2023 21:45:36		10-8-2023	19:30:00	22:00:00	ZV Parnassia	10		Nat pak	Fish of funboard	Heel erg	Heel erg	Heel erg	Heel erg	Helemaal niet	Heel erg	Heel erg	Helemaal niet				
+11-8-2023 12:07:02		10-8-2023	19:30:00	22:00:00	ZV Bloemendaal	9		Nat pak	Fish of funboard	Heel erg	Best wel	Best wel	Heel erg	Een beetje	Heel erg	Best wel	Helemaal niet				
+9-8-2023 23:15:02		9-8-2023	20:30:00	22:00:00	ZV Parnassia	9		Nat pak	Short board	Heel erg	Heel erg	Heel erg	Best wel	Een beetje	Best wel	Heel erg	Helemaal niet				
+9-8-2023 23:14:14		9-8-2023	20:30:00	22:00:00	ZV Bloemendaal	9		Nat pak	Fish of funboard	Heel erg	Best wel	Heel erg	Best wel	Een beetje	Best wel	Heel erg	Helemaal niet				
+9-8-2023 8:48:41		8-8-2023	20:00:00	21:30:00	ZV Bloemendaal	7		Nat pak	Short board	Helemaal niet	Heel erg	Een beetje	Best wel	Best wel	Helemaal niet	Heel erg	Een beetje				
+9-8-2023 8:47:43		6-8-2023	17:00:00	21:00:00	IJmuiden	6		Nat pak	Short board	Helemaal niet	Best wel	Een beetje	Heel erg	Best wel	Helemaal niet	Heel erg	Heel erg				
+9-8-2023 8:46:42		5-8-2023	19:30:00	21:00:00	ZV Bloemendaal	8		Nat pak	Fish of funboard	Best wel	Een beetje	Best wel	Best wel	Best wel	Helemaal niet	Een beetje	Helemaal niet				
+9-8-2023 8:45:23		5-8-2023	6:30:00	9:00:00	ZV Bloemendaal	7		Nat pak	Short board	Heel erg	Best wel	Een beetje	Een beetje	Helemaal niet	Een beetje	Best wel	Helemaal niet				
+6-8-2023 19:30:16		6-8-2023	18:45:00	21:00:00	ZV Bloemendaal	8		Nat pak	Longboard	Best wel	Best wel	Een beetje	Een beetje	Best wel	Een beetje	Een beetje	Helemaal niet				
+6-8-2023 19:27:05		6-8-2023	7:00:00	9:00:00	ZV Bloemendaal	8		Nat pak	Short board	Heel erg	Heel erg	Helemaal niet	Heel erg	Helemaal niet	Een beetje	Heel erg	Helemaal niet				
+6-8-2023 9:22:10		5-8-2023	18:45:00	20:00:00	ZV Bloemendaal	8		Nat pak	Fish of funboard	Best wel	Een beetje	Best wel	Een beetje	Best wel	Een beetje	Best wel	Helemaal niet				
+5-8-2023 11:54:28		5-8-2023	7:00:00	9:00:00	ZV Bloemendaal	8		Nat pak	Short board	Heel erg	Best wel	Een beetje	Heel erg	Een beetje	Een beetje	Best wel	Helemaal niet				
+5-8-2023 9:29:18		5-8-2023	7:00:00	8:15:00	ZV Bloemendaal	8		Nat pak	Fish of funboard	Heel erg	Best wel	Een beetje	Best wel	Een beetje	Een beetje	Best wel	Helemaal niet				
+5-8-2023 9:21:34		5-8-2023	6:45:00	9:00:00	Camperduin	10		Nat pak	Longboard	Heel erg	Heel erg	Heel erg	Heel erg	Een beetje	Helemaal niet	Heel erg	Helemaal niet				
+4-8-2023 23:40:09		4-8-2023	16:00:00	18:00:00	ZV Parnassia	5		Nat pak	Fish of funboard	Een beetje	Een beetje	Een beetje	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Heel erg				
+3-8-2023 8:51:10		1-8-2023	18:00:00	20:00:00	Camperduin	7		Nat pak	Fish of funboard	Een beetje	Best wel	Een beetje	Best wel	Helemaal niet	Helemaal niet	Best wel	Best wel				
+27-7-2023 15:18:25		27-7-2023	13:45:00	15:00:00	Wijk aan zee	6		Nat pak	Fish of funboard	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Een beetje	Een beetje				
+27-7-2023 15:18:03		27-7-2023	13:45:00	15:00:00	Wijk aan zee	6		Nat pak	Fish of funboard	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Een beetje	Een beetje				
+27-7-2023 11:57:40		27-7-2023	7:30:00	8:30:00	Wijk aan zee	8		Cam		Heel erg											
+25-7-2023 23:45:01		25-7-2023	19:40:00	21:40:00	ZV Parnassia	4		Nat pak	Fish of funboard	Helemaal niet	Helemaal niet	Een beetje	Een beetje	Een beetje	Een beetje	Een beetje	Een beetje				
+24-7-2023 19:41:39		23-7-2023	13:00:00	14:30:00	Wijk aan zee	7		Nat pak	Short board	Een beetje	Best wel	Een beetje	Een beetje	Helemaal niet	Een beetje	Best wel	Heel erg				
+24-7-2023 17:20:10		24-7-2023	16:40:00	17:40:00	ZV Parnassia	3		Cam		Helemaal niet							Heel erg				
+23-7-2023 23:09:28		23-7-2023	13:00:00	14:30:00	Wijk aan zee	7		Nat pak	Fish of funboard	Helemaal niet	Een beetje	Een beetje	Een beetje	Helemaal niet	Helemaal niet	Een beetje	Heel erg				
+23-7-2023 22:08:48		23-7-2023	13:00:00	15:00:00	Wijk aan zee	7		Nat pak	Fish of funboard	Helemaal niet	Een beetje	Een beetje	Een beetje	Helemaal niet	Helemaal niet	Een beetje	Heel erg				
+23-7-2023 17:40:52		23-7-2023	17:00:00	18:10:00	ZV Parnassia	3		Cam													
+23-7-2023 17:40:05		23-7-2023	17:10:00	18:10:00	Wijk aan zee	7		Cam													
+22-7-2023 0:58:53		21-7-2023	14:00:00	16:15:00	Wijk aan zee	8		Nat pak	Fish of funboard	Heel erg	Een beetje	Heel erg	Een beetje	Helemaal niet	Een beetje	Een beetje	Helemaal niet				
+22-7-2023 0:13:39		22-7-2023	21:00:00	22:00:00	Wijk aan zee	6		Eyeball					Best wel								
+20-7-2023 23:50:31		20-7-2023	20:00:00	22:00:00	Camperduin 	8		Nat pak	Longboard	Best wel	Een beetje	Een beetje	Een beetje	Helemaal niet	Een beetje	Een beetje	Helemaal niet				
+20-7-2023 22:03:34		20-7-2023	16:00:00	18:00:00	ZV Parnassia	6		Nat pak	Fish of funboard	Een beetje	Een beetje	Helemaal niet	Een beetje	Een beetje	Een beetje	Een beetje	Helemaal niet				
+20-7-2023 20:14:18		20-7-2023	17:00:00	18:00:00	ZV Parnassia	6		Nat pak	Fish of funboard	Best wel	Helemaal niet	Een beetje	Een beetje	Helemaal niet	Best wel	Helemaal niet	Helemaal niet				
+20-7-2023 19:12:22		20-7-2023	16:00:00	19:00:00	ZV Bloemendaal	8		Nat pak	Short board	Heel erg	Een beetje	Een beetje	Best wel	Een beetje	Best wel	Een beetje	Een beetje				
+20-7-2023 19:09:10		20-7-2023	17:00:00	18:30:00	ZV Parnassia	7		Nat pak	Fish of funboard	Best wel	Een beetje	Een beetje	Een beetje	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet				
+20-7-2023 11:42:18		20-7-2023	11:10:00	12:40:00	Wijk aan zee	7		Cam	Longboard	Best wel						Een beetje					
+19-7-2023 22:10:51		19-7-2023	18:00:00	20:00:00	IJmuiden	5		Nat pak	Longboard	Een beetje	Helemaal niet	Een beetje	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet	Helemaal niet				
+16-7-2023 21:07:30		16-7-2023	13:00:00	15:00:00	Wijk aan zee	6		Eyeball		Helemaal niet						Een beetje	Heel erg				
+16-7-2023 15:04:02		16-7-2023	13:30:00	14:30:00	Wijk aan zee	5		Eyeball		Helemaal niet					Helemaal niet	Een beetje	Heel erg				
+9-7-2023 16:26:31		9-7-2023	16:00:00	17:00:00	ZV Bloemendaal	1		Cam													
+9-7-2023 0:00:00		30-4-2018			Domburg	10		Hind sight (Boekje)													Boek : Was goed, overhead barrels
+9-7-2023 0:00:00		29-7-2018	Voor werk extra vroeg gegaan		Terheijde	9		Hind sight (Boekje)													Boek : Sets met lange periode, heuphoog, longboard golven
+9-7-2023 0:00:00		26-6-2019				4		Hind sight (Whatsapp)													Maite : Rommelig
+9-7-2023 0:00:00		27-6-2019				6		Hind sight (Whatsapp)													Maite : Rommelig, maar minder hoogte en meer kracht dan dag ervoor
+9-7-2023 0:00:00		6-12-2019						Hind sight (Whatsapp)													Maite tegen yael in whatsapp gezegd dat ze de dag na 5 dec gingen surfen : ?
+9-7-2023 0:00:00		13-12-2019	11:00	13:00				Hind sight (Whatsapp)													Maite tegen Pim in Whatsapp de dag ervoor (12-dec-2019) dat we met stijn gingen : ?
+9-7-2023 0:00:00		24-12-2019	12:00					Hind sight (Whatsapp)													Pim tegen Mait in whatsapp : ?
+9-7-2023 0:00:00		5-2-2020				9		Hind sight (Whatsapp)													Pim tegen Maite in whatsapp op 4 feb : Zieke surf
+9-7-2023 0:00:00		29-2-2020	11:00	12:30	Zandvoort	8		Hind sight (Whatsapp)													Maite tegen Bas in Whatsapp dat er later zieke surf kwam : Goede surf. "Wij gaan in de middag surfen" "Er is goeie surf" Om 13:30 stonden we bij Bas voor de deur, dus daarvoor gesurfd.
+9-7-2023 0:00:00		30-4-2020	In avond			9		Hind sight (Whatsapp)													Volgens Maite tegen Pim Whatsapp : Zieke surf
+9-7-2023 0:00:00		4-6-2020						Hind sight (Whatsapp)													Pim tegen Maite in whatsapp : ?
+9-7-2023 0:00:00		29-6-2020	In avond					Hind sight (Whatsapp)													Pim en Maite in Striep app : ?
+9-7-2023 0:00:00		29-7-2020	ochtend en avondsessie		Belgie	9		Hind sight (Boekje)													Boek: Savonds was beter.  Was in belgie maar in nl ook heel goed : 1 tot 1,5. Clean en krachtig. Barrels en geen wind
+9-7-2023 0:00:00		23-9-2020	19:30	20:30	Wijk aan zee	8		Hind sight (Surfweer)													Surfweer:Zo hey… wie waren er nog meer op Wijk vanavond? Zeg maar met recht Wijkiki. Voor een half uur / drie kwartier echt bizar lange lijnen die maar door rolden zonder eind - september 23, 2020 om 9:53 pm (https://surfweer.nl/surf/surfweer-woensdag-23-september-2020/)
+9-7-2023 0:00:00		25-9-2020	9:00	10:00	Zandvoort	9		Hind sight (Whatsapp)													Surfweer : Twee meter, krachtige chaos
+9-7-2023 0:00:00		25-9-2020	8:00	10:00	Wijk aan zee	8		Hind sight (Surfweer)													Surfweer : Mooi, offshore wind. Ochtend en middag
+9-7-2023 0:00:00		27-9-2020	14:30	15:30	IJmuiden	10		Hind sight (Surfweer)													Surfweer.nl forum, met foto's van dikke golven. Buitenlandse omstandigheden. : Barrels en lange ritten
+9-7-2023 0:00:00		28-9-2020	19:00	20:00	Wijk aan zee			Hind sight (Whatsapp)													Maite tegen Luuk via Whatsapp. Volgens mij was dit onze barrelsessie bij wijk. : Nog even checken of het dé epische dag bij wijk was
+9-7-2023 0:00:00		2-11-2020				10		Hind sight (Boekje)													Boekje : Head high, clean, barrels
+9-7-2023 0:00:00		22-12-2020				8		Hind sight (Whatsapp)													Pim : Nice
+9-7-2023 0:00:00		25-12-2020				8		Hind sight (Whatsapp)													Maite : Goed
+9-7-2023 0:00:00		29-12-2020				1		Hind sight (Whatsapp)													Berry : Flat
+9-7-2023 0:00:00		31-12-2020				8		Hind sight (Whatsapp)													Berry : Clean
+9-7-2023 0:00:00		1-1-2021				1		Hind sight (Whatsapp)													Berry : Flat
+9-7-2023 0:00:00		2-1-2021				8		Hind sight (Whatsapp)													Onbekende bron : Clean
+9-7-2023 0:00:00		30-1-2021				1		Hind sight (Whatsapp)													Onbekende bron : Flat
+9-7-2023 0:00:00		7-2-2021	7:00	9:00	Schevingen	9		Hind sight (Boekje)													Boekje : Clean en hoog. sochtends vroeg
+9-7-2023 0:00:00		7-2-2021	tijdens mid en hoog water		Schevingen	10		Hind sight (Boekje)													Boek : overhead golven, episch, cleane golven
+9-7-2023 0:00:00		16-5-2021				1		Hind sight (Whatsapp)													Onbekende bron : Flat
+9-7-2023 0:00:00		30-6-2021				7		Hind sight (Whatsapp)													Berry : Leuk
+9-7-2023 0:00:00		16-8-2021	19:00					Hind sight (Whatsapp)													Pim zegt tegen Stijn dat ie net terug is van surf om 21:53 : ?
+9-7-2023 0:00:00		29-8-2021	8:30	9:30	Bloemendaal	4		Hind sight (Whatsapp)													Filmpje Maite : Klotsbak
+9-7-2023 0:00:00		20-10-2021				7		Hind sight (Whatsapp)													Pim : Lachen
+9-7-2023 0:00:00		30-10-2021			Wijk aan Zee	1		Hind sight (Whatsapp)													Maite : Webcam was flat
+9-7-2023 0:00:00		4-11-2021	14:00	16:00	Wijk aan Zee	9		Hind sight (Whatsapp)													Pim gaan surfen tijdens werk (sick goede sessie in zn eentje met oranje plankje?) Pim had om 16:00 een afspraak voor werk, dus daarvoor gegaan: Goede surf. SMS van tobias zegt: "rond 13:30 gaat wind eruit. Wijk is te shortboarden van 14:00 - 16:00. Zvoort en bloemendaal van 13:00 - 15:00"
+9-7-2023 0:00:00		23-11-2021				8		Hind sight (Whatsapp)													Berry : Heel lekker maar zwaar
+9-7-2023 0:00:00		30-12-2021				3		Hind sight (Whatsapp)													Berry : Slecht
+9-7-2023 0:00:00		5-1-2022				7		Hind sight (Whatsapp)													Berry : Windy/pittig/groot
+9-7-2023 0:00:00		15-1-2022	14:30	15:30	Bloemendaal	6		Hind sight (Whatsapp)													Filmpje Maite in whatsapp 15:00 ('very smoll') bij rapa nui en bericht yael 17:30 ('klein')
+9-7-2023 0:00:00		2-2-2022				4		Hind sight (Whatsapp)													Berry : Windy
+9-7-2023 0:00:00		23-3-2022				1		Hind sight (Whatsapp)													Maite : Flat
+9-7-2023 0:00:00		26-5-2022				1		Hind sight (Whatsapp)													Maite : Surf looks flat
+9-7-2023 0:00:00		29-5-2022	13:30	14:30	IJmuiden	8		Hind sight (Filmpje Mees)													Filmpjes Mees : Middelhoog, was prima
+9-7-2023 0:00:00		17-8-2022				9		Hind sight (Whatsapp)													Daniel : Heel nice
+9-7-2023 0:00:00		1-1-2023				9		Hind sight (Whatsapp)													Daniel : Echt nice
+9-7-2023 0:00:00		2-1-2023			Wijk aan Zee	9		Hind sight (Whatsapp)													Berrys vrienden : Clean en hoog
+9-7-2023 0:00:00		14-1-2023	7:00:00	9:30:00	Wijk aan Zee	9		Hind sight (Surfweer)													Surfweer.nl forum : "Damn! Wijk was magisch vanochtend!"  - januari 14, 2023 om 11:04 am (https://surfweer.nl/surf/surfweer-vrijdag-13-januari-2023/)
+9-7-2023 0:00:00		16-1-2023	9:00:00	11:00:00	ZV Bloemendaal	8		Hind sight (Surfweer)													Surfweer.nl forum: Ziet er goed uit op de cams.- januari 16, 2023 om 8:56 am, Was inderdaad heerlijk. Wel wat aan de holle kant… ((https://surfweer.nl/surf/surfweer-vrijdag-13-januari-2023/))
+9-7-2023 0:00:00		16-1-2023	9:00:00	11:00:00	Wijk aan Zee	8		Hind sight (Surfweer)													Surfweer.nl forum: Ziet er goed uit op de cams.- januari 16, 2023 om 8:56 am, Was inderdaad heerlijk. Wel wat aan de holle kant… ((https://surfweer.nl/surf/surfweer-vrijdag-13-januari-2023/))
+5-7-2023 22:46:46		5-7-2023	19:00:00	20:30:00	Wijk aan zee	7		Nat pak	Fish of funboard	Helemaal niet	Heel erg	Een beetje	Best wel	Helemaal niet	Helemaal niet	Heel erg	Een beetje				
+5-7-2023 21:17:40		5-7-2023	19:00:00	20:00:00	Wijk aan zee	7		Nat pak	Fish of funboard	Helemaal niet	Best wel	Best wel	Best wel	Een beetje	Een beetje	Best wel	Een beetje				
+5-7-2023		5-7-2023	19:00	21:00	Wijk aan zee	8,5		Hind sight (Whatsapp)	Fish of funboard							Heel erg					Sessie na Poly (Pim was toen tot 18:00 a 18:30 een weg afsluiten bij Laaglandersluisweg)
+4-7-2023 22:57:37		4-7-2023	19:00:00	21:30:00	ZV Parnassia	7		Nat pak	Fish of funboard	Best wel	Een beetje	Best wel	Een beetje	Een beetje	Een beetje	Best wel	Helemaal niet				
+4-7-2023 22:55:45		3-7-2023	19:30:00	21:30:00	Wijk aan zee	8		Nat pak	Short board	Helemaal niet	Best wel	Best wel	Een beetje	Helemaal niet	Een beetje	Best wel	Heel erg				
+4-7-2023 22:45:30		4-7-2023	21:00:00	22:30:00	ZV Parnassia	8		Nat pak	Longboard	Best wel	Best wel	Best wel	Best wel	Best wel	Een beetje	Best wel	Helemaal niet				
+4-7-2023 22:41:42		4-7-2023	20:45:00	22:00:00	ZV Parnassia	7		Nat pak	Longboard	Best wel	Best wel	Een beetje	Een beetje	Heel erg	Best wel	Best wel	Helemaal niet				
+4-7-2023 22:15:43		4-7-2022	16:00:00	18:30:00	Wijk aan zee	9		Nat pak	Short board	Best wel	Best wel	Best wel	Best wel	Een beetje	Best wel	Best wel	Een beetje				
+4-7-2023 7:46:09		4-7-2023	19:00:00	21:30:00	ZV Parnassia	8		Nat pak	Short board	Heel erg	Best wel	Best wel	Heel erg	Een beetje	Een beetje	Best wel	Helemaal niet				
+4-7-2023		4-7-2023	15:00	16:00	Wijk aan zee	9		Hind sight (Whatsapp)	Fish of funboard												
+4-7-2023		4-7-2023	15:00	16:00	Wijk aan zee	7		Hind sight (Whatsapp)	Longboard												
+4-7-2023		4-7-2023	18:00	19:00	Wijk aan zee	8		Hind sight (Whatsapp)	Fish of funboard												
+4-7-2023		4-7-2023	18:00	19:00	Wijk aan zee	8		Hind sight (Whatsapp)	Longboard												
+3-7-2023 22:50:27		3-7-2023	19:00:00	21:00:00	Wijk aan zee	8		Nat pak	Short board	Een beetje	Best wel	Best wel	Een beetje	Helemaal niet	Best wel	Heel erg	Heel erg				
+3-7-2023 21:20:25		3-7-2023	19:00:00	21:00:00	Wijk aan zee	7		Nat pak	Short board	Helemaal niet	Een beetje	Best wel	Een beetje	Helemaal niet	Best wel	Heel erg	Heel erg				
+2-7-2023 9:53:53		2-7-2023	9:51:00	10:00:00	Wijk aan zee	6		Cam		Helemaal niet						Best wel	Best wel				
+27-6-2023 21:49:44		28-7-2019	15:00:00	17:00:00		1		Hind sight (Whatsapp)								Helemaal niet					
+27-6-2023 21:48:25		12-6-2019	10:00:00	12:00:00		7		Hind sight (Whatsapp)													
+27-6-2023 21:47:50		10-12-2019	16:00:00	18:00:00		3		Hind sight (Whatsapp)													
+27-6-2023 21:47:32		29-9-2022	10:00:00	12:00:00		7		Hind sight (Whatsapp)													
+27-6-2023 21:46:49		18-4-2020	17:00:00	19:00:00	Scheveningen zwarte pad	9		Hind sight (Whatsapp)													
+27-6-2023 21:44:22		21-11-2021	16:00:00	17:00:00		8		Hind sight (Whatsapp)													
+27-6-2023 21:44:15		8-6-2022	9:00:00	11:00:00		8		Hind sight (Whatsapp)													
+27-6-2023 21:43:26		26-5-2022	9:00:00	11:00:00		7		Hind sight (Whatsapp)													
+27-6-2023 21:43:01		27-7-2022	15:00:00	16:00:00		7		Hind sight (Whatsapp)													
+27-6-2023 21:41:55		23-11-2021	15:30:00	17:00:00		6		Hind sight (Whatsapp)									Best wel				
+27-6-2023 21:40:54		20-12-2020	15:00:00	17:00:00		7		Hind sight (Whatsapp)	Short board	Best wel											
+27-6-2023 21:40:43		20-6-2022	21:00:00	22:00:00		7		Hind sight (Whatsapp)													
+27-6-2023 21:39:28		28-11-2021	16:30:00	17:30:00		7		Hind sight (Whatsapp)			Een beetje										
+27-6-2023 21:39:17		15-7-2021	19:00:00	21:00:00		8		Hind sight (Whatsapp)													
+27-6-2023 21:38:06		27-11-2021	11:00:00	13:00:00		4		Hind sight (Whatsapp)													
+27-6-2023 21:37:28		3-6-2021	9:00:00	11:00:00		10		Hind sight (Whatsapp)		Heel erg											
+27-6-2023 21:36:52		18-9-2022	10:00:00	12:00:00		6		Hind sight (Whatsapp)		Een beetje											
+27-6-2023 21:34:13		29-5-2022	19:00:00	21:00:00		9		Hind sight (Whatsapp)			Best wel						Een beetje				
+27-6-2023 21:30:57		28-8-2021	8:30:00	10:30:00	IJmuiden	9		Hind sight (Whatsapp)	Longboard	Heel erg		Best wel				Best wel					
+27-6-2023 20:11:18		26-6-2023	19:30:00	22:00:00	ZV Parnassia	6	Een beetje	Nat pak		Een beetje	Een beetje	Een beetje		Best wel	Een beetje	Best wel					
+27-6-2023 19:50:32		26-6-2023	14:30:00	15:30:00	ZV Parnassia	5		Eyeball		Helemaal niet											
+27-6-2023 19:25:32		26-6-2023	19:00:00	20:15:00	ZV Parnassia	7	Best wel	Nat pak		Een beetje	Best wel	Een beetje		Best wel	Helemaal niet	Een beetje					
+27-6-2023 15:56:09		26-6-2023	19:30:00	20:30:00	ZV Parnassia	7	Een beetje	Nat pak		Best wel	Een beetje	Een beetje		Helemaal niet	Helemaal niet	Best wel					
+26-6-2023 23:26:55		26-6-2023	20:00:00	21:30:00	ZV Parnassia	6	Een beetje	Nat pak		Een beetje	Een beetje	Helemaal niet		Een beetje	Een beetje	Een beetje					
+26-6-2023 14:55:07		26-6-2023	14:00:00	15:00:00	ZV Bloemendaal	2		Cam													
+22-6-2023 14:46:07		22-6-2023	14:45:00	15:00:00	ZV Bloemendaal	1		Eyeball								Helemaal niet					
+21-6-2023 10:32:57		21-6-2023	10:00:00	11:00:00	ZV Parnassia	2		Cam													
+20-6-2023 13:20:54		20-6-2023	13:00:00	13:30:00	ZV Bloemendaal	1		Cam													
+19-6-2023 21:13:32		19-6-2023	21:00:00	21:30:00	ZV Bloemendaal	2		Cam													
+19-6-2023 21:13:22		19-6-2023	21:00:00	21:30:00	ZV Bloemendaal	2		Cam													
+19-6-2023 21:11:18		19-6-2023	20:30:00	21:30:00	ZV Parnassia	2		Cam													
+19-6-2023 21:10:49		19-6-2023	21:09:00	21:09:00	Wijk aan zee	2		Eyeball													
+12-6-2023 11:57:32		7-6-2023	20:00:00	22:00:00	ZV Bloemendaal	7	Best wel			Heel erg	Een beetje	Een beetje		Helemaal niet	Helemaal niet	Een beetje					
+10-6-2023 15:32:52		9-6-2023	19:00:00	20:15:00	ZV	6	Een beetje			Best wel	Een beetje	Een beetje		Helemaal niet	Helemaal niet	Helemaal niet					
+4-6-2023 23:08:17		2-6-2023	16:30:00	17:20:00	ZV Bloemendaal	7	Een beetje			Een beetje	Best wel	Een beetje		Best wel	Helemaal niet						

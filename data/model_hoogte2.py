@@ -13,8 +13,8 @@ channels = hoog2_forecase_cols
 
 dfs = pd.DataFrame()
 for spot in SPOTS:
-    df = spot.combined(only_spot_data=True, match_all_feedback_times=True,
-                       fb_columns=perk)
+    df = spot.training_data(only_spot_data=True, match_all_feedback_times=True,
+                            fb_columns=perk)
     dfs = pd.concat([df, dfs])
 
 dfs = dfs[channels + [perk]]

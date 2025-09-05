@@ -44,7 +44,7 @@ def text_to_value(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 def load(file_name):
-    data = pd.read_csv(file_name)
+    data = pd.read_csv(file_name, sep="\t", decimal=',')
     data.columns = rename_columns(data.columns)
     data = text_to_value(data)
     data = data.drop(colums_delete, axis=1)

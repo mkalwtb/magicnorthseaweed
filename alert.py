@@ -123,16 +123,16 @@ def check(data: pd.DataFrame, spot: Spot, alert_filters: list[AlertFilter]):
                 # (email_log.df['alert_timestamp'] >= one_day_ago)  # todo enable
             ]
 
-            if not recent_emails.empty:  # todo remove not
+            if recent_emails.empty:
                 # Send email (placeholder for actual email sending logic)
                 print(f"Alert email to {alert_filter.email} for spot {spot.name} with rating {data['rating'].max():.1f} at {alert_time}")
 
                 # Log the sent email
-                send_email(
-                    to=alert_filter.email,
-                    subject=f"Surf Alert for {spot.name}: Rating {data['rating'].max():.1f}",
-                    content=content_generator(data)
-                )
+                # send_email(
+                #     to=alert_filter.email,
+                #     subject=f"Surf Alert for {spot.name}: Rating {data['rating'].max():.1f}",
+                #     content=content_generator(data)
+                # )
                 email_log.log_alert(spot.name, data['rating'].max(), alert_filter.email, alert_time)
             else:
                 print(f"Alert email already sent to {alert_filter.email} for spot {spot.name} in the last 24 hours.")

@@ -64,7 +64,7 @@ def enrich_input_data(data: pd.DataFrame, spot) -> pd.DataFrame:
     # data['waveOnshore2nd'] = _compute_onshore(data['secondarySwellDirection'], richting, side_shore=False)
     # data["waveEnergy2nd"] = data["secondarySwellHeight"]**2 * data["secondarySwellPeriod"]**2 * data["waveOnshore2nd"]
     # data.loc[data['waveEnergy2nd'] < 0, 'waveEnergy2nd'] = 0
-    data["windWaveHeightEnergy"] = data["windWaveHeight"]**2  # todo use the code above: Tis is wrong and temp
+    # data["windWaveHeightEnergy"] = data["windWaveHeight"]**2  # todo use the code above: Tis is wrong and temp
 
     data['seaRise'] = data["NAP"].diff()
 
@@ -117,25 +117,23 @@ class Spot:
     def _pims_hindcast_input():
         return pd.read_pickle(r"RWS/test.pkl")
 
-    def combined(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True, fb_columns: str=None, pim=False):
+    def training_data(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True, fb_columns: str=None, pim=False):
         """Combined surf statistics and feedback form"""
-        if pim:
-            input = self._pims_hindcast_input()
-        else:
-            input = self._hindcast_input()
-        output = self.feedback(only_spot_data=only_spot_data)
-        data = deepcopy(input)
-        self.add_spot_info(data)
+        hindcast = deepcopy(self._hindcast_input())
+        feedback = self.feedback(only_spot_data=only_spot_data)
 
         if not fb_columns:
-            fb_columns = output.columns
-        data[fb_columns] = np.nan
+            fb_columns = feedback.columns
+        hindcast[fb_columns] = np.nan
+        self.add_spot_info(hindcast)
 
-        for index, row in output.iterrows():
+        # Combine feedback with hindcast
+        for index, row in feedback.iterrows():
             pattern = r'^\d{2}:\d{2}:\d{2}$'
             datum = row["Datum"]
             date_wrong_format = not re.match(pattern, str(row['Start tijd'])) or not re.match(pattern,
-                                                                                              str(row['Start tijd']))
+                                                                                              str(row['Eind tijd']))
+
             if date_wrong_format:
                 continue
             start_tijd = datetime.datetime.strptime(f"{datum} {row['Start tijd']}", "%d-%m-%Y %H:%M:%S")
@@ -146,14 +144,16 @@ class Spot:
                 eind_tijd = mid_tijd + datetime.timedelta(minutes=5)
             start_tijd = start_tijd.strftime("%Y-%m-%d %H:%M:%S")
             eind_tijd = eind_tijd.strftime("%Y-%m-%d %H:%M:%S")
-            query = (data.index >= start_tijd) & (data.index <= eind_tijd)
+            query = (hindcast.index >= start_tijd) & (hindcast.index <= eind_tijd)
             # if all(query == False):
             #     continue
-            data.loc[query, fb_columns] = row[fb_columns]
+            hindcast.loc[query, fb_columns] = row[fb_columns]
+
+        assert len(hindcast) > 0, "No hindcast data"
         if non_zero_only:
-            return data[data[fb_columns].notnull()]
+            return hindcast[hindcast[fb_columns].notnull()]
         else:
-            return data
+            return hindcast
 
     def forecast(self, cache, hours=24*7, ):
         data = stormglass.forecast(self.lat, self.long, hours=hours, cache=cache)  # check: is N == lat?
@@ -202,4 +202,10 @@ Wadduwa = Spot(richting=240, name="Wadduwa", lat=6.625524189426171, long=79.9377
 Lavinia = Spot(richting=265, name="Lavinia", lat=6.848208867737467, long=79.85826985402555, db_name="ZV", spot_info=strand)
 
 # spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
-SPOTS = [schev, NW, ZV, ijmuiden, wijk, camperduin, texel_paal17, ameland, schev_haven_N, schev_haven_Z]
+SPOTS = [schev, NW, ZV, ijmuiden, wijk, camperduin, texel_paal17]
+
+def find_spot(name: str) -> Spot:
+    for spot in SPOTS:
+        if spot.name.lower() in name.lower(): # todo  This may produce wrong matches (e.g., "Schev" matches "Schev_N" and "Schev_Z").
+            return spot
+    raise ValueError(f"Spot not found: {name}")

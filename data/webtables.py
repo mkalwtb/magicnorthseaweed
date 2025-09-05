@@ -115,7 +115,7 @@ head = """
 """
 
 def round_off_rating(number):
-    return number
+    return min(10, max(1, number))
     # return round(number * 2) / 2
 
 
@@ -133,28 +133,35 @@ def perk_identification(row):
     perks = []
     # if row["krachtig"] > 2:
     #     perks.append("krachtig")
-    if row["rating"] < 6:
-        return []
+    # if row["rating"] <= 3:
+    #     return []
+
+    if row["hoogte-v2"] < 0.75:
+        perks.append("flat")
+    if row["hoogte-v2"] <= 1.25:
+        perks.append("mini")
+    elif row["hoogte-v2"] <= 2:
+        perks.append("klein")
 
     if row["clean"] < 1:
-        if row["hoog"] >= 2:
-            perks.append("stormy")
+        if row["hoog"] >= 1.75:
+            perks.append("storm")
         else:
-            perks.append("klotsbak")
-    elif row["clean"] >= 1.8:
+            perks.append("verwaaid")
+    elif row["clean"] >= 1.75:
         perks.append("clean")
-    elif row["clean"] >= 2.6:
-        perks.append("ultra clean")
+    elif row["clean"] >= 2.25:
+        perks.append("heel clean")
 
 
-    if row["stroming"] >= 2.6:
+    if row["stroming"] >= 2.75:
         perks.append("veel stroming")
-    elif row["stroming"] >= 1.8:
+    elif row["stroming"] >= 1.75:
         perks.append("stroming")
 
-    if row["windy"] >= 1.8:
+    if row["windy"] >= 1.75 and not "verwaaid" in perks and not "storm" in perks:
         perks.append("windy")
-    elif row["windy"] >= 2.6:
+    elif row["windy"] >= 2.5 and not "verwaaid" in perks and not "storm" in perks:
         perks.append("heel windy")
 
     return perks
