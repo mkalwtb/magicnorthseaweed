@@ -6,23 +6,23 @@ import pandas as pd
 from suntime import suntime
 from tabulate import tabulate
 
-from data.surffeedback import hoeveelheden_hoogtev2, hoeveelheden_hoogtev2_view
+from data.surffeedback import hoeveelheden_hoogte_v2_form, hoeveelheden_hoogtev2
 from plotting import angle_to_direction
 from plotting import website_folder
 
 
 def height_label(hoogte: float, simple: bool = False):
-    if hoogte > len(hoeveelheden_hoogtev2)-1:
-        hoogte = len(hoeveelheden_hoogtev2)-1
+    if hoogte > len(hoeveelheden_hoogte_v2_form)-1:
+        hoogte = len(hoeveelheden_hoogte_v2_form) - 1
     if hoogte < 0:
         hoogte = 0
 
-    label_low = hoeveelheden_hoogtev2_view[floor(hoogte)]
-    label_high = hoeveelheden_hoogtev2_view[ceil(hoogte)]
+    label_low = hoeveelheden_hoogtev2[floor(hoogte)]
+    label_high = hoeveelheden_hoogtev2[ceil(hoogte)]
     if 0.25 < hoogte - floor(hoogte) < 0.75 and not simple:
         return f"{label_low}/{label_high}"
     else:
-        return  hoeveelheden_hoogtev2_view[round(hoogte)]
+        return  hoeveelheden_hoogtev2[round(hoogte)]
 
 
 hex_colors = [

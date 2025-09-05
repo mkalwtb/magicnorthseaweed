@@ -26,8 +26,8 @@ colums_delete = ["Hoe was de surf? Alleen invullen bij een nat pak (: [Mellow]",
 column_names_swapped = dict((v, k) for k,v in column_names.items())
 hoeveelheden = ["Helemaal niet", "Een beetje", "Best wel", "Heel erg"]
 
-hoeveelheden_hoogtev2 = ["Flat", "Knie-hoog", "Heup-hoog", "Navel-hoog", "Borst-hoog", "Schouder-hoog", "Head-hoog", "Overhead"]
-hoeveelheden_hoogtev2_view = ["flat", "knie", "heup", "navel", "borst", "schouder", "head", "overhead"]
+hoeveelheden_hoogte_v2_form = ["Flat", "Knie-hoog", "Heup-hoog", "Navel-hoog", "Borst-hoog", "Schouder-hoog", "Head-hoog", "Overhead"]
+hoeveelheden_hoogtev2 = ["flat", "knie", "heup", "navel", "borst", "schouder", "head", "overhead"]
 
 def rename_columns(columns):
     columns = list(columns)
@@ -39,7 +39,7 @@ def rename_columns(columns):
 def text_to_value(data: pd.DataFrame) -> pd.DataFrame:
     for waarde, text in enumerate(hoeveelheden):
         data = data.replace(to_replace=text, value=waarde)
-    for waarde, text in enumerate(hoeveelheden_hoogtev2):
+    for waarde, text in enumerate(hoeveelheden_hoogte_v2_form):
         data = data.replace(to_replace=text, value=waarde)
     return data
 

@@ -15,11 +15,11 @@ from tabulate import tabulate
 
 if __name__ == '__main__':
     datas = []
-    for spot in [NW]:  # [ijmuiden]:
-        data = spot.surf_rating(cache=False, models=MODELS)
+    for spot in [ZV]:  # [ijmuiden]:
+        data = spot.surf_rating(cache=True, models=MODELS)
         data.name = spot.name
         datas.append(data)
-        # alert.check(data, spot, alert_filters=alert.FILTERS)
+        alert.check(data, spot, alert_filters=alert.FILTERS)
         webtables.write_table_per_day(data, spot)
         webtables.write_simple_table(data, spot)
         # plot_forecast(data, spot, perks_plot=True)
