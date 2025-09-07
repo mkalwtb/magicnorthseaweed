@@ -138,7 +138,7 @@ def perk_identification(row):
 
     if row["hoogte-v2"] < 0.75:
         perks.append("flat")
-    if row["hoogte-v2"] <= 1.25:
+    elif row["hoogte-v2"] <= 1.25:
         perks.append("mini")
     elif row["hoogte-v2"] <= 2:
         perks.append("klein")

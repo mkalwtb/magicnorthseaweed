@@ -4,6 +4,9 @@ from copy import deepcopy, copy
 import datetime
 import re
 from dataclasses import dataclass, fields
+
+import pytz
+
 import surffeedback, stormglass
 
 
@@ -142,8 +145,11 @@ class Spot:
                 mid_tijd = start_tijd + ((eind_tijd - start_tijd) / 2)
                 start_tijd = mid_tijd - datetime.timedelta(minutes=5)
                 eind_tijd = mid_tijd + datetime.timedelta(minutes=5)
-            start_tijd = start_tijd.strftime("%Y-%m-%d %H:%M:%S")
-            eind_tijd = eind_tijd.strftime("%Y-%m-%d %H:%M:%S")
+            cet = pytz.timezone("Europe/Amsterdam")
+            start_tijd = cet.localize(start_tijd)
+            eind_tijd = cet.localize(eind_tijd)
+            # todo remove all timezone shit
+
             query = (hindcast.index >= start_tijd) & (hindcast.index <= eind_tijd)
             # if all(query == False):
             #     continue

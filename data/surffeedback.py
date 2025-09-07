@@ -56,6 +56,7 @@ def load(file_name):
 #     data.to_pickle(file_pkl)
 
 if __name__ == '__main__':
+    # Download fromhttps://docs.google.com/spreadsheets/d/1HN5cYDP9PmIVrGXnZ9qhwSj6L_QVZPG0yaBu2yV6i6w/edit?resourcekey=&gid=1096707284#gid=1096707284
     data = load(file_raw)
     print(tabulate(data))
     data.to_pickle(file_pkl)

@@ -85,15 +85,14 @@ class Model:
 
         model = xgb.XGBRegressor(
             objective='reg:squarederror',
-            max_depth=None,  # Use max_leaves instead
-            max_leaves=8,  # Limit number of leaves for regularization
-            subsample=0.6,  # More randomness
-            colsample_bytree=0.6,  # More randomness
-            min_child_weight=8,  # Require more samples per leaf
-            reg_alpha=0.5,  # Stronger L1 regularization
-            reg_lambda=2.0,  # Stronger L2 regularization
-            learning_rate=0.03,  # Lower learning rate
-            n_estimators=600,  # More trees
+            max_leaves=6,
+            min_child_weight=12,
+            subsample=0.5,
+            colsample_bytree=0.5,
+            reg_alpha=1.0,
+            reg_lambda=4.0,
+            learning_rate=0.05,
+            n_estimators=300,
             tree_method='hist',
             booster='gbtree',
             random_state=42
@@ -105,7 +104,7 @@ class Model:
         return cls(perk, channels, model=model)
 
 
-    def train_best(self, spots, perk: str, channels: List[str], verbose=True, save=True, match_all_feedback_times=True, attempts=10, overtrain_limit=0.7):
+    def train_best(self, spots, perk: str, channels: List[str], verbose=True, save=True, match_all_feedback_times=True, attempts=10, overtrain_limit=0.75):
         model_best = None
         rms_best = 9999
         i = 0

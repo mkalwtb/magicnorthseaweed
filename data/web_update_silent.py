@@ -15,7 +15,7 @@ from tabulate import tabulate
 
 if __name__ == '__main__':
     datas = []
-    for spot in SPOTS:  # [ijmuiden]:
+    for spot in [ZV]:  # [ijmuiden]:
         data = spot.surf_rating(cache=True, models=MODELS)
         data.name = spot.name
         datas.append(data)
