@@ -9,6 +9,7 @@ mxFmt_minor = mdates.DateFormatter('%H')
 website_folder = Path(r"G:\My Drive\magicnorthseaweed")
 perks = ['hoog', 'clean', 'krachtig', 'stijl', 'stroming', 'windy']
 perk_levels = ["niet", "beetje", "best", "heel"]
+assert website_folder.exists(), f"Folder {website_folder} does not exist!"
 
 y_labels_main = {
     "rating": "Surf rating",

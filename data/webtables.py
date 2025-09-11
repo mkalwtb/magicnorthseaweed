@@ -138,8 +138,6 @@ def perk_identification(row):
 
     if row["hoogte-v2"] < 0.75:
         perks.append("flat")
-    elif row["hoogte-v2"] <= 1.25:
-        perks.append("mini")
     elif row["hoogte-v2"] <= 2:
         perks.append("klein")
 
@@ -147,7 +145,7 @@ def perk_identification(row):
         if row["hoog"] >= 1.75:
             perks.append("storm")
         else:
-            perks.append("verwaaid")
+            perks.append("choppy")
     elif row["clean"] >= 1.75:
         perks.append("clean")
     elif row["clean"] >= 2.25:
@@ -159,9 +157,9 @@ def perk_identification(row):
     elif row["stroming"] >= 1.75:
         perks.append("stroming")
 
-    if row["windy"] >= 1.75 and not "verwaaid" in perks and not "storm" in perks:
+    if row["windy"] >= 1.75 and not "choppy" in perks and not "storm" in perks:
         perks.append("windy")
-    elif row["windy"] >= 2.5 and not "verwaaid" in perks and not "storm" in perks:
+    elif row["windy"] >= 2.5 and not "choppy" in perks and not "storm" in perks:
         perks.append("heel windy")
 
     return perks
