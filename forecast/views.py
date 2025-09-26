@@ -1,6 +1,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
+import re
 
 import os
 import sys
@@ -34,7 +35,11 @@ def home(request):
 
 def week_overview(request):
     content = get_cached_site_content()
-    return render(request, 'forecast/embed.html', { 'content': mark_safe(content['week_overview']) })
+    html = content['week_overview']
+    if request.GET.get('plain') == '1':
+        html = _sanitize_embedded_html(html)
+        return HttpResponse(html)
+    return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
 
 
 def spot_table(request, spot_name: str):
@@ -44,6 +49,9 @@ def spot_table(request, spot_name: str):
         if spot is None:
             raise Http404("Spot not found")
     html = content['spot_tables'].get(spot_name)
+    if request.GET.get('plain') == '1':
+        html = _sanitize_embedded_html(html)
+        return HttpResponse(html)
     return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
 
 
@@ -55,5 +63,14 @@ def spot_widget(request, spot_name: str):
             raise Http404("Spot not found")
     html = content['spot_widgets'].get(spot_name)
     return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
+
+
+def _sanitize_embedded_html(html: str) -> str:
+    # Remove <head>...</head>
+    html = re.sub(r"<head[\s\S]*?</head>", "", html, flags=re.IGNORECASE)
+    # Remove wrapping <body> tags
+    html = re.sub(r"</?body[^>]*>", "", html, flags=re.IGNORECASE)
+    # Trim stray whitespace
+    return html.strip()
 
 # Create your views here.

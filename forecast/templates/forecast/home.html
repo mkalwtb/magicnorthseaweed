@@ -56,6 +56,32 @@
 			max-width: 100%;
 			height: auto;
 		}
+
+		/* Consistent styles for embedded forecast tables */
+		.forecast-container table {
+			border-collapse: collapse;
+			margin: 20px auto;
+			font-size: 16px;
+		}
+		.forecast-container th, .forecast-container td {
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			padding: 6px 10px;
+		}
+		.forecast-container th { background-color: #f2f2f2; }
+		.forecast-container .grey { color: rgb(152, 162, 175); }
+		.forecast-container .unit { font-size: 12px; padding-right: 8px; }
+		.forecast-container .rounded-span {
+			height: 18px;
+			width: 5px;
+			border-radius: 3px;
+			display: inline-block;
+			margin-right: 6px;
+		}
+		.forecast-container h3 { display:inline-block; margin: 0 6px; font-size: 18px; }
+		/* Make large tables readable on narrow screens */
+		.plot-container { overflow-x: auto; }
 	</style>
 </head>
 <body>
@@ -94,34 +120,34 @@
 		</div>
 		<div class="plot-container tab" id="wijk">
 			<h2>Wijk aan zee</h2>
-			<iframe src="/spot/Wijk/" width="750px" height="5500px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/spot/Wijk/?plain=1"></div>
 		</div>
 		<div class="plot-container tab" id="ijmuiden">
 			<h2>Ijmuiden</h2>
-			<iframe src="/spot/Ijmuiden/" width="750px" height="5500px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/spot/Ijmuiden/?plain=1"></div>
 		</div>
 		<div class="plot-container tab" id="zandvoort">
 			<h2>Zandvoort</h2>
-			<iframe src="/spot/ZV/" width="750px" height="5500px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/spot/ZV/?plain=1"></div>
 		</div>
 
 		<div class="plot-container tab" id="scheveningen">
 			<h2>Scheveningen</h2>
-			<iframe src="/spot/Schev/" width="750px" height="5500px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/spot/Schev/?plain=1"></div>
 		</div>
 
 		<div class="plot-container tab" id="noordwijk">
 			<h2>Noordwijk</h2>
-			<iframe src="/spot/Noordwijk/" width="750px" height="5500px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/spot/Noordwijk/?plain=1"></div>
 		</div>
 
 		<div class="plot-container tab" id="camperduin">
 			<h2>Camperduin</h2>
-			<iframe src="/spot/Camperduin/" width="750px" height="5500px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/spot/Camperduin/?plain=1"></div>
 		</div>
 		<div class="plot-container tab" id="texel17">
 			<h2>Texel</h2>
-			<iframe src="/spot/Texel17/" width="750px" height="5500px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/spot/Texel17/?plain=1"></div>
 		</div>
 		<div class="plot-container tab" id="all">
 			<h2>Alle spots</h2>
@@ -130,7 +156,7 @@
 
 		<div class="plot-container tab" id="weekoverzicht">
 			<h2>Weekoverzicht</h2>
-			<iframe src="/week/" width="1000px" height="400px" frameborder="0"></iframe>
+			<div class="forecast-container" data-src="/week/?plain=1"></div>
 		</div>
 	</div>
 
@@ -145,7 +171,27 @@
 			tabToShow.style.display = 'block';
 		}
 
-		// Show the first tab by default
+		// Fetch and inline forecast tables for the active tab
+		function loadForecastsInTab(tabId) {
+			const tab = document.getElementById(tabId);
+			const blocks = tab.querySelectorAll('.forecast-container[data-src]');
+			blocks.forEach(async (el) => {
+				if (el.dataset.loaded === '1') return;
+				const res = await fetch(el.dataset.src, { credentials: 'same-origin' });
+				const html = await res.text();
+				el.innerHTML = html;
+				el.dataset.loaded = '1';
+			});
+		}
+
+		// Hook into tab switching
+		const originalShowTab = showTab;
+		showTab = function(tabId) {
+			originalShowTab(tabId);
+			loadForecastsInTab(tabId);
+		}
+
+		// Show the first tab by default and load its content
 		showTab('weekoverzicht');
 	</script>
 </body>
