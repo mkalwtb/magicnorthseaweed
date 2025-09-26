@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Magicnorthseaweed</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 20px;
+			color: #0066cc;
+		}
+
+		a {
+			display: block;
+			text-align: center;
+			margin-top: 20px;
+			color: #0066cc;
+		}
+
+		.tab-buttons {
+			text-align: center;
+			margin-top: 20px;
+		}
+
+		.tab-buttons button {
+			background-color: #0066cc;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+			margin: 5px;
+		}
+
+		.tab-buttons button:hover {
+			background-color: #0055aa;
+		}
+
+		.tab-content {
+			text-align: center;
+		}
+
+		.plot-container {
+			display: none;
+			margin-top: 20px;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>Magicnorthseaweed</h1>
+	<a href="https://docs.google.com/forms/d/1SeauWdFp49nhDMfHoIlNi4jaNumOeBXa-EBa4W7_ZMk/viewform?edit_requested=true#responses" target="_blank">Nat pak gehaald? Geef feedback!</a>
+
+	<div class="tab-buttons">
+		<button onclick="showTab('weekoverzicht')">overzicht</button>
+		<button onclick="showTab('scheveningen')">scheveningen</button>
+		<button onclick="showTab('noordwijk')">noordwijk</button>
+		<button onclick="showTab('zandvoort')">zandvoort</button>
+		<button onclick="showTab('ijmuiden')">ijmuiden</button>
+		<button onclick="showTab('wijk')">wijk</button>
+		<button onclick="showTab('camperduin')">camperduin</button>
+		<button onclick="showTab('texel17')">texel</button>
+		<button onclick="showTab('about')">about</button>
+	</div>
+
+	<div class="tab-content">
+		<div  style="display: flex; justify-content: center; width: 100%;">
+			<div class="plot-container tab" id="about" style="width: 400px">
+				<h2>About</h2>
+				<span>
+					Dit is een AI die de surf forecast interperteert, door de Surf Nerds.
+					De forecast is gebaseerd op modellen die vooral nauwkeurig zijn voor de Nederlandse Noordzee.
+					Met een daadwerkelijk accurate rating en hoogtevoorspelling, dmv de modernste AI en een uitgebreid sessie logboek.
+					Waarop je in één oogopslag ziet of het goed wordt op je spot en wat je kunt verwachten.
+					Zonder te hoeven wachten op een alert en de bijbehorende crowds.
+					Om geen mooie Nederlandse golven ongesurfd te laten gaan.
+				</span>
+
+				<span>
+					Contact? Spot toevoegen? Mail laseem93@gmail.com
+				</span>
+			</div>
+		</div>
+		<div class="plot-container tab" id="wijk">
+			<h2>Wijk aan zee</h2>
+			<iframe src="/spot/Wijk/" width="750px" height="5500px" frameborder="0"></iframe>
+		</div>
+		<div class="plot-container tab" id="ijmuiden">
+			<h2>Ijmuiden</h2>
+			<iframe src="/spot/Ijmuiden/" width="750px" height="5500px" frameborder="0"></iframe>
+		</div>
+		<div class="plot-container tab" id="zandvoort">
+			<h2>Zandvoort</h2>
+			<iframe src="/spot/ZV/" width="750px" height="5500px" frameborder="0"></iframe>
+		</div>
+
+		<div class="plot-container tab" id="scheveningen">
+			<h2>Scheveningen</h2>
+			<iframe src="/spot/Schev/" width="750px" height="5500px" frameborder="0"></iframe>
+		</div>
+
+		<div class="plot-container tab" id="noordwijk">
+			<h2>Noordwijk</h2>
+			<iframe src="/spot/Noordwijk/" width="750px" height="5500px" frameborder="0"></iframe>
+		</div>
+
+		<div class="plot-container tab" id="camperduin">
+			<h2>Camperduin</h2>
+			<iframe src="/spot/Camperduin/" width="750px" height="5500px" frameborder="0"></iframe>
+		</div>
+		<div class="plot-container tab" id="texel17">
+			<h2>Texel</h2>
+			<iframe src="/spot/Texel17/" width="750px" height="5500px" frameborder="0"></iframe>
+		</div>
+		<div class="plot-container tab" id="all">
+			<h2>Alle spots</h2>
+			<!-- Optional: add a combined view route later -->
+		</div>
+
+		<div class="plot-container tab" id="weekoverzicht">
+			<h2>Weekoverzicht</h2>
+			<iframe src="/week/" width="1000px" height="400px" frameborder="0"></iframe>
+		</div>
+	</div>
+
+	<script>
+		function showTab(tabId) {
+			const tabs = document.querySelectorAll('.tab');
+			tabs.forEach(tab => {
+				tab.style.display = 'none';
+			});
+
+			const tabToShow = document.getElementById(tabId);
+			tabToShow.style.display = 'block';
+		}
+
+		// Show the first tab by default
+		showTab('weekoverzicht');
+	</script>
+</body>
+</html>
+

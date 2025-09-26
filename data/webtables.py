@@ -146,9 +146,9 @@ def perk_identification(row):
             perks.append("storm")
         else:
             perks.append("choppy")
-    elif row["clean"] >= 1.75:
+    elif row["clean"] >= 1.75 and not "flat" in perks:
         perks.append("clean")
-    elif row["clean"] >= 2.25:
+    elif row["clean"] >= 2.25 and not "flat" in perks:
         perks.append("heel clean")
 
 
@@ -206,7 +206,11 @@ def table_html(df, spot):
         html += f"\t<td>{row['windSpeed']*3.6:.0f}  <i class='unit'>km/h</i>"
         html += f"{html_arrow(row['windDirection'])}</td>"
 
-        html += f"\t<td>{10*round(10*row['NAP']):.0f} <i class='unit'>cm</i></td>"
+        nap_value = row['NAP']
+        if pd.isna(nap_value):
+            html += "\t<td><span class='grey'>n/a</span></td>"
+        else:
+            html += f"\t<td>{10*round(10*nap_value):.0f} <i class='unit'>cm</i></td>"
 
         html += "<td>"
         perks = perk_identification(row)

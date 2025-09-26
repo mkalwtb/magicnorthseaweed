@@ -142,7 +142,8 @@ class Model:
 
     @property
     def model_file(self):
-        return Path(f"AI-models/model_XGBRegressor_ZV_{self.perk}.pkl")  # todo remove ZV
+        base_dir = Path(__file__).resolve().parent
+        return base_dir / f"AI-models/model_XGBRegressor_ZV_{self.perk}.pkl"  # todo remove ZV
 
     def plot_model(self):
         xgb.plot_tree(self.model)
