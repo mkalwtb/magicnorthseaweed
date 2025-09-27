@@ -128,14 +128,27 @@ This guide covers deploying the Django surf forecasting application to various p
 
 ### Deploying to Railway
 
-1. **Connect your GitHub repository to Railway**
+1. **Connect your GitHub repository to Railway:**
+   - Go to [Railway.app](https://railway.app)
+   - Sign in with GitHub
+   - Click "New Project" → "Deploy from GitHub repo"
+   - Select your repository
 
 2. **Set environment variables in Railway dashboard:**
-   - `SECRET_KEY`: Your Django secret key
-   - `DEBUG`: False
-   - `ALLOWED_HOSTS`: Your Railway domain
+   - Go to your project → Variables tab
+   - Add these variables:
+     - `SECRET_KEY`: Your Django secret key (generate with `python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`)
+     - `DEBUG`: False
+     - `ALLOWED_HOSTS`: Your Railway domain (e.g., `your-app-name.railway.app`)
 
-3. **Deploy automatically on git push**
+3. **Deploy automatically on git push:**
+   - Railway will automatically detect the Dockerfile
+   - The app will build and deploy automatically
+   - Check the deployment logs for any issues
+
+4. **Access your deployed app:**
+   - Railway will provide a URL like `https://your-app-name.railway.app`
+   - The admin interface will be available at `https://your-app-name.railway.app/admin/`
 
 ## Environment Variables
 

@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Virtual environments
+.venv
+venv/
+ENV/
+env/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development files
+*.md
+DEPLOYMENT.md
+env.example
+docker-compose.yml
+
+# Cache and temporary files
+data/site_cache_*.pkl
+data/site_cache_*.json
+data/stormglass/
+logs/
+*.log
+
+# Database (will be created fresh)
+db.sqlite3
+
+# Static files (will be collected during build)
+staticfiles/

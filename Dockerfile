@@ -22,10 +22,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Create necessary directories
-RUN mkdir -p logs data/stormglass staticfiles
+RUN mkdir -p logs data/stormglass staticfiles static
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# Collect static files (skip if no static files exist)
+RUN python manage.py collectstatic --noinput || echo "No static files to collect"
 
 # Create a non-root user
 RUN adduser --disabled-password --gecos '' appuser
