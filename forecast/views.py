@@ -73,4 +73,9 @@ def _sanitize_embedded_html(html: str) -> str:
     # Trim stray whitespace
     return html.strip()
 
+
+def health_check(request):
+    """Health check endpoint for monitoring"""
+    return HttpResponse("OK", status=200)
+
 # Create your views here.
