@@ -24,16 +24,16 @@ COPY . .
 # Create necessary directories
 RUN mkdir -p logs data/stormglass staticfiles static
 
-# Collect static files (skip if no static files exist)
-RUN python manage.py collectstatic --noinput || echo "No static files to collect"
+# Make startup script executable
+RUN chmod +x start.sh
 
 # Create a non-root user
 RUN adduser --disabled-password --gecos '' appuser
 RUN chown -R appuser:appuser /app
 USER appuser
 
-# Expose port
+# Expose port (Railway will set the PORT environment variable at runtime)
 EXPOSE 8000
 
-# Run the application
-CMD ["gunicorn", "mswsite.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+# Run the application using the startup script
+CMD ["./start.sh"]

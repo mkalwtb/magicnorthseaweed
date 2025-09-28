@@ -5,7 +5,6 @@
     "dockerfilePath": "Dockerfile"
   },
   "deploy": {
-    "startCommand": "gunicorn mswsite.wsgi:application --bind 0.0.0.0:$PORT",
     "healthcheckPath": "/health/",
     "healthcheckTimeout": 100,
     "restartPolicyType": "ON_FAILURE",

@@ -140,6 +140,7 @@ This guide covers deploying the Django surf forecasting application to various p
      - `SECRET_KEY`: Your Django secret key (generate with `python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`)
      - `DEBUG`: False
      - `ALLOWED_HOSTS`: Your Railway domain (e.g., `your-app-name.railway.app`)
+   - **Note:** Railway automatically sets the `PORT` environment variable - do not override it
 
 3. **Deploy automatically on git push:**
    - Railway will automatically detect the Dockerfile
