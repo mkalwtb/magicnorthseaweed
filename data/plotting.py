@@ -3,13 +3,14 @@ from pathlib import Path
 from matplotlib import pyplot as plt
 import matplotlib.dates as mdates
 
+# Define website folder for Django site
+website_folder = Path(__file__).resolve().parents[1] / "site"
+
 mxFmt_major = mdates.DateFormatter('%A, %d-%m')
 mxFmt_minor = mdates.DateFormatter('%H')
 
-website_folder = Path(r"G:\My Drive\magicnorthseaweed")
 perks = ['hoog', 'clean', 'krachtig', 'stijl', 'stroming', 'windy']
 perk_levels = ["niet", "beetje", "best", "heel"]
-assert website_folder.exists(), f"Folder {website_folder} does not exist!"
 
 y_labels_main = {
     "rating": "Surf rating",
