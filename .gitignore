@@ -132,6 +132,8 @@ dmypy.json
 data/stormglass/
 data/site_cache_*.pkl
 data/site_cache_*.json
+backend/data/
+backend/scheduler.log
 logs/
 staticfiles/
 

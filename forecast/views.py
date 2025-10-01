@@ -2,6 +2,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
 import re
+import json
 
 import os
 import sys
@@ -19,7 +20,7 @@ if str(DATA_DIR) not in sys.path:
 from data.spots import SPOTS
 from data.webtables import weekoverzicht, table_per_day, table_html, table_html_simple
 from data.models import MODELS
-from data.web_update_silent import get_cached_site_content
+from backend.data_processor import get_processor
 
 
 def _get_spot_by_name(spot_name: str):
@@ -34,7 +35,8 @@ def home(request):
 
 
 def week_overview(request):
-    content = get_cached_site_content()
+    processor = get_processor()
+    content = processor.get_forecast_data()
     html = content['week_overview']
     if request.GET.get('plain') == '1':
         html = _sanitize_embedded_html(html)
@@ -43,7 +45,8 @@ def week_overview(request):
 
 
 def spot_table(request, spot_name: str):
-    content = get_cached_site_content()
+    processor = get_processor()
+    content = processor.get_forecast_data()
     if spot_name not in content['spot_tables']:
         spot = _get_spot_by_name(spot_name)
         if spot is None:
@@ -56,7 +59,8 @@ def spot_table(request, spot_name: str):
 
 
 def spot_widget(request, spot_name: str):
-    content = get_cached_site_content()
+    processor = get_processor()
+    content = processor.get_forecast_data()
     if spot_name not in content['spot_widgets']:
         spot = _get_spot_by_name(spot_name)
         if spot is None:
@@ -77,5 +81,32 @@ def _sanitize_embedded_html(html: str) -> str:
 def health_check(request):
     """Health check endpoint for monitoring"""
     return HttpResponse("OK", status=200)
+
+
+def cache_status(request):
+    """Get cache status information"""
+    processor = get_processor()
+    status = processor.get_cache_status()
+    return HttpResponse(
+        json.dumps(status, indent=2),
+        content_type='application/json'
+    )
+
+
+def refresh_cache(request):
+    """Manually refresh the forecast cache"""
+    try:
+        processor = get_processor()
+        data = processor.get_forecast_data(force_refresh=True)
+        spots_count = len(data.get('spots_processed', []))
+        return HttpResponse(
+            f"Cache refreshed successfully. Updated {spots_count} spots.",
+            status=200
+        )
+    except Exception as e:
+        return HttpResponse(
+            f"Error refreshing cache: {str(e)}",
+            status=500
+        )
 
 # Create your views here.

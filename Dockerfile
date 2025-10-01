@@ -22,7 +22,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Create necessary directories
-RUN mkdir -p logs data/stormglass staticfiles static
+RUN mkdir -p logs data/stormglass staticfiles static backend/data
 
 # Make startup script executable
 RUN chmod +x start.sh

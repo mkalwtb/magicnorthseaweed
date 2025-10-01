@@ -166,12 +166,26 @@ The application uses WhiteNoise to serve static files in production. Static file
 
 ## Data Directory
 
-The application requires a `data/` directory with:
-- `stormglass/` - Cache directory for weather data
-- `site_cache_content.pkl` - Cached site content
-- `site_cache_state.json` - Cache state information
+The application requires several directories:
+- `data/stormglass/` - Cache directory for weather data
+- `backend/data/` - Backend forecast data cache
+- `logs/` - Application logs
 
 Make sure these directories exist and are writable by the application.
+
+## Backend/Frontend Architecture
+
+The application now uses a separated architecture:
+
+### Backend (Data Processing)
+- Runs independently to update forecast data every 12 hours
+- Stores processed data in `backend/data/`
+- Can be run separately: `python start_backend.py`
+
+### Frontend (Django Web App)
+- Serves cached data to users
+- Automatically initializes data on startup
+- Provides cache management endpoints
 
 ## Monitoring
 
