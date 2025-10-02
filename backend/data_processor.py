@@ -73,13 +73,18 @@ class ForecastDataProcessor:
         """Generate fresh forecast data."""
         print("Generating fresh forecast data...")
         
-        # Ensure stormglass cache directory exists
+        # Ensure stormglass cache directory exists with proper permissions
         stormglass_dir = PROJECT_ROOT / "data" / "stormglass"
         stormglass_dir.mkdir(parents=True, exist_ok=True)
         
         # Change to data directory for relative path resolution
         current_dir = os.getcwd()
-        os.chdir(PROJECT_ROOT / "data")
+        data_dir = PROJECT_ROOT / "data"
+        os.chdir(data_dir)
+        
+        # Ensure stormglass subdirectory exists in current working directory
+        local_stormglass_dir = Path("stormglass")
+        local_stormglass_dir.mkdir(exist_ok=True)
         
         try:
             datas = []
@@ -88,14 +93,23 @@ class ForecastDataProcessor:
             
             for spot in SPOTS:
                 print(f"Processing {spot.name}...")
-                # Always use fresh data (cache=False)
-                data = spot.surf_rating(cache=False, models=MODELS)
-                data.name = spot.name
-                datas.append(data)
-                
-                # Generate HTML tables
-                spot_tables[spot.name] = webtables.table_per_day(data, spot, webtables.table_html)
-                spot_widgets[spot.name] = webtables.table_html_simple(data, spot)
+                try:
+                    # Always use fresh data (cache=False)
+                    data = spot.surf_rating(cache=False, models=MODELS)
+                    data.name = spot.name
+                    datas.append(data)
+                    
+                    # Generate HTML tables
+                    spot_tables[spot.name] = webtables.table_per_day(data, spot, webtables.table_html)
+                    spot_widgets[spot.name] = webtables.table_html_simple(data, spot)
+                    
+                except Exception as e:
+                    print(f"Error processing {spot.name}: {e}")
+                    # Continue with other spots even if one fails
+                    continue
+            
+            if not datas:
+                raise Exception("No forecast data could be generated for any spots")
             
             # Generate week overview
             week_overview_html = webtables.weekoverzicht(datas)
@@ -105,7 +119,7 @@ class ForecastDataProcessor:
                 "spot_tables": spot_tables,
                 "spot_widgets": spot_widgets,
                 "generated_at": datetime.now().isoformat(),
-                "spots_processed": [spot.name for spot in SPOTS]
+                "spots_processed": [data.name for data in datas]
             }
             
         finally:
@@ -146,19 +160,35 @@ class ForecastDataProcessor:
     
     def get_forecast_data(self, force_refresh: bool = False) -> dict:
         """Get forecast data, using cache if valid."""
+        cached_data = self._load_forecast_data()
+        
         if force_refresh or not self._is_cache_valid():
-            # Generate fresh data
-            data = self._generate_forecast_data()
-            self._save_forecast_data(data)
-            return data
+            if cached_data and not force_refresh:
+                # If we have cached data and this isn't a forced refresh,
+                # start background update and return cached data immediately
+                print("Cache expired, starting background update...")
+                self.schedule_background_update()
+                return cached_data
+            else:
+                # Force refresh or no cached data - generate synchronously
+                try:
+                    data = self._generate_forecast_data()
+                    self._save_forecast_data(data)
+                    return data
+                except Exception as e:
+                    print(f"Error generating fresh data: {e}")
+                    if cached_data:
+                        print("Falling back to cached data")
+                        return cached_data
+                    else:
+                        raise e
         else:
             # Use cached data
-            cached_data = self._load_forecast_data()
             if cached_data:
                 print("Using cached forecast data")
                 return cached_data
             else:
-                # Fallback to generating fresh data
+                # No cache exists, generate fresh data
                 data = self._generate_forecast_data()
                 self._save_forecast_data(data)
                 return data
@@ -179,20 +209,25 @@ class ForecastDataProcessor:
     
     def schedule_background_update(self):
         """Schedule a background update if cache is expired."""
-        if not self._is_cache_valid():
-            def background_update():
-                try:
-                    print("Starting background forecast update...")
-                    data = self._generate_forecast_data()
-                    self._save_forecast_data(data)
-                    print("Background forecast update completed")
-                except Exception as e:
-                    print(f"Background update failed: {e}")
+        # Check if there's already an update running
+        if hasattr(self, '_update_thread') and self._update_thread and self._update_thread.is_alive():
+            print("Background update already in progress")
+            return self._update_thread
             
-            thread = threading.Thread(target=background_update, daemon=True)
-            thread.start()
-            return thread
-        return None
+        def background_update():
+            try:
+                print("Starting background forecast update...")
+                data = self._generate_forecast_data()
+                self._save_forecast_data(data)
+                print("Background forecast update completed")
+            except Exception as e:
+                print(f"Background update failed: {e}")
+            finally:
+                self._update_thread = None
+        
+        self._update_thread = threading.Thread(target=background_update, daemon=True)
+        self._update_thread.start()
+        return self._update_thread
 
 
 # Global processor instance

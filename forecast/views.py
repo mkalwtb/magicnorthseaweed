@@ -35,41 +35,75 @@ def home(request):
 
 
 def week_overview(request):
-    processor = get_processor()
-    content = processor.get_forecast_data()
-    html = content['week_overview']
-    if request.GET.get('plain') == '1':
-        html = _sanitize_embedded_html(html)
-        return HttpResponse(html)
-    return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
+    try:
+        processor = get_processor()
+        content = processor.get_forecast_data()
+        html = content.get('week_overview', '')
+        if request.GET.get('plain') == '1':
+            html = _sanitize_embedded_html(html)
+            return HttpResponse(html)
+        return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
+    except Exception as e:
+        error_html = f"<p>Error loading week overview: {str(e)}</p>"
+        if request.GET.get('plain') == '1':
+            return HttpResponse(error_html)
+        return render(request, 'forecast/embed.html', { 'content': mark_safe(error_html) })
 
 
 def spot_table(request, spot_name: str):
-    processor = get_processor()
-    content = processor.get_forecast_data()
-    if spot_name not in content['spot_tables']:
-        spot = _get_spot_by_name(spot_name)
-        if spot is None:
-            raise Http404("Spot not found")
-    html = content['spot_tables'].get(spot_name)
-    if request.GET.get('plain') == '1':
-        html = _sanitize_embedded_html(html)
-        return HttpResponse(html)
-    return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
+    try:
+        processor = get_processor()
+        content = processor.get_forecast_data()
+        
+        if spot_name not in content.get('spot_tables', {}):
+            spot = _get_spot_by_name(spot_name)
+            if spot is None:
+                raise Http404("Spot not found")
+            # Return error message if spot data not available
+            error_html = f"<p>Forecast data for {spot_name} is currently being updated. Please try again in a few minutes.</p>"
+            if request.GET.get('plain') == '1':
+                return HttpResponse(error_html)
+            return render(request, 'forecast/embed.html', { 'content': mark_safe(error_html) })
+        
+        html = content['spot_tables'].get(spot_name, '')
+        if request.GET.get('plain') == '1':
+            html = _sanitize_embedded_html(html)
+            return HttpResponse(html)
+        return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
+    except Exception as e:
+        error_html = f"<p>Error loading forecast for {spot_name}: {str(e)}</p>"
+        if request.GET.get('plain') == '1':
+            return HttpResponse(error_html)
+        return render(request, 'forecast/embed.html', { 'content': mark_safe(error_html) })
 
 
 def spot_widget(request, spot_name: str):
-    processor = get_processor()
-    content = processor.get_forecast_data()
-    if spot_name not in content['spot_widgets']:
-        spot = _get_spot_by_name(spot_name)
-        if spot is None:
-            raise Http404("Spot not found")
-    html = content['spot_widgets'].get(spot_name)
-    return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
+    try:
+        processor = get_processor()
+        content = processor.get_forecast_data()
+        
+        if spot_name not in content.get('spot_widgets', {}):
+            spot = _get_spot_by_name(spot_name)
+            if spot is None:
+                raise Http404("Spot not found")
+            # Return error message if spot data not available
+            error_html = f"<p>Widget data for {spot_name} is currently being updated.</p>"
+            return render(request, 'forecast/embed.html', { 'content': mark_safe(error_html) })
+        
+        html = content['spot_widgets'].get(spot_name, '')
+        return render(request, 'forecast/embed.html', { 'content': mark_safe(html) })
+    except Exception as e:
+        error_html = f"<p>Error loading widget for {spot_name}: {str(e)}</p>"
+        return render(request, 'forecast/embed.html', { 'content': mark_safe(error_html) })
 
 
-def _sanitize_embedded_html(html: str) -> str:
+def _sanitize_embedded_html(html) -> str:
+    # Ensure html is a string
+    if html is None:
+        return ""
+    if not isinstance(html, str):
+        html = str(html)
+    
     # Remove <head>...</head>
     html = re.sub(r"<head[\s\S]*?</head>", "", html, flags=re.IGNORECASE)
     # Remove wrapping <body> tags
