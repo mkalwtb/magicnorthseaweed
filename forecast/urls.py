@@ -9,6 +9,7 @@ urlpatterns = [
     path('health/', views.health_check, name='health_check'),
     path('cache/status/', views.cache_status, name='cache_status'),
     path('cache/refresh/', views.refresh_cache, name='refresh_cache'),
+    path('api/usage/', views.api_usage_status, name='api_usage_status'),
 ]
 
 

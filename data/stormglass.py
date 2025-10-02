@@ -8,23 +8,16 @@ from tabulate import tabulate
 from matplotlib import pyplot as plt
 from datetime import datetime
 import pytz
-from random import randrange
 from timezonefinder import TimezoneFinder
+from data.stormglass_api_manager import get_api_manager
 
 
 # todo try new model: using primary & secondary swells
 channels = ['waveDirection', 'wavePeriod', "waveHeight", "windSpeed", 'windDirection', "currentSpeed", 'windWaveHeight']  # "currentSpeed"  # todo add seaLevel
 channels_training = ['waveOnshore', 'wavePeriod', "waveHeight", "windSpeed", 'windOnshore', "currentSpeed", 'windWaveHeight']  # "currentSpeed"  # todo add secondarySwellHeight
 
-keys = [
-    '1feeb6a8-5bc9-11ee-a26f-0242ac130002-1feeb702-5bc9-11ee-a26f-0242ac130002',
-    '5bf98f1a-2979-11ee-8d52-0242ac130002-5bf98f88-2979-11ee-8d52-0242ac130002',
-    'a5396776-5d64-11ee-8b7f-0242ac130002-a53967da-5d64-11ee-8b7f-0242ac130002',
-    '25c9c3a8-5e29-11ee-92e6-0242ac130002-25c9c40c-5e29-11ee-92e6-0242ac130002',
-    'e2f68d4e-5eab-11ee-8d52-0242ac130002-e2f68e2a-5eab-11ee-8d52-0242ac130002',
-    '9bb1648a-5ee8-11ee-a26f-0242ac130002-9bb164e4-5ee8-11ee-a26f-0242ac130002'
-]
-N_KEYS = len(keys)
+# API keys are now managed by StormGlassApiManager
+# This provides intelligent rotation and usage tracking
 
 
 
@@ -44,43 +37,45 @@ data_sources = {"waveDirection": "icon",
 
 # Get first hour of today
 def download_json(lat, long, start, end, cache=False, end_point="weather"):
-  response_type = end_point
-  if "/" in response_type:
+    response_type = end_point
+    if "/" in response_type:
         response_type = end_point.replace("/", "_")
-  cache_file = Path(f'stormglass/stormglass_response_{response_type}_{lat}_{long}.json')
+    cache_file = Path(f'stormglass/stormglass_response_{response_type}_{lat}_{long}.json')
 
-  if cache_file.is_file() and cache:
-    print(f"cashing {end_point} from {start} to {end}")
-    with open(cache_file, 'r') as f:
-      json_data = json.load(f)
-  else:
-    print(f"Scraping {end_point} from {start} to {end}")
-    params = {
-        'lat': lat,
-        'lng': long,
-        'start': start.to('UTC').timestamp(),  # Convert to UTC timestamp
-        'end': end.to('UTC').timestamp()  # Convert to UTC timestamp
-    }
-    if end_point == "weather":
-        params['params'] = ','.join(channels)
+    if cache_file.is_file() and cache:
+        print(f"Using cached {end_point} from {start} to {end}")
+        with open(cache_file, 'r') as f:
+            json_data = json.load(f)
+    else:
+        print(f"Scraping {end_point} from {start} to {end}")
+        params = {
+            'lat': lat,
+            'lng': long,
+            'start': start.to('UTC').timestamp(),  # Convert to UTC timestamp
+            'end': end.to('UTC').timestamp()  # Convert to UTC timestamp
+        }
+        if end_point == "weather":
+            params['params'] = ','.join(channels)
 
-    i_key = randrange(N_KEYS)
-    response = requests.get(
-      f'https://api.stormglass.io/v2/{end_point}/point',
-      params=params,
-      headers={
-        'Authorization': keys[i_key]
-      }
-    )
+        # Use optimized API manager instead of random key selection
+        api_manager = get_api_manager()
+        try:
+            json_data, key_id = api_manager.make_request(
+                f'https://api.stormglass.io/v2/{end_point}/point',
+                params
+            )
+            
+            # Save to cache
+            with open(cache_file, 'w') as f:
+                json.dump(json_data, f)  # dumps response from API in response.json (cache_file)
+                
+            print(f"Successfully used API key {key_id} for {end_point} request")
+            
+        except Exception as e:
+            print(f"API request failed: {e}")
+            raise FileNotFoundError(str(e))
 
-
-    json_data = response.json()
-    if "errors" in json_data:
-        raise FileNotFoundError(json_data["errors"]["key"])
-    with open(cache_file, 'w') as f:
-      json.dump(json_data, f)  # dumps response from API in response.json (cache_file)
-
-  return json_data
+    return json_data
 
 def json_to_df(json_data, best_sg_source, lat, long):
   hourly_data = {}

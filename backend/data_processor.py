@@ -20,6 +20,7 @@ from data.models import MODELS
 from data.spots import SPOTS
 from data import webtables
 from data.plotting import website_folder
+from data.stormglass_api_manager import get_api_manager
 
 
 class ForecastDataProcessor:
@@ -72,6 +73,12 @@ class ForecastDataProcessor:
     def _generate_forecast_data(self) -> dict:
         """Generate fresh forecast data."""
         print("Generating fresh forecast data...")
+        
+        # Show API usage status before starting
+        api_manager = get_api_manager()
+        usage_summary = api_manager.get_usage_summary()
+        print(f"API Status: {usage_summary['keys_available']}/{usage_summary['total_keys']} keys available, "
+              f"{usage_summary['total_requests_today']}/{usage_summary['total_quota_today']} requests used today")
         
         # Ensure stormglass cache directory exists with proper permissions
         stormglass_dir = PROJECT_ROOT / "data" / "stormglass"
@@ -206,6 +213,14 @@ class ForecastDataProcessor:
             "cache_file_exists": self.cache_file.exists(),
             "cache_size_bytes": self.cache_file.stat().st_size if self.cache_file.exists() else 0
         }
+    
+    def get_api_usage_status(self) -> dict:
+        """Get current API usage status."""
+        try:
+            api_manager = get_api_manager()
+            return api_manager.get_usage_summary()
+        except Exception as e:
+            return {"error": str(e)}
     
     def schedule_background_update(self):
         """Schedule a background update if cache is expired."""

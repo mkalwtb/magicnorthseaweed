@@ -127,6 +127,16 @@ def cache_status(request):
     )
 
 
+def api_usage_status(request):
+    """Get API usage status information"""
+    processor = get_processor()
+    status = processor.get_api_usage_status()
+    return HttpResponse(
+        json.dumps(status, indent=2),
+        content_type='application/json'
+    )
+
+
 def refresh_cache(request):
     """Manually refresh the forecast cache"""
     try:
