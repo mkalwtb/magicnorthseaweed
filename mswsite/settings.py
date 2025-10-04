@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5#n6j=p0^fo5ub&7)94kj5k4lvs=y8m9@lrp(@!2_qxkn!^20w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'www.surfai.nl']
 
 
 # Application definition
