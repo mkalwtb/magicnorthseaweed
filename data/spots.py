@@ -116,9 +116,6 @@ class Spot:
         data = enrich_input_data(data, self)
         return data
 
-    @staticmethod
-    def _pims_hindcast_input():
-        return pd.read_pickle(r"RWS/test.pkl")
 
     def training_data(self, only_spot_data, non_zero_only=True, match_all_feedback_times=True, fb_columns: str=None, pim=False):
         """Combined surf statistics and feedback form"""
@@ -199,13 +196,7 @@ ijmuiden = Spot(richting=255, name="Ijmuiden", lat=52.45671763333488, long=4.551
 ZV = Spot(richting=290, name="ZV", lat=52.474773, long=4.535204, db_name="ZV", spot_info=strand)
 NW = Spot(richting=295, name="Noordwijk", lat=52.245855, long=4.427838, db_name="ZV", spot_info=strand)
 schev = Spot(richting=302, name="Schev", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=strand)
-schev_haven_N = Spot(richting=302, name="Schev_N", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=pier_links)
-schev_haven_Z = Spot(richting=302, name="Schev_Z", lat=52.24872770862914, long=4.427128752291569, db_name="ZV", spot_info=pier_rechts)
 texel_paal17 = Spot(richting=305, name="Texel17", lat=53.081695, long=4.733450, db_name="ZV", spot_info=strand)
-ameland = Spot(richting=0, name="Ameland", lat=53.460190, long=5.772728, db_name="ZV", spot_info=strand)
-
-Wadduwa = Spot(richting=240, name="Wadduwa", lat=6.625524189426171, long=79.93779864874834, db_name="ZV", spot_info=strand)
-Lavinia = Spot(richting=265, name="Lavinia", lat=6.848208867737467, long=79.85826985402555, db_name="ZV", spot_info=strand)
 
 # spots = [ijmuiden, scheveningen, camperduin, texel_paal17]
 SPOTS = [schev, NW, ZV, ijmuiden, wijk, camperduin, texel_paal17]

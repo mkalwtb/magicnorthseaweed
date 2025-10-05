@@ -4,7 +4,6 @@ from typing import List
 
 import pandas as pd
 import xgboost as xgb
-from cleanlab.regression.learn import CleanLearning
 from matplotlib import pyplot as plt
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
@@ -126,8 +125,6 @@ class Model:
 
         self.model = model_best
 
-    def clean_model(self):
-        self.model = CleanLearning(self.model)
 
     def _load_model(self):
         if not self.model_file.is_file():
@@ -145,13 +142,7 @@ class Model:
         base_dir = Path(__file__).resolve().parent
         return base_dir / f"AI-models/model_XGBRegressor_ZV_{self.perk}.pkl"  # todo remove ZV
 
-    def plot_model(self):
-        xgb.plot_tree(self.model)
-        plt.show()
 
-input_columns = ['wavePeriod', 'waveHeight', 'windSpeed', 'windWaveHeight',
-       'currentSpeed', 'NAP', 'waveOnshore', 'waveSideshore', 'windOnshore',
-       'windSideshore', 'seaRise', 'pier']
 
 # forecast_columns = ["rating", "hoog", "clean", "krachtig", "stijl", "stroming", "windy"]
 forecast_columns = {

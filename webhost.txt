@@ -1,1 +1,19 @@
-https://api.drv.tw/~m.k.al.wtb@gmail.com/gd/?a=admin#authed=1
+# Web Host Configuration
+# This file contains web host configuration information
+
+# Production URL
+PRODUCTION_URL = "https://magicnorthseaweed.herokuapp.com"
+
+# Staging URL  
+STAGING_URL = "https://magicnorthseaweed-staging.herokuapp.com"
+
+# Local Development
+LOCAL_URL = "http://localhost:8000"
+
+# Domain Configuration
+ALLOWED_HOSTS = [
+    'magicnorthseaweed.herokuapp.com',
+    'magicnorthseaweed-staging.herokuapp.com',
+    'localhost',
+    '127.0.0.1'
+]

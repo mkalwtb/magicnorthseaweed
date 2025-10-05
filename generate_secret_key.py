@@ -1,14 +1,11 @@
-#!/usr/bin/env python
-"""
-Generate a secure Django secret key for production deployment.
-"""
-import os
-import sys
-import django
-from django.core.management.utils import get_random_secret_key
+import secrets
+import string
 
-if __name__ == "__main__":
-    secret_key = get_random_secret_key()
-    print(f"Generated Django SECRET_KEY:")
-    print(f"SECRET_KEY={secret_key}")
-    print(f"\nAdd this to your Railway environment variables.")
+def generate_secret_key(length=50):
+    """Generate a random secret key for Django"""
+    alphabet = string.ascii_letters + string.digits + '!@#$%^&*(-_=+)'
+    return ''.join(secrets.choice(alphabet) for _ in range(length))
+
+if __name__ == '__main__':
+    print("Generated Django secret key:")
+    print(generate_secret_key())

@@ -240,3 +240,4 @@ if __name__ == '__main__':
     # print(tabulate(df, headers='keys', tablefmt='psql'))
     df.plot(subplots=True, grid=True)
     plt.show()
+
