@@ -60,11 +60,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mswsite.wsgi.application'
 
 # Database
+import dj_database_url
+
+# Database configuration for Railway
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(
+        config('DATABASE_URL', default='sqlite:///db.sqlite3')
+    )
 }
 
 # Password validation

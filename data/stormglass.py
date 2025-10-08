@@ -136,26 +136,114 @@ def download_and_save_data(name, lat, long, start, end, cache=False):
     return data_new
 
 def load_data(name: str):
-    file = Path(f'stormglass/data_{name}.pkl')
-    if file.is_file():
-        data_db = pd.read_pickle(file)
-    else:
-        data_db = pd.DataFrame()
-    return data_db
+    """Load weather data from database instead of pickle file"""
+    try:
+        from forecast.models import WeatherData
+        import django
+        import os
+        
+        # Setup Django if not already done
+        if not django.apps.apps.ready:
+            os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mswsite.settings')
+            django.setup()
+        
+        queryset = WeatherData.objects.filter(location_name=name).order_by('timestamp')
+        
+        if not queryset.exists():
+            return pd.DataFrame()
+        
+        # Convert to DataFrame
+        data = []
+        timestamps = []
+        for record in queryset:
+            timestamps.append(record.timestamp)
+            data.append({
+                'waveDirection': record.wave_direction,
+                'wavePeriod': record.wave_period,
+                'waveHeight': record.wave_height,
+                'windSpeed': record.wind_speed,
+                'windDirection': record.wind_direction,
+                'currentSpeed': record.current_speed,
+                'windWaveHeight': record.wind_wave_height,
+                'seaLevel': record.sea_level,
+                'waveOnshore': record.wave_onshore,
+                'windOnshore': record.wind_onshore,
+            })
+        
+        df = pd.DataFrame(data, index=timestamps)
+        return df
+        
+    except Exception as e:
+        print(f"Error loading data from database for {name}: {e}")
+        # Fallback to pickle file if database fails
+        file = Path(f'stormglass/data_{name}.pkl')
+        if file.is_file():
+            return pd.read_pickle(file)
+        else:
+            return pd.DataFrame()
 
 def append_historical_data(name, lat, long, data_new):
-    """Only function with writing acces"""
-    file = Path(f'stormglass/data_{name}.pkl')
-    now = datetime.now()
-    data_db = load_data(name)
-    tz = data_new.index.tz
-    now_pd = pd.to_datetime(now, utc=tz)
-    data_new_historical = data_new[data_new.index <= now_pd]
-    data_new_historical = data_new_historical.dropna()
-    data_total = pd.concat([data_db, data_new_historical], axis=0)
-    if len(data_new) > 0:  # save data
-        data_total.to_pickle(file)
-    return data_new
+    """Save new data to database instead of pickle file"""
+    if len(data_new) == 0:
+        return data_new
+    
+    try:
+        from forecast.models import WeatherData
+        import django
+        import os
+        
+        # Setup Django if not already done
+        if not django.apps.apps.ready:
+            os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mswsite.settings')
+            django.setup()
+        
+        now = datetime.now()
+        tz = data_new.index.tz
+        now_pd = pd.to_datetime(now, utc=tz)
+        data_new_historical = data_new[data_new.index <= now_pd]
+        data_new_historical = data_new_historical.dropna()
+        
+        # Save to database
+        for timestamp, row in data_new_historical.iterrows():
+            # Ensure timestamp is timezone-aware
+            if timestamp.tzinfo is None:
+                timestamp = pytz.UTC.localize(timestamp)
+            
+            WeatherData.objects.update_or_create(
+                location_name=name,
+                timestamp=timestamp,
+                defaults={
+                    'latitude': lat,
+                    'longitude': long,
+                    'wave_direction': row.get('waveDirection'),
+                    'wave_period': row.get('wavePeriod'),
+                    'wave_height': row.get('waveHeight'),
+                    'wind_speed': row.get('windSpeed'),
+                    'wind_direction': row.get('windDirection'),
+                    'current_speed': row.get('currentSpeed'),
+                    'wind_wave_height': row.get('windWaveHeight'),
+                    'sea_level': row.get('seaLevel'),
+                    'wave_onshore': row.get('waveOnshore'),
+                    'wind_onshore': row.get('windOnshore'),
+                }
+            )
+        
+        return data_new
+        
+    except Exception as e:
+        print(f"Error saving data to database for {name}: {e}")
+        # Fallback to pickle file if database fails
+        file = Path(f'stormglass/data_{name}.pkl')
+        now = datetime.now()
+        data_db = load_data(name)
+        tz = data_new.index.tz
+        now_pd = pd.to_datetime(now, utc=tz)
+        data_new_historical = data_new[data_new.index <= now_pd]
+        data_new_historical = data_new_historical.dropna()
+        data_total = pd.concat([data_db, data_new_historical], axis=0)
+        if len(data_new) > 0:  # save data
+            data_total.to_pickle(file)
+        return data_new
 
 
 def smart_data(name, lat, long, start, end, cache=False):

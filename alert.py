@@ -15,11 +15,9 @@ class AlertFilter:
 
 class AlertLog:
     """"
-    Representation of a saved email log dataframe, containing to whom and when an email was sent.
+    Representation of a saved email log, containing to whom and when an email was sent.
 
-    Data is stored in a pandas DataFrame with columns: ['timestamp', 'spot', 'rating', 'email', 'alert_timestamp']
-
-    Automatically saves to a pickle file when modified.
+    Data is stored in the database with fields: timestamp, spot, rating, email, alert_timestamp
     """
 
     def __init__(self, file="alert_log.pkl"):
@@ -28,29 +26,58 @@ class AlertLog:
 
         self.file = Path(file)
         self.columns = ['timestamp', 'spot', 'rating', 'email', 'alert_timestamp']
-        if self.file.exists():
-            self.df = pd.read_pickle(self.file)
-        else:
-            self.df = pd.DataFrame(columns=self.columns)
-            self.save()
+        # Initialize empty DataFrame for compatibility
+        self.df = pd.DataFrame(columns=self.columns)
 
     def save(self):
-        self.df.to_pickle(self.file)
+        """Save method kept for compatibility but does nothing (data is saved to database)"""
+        pass
 
     def log_alert(self, spot: str, rating: int, email: str, alert_timestamp: str):
         import pandas as pd
         from datetime import datetime
+        import django
+        import os
 
-        new_entry = pd.DataFrame([{
-            'timestamp': datetime.now(),
-            'spot': spot,
-            'rating': rating,
-            'email': email,
-            'alert_timestamp': alert_timestamp
-        }])
-        # print(f"Logging email: {new_entry.to_dict(orient='records')[0]}")
-        self.df = pd.concat([self.df, new_entry], ignore_index=True)
-        self.save()
+        try:
+            # Setup Django if not already done
+            if not django.apps.apps.ready:
+                os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mswsite.settings')
+                django.setup()
+            
+            from forecast.models import AlertLog as AlertLogModel
+            
+            # Save to database
+            AlertLogModel.objects.create(
+                timestamp=datetime.now(),
+                spot=spot,
+                rating=rating,
+                email=email,
+                alert_timestamp=alert_timestamp
+            )
+            
+            # Also update local DataFrame for compatibility
+            new_entry = pd.DataFrame([{
+                'timestamp': datetime.now(),
+                'spot': spot,
+                'rating': rating,
+                'email': email,
+                'alert_timestamp': alert_timestamp
+            }])
+            self.df = pd.concat([self.df, new_entry], ignore_index=True)
+            
+        except Exception as e:
+            print(f"Error saving alert log to database: {e}")
+            # Fallback to pickle file if database fails
+            new_entry = pd.DataFrame([{
+                'timestamp': datetime.now(),
+                'spot': spot,
+                'rating': rating,
+                'email': email,
+                'alert_timestamp': alert_timestamp
+            }])
+            self.df = pd.concat([self.df, new_entry], ignore_index=True)
+            self.df.to_pickle(self.file)
 
 email_log = AlertLog()
 

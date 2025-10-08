@@ -82,15 +82,69 @@ def generate_site_content():
 
 
 def _load_cached_content():
-	if _CACHE_CONTENT_FILE.is_file():
-		with open(_CACHE_CONTENT_FILE, 'rb') as f:
-			return pickle.load(f)
-	return None
+	try:
+		import django
+		import os
+		from datetime import datetime
+		
+		# Setup Django if not already done
+		if not django.apps.apps.ready:
+			os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mswsite.settings')
+			django.setup()
+		
+		from forecast.models import SiteCache
+		
+		# Try to load from database
+		cache_key = "main_site_content"
+		cache_obj = SiteCache.objects.filter(
+			cache_key=cache_key,
+			expires_at__gt=datetime.now()
+		).first()
+		
+		if cache_obj:
+			return cache_obj.content
+		
+		return None
+		
+	except Exception as e:
+		print(f"Error loading cached content from database: {e}")
+		# Fallback to pickle file
+		if _CACHE_CONTENT_FILE.is_file():
+			with open(_CACHE_CONTENT_FILE, 'rb') as f:
+				return pickle.load(f)
+		return None
 
 
 def _save_cached_content(content):
-	with open(_CACHE_CONTENT_FILE, 'wb') as f:
-		pickle.dump(content, f)
+	try:
+		import django
+		import os
+		from datetime import datetime, timedelta
+		
+		# Setup Django if not already done
+		if not django.apps.apps.ready:
+			os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mswsite.settings')
+			django.setup()
+		
+		from forecast.models import SiteCache
+		
+		# Save to database
+		cache_key = "main_site_content"
+		expires_at = datetime.now() + timedelta(days=1)  # Cache expires in 1 day
+		
+		SiteCache.objects.update_or_create(
+			cache_key=cache_key,
+			defaults={
+				'content': str(content),
+				'expires_at': expires_at
+			}
+		)
+		
+	except Exception as e:
+		print(f"Error saving cached content to database: {e}")
+		# Fallback to pickle file
+		with open(_CACHE_CONTENT_FILE, 'wb') as f:
+			pickle.dump(content, f)
 
 
 def _get_last_update_ts():
