@@ -19,7 +19,7 @@ import pickle
 import threading
 import time
 
-CACHE_MAX_AGE_SECONDS = 60 * 60 * 12  # 12 hours
+CACHE_MAX_AGE_SECONDS = 60 * 60 * 8  # 8 hours
 _CACHE_LOCK = threading.Lock()
 _CACHE_STATE_FILE = Path(__file__).resolve().parent / 'site_cache_state.json'
 _CACHE_CONTENT_FILE = Path(__file__).resolve().parent / 'site_cache_content.pkl'
@@ -120,7 +120,7 @@ def _refresh_cache_background():
 
 
 def get_cached_site_content():
-	"""Return cached content; if older than 12h, trigger background refresh.
+	"""Return cached content; if older than 8h, trigger background refresh.
 
 	If no cache exists yet, compute synchronously once and save.
 	"""
